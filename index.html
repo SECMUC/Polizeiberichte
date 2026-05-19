@@ -127,7 +127,7 @@ tbody tr:hover td{background:#f8fafc}
       <span class="badge-pp">OSINT</span>
       <h1>PP München · <span>Polizei Monitor</span></h1>
     </div>
-    <div class="subtitle">Täglich aktualisiert · polizei.bayern.de · Einzelvorfälle · München + Umland</div>
+    <div class="subtitle">Täglich aktualisiert · polizei.bayern.de · Einzelvorfälle · München · OBN · OBS · SWN</div>
   </div>
   <div class="live-indicator">
     <div class="live-dot" id="live-dot"></div>
@@ -172,13 +172,13 @@ tbody tr:hover td{background:#f8fafc}
     </select>
   </div>
   <div class="field">
-    <label>Region</label>
+    <label>Polizeipräsidium</label>
     <select id="filterRegion" onchange="applyFilters()">
-      <option value="">Alle Regionen</option>
-      <option>München</option>
-      <option>Planegg/Würmtal</option>
-      <option>Wörthsee/Steinebach</option>
-      <option>Friedberg</option>
+      <option value="">Alle PP</option>
+      <option>PP München</option>
+      <option>PP Oberbayern Nord</option>
+      <option>PP Oberbayern Süd</option>
+      <option>PP Schwaben Nord</option>
     </select>
   </div>
   <div class="field">
@@ -196,14 +196,14 @@ tbody tr:hover td{background:#f8fafc}
       <option>Schwanthalerhöhe</option><option>Thalkirchen</option><option>Ludwigsvorstadt</option>
       <option>Isarvorstadt</option><option>Stadtmitte</option><option>Allach-Untermenzing</option>
       </optgroup>
-      <optgroup label="── Würmtal ──">
-      <option>Planegg/Würmtal</option>
+      <optgroup label="── PP Oberbayern Nord ──">
+      <option>Planegg</option><option>Martinsried</option><option>Krailling</option><option>Gräfelfing</option><option>Gauting</option><option>Neuried</option><option>Germering</option>
       </optgroup>
-      <optgroup label="── Wörthsee ──">
-      <option>Wörthsee/Steinebach</option>
+      <optgroup label="── PP Oberbayern Süd ──">
+      <option>Wörthsee</option><option>Steinebach</option><option>Herrsching</option><option>Starnberg</option><option>Andechs</option><option>Seefeld</option>
       </optgroup>
-      <optgroup label="── Friedberg ──">
-      <option>Friedberg</option>
+      <optgroup label="── PP Schwaben Nord ──">
+      <option>Friedberg</option><option>Kissing</option><option>Mering</option><option>Aichach</option><option>Dasing</option>
       </optgroup>
       <optgroup label="── Sonstige ──">
       <option>Münchner Umland</option><option>Unbekannt</option>
@@ -240,7 +240,7 @@ tbody tr:hover td{background:#f8fafc}
         <th>Zeit</th>
         <th>Nr.</th>
         <th onclick="sortBy('kategorie')">Kategorie <span id="si-kategorie">↕</span></th>
-        <th onclick="sortBy('region')">Region <span id="si-region">↕</span></th>
+        <th onclick="sortBy('region')">Polizeipräsidium <span id="si-region">↕</span></th>
         <th onclick="sortBy('ort')">Stadtteil / Ort <span id="si-ort">↕</span></th>
         <th>Originaltext</th>
         <th>Quelle</th>
