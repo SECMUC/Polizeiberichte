@@ -314,16 +314,11 @@ def main():
     urls = sorted(all_urls)
     print(f"\n  Gesamt: {len(urls)} einzigartige Artikel-URLs\n")
 
-    # 2. Bestehende Daten laden (inkrementell)
-    existing_data, existing_links = [], set()
-    try:
-        with open("data/incidents.json", "r", encoding="utf-8") as f:
-            existing_data  = json.load(f)
-            existing_links = {p.get("link","") for p in existing_data}
-            print(f"  Bestehende Daten: {len(existing_data)} Vorfälle")
-    except: print("  Starte frisch")
-
-    all_incidents = list(existing_data)
+    # 2. IMMER frisch starten – alten Datensatz ignorieren
+    # (Nötig nach PP-Umstrukturierung um falsche Region-Werte zu bereinigen)
+    existing_links = set()
+    all_incidents  = []
+    print("  Starte frischen Aufbau des Datensatzes")
     loaded = 0
 
     # 3. Artikel abrufen
