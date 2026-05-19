@@ -148,7 +148,7 @@ def fetch(url, timeout=15):
         print(f"  ✗ {url[-60:]} → {e}"); return None
 
 
-def get_urls_from_telegram(channel, from_date, to_date):
+def get_urls_from_telegram(channel, from_date, to_date, arts_per_day=3.0):
     """Liest einen Telegram-Kanal seitenweise und sammelt polizei.bayern.de Links."""
     print(f"\n  📡 Lese @{channel}…")
     art_pat = re.compile(
@@ -157,54 +157,44 @@ def get_urls_from_telegram(channel, from_date, to_date):
     msg_pat = re.compile(r'data-post="[^/]+/(\d+)"')
 
     seen, urls, before_id = set(), [], None
-    now = datetime.now()
 
-    for page in range(80):
+    for page in range(100):  # Mehr Seiten erlauben
         url = f"https://t.me/s/{channel}" + (f"?before={before_id}" if before_id else "")
         html = fetch(url, timeout=25)
         if not html: print(f"    Seite {page+1}: nicht erreichbar"); break
 
         new_count = 0
-        page_art_ids = []
         for m in art_pat.finditer(html):
             art_id  = int(m.group(1))
             art_url = m.group(0)
-            page_art_ids.append(art_id)
             if art_url not in seen:
                 seen.add(art_url)
                 urls.append((art_id, art_url))
                 new_count += 1
 
         msg_ids = [int(x) for x in msg_pat.findall(html)]
-        if not msg_ids: print(f"    Seite {page+1}: Ende"); break
+        if not msg_ids: print(f"    Seite {page+1}: Ende des Kanals"); break
 
         min_msg_id = min(msg_ids)
         print(f"    Seite {page+1}: {new_count} neue Links (Post-IDs bis #{min_msg_id})")
 
-        if len(urls) >= MAX_ARTS: break
+        if len(urls) >= MAX_ARTS: print(f"    Maximum erreicht"); break
         if min_msg_id <= 1: break
         if min_msg_id == before_id: break
-
-        # Zeitschätzung: wenn älteste ID schon sehr alt → stoppen
-        if page_art_ids:
-            oldest_id = min(page_art_ids)
-            max_id    = max(a[0] for a in urls) if urls else oldest_id
-            # ca. 2.5 Artikel/Tag → days_ago = (max_id - oldest_id) / 2.5
-            days_ago = (max_id - oldest_id) / 2.5 if max_id != oldest_id else 0
-            if days_ago > DAYS_BACK + 30:
-                print(f"    Zeitraum überschritten – stoppe")
-                break
 
         before_id = min_msg_id
         time.sleep(0.6)
 
-    # Datumsfilter per ID-Schätzung
+    # Datumsfilter: max_id = neuester Artikel = heute
+    # days_ago = (max_id - art_id) / arts_per_day
     if not urls:
         return []
+
+    now    = datetime.now()
     max_id = max(a[0] for a in urls)
     filtered = []
     for art_id, art_url in urls:
-        days_ago = (max_id - art_id) / 2.5
+        days_ago = (max_id - art_id) / arts_per_day
         est_date = now - timedelta(days=days_ago)
         if from_date <= est_date <= to_date:
             filtered.append(art_url)
@@ -309,10 +299,13 @@ def main():
     print(f"  Regionen: {', '.join(REGIONS.keys())}")
     print(f"═══════════════════════════════════════════════════")
 
-    # 1. URLs aus allen Telegram-Kanälen sammeln
+    # 1. URLs aus allen Telegram-Kanälen sammeln – global dedupliziert
     all_urls = set()
     for channel in TG_CHANNELS:
-        urls = get_urls_from_telegram(channel, from_date, to_date)
+        # @PressePolizeiMuenchen postet ~7 Artikel/Tag (nur München)
+        # @PolizeiBayern postet ~15 Artikel/Tag (ganz Bayern)
+        arts_per_day = 7.0 if channel == "PressePolizeiMuenchen" else 15.0
+        urls = get_urls_from_telegram(channel, from_date, to_date, arts_per_day)
         all_urls.update(urls)
 
     urls = sorted(all_urls)[:MAX_ARTS]
