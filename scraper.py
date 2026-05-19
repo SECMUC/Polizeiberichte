@@ -15,7 +15,7 @@ from bs4 import BeautifulSoup
 
 # ── Konfiguration ─────────────────────────────────────────────────────────────
 DAYS_BACK  = 500
-MAX_ARTS   = 500
+MAX_ARTS   = 1500  # Hoch genug für alle Kanäle kombiniert
 SLEEP_SEC  = 0.4
 BASE_URL   = "https://www.polizei.bayern.de"
 
@@ -148,8 +148,8 @@ def fetch(url, timeout=15):
         print(f"  ✗ {url[-60:]} → {e}"); return None
 
 
-def get_urls_from_telegram(channel, from_date, to_date, arts_per_day=3.0):
-    """Liest einen Telegram-Kanal seitenweise und sammelt polizei.bayern.de Links."""
+def get_urls_from_telegram(channel, from_date, to_date):
+    """Liest einen Telegram-Kanal seitenweise und sammelt ALLE polizei.bayern.de Links."""
     print(f"\n  📡 Lese @{channel}…")
     art_pat = re.compile(
         r'https?://(?:www\.)?polizei\.bayern\.de/aktuelles/pressemitteilungen/(\d{6})/index\.html'
@@ -158,18 +158,17 @@ def get_urls_from_telegram(channel, from_date, to_date, arts_per_day=3.0):
 
     seen, urls, before_id = set(), [], None
 
-    for page in range(100):  # Mehr Seiten erlauben
+    for page in range(100):
         url = f"https://t.me/s/{channel}" + (f"?before={before_id}" if before_id else "")
         html = fetch(url, timeout=25)
         if not html: print(f"    Seite {page+1}: nicht erreichbar"); break
 
         new_count = 0
         for m in art_pat.finditer(html):
-            art_id  = int(m.group(1))
             art_url = m.group(0)
             if art_url not in seen:
                 seen.add(art_url)
-                urls.append((art_id, art_url))
+                urls.append(art_url)
                 new_count += 1
 
         msg_ids = [int(x) for x in msg_pat.findall(html)]
@@ -185,22 +184,8 @@ def get_urls_from_telegram(channel, from_date, to_date, arts_per_day=3.0):
         before_id = min_msg_id
         time.sleep(0.6)
 
-    # Datumsfilter: max_id = neuester Artikel = heute
-    # days_ago = (max_id - art_id) / arts_per_day
-    if not urls:
-        return []
-
-    now    = datetime.now()
-    max_id = max(a[0] for a in urls)
-    filtered = []
-    for art_id, art_url in urls:
-        days_ago = (max_id - art_id) / arts_per_day
-        est_date = now - timedelta(days=days_ago)
-        if from_date <= est_date <= to_date:
-            filtered.append(art_url)
-
-    print(f"    @{channel}: {len(urls)} Links gesamt, {len(filtered)} im Zeitraum")
-    return filtered
+    print(f"    @{channel}: {len(urls)} Links gesammelt")
+    return urls
 
 
 def parse_article(html, url):
@@ -302,13 +287,11 @@ def main():
     # 1. URLs aus allen Telegram-Kanälen sammeln – global dedupliziert
     all_urls = set()
     for channel in TG_CHANNELS:
-        # @PressePolizeiMuenchen postet ~7 Artikel/Tag (nur München)
-        # @PolizeiBayern postet ~15 Artikel/Tag (ganz Bayern)
-        arts_per_day = 7.0 if channel == "PressePolizeiMuenchen" else 15.0
-        urls = get_urls_from_telegram(channel, from_date, to_date, arts_per_day)
+        urls = get_urls_from_telegram(channel, from_date, to_date)
         all_urls.update(urls)
 
     urls = sorted(all_urls)[:MAX_ARTS]
+    print(f"\n  Gesamt: {len(urls)} einzigartige Artikel-URLs\n")
     print(f"\n  Gesamt: {len(urls)} einzigartige Artikel-URLs\n")
 
     # 2. Bestehende Daten laden
