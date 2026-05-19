@@ -1,13 +1,13 @@
 {
-  "updated": "19.05.2026 07:49",
-  "updated_iso": "2026-05-19T07:49:04.078039",
+  "updated": "19.05.2026 08:10",
+  "updated_iso": "2026-05-19T08:10:45.671133",
   "from_date": "2025-01-04",
   "to_date": "2026-05-19",
-  "articles": 56,
-  "incidents": 152,
+  "articles": 46,
+  "incidents": 367,
   "regions": {
-    "München": 148,
-    "Friedberg": 3,
-    "Planegg/Würmtal": 1
+    "München": 361,
+    "Friedberg": 4,
+    "Planegg/Würmtal": 2
   }
 }
