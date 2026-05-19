@@ -196,15 +196,41 @@ def parse_article(html, url):
     if not dm: return []
     pm_date = datetime(int(dm[3]), int(dm[2]), int(dm[1]))
 
+    # ── Primärfilter über Seitentitel ────────────────────────────────────────
+    # "Medieninformation der Polizei München" → München-Artikel
+    # "Medieninfo Nordschwaben", "Medieninfo Oberbayern Nord" → andere PP
+    # Wir bestimmen welches PP diesen Artikel herausgegeben hat
+    title_lower = title_text.lower()
+    is_munich_pp = "polizei münchen" in title_lower or "münchen" in title_lower and "nordschwaben" not in title_lower and "schwaben" not in title_lower and "oberbayern nord" not in title_lower and "oberbayern süd" not in title_lower and "niederbayern" not in title_lower and "oberpfalz" not in title_lower and "oberfranken" not in title_lower and "mittelfranken" not in title_lower and "unterfranken" not in title_lower
+
     for tag in soup(["nav","header","footer","script","style"]): tag.decompose()
     content = soup.find(class_="c-richtext") or soup.find("article") or soup.find("main")
     if not content: return []
 
-    # Volltextcheck: Ist der Artikel überhaupt für unsere Regionen relevant?
+    # Fußzeile mit Behördenname entfernen (letzte 300 Zeichen oft "Rückfragen bitte an: PP XYZ")
     full_text = content.get_text(" ", strip=True)
-    region = detect_region(full_text)
-    if not region:
-        return []  # Artikel betrifft keine unserer Regionen → überspringen
+
+    # Fußzeile abschneiden (nach "Rückfragen bitte" oder "Pressestelle")
+    cutoff = re.search(r'Rückfragen bitte an|Pressestelle|Telefon:\s*\d', full_text)
+    text_for_region = full_text[:cutoff.start()] if cutoff else full_text
+
+    # ── Regionserkennung ─────────────────────────────────────────────────────
+    # München-Artikel vom PP München: alle Vorfälle sind automatisch München
+    # Andere PP: nur aufnehmen wenn Orte unserer Umlandregionen vorkommen
+    if is_munich_pp:
+        # PP München Artikel → direkt parsen, alle Vorfälle sind relevant
+        article_region_override = "München"
+    else:
+        # Anderes PP → nur wenn Umland-Orte im Text
+        umland_regions = {k: v for k, v in REGIONS.items() if k != "München"}
+        found_region = None
+        for region, keywords in umland_regions.items():
+            if any(kw in text_for_region for kw in keywords):
+                found_region = region
+                break
+        if not found_region:
+            return []  # Artikel aus anderem PP ohne Umland-Bezug → überspringen
+        article_region_override = None  # Einzelvorfälle bestimmen ihre Region selbst
 
     incidents = []
     sections  = content.find_all("h3")
@@ -214,6 +240,7 @@ def parse_article(html, url):
         dm2 = re.search(r"(\d{2})\.(\d{2})\.(\d{4})", full_text)
         inc_date = datetime(int(dm2[3]),int(dm2[2]),int(dm2[1])) if dm2 else pm_date
         tm = re.search(r"(\d{1,2})[:.h](\d{2})\s*Uhr", full_text)
+        region = article_region_override or detect_region(text_for_region) or "Unbekannt"
         ort = detect_ort(full_text)
         if ort == "Unbekannt": ort = region
         return [_make(inc_date, f"{int(tm[1]):02d}:{tm[2]}" if tm else "",
@@ -235,20 +262,28 @@ def parse_article(html, url):
         body = " ".join(parts).strip()
         if len(body) < 30: continue
 
-        # Einzelvorfall-Relevanzcheck
         vorfall_text = titel + " " + body
-        vorfall_region = detect_region(vorfall_text)
-        if not vorfall_region:
-            continue  # Dieser Einzelvorfall betrifft unsere Regionen nicht
+
+        if article_region_override:
+            # PP München → alle Vorfälle sind München
+            vorfall_region = article_region_override
+        else:
+            # Anderes PP → Einzelvorfall muss Umland-Ort enthalten
+            vorfall_region = None
+            for region, keywords in REGIONS.items():
+                if region == "München": continue  # München aus anderem PP nicht aufnehmen
+                if any(kw in vorfall_text for kw in keywords):
+                    vorfall_region = region
+                    break
+            if not vorfall_region:
+                continue  # Dieser Einzelvorfall betrifft unsere Umlandregionen nicht
 
         dm2 = re.search(r"(\d{1,2})\.(\d{1,2})\.(\d{4})", body)
         inc_date = datetime(int(dm2[3]),int(dm2[2]),int(dm2[1])) if dm2 else pm_date
         tm = re.search(r"(\d{1,2})[:.h](\d{2})\s*Uhr", body)
         kat, sev = categorize(vorfall_text)
-        if ort == "Unbekannt":
-            ort = detect_ort(body)
-        if ort == "Unbekannt":
-            ort = vorfall_region
+        if ort == "Unbekannt": ort = detect_ort(body)
+        if ort == "Unbekannt": ort = vorfall_region
 
         incidents.append(_make(
             inc_date, f"{int(tm[1]):02d}:{tm[2]}" if tm else "",
