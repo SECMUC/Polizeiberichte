@@ -238,7 +238,11 @@ def parse_article(html, url):
     if not sections:
         kat, sev = categorize(full_text)
         dm2 = re.search(r"(\d{2})\.(\d{2})\.(\d{4})", full_text)
-        inc_date = datetime(int(dm2[3]),int(dm2[2]),int(dm2[1])) if dm2 else pm_date
+        if dm2:
+            year = int(dm2[3])
+            inc_date = datetime(year, int(dm2[2]), int(dm2[1])) if 2020 <= year <= 2030 else pm_date
+        else:
+            inc_date = pm_date
         tm = re.search(r"(\d{1,2})[:.h](\d{2})\s*Uhr", full_text)
         region = article_region_override or detect_region(text_for_region) or "Unbekannt"
         ort = detect_ort(full_text)
@@ -279,7 +283,15 @@ def parse_article(html, url):
                 continue  # Dieser Einzelvorfall betrifft unsere Umlandregionen nicht
 
         dm2 = re.search(r"(\d{1,2})\.(\d{1,2})\.(\d{4})", body)
-        inc_date = datetime(int(dm2[3]),int(dm2[2]),int(dm2[1])) if dm2 else pm_date
+        if dm2:
+            year = int(dm2[3])
+            # Jahreszahl-Typo-Korrektur: nur 2020-2030 akzeptieren
+            if 2020 <= year <= 2030:
+                inc_date = datetime(year, int(dm2[2]), int(dm2[1]))
+            else:
+                inc_date = pm_date  # Fallback auf Datum der Pressemitteilung
+        else:
+            inc_date = pm_date
         tm = re.search(r"(\d{1,2})[:.h](\d{2})\s*Uhr", body)
         kat, sev = categorize(vorfall_text)
         if ort == "Unbekannt": ort = detect_ort(body)
