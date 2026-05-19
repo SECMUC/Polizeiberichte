@@ -1,0 +1,34 @@
+name: Täglich Polizeidaten aktualisieren
+
+on:
+  schedule:
+    # 04:00 UTC = 05:00 CET (Winter) / 06:00 MESZ (Sommer)
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Abhängigkeiten installieren
+        run: pip install requests beautifulsoup4
+
+      - name: Scraper ausführen
+        run: python scraper.py
+
+      - name: Daten speichern
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "Daten aktualisiert $(date '+%d.%m.%Y %H:%M')"
+          git push
