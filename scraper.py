@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 """
 PP München + Umland OSINT – GitHub Actions Scraper
-Quellen:
-  - @PressePolizeiMuenchen (PP München)
-  - @PolizeiBayern (RSS-Aggregator aller bayerischen PP – für OBN, OBS, SWN)
-Filtert nach: München, Planegg/Würmtal, Wörthsee/Steinebach, Friedberg
+Quellen: @PressePolizeiMuenchen + @PolizeiBayern (Telegram)
+Polizeipräsidien: PP München, PP Oberbayern Nord, PP Oberbayern Süd, PP Schwaben Nord
 """
 
 import json, os, re, time
@@ -15,47 +13,42 @@ from bs4 import BeautifulSoup
 
 # ── Konfiguration ─────────────────────────────────────────────────────────────
 DAYS_BACK  = 500
-MAX_ARTS   = 1500  # Hoch genug für alle Kanäle kombiniert
+MAX_ARTS   = 1500
 SLEEP_SEC  = 0.4
+
 BASE_URL   = "https://www.polizei.bayern.de"
-
-# Telegram-Kanäle die wir lesen
-TG_CHANNELS = [
-    "PressePolizeiMuenchen",  # PP München (offiziell)
-    "PolizeiBayern",          # RSS-Aggregator aller bay. PP
-]
-
-# Ortsnamen für Filterung pro Region
-# Artikel werden NUR aufgenommen wenn mindestens ein Begriff aus
-# EINER der Regionsgruppen im Text vorkommt
-REGIONS = {
-    "München": [
-        "München", "Schwabing", "Maxvorstadt", "Sendling", "Bogenhausen",
-        "Haidhausen", "Neuhausen", "Nymphenburg", "Giesing", "Moosach",
-        "Milbertshofen", "Pasing", "Hadern", "Laim", "Ramersdorf",
-        "Perlach", "Trudering", "Feldmoching", "Hasenbergl", "Allach",
-        "Hauptbahnhof München", "Marienplatz", "Ludwigsvorstadt",
-        "Isarvorstadt", "Schwanthalerhöhe",
-    ],
-    "Planegg/Würmtal": [
-        "Planegg", "Würmtal", "Martinsried", "Krailling", "Gräfelfing",
-        "Gauting", "Neuried", "Germering", "Würm",
-    ],
-    "Wörthsee/Steinebach": [
-        "Wörthsee", "Steinebach", "Herrsching", "Andechs", "Seefeld",
-        "Hechendorf", "Walchstadt", "Starnberg", "Landkreis Starnberg",
-    ],
-    "Friedberg": [
-        "Friedberg", "Aichach", "Kissing", "Mering", "Dasing",
-        "Eurasburg", "Merching", "Landkreis Aichach-Friedberg",
-        "Aichach-Friedberg",
-    ],
-}
+TG_CHANNELS = ["PressePolizeiMuenchen", "PolizeiBayern"]
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
     "Accept-Language": "de-DE,de;q=0.9",
 }
+
+# ── Polizeipräsidium-Erkennung aus Seitentitel ────────────────────────────────
+# (Titelmuster → (PP-Name, Ortsfilter nötig?))
+PP_PATTERNS = [
+    ("polizei münchen",  "PP München",          False),
+    ("pp münchen",       "PP München",          False),
+    ("oberbayern nord",  "PP Oberbayern Nord",  True),
+    ("oberbayern süd",   "PP Oberbayern Süd",   True),
+    ("schwaben nord",    "PP Schwaben Nord",     True),
+    ("nordschwaben",     "PP Schwaben Nord",     True),
+]
+
+# Orte die bei PP OBN / OBS / SWN relevant sind
+RELEVANT_PLACES = [
+    # Würmtal
+    "Planegg","Martinsried","Krailling","Gräfelfing","Gauting","Neuried",
+    "Germering","Stockdorf","Lochham","Würmtal",
+    # Wörthsee / Starnberg
+    "Wörthsee","Steinebach","Herrsching","Hechendorf","Walchstadt",
+    "Andechs","Seefeld","Starnberg","Inning","Weßling","Pöcking",
+    "Tutzing","Feldafing","Berg","Münsing",
+    # Friedberg / Aichach
+    "Friedberg","Kissing","Mering","Dasing","Aichach","Eurasburg",
+    "Merching","Ried","Schmiechen","Steindorf","Adelzhausen",
+    "Aichach-Friedberg",
+]
 
 # ── Kategorisierung ───────────────────────────────────────────────────────────
 RULES = [
@@ -85,6 +78,7 @@ RULES = [
 ]
 
 ORT_MAP = [
+    # München Stadtteile
     ("Altstadt-Lehel","Altstadt-Lehel"),("Altstadt","Altstadt-Lehel"),("Lehel","Altstadt-Lehel"),
     ("Maxvorstadt","Maxvorstadt"),("Schwabing-West","Schwabing-West"),("Schwabing","Schwabing"),
     ("Neuhausen-Nymphenburg","Neuhausen-Nymphenburg"),("Neuhausen","Neuhausen-Nymphenburg"),("Nymphenburg","Neuhausen-Nymphenburg"),
@@ -102,21 +96,31 @@ ORT_MAP = [
     ("Allach-Untermenzing","Allach-Untermenzing"),("Allach","Allach-Untermenzing"),
     ("Hauptbahnhof","Stadtmitte"),("Marienplatz","Stadtmitte"),("Stachus","Stadtmitte"),
     ("Karlsplatz","Stadtmitte"),("Innenstadt","Stadtmitte"),("Stadtmitte","Stadtmitte"),
-    # Umland-Regionen
-    ("Planegg","Planegg/Würmtal"),("Martinsried","Planegg/Würmtal"),
-    ("Krailling","Planegg/Würmtal"),("Gräfelfing","Planegg/Würmtal"),
-    ("Gauting","Planegg/Würmtal"),("Neuried","Planegg/Würmtal"),
-    ("Germering","Planegg/Würmtal"),("Würmtal","Planegg/Würmtal"),
-    ("Wörthsee","Wörthsee/Steinebach"),("Steinebach","Wörthsee/Steinebach"),
-    ("Herrsching","Wörthsee/Steinebach"),("Hechendorf","Wörthsee/Steinebach"),
-    ("Walchstadt","Wörthsee/Steinebach"),("Andechs","Wörthsee/Steinebach"),
-    ("Seefeld","Wörthsee/Steinebach"),("Starnberg","Wörthsee/Steinebach"),
-    ("Friedberg","Friedberg"),("Kissing","Friedberg"),("Mering","Friedberg"),
-    ("Dasing","Friedberg"),("Aichach","Friedberg"),("Eurasburg","Friedberg"),
-    ("Grünwald","Münchner Umland"),("Sauerlach","Münchner Umland"),("Haar","Münchner Umland"),
-    ("Dachau","Münchner Umland"),("Unterhaching","Münchner Umland"),
-    ("Landkreis","Münchner Umland"),
+    # Würmtal
+    ("Planegg","Planegg"),("Martinsried","Martinsried"),("Krailling","Krailling"),
+    ("Gräfelfing","Gräfelfing"),("Gauting","Gauting"),("Neuried","Neuried"),
+    ("Germering","Germering"),("Stockdorf","Stockdorf"),("Lochham","Lochham"),
+    # Wörthsee / Starnberg
+    ("Wörthsee","Wörthsee"),("Steinebach","Steinebach"),("Herrsching","Herrsching"),
+    ("Hechendorf","Hechendorf"),("Walchstadt","Walchstadt"),("Andechs","Andechs"),
+    ("Seefeld","Seefeld"),("Starnberg","Starnberg"),("Inning","Inning"),("Weßling","Weßling"),
+    ("Tutzing","Tutzing"),("Feldafing","Feldafing"),("Pöcking","Pöcking"),
+    # Friedberg
+    ("Friedberg","Friedberg"),("Kissing","Kissing"),("Mering","Mering"),
+    ("Dasing","Dasing"),("Aichach","Aichach"),("Eurasburg","Eurasburg"),("Merching","Merching"),
 ]
+
+
+def detect_pp(title_text):
+    t = title_text.lower()
+    for pattern, pp_name, needs_filter in PP_PATTERNS:
+        if pattern in t:
+            return pp_name, needs_filter
+    return None, False
+
+
+def is_relevant_place(text):
+    return any(p in text for p in RELEVANT_PLACES)
 
 
 def categorize(text):
@@ -132,12 +136,14 @@ def detect_ort(text):
     return "Unbekannt"
 
 
-def detect_region(text):
-    """Erkennt welcher Region ein Artikel zuzuordnen ist."""
-    for region, keywords in REGIONS.items():
-        if any(kw in text for kw in keywords):
-            return region
-    return None  # Artikel nicht relevant
+def parse_date(text, fallback):
+    """Parst erstes gültiges Datum (2020-2030) aus Text."""
+    for m in re.finditer(r"(\d{1,2})\.(\d{1,2})\.(\d{4})", text):
+        y = int(m[3])
+        if 2020 <= y <= 2030:
+            try: return datetime(y, int(m[2]), int(m[1]))
+            except: pass
+    return fallback
 
 
 def fetch(url, timeout=15):
@@ -148,113 +154,102 @@ def fetch(url, timeout=15):
         print(f"  ✗ {url[-60:]} → {e}"); return None
 
 
-def get_urls_from_telegram(channel, from_date, to_date):
-    """Liest einen Telegram-Kanal seitenweise und sammelt ALLE polizei.bayern.de Links."""
-    print(f"\n  📡 Lese @{channel}…")
-    art_pat = re.compile(
-        r'https?://(?:www\.)?polizei\.bayern\.de/aktuelles/pressemitteilungen/(\d{6})/index\.html'
-    )
+def get_urls_from_telegram(channel):
+    """Liest Telegram-Kanal seitenweise, sammelt alle polizei.bayern.de Links."""
+    print(f"\n  📡 @{channel}…")
+    art_pat = re.compile(r'https?://(?:www\.)?polizei\.bayern\.de/aktuelles/pressemitteilungen/(\d{6})/index\.html')
     msg_pat = re.compile(r'data-post="[^/]+/(\d+)"')
-
     seen, urls, before_id = set(), [], None
 
     for page in range(100):
         url = f"https://t.me/s/{channel}" + (f"?before={before_id}" if before_id else "")
         html = fetch(url, timeout=25)
-        if not html: print(f"    Seite {page+1}: nicht erreichbar"); break
+        if not html: break
 
-        new_count = 0
+        new = 0
         for m in art_pat.finditer(html):
-            art_url = m.group(0)
-            if art_url not in seen:
-                seen.add(art_url)
-                urls.append(art_url)
-                new_count += 1
+            if m[0] not in seen:
+                seen.add(m[0]); urls.append(m[0]); new += 1
 
         msg_ids = [int(x) for x in msg_pat.findall(html)]
-        if not msg_ids: print(f"    Seite {page+1}: Ende des Kanals"); break
-
-        min_msg_id = min(msg_ids)
-        print(f"    Seite {page+1}: {new_count} neue Links (Post-IDs bis #{min_msg_id})")
-
-        if len(urls) >= MAX_ARTS: print(f"    Maximum erreicht"); break
-        if min_msg_id <= 1: break
-        if min_msg_id == before_id: break
-
-        before_id = min_msg_id
+        if not msg_ids: break
+        min_id = min(msg_ids)
+        print(f"    Seite {page+1}: {new} neue Links (bis Post #{min_id})")
+        if len(urls) >= MAX_ARTS or min_id <= 1 or min_id == before_id: break
+        before_id = min_id
         time.sleep(0.6)
 
-    print(f"    @{channel}: {len(urls)} Links gesammelt")
+    print(f"    @{channel}: {len(urls)} Links gesamt")
     return urls
 
 
-def parse_article(html, url):
-    """Parst eine Pressemitteilung → Liste von Vorfall-Dicts."""
+def parse_article(html, url, from_date, to_date):
+    """Parst eine Pressemitteilung – unterstützt verschiedene PP-Formate."""
     soup = BeautifulSoup(html, "html.parser")
+
+    # ── PP aus Seitentitel ────────────────────────────────────────────────────
     title_text = (soup.find("title") or type("",(),{"get_text":lambda *a:""})()).get_text()
+    pp_name, needs_filter = detect_pp(title_text)
+    if not pp_name:
+        return []  # Nicht relevantes PP
+
+    # ── Datum der Pressemitteilung ────────────────────────────────────────────
     dm = re.search(r"(\d{2})\.(\d{2})\.(\d{4})", title_text)
     if not dm: return []
-    pm_date = datetime(int(dm[3]), int(dm[2]), int(dm[1]))
+    y = int(dm[3])
+    if not (2020 <= y <= 2030): return []
+    pm_date = datetime(y, int(dm[2]), int(dm[1]))
 
-    # ── Primärfilter über Seitentitel ────────────────────────────────────────
-    # "Medieninformation der Polizei München" → München-Artikel
-    # "Medieninfo Nordschwaben", "Medieninfo Oberbayern Nord" → andere PP
-    # Wir bestimmen welches PP diesen Artikel herausgegeben hat
-    title_lower = title_text.lower()
-    is_munich_pp = "polizei münchen" in title_lower or "münchen" in title_lower and "nordschwaben" not in title_lower and "schwaben" not in title_lower and "oberbayern nord" not in title_lower and "oberbayern süd" not in title_lower and "niederbayern" not in title_lower and "oberpfalz" not in title_lower and "oberfranken" not in title_lower and "mittelfranken" not in title_lower and "unterfranken" not in title_lower
+    if pm_date < from_date or pm_date > to_date:
+        return []
 
+    # ── DOM bereinigen ────────────────────────────────────────────────────────
     for tag in soup(["nav","header","footer","script","style"]): tag.decompose()
     content = soup.find(class_="c-richtext") or soup.find("article") or soup.find("main")
     if not content: return []
 
-    # Fußzeile mit Behördenname entfernen (letzte 300 Zeichen oft "Rückfragen bitte an: PP XYZ")
     full_text = content.get_text(" ", strip=True)
 
-    # Fußzeile abschneiden (nach "Rückfragen bitte" oder "Pressestelle")
-    cutoff = re.search(r'Rückfragen bitte an|Pressestelle|Telefon:\s*\d', full_text)
-    text_for_region = full_text[:cutoff.start()] if cutoff else full_text
+    # Fußzeile abschneiden für Ortsfilterung
+    cutoff = re.search(r'Rückfragen bitte|Pressestelle\b|Tel\.:\s*\d', full_text)
+    text_for_filter = full_text[:cutoff.start()] if cutoff else full_text
 
-    # ── Regionserkennung ─────────────────────────────────────────────────────
-    # München-Artikel vom PP München: alle Vorfälle sind automatisch München
-    # Andere PP: nur aufnehmen wenn Orte unserer Umlandregionen vorkommen
-    if is_munich_pp:
-        # PP München Artikel → direkt parsen, alle Vorfälle sind relevant
-        article_region_override = "München"
-    else:
-        # Anderes PP → nur wenn Umland-Orte im Text
-        umland_regions = {k: v for k, v in REGIONS.items() if k != "München"}
-        found_region = None
-        for region, keywords in umland_regions.items():
-            if any(kw in text_for_region for kw in keywords):
-                found_region = region
-                break
-        if not found_region:
-            return []  # Artikel aus anderem PP ohne Umland-Bezug → überspringen
-        article_region_override = None  # Einzelvorfälle bestimmen ihre Region selbst
+    # ── Ortsfilter für andere PP ──────────────────────────────────────────────
+    if needs_filter and not is_relevant_place(text_for_filter):
+        return []
 
+    # ── Vorfälle aus h3-Überschriften extrahieren ─────────────────────────────
     incidents = []
     sections  = content.find_all("h3")
 
     if not sections:
-        kat, sev = categorize(full_text)
-        dm2 = re.search(r"(\d{2})\.(\d{2})\.(\d{4})", full_text)
-        if dm2:
-            year = int(dm2[3])
-            inc_date = datetime(year, int(dm2[2]), int(dm2[1])) if 2020 <= year <= 2030 else pm_date
-        else:
-            inc_date = pm_date
-        tm = re.search(r"(\d{1,2})[:.h](\d{2})\s*Uhr", full_text)
-        region = article_region_override or detect_region(text_for_region) or "Unbekannt"
-        ort = detect_ort(full_text)
-        if ort == "Unbekannt": ort = region
-        return [_make(inc_date, f"{int(tm[1]):02d}:{tm[2]}" if tm else "",
-                      "", kat, sev, ort, full_text[:120], full_text[:1500], url, region)]
+        # Kein h3-Format (z.B. PP OBN schreibt manchmal anders)
+        # Versuche Vorfälle per Absatz zu trennen
+        paragraphs = [p.get_text(" ", strip=True) for p in content.find_all("p") if len(p.get_text(strip=True)) > 50]
+        if not paragraphs:
+            paragraphs = [full_text]
 
+        for body in paragraphs[:10]:
+            if needs_filter and not is_relevant_place(body):
+                continue
+            inc_date = parse_date(body, pm_date)
+            tm = re.search(r"(\d{1,2})[:.h](\d{2})\s*Uhr", body)
+            kat, sev = categorize(body)
+            ort = detect_ort(body)
+            incidents.append(_make(
+                inc_date, f"{int(tm[1]):02d}:{tm[2]}" if tm else "",
+                "", kat, sev, ort, body[:120], body[:1500], url, pp_name
+            ))
+        return incidents
+
+    # Standard-Format mit h3 (PP München + die meisten anderen PP)
     for h in sections:
         heading = h.get_text(" ", strip=True)
         num_m   = re.match(r"^(\d+)\.\s+", heading)
         nr      = num_m[1] if num_m else ""
         titel   = re.sub(r"^\d+\.\s+", "", heading).strip()
+
+        # Ort aus Titel (nach "–")
         ort_m   = re.search(r"–\s*(.+)$", titel)
         ort_raw = ort_m[1].strip() if ort_m else ""
         ort     = detect_ort(ort_raw) if ort_raw else "Unbekannt"
@@ -268,44 +263,24 @@ def parse_article(html, url):
 
         vorfall_text = titel + " " + body
 
-        if article_region_override:
-            # PP München → alle Vorfälle sind München
-            vorfall_region = article_region_override
-        else:
-            # Anderes PP → Einzelvorfall muss Umland-Ort enthalten
-            vorfall_region = None
-            for region, keywords in REGIONS.items():
-                if region == "München": continue  # München aus anderem PP nicht aufnehmen
-                if any(kw in vorfall_text for kw in keywords):
-                    vorfall_region = region
-                    break
-            if not vorfall_region:
-                continue  # Dieser Einzelvorfall betrifft unsere Umlandregionen nicht
+        # Für andere PP: Ortsfilter auf Vorfall-Ebene
+        if needs_filter and not is_relevant_place(vorfall_text):
+            continue
 
-        dm2 = re.search(r"(\d{1,2})\.(\d{1,2})\.(\d{4})", body)
-        if dm2:
-            year = int(dm2[3])
-            # Jahreszahl-Typo-Korrektur: nur 2020-2030 akzeptieren
-            if 2020 <= year <= 2030:
-                inc_date = datetime(year, int(dm2[2]), int(dm2[1]))
-            else:
-                inc_date = pm_date  # Fallback auf Datum der Pressemitteilung
-        else:
-            inc_date = pm_date
+        inc_date = parse_date(body, pm_date)
         tm = re.search(r"(\d{1,2})[:.h](\d{2})\s*Uhr", body)
         kat, sev = categorize(vorfall_text)
         if ort == "Unbekannt": ort = detect_ort(body)
-        if ort == "Unbekannt": ort = vorfall_region
 
         incidents.append(_make(
             inc_date, f"{int(tm[1]):02d}:{tm[2]}" if tm else "",
-            nr, kat, sev, ort, titel[:120], body[:1500], url, vorfall_region
+            nr, kat, sev, ort, titel[:120], body[:1500], url, pp_name
         ))
 
     return incidents
 
 
-def _make(dt, time_str, nr, kat, sev, ort, titel, volltext, link, region):
+def _make(dt, time_str, nr, kat, sev, ort, titel, volltext, link, pp):
     return {
         "date":        dt.strftime("%d.%m.%Y"),
         "dateSort":    dt.strftime("%Y-%m-%d"),
@@ -314,7 +289,8 @@ def _make(dt, time_str, nr, kat, sev, ort, titel, volltext, link, region):
         "kategorie":   kat,
         "schweregrad": sev,
         "ort":         ort,
-        "region":      region,
+        "pp":          pp,       # Polizeipräsidium (neu – ersetzt "region")
+        "region":      pp,       # Rückwärtskompatibilität
         "titel":       titel,
         "volltext":    volltext,
         "link":        link,
@@ -328,61 +304,46 @@ def main():
     print(f"═══════════════════════════════════════════════════")
     print(f"  PP München + Umland OSINT Scraper")
     print(f"  Zeitraum: {from_date.date()} → {to_date.date()}")
-    print(f"  Regionen: {', '.join(REGIONS.keys())}")
+    print(f"  PP: München · OBN (Planegg/Würmtal/Starnberg) · SWN (Friedberg)")
     print(f"═══════════════════════════════════════════════════")
 
-    # 1. URLs aus allen Telegram-Kanälen sammeln – global dedupliziert
+    # 1. URLs aus Telegram
     all_urls = set()
-    for channel in TG_CHANNELS:
-        urls = get_urls_from_telegram(channel, from_date, to_date)
-        all_urls.update(urls)
-
-    urls = sorted(all_urls)[:MAX_ARTS]
-    print(f"\n  Gesamt: {len(urls)} einzigartige Artikel-URLs\n")
+    for ch in TG_CHANNELS:
+        all_urls.update(get_urls_from_telegram(ch))
+    urls = sorted(all_urls)
     print(f"\n  Gesamt: {len(urls)} einzigartige Artikel-URLs\n")
 
-    # 2. Bestehende Daten laden
-    existing_data  = []
-    existing_links = set()
+    # 2. Bestehende Daten laden (inkrementell)
+    existing_data, existing_links = [], set()
     try:
         with open("data/incidents.json", "r", encoding="utf-8") as f:
             existing_data  = json.load(f)
             existing_links = {p.get("link","") for p in existing_data}
             print(f"  Bestehende Daten: {len(existing_data)} Vorfälle")
-    except:
-        print("  Kein bestehender Datensatz – starte frisch")
+    except: print("  Starte frisch")
 
-    # 3. Neue Artikel abrufen
     all_incidents = list(existing_data)
     loaded = 0
 
+    # 3. Artikel abrufen
     for i, url in enumerate(urls):
-        if url in existing_links:
-            continue  # Bereits bekannt → überspringen
+        if url in existing_links: continue
 
         art_id = url.split("/")[-2]
-        print(f"  [{i+1:3d}/{len(urls)}] {art_id}", end=" … ")
+        print(f"  [{i+1:4d}/{len(urls)}] {art_id}", end=" … ")
         html = fetch(url)
         if not html or len(html) < 300: print("leer"); continue
 
-        # Datumscheck
-        soup_q = BeautifulSoup(html[:2000],"html.parser")
-        t = (soup_q.find("title") or type("",(),{"get_text":lambda *a:""})()).get_text()
-        dm = re.search(r"(\d{2})\.(\d{2})\.(\d{4})", t)
-        if dm:
-            ad = datetime(int(dm[3]),int(dm[2]),int(dm[1]))
-            if ad < from_date or ad > to_date:
-                print(f"außerhalb ({ad.date()})"); continue
-
-        incidents = parse_article(html, url)
+        incidents = parse_article(html, url, from_date, to_date)
         if incidents:
-            regions = set(inc.get("region","?") for inc in incidents)
-            print(f"✓ {len(incidents)} Vorfälle [{', '.join(regions)}]")
+            pps = set(inc["pp"] for inc in incidents)
+            print(f"✓ {len(incidents)} [{', '.join(pps)}]")
             all_incidents.extend(incidents)
             existing_links.add(url)
             loaded += 1
         else:
-            print("✗ nicht relevant")
+            print("✗")
 
         time.sleep(SLEEP_SEC)
 
@@ -392,19 +353,16 @@ def main():
     for inc in all_incidents:
         key = f"{inc.get('dateSort','')}|{inc.get('titel','')[:60]}|{inc.get('nr','')}"
         if key not in seen: seen.add(key); deduped.append(inc)
-    all_incidents = deduped
 
-    # Statistik
     from collections import Counter
-    region_counts = Counter(inc.get("region","?") for inc in all_incidents)
-    print(f"\n  ✅ {loaded} neue Artikel · {len(all_incidents)} Vorfälle gesamt")
-    for reg, cnt in sorted(region_counts.items()):
-        print(f"     {reg}: {cnt}")
+    pp_counts = Counter(inc.get("pp","?") for inc in deduped)
+    print(f"\n  ✅ {loaded} neue Artikel · {len(deduped)} Vorfälle gesamt")
+    for pp, cnt in sorted(pp_counts.items()): print(f"     {pp}: {cnt}")
 
     # 5. Speichern
     Path("data").mkdir(exist_ok=True)
     with open("data/incidents.json","w",encoding="utf-8") as f:
-        json.dump(all_incidents,f,ensure_ascii=False,indent=2)
+        json.dump(deduped,f,ensure_ascii=False,indent=2)
 
     meta = {
         "updated":     datetime.now().strftime("%d.%m.%Y %H:%M"),
@@ -412,13 +370,13 @@ def main():
         "from_date":   from_date.strftime("%Y-%m-%d"),
         "to_date":     to_date.strftime("%Y-%m-%d"),
         "articles":    loaded,
-        "incidents":   len(all_incidents),
-        "regions":     dict(region_counts),
+        "incidents":   len(deduped),
+        "pp_counts":   dict(pp_counts),
     }
     with open("data/meta.json","w",encoding="utf-8") as f:
         json.dump(meta,f,ensure_ascii=False,indent=2)
 
-    print(f"     → data/incidents.json ({os.path.getsize('data/incidents.json')//1024} KB)")
+    print(f"     → {os.path.getsize('data/incidents.json')//1024} KB")
 
 
 if __name__ == "__main__":
