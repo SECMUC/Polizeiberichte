@@ -308,13 +308,19 @@ function updateBanner(meta){
   if(!meta){ document.getElementById('dataMeta').innerHTML='<strong>Datensatz geladen</strong>'; return; }
   const ageDays=(Date.now()-new Date(meta.updated_iso||0))/86400000;
   if(ageDays>2) document.getElementById('dataBanner').className='data-banner stale';
-  const regionsStr = meta.regions ? Object.entries(meta.regions).map(([k,v])=>`${k}: ${v}`).join(' · ') : '';
+
+  // PP-Statistik aus Datensatz berechnen
+  const ppCounts = {};
+  allData.forEach(p=>{ const pp=p.pp||p.region||'?'; ppCounts[pp]=(ppCounts[pp]||0)+1; });
+  const ppStr = Object.entries(ppCounts)
+    .sort((a,b)=>b[1]-a[1])
+    .map(([k,v])=>`<strong>${k}:</strong> ${v}`)
+    .join(' &nbsp;·&nbsp; ');
+
   document.getElementById('dataMeta').innerHTML=`
-    <span>🕐 Aktualisiert: <strong>${meta.updated||'–'}</strong></span>
-    <span>📄 Artikel: <strong>${meta.articles||0}</strong></span>
-    <span>📋 Vorfälle: <strong>${meta.incidents||0}</strong></span>
-    <span>📅 Zeitraum: <strong>${fmtDE(meta.from_date)} – ${fmtDE(meta.to_date)}</strong></span>
-    ${regionsStr?`<span style="opacity:.6;font-size:10px">${regionsStr}</span>`:''}
+    <span>🕐 <strong>${meta.updated||'–'}</strong></span>
+    <span>📅 <strong>${fmtDE(meta.from_date)} – ${fmtDE(meta.to_date)}</strong></span>
+    <span style="border-left:1px solid #bfdbfe;padding-left:12px">${ppStr}</span>
     ${ageDays>2?'<span style="color:var(--amber)">⚠ Daten älter als 2 Tage</span>':''}
   `;
   document.getElementById('lastUpdate').innerHTML=`<span class="tag">Stand: ${meta.updated||'–'}</span>`;
