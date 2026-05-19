@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PP München · OSINT Monitor</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+:root{
+  --bg:#0a0c10;--surface:#111318;--card:#161a22;--border:#1e2330;
+  --border2:#252b3a;--accent:#3b82f6;--accent2:#60a5fa;
+  --green:#22c55e;--teal:#14b8a6;--amber:#f59e0b;
+  --text:#e2e8f0;--text2:#94a3b8;--text3:#475569;
+  --mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(59,130,246,.03)1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,.03)1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
+.wrapper{position:relative;z-index:1;max-width:1600px;margin:0 auto;padding:0 24px 60px}
+
+header{padding:28px 0 20px;border-bottom:1px solid var(--border);margin-bottom:22px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.logo-area{display:flex;align-items:center;gap:14px}
+.badge-pp{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.12em;color:var(--accent);border:1px solid var(--accent);padding:3px 8px;border-radius:3px}
+h1{font-family:var(--mono);font-size:22px;font-weight:600}
+h1 span{color:var(--accent2)}
+.subtitle{font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;margin-top:4px}
+.live-indicator{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--text3)}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--text3)}
+.live-dot.ok{background:var(--green);box-shadow:0 0 8px var(--green)}
+.live-dot.warn{background:var(--amber)}
+
+.data-banner{display:flex;align-items:center;justify-content:space-between;gap:10px;background:rgba(59,130,246,.07);border:1px solid rgba(59,130,246,.18);border-radius:8px;padding:11px 16px;margin-bottom:16px;flex-wrap:wrap}
+.data-banner.stale{background:rgba(245,158,11,.06);border-color:rgba(245,158,11,.2)}
+.data-meta{font-family:var(--mono);font-size:11px;color:var(--text2);display:flex;gap:18px;flex-wrap:wrap}
+.data-meta strong{color:var(--text)}
+
+.config-panel{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin-bottom:16px;display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+.field{display:flex;flex-direction:column;gap:5px}
+label{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3)}
+.date-range{display:flex;align-items:center;gap:6px}
+input[type="date"]{font-family:var(--mono);font-size:12px;background:var(--bg);border:1px solid var(--border2);border-radius:5px;color:var(--text);padding:7px 10px;outline:none;transition:border-color .2s;height:36px;cursor:pointer;color-scheme:dark}
+input[type="date"]:focus{border-color:var(--accent)}
+.date-sep{font-family:var(--mono);font-size:12px;color:var(--text3)}
+.date-note{font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:3px}
+.quick-dates{display:flex;gap:5px;flex-wrap:wrap}
+.qd-btn{font-family:var(--mono);font-size:10px;padding:4px 8px;background:transparent;border:1px solid var(--border2);border-radius:4px;color:var(--text3);cursor:pointer;transition:all .15s}
+.qd-btn:hover{border-color:var(--accent);color:var(--accent2)}
+.qd-btn.active{border-color:var(--accent);color:var(--accent2);background:rgba(59,130,246,.08)}
+input[type="text"],select{font-family:var(--mono);font-size:12px;background:var(--bg);border:1px solid var(--border2);border-radius:5px;color:var(--text);padding:8px 12px;outline:none;transition:border-color .2s;height:36px}
+input[type="text"]:focus,select:focus{border-color:var(--accent)}
+#searchbox{width:170px}
+select{min-width:130px;cursor:pointer}
+select option{background:var(--card)}
+.btn{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.06em;padding:0 16px;height:36px;border-radius:5px;border:none;cursor:pointer;transition:all .15s;white-space:nowrap;display:flex;align-items:center;gap:7px}
+.btn-ghost{background:transparent;border:1px solid var(--border2);color:var(--text2)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent2)}
+.btn-green{background:#166534;color:#86efac;border:1px solid #166534}
+.btn-green:hover{background:#15803d}.btn-green:disabled{opacity:.4;cursor:not-allowed}
+
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:16px}
+.metric{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;position:relative;overflow:hidden}
+.metric::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px}
+.metric.blue::after{background:var(--accent)}.metric.green::after{background:var(--green)}.metric.teal::after{background:var(--teal)}
+.metric-label{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:6px}
+.metric-value{font-family:var(--mono);font-size:26px;font-weight:600}
+.metric.blue .metric-value{color:var(--accent2)}.metric.green .metric-value{color:#86efac}.metric.teal .metric-value{color:#5eead4}
+.metric-sub{font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:3px}
+
+.statusbar{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11px;color:var(--text3);margin-bottom:10px;flex-wrap:wrap;gap:6px}
+.tag{background:var(--surface);border:1px solid var(--border);border-radius:3px;padding:2px 8px;font-size:10px;color:var(--text2)}
+
+.table-container{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.table-scroll{overflow-x:auto;max-height:75vh;overflow-y:auto}
+table{width:100%;border-collapse:collapse;min-width:900px}
+thead{position:sticky;top:0;z-index:2}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);background:var(--card);padding:10px 12px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap;cursor:pointer;user-select:none;transition:color .15s}
+th:hover{color:var(--accent2)}
+td{font-size:13px;padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:rgba(59,130,246,.04)}
+.date-cell,.time-cell,.nr-cell{font-family:var(--mono);font-size:11px;color:var(--text3);white-space:nowrap}
+
+.badge{display:inline-flex;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.05em;padding:3px 7px;border-radius:3px;white-space:nowrap;text-transform:uppercase}
+.b-Diebstahl{background:#1e3a5f;color:#93c5fd;border:1px solid #1d4ed8}
+.b-Körperverletzung{background:#450a0a;color:#fca5a5;border:1px solid #991b1b}
+.b-Tötungsdelikt{background:#1a0000;color:#ff8080;border:1px solid #7f1d1d}
+.b-Einbruch{background:#2e1065;color:#c4b5fd;border:1px solid #6d28d9}
+.b-Betrug{background:#451a03;color:#fcd34d;border:1px solid #92400e}
+.b-Verkehr{background:#052e16;color:#86efac;border:1px solid #166534}
+.b-Drogen{background:#500724;color:#fbcfe8;border:1px solid #9d174d}
+.b-Vandalismus{background:#042f2e;color:#5eead4;border:1px solid #0f766e}
+.b-Raub{background:#431407;color:#fdba74;border:1px solid #9a3412}
+.b-Sexualdelikt{background:#4a0030;color:#f9a8d4;border:1px solid #9d174d}
+.b-Branddelikt{background:#3b1500;color:#fed7aa;border:1px solid #c2410c}
+.b-Vermisstenfall{background:#0c1a2e;color:#7dd3fc;border:1px solid #0369a1}
+.b-Fahndung{background:#1a0533;color:#d8b4fe;border:1px solid #7e22ce}
+.b-Prävention{background:#052e16;color:#a7f3d0;border:1px solid #065f46}
+.b-Sonstiges{background:#1a1f2e;color:#94a3b8;border:1px solid #334155}
+
+.text-cell{font-size:12px;line-height:1.6;color:var(--text2);max-width:500px;white-space:pre-wrap;word-break:break-word}
+.text-clamp{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.text-expand-btn{font-family:var(--mono);font-size:10px;color:var(--accent);cursor:pointer;border:none;background:none;padding:2px 0;margin-top:4px;display:block}
+.link-btn{font-family:var(--mono);font-size:10px;color:var(--accent);text-decoration:none;padding:2px 6px;border:1px solid var(--border2);border-radius:3px;transition:all .15s;white-space:nowrap}
+.link-btn:hover{border-color:var(--accent);background:rgba(59,130,246,.1)}
+.empty-state{text-align:center;padding:60px 20px;color:var(--text3);font-family:var(--mono);font-size:13px}
+.empty-icon{font-size:36px;margin-bottom:14px;opacity:.4}
+.tbl-footer{display:flex;align-items:center;justify-content:flex-end;padding:10px 16px;border-top:1px solid var(--border);background:var(--card);font-family:var(--mono);font-size:11px;color:var(--text3)}
+
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<header>
+  <div>
+    <div class="logo-area">
+      <span class="badge-pp">OSINT</span>
+      <h1>PP München · <span>Polizei Monitor</span></h1>
+    </div>
+    <div class="subtitle">Täglich aktualisiert · polizei.bayern.de · Einzelvorfälle</div>
+  </div>
+  <div class="live-indicator">
+    <div class="live-dot" id="live-dot"></div>
+    <span id="live-text">Lade…</span>
+  </div>
+</header>
+
+<div class="data-banner" id="dataBanner">
+  <div class="data-meta" id="dataMeta"><span>Lade Datensatz…</span></div>
+</div>
+
+<div class="config-panel">
+  <div class="field">
+    <label>Zeitraum</label>
+    <div class="date-range">
+      <input type="date" id="dateFrom" onchange="applyFilters()">
+      <span class="date-sep">–</span>
+      <input type="date" id="dateTo" onchange="applyFilters()">
+    </div>
+    <div class="date-note" id="dateNote"></div>
+  </div>
+  <div class="field">
+    <label>Schnellauswahl</label>
+    <div class="quick-dates">
+      <button class="qd-btn" onclick="setQuick(7,this)">7 Tage</button>
+      <button class="qd-btn active" onclick="setQuick(14,this)">14 Tage</button>
+      <button class="qd-btn" onclick="setQuick(30,this)">30 Tage</button>
+      <button class="qd-btn" onclick="setQuick(90,this)">90 Tage</button>
+      <button class="qd-btn" onclick="setQuick(9999,this)">Alle</button>
+    </div>
+  </div>
+  <div class="field">
+    <label>Kategorie</label>
+    <select id="filterCat" onchange="applyFilters()">
+      <option value="">Alle</option>
+      <option>Tötungsdelikt</option><option>Körperverletzung</option>
+      <option>Sexualdelikt</option><option>Raub</option><option>Einbruch</option>
+      <option>Diebstahl</option><option>Betrug</option><option>Drogen</option>
+      <option>Branddelikt</option><option>Vandalismus</option><option>Verkehr</option>
+      <option>Vermisstenfall</option><option>Fahndung</option>
+      <option>Prävention</option><option>Sonstiges</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>Region</label>
+    <select id="filterRegion" onchange="applyFilters()">
+      <option value="">Alle Regionen</option>
+      <option>München</option>
+      <option>Planegg/Würmtal</option>
+      <option>Wörthsee/Steinebach</option>
+      <option>Friedberg</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>Stadtteil / Ort</label>
+    <select id="filterDist" onchange="applyFilters()">
+      <option value="">Alle</option>
+      <optgroup label="── München ──">
+      <option>Altstadt-Lehel</option><option>Maxvorstadt</option><option>Schwabing</option>
+      <option>Schwabing-West</option><option>Neuhausen-Nymphenburg</option><option>Sendling</option>
+      <option>Au-Haidhausen</option><option>Bogenhausen</option><option>Pasing-Obermenzing</option>
+      <option>Obergiesing</option><option>Untergiesing</option><option>Harlaching</option>
+      <option>Giesing</option><option>Moosach</option><option>Ramersdorf-Perlach</option>
+      <option>Milbertshofen</option><option>Trudering</option><option>Hadern</option>
+      <option>Laim</option><option>Berg am Laim</option><option>Feldmoching-Hasenbergl</option>
+      <option>Schwanthalerhöhe</option><option>Thalkirchen</option><option>Ludwigsvorstadt</option>
+      <option>Isarvorstadt</option><option>Stadtmitte</option><option>Allach-Untermenzing</option>
+      </optgroup>
+      <optgroup label="── Würmtal ──">
+      <option>Planegg/Würmtal</option>
+      </optgroup>
+      <optgroup label="── Wörthsee ──">
+      <option>Wörthsee/Steinebach</option>
+      </optgroup>
+      <optgroup label="── Friedberg ──">
+      <option>Friedberg</option>
+      </optgroup>
+      <optgroup label="── Sonstige ──">
+      <option>Münchner Umland</option><option>Unbekannt</option>
+      </optgroup>
+    </select>
+  </div>
+  <div class="field">
+    <label>Suche</label>
+    <input type="text" id="searchbox" placeholder="Stichwort…" oninput="applyFilters()">
+  </div>
+  <button class="btn btn-ghost" onclick="resetFilters()">↺ Reset</button>
+  <button class="btn btn-green" id="exportBtn" onclick="exportExcel()" disabled>
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    Excel Export
+  </button>
+</div>
+
+<div class="metrics">
+  <div class="metric blue"><div class="metric-label">Vorfälle</div><div class="metric-value" id="m-total">—</div><div class="metric-sub">angezeigt</div></div>
+  <div class="metric teal"><div class="metric-label">Stadtteile</div><div class="metric-value" id="m-dist">—</div><div class="metric-sub">betroffen</div></div>
+  <div class="metric green"><div class="metric-label">Gesamt im Datensatz</div><div class="metric-value" id="m-all">—</div><div class="metric-sub">Vorfälle</div></div>
+</div>
+
+<div class="statusbar">
+  <span id="statusText">Datensatz wird geladen…</span>
+  <span id="lastUpdate"></span>
+</div>
+
+<div class="table-container">
+  <div class="table-scroll">
+    <table>
+      <thead><tr>
+        <th onclick="sortBy('dateSort')">Datum <span id="si-dateSort">↓</span></th>
+        <th>Zeit</th>
+        <th>Nr.</th>
+        <th onclick="sortBy('kategorie')">Kategorie <span id="si-kategorie">↕</span></th>
+        <th onclick="sortBy('region')">Region <span id="si-region">↕</span></th>
+        <th onclick="sortBy('ort')">Stadtteil / Ort <span id="si-ort">↕</span></th>
+        <th>Originaltext</th>
+        <th>Quelle</th>
+      </tr></thead>
+      <tbody id="tableBody">
+        <tr><td colspan="7"><div class="empty-state"><div class="empty-icon">⏳</div><p>Datensatz wird geladen…</p></div></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tbl-footer" id="tblFooter"></div>
+</div>
+
+</div>
+<script>
+let allData=[], filtered=[], expandedRows=new Set();
+let sortCol='dateSort', sortDir=-1;
+let dataFrom='', dataTo='';
+
+async function init(){
+  try{
+    const metaRes = await fetch('data/meta.json?_='+Date.now());
+    const meta    = metaRes.ok ? await metaRes.json() : null;
+    const dataRes = await fetch('data/incidents.json?_='+Date.now());
+    if(!dataRes.ok) throw new Error('incidents.json nicht gefunden');
+    allData = await dataRes.json();
+
+    // Duplikate entfernen
+    const seen = new Set();
+    allData = allData.filter(p=>{
+      const key=(p.dateSort||'')+'|'+(p.titel||'').slice(0,60)+'|'+(p.nr||'');
+      if(seen.has(key)) return false; seen.add(key); return true;
+    });
+
+    // Neueste zuerst
+    allData.sort((a,b)=>(b.dateSort||'').localeCompare(a.dateSort||''));
+
+    dataFrom = allData.reduce((m,p)=>p.dateSort<m?p.dateSort:m, allData[0]?.dateSort||'');
+    dataTo   = allData.reduce((m,p)=>p.dateSort>m?p.dateSort:m, allData[0]?.dateSort||'');
+
+    const toDate   = dataTo || fmt(new Date());
+    const fromDate = (()=>{ const d=new Date(toDate); d.setDate(d.getDate()-14); const s=fmt(d); return s<dataFrom?dataFrom:s; })();
+    document.getElementById('dateTo').value   = toDate;
+    document.getElementById('dateFrom').value = fromDate;
+    document.getElementById('dateTo').max     = toDate;
+    document.getElementById('dateFrom').min   = dataFrom;
+
+    updateBanner(meta);
+    document.getElementById('m-all').textContent = allData.length;
+    applyFilters();
+    document.getElementById('exportBtn').disabled = false;
+    document.getElementById('live-dot').className = 'live-dot ok';
+    document.getElementById('live-text').textContent = 'AKTUELL';
+
+  }catch(e){
+    console.error(e);
+    document.getElementById('live-dot').className = 'live-dot warn';
+    document.getElementById('live-text').textContent = 'FEHLER';
+    document.getElementById('dataBanner').className = 'data-banner stale';
+    document.getElementById('dataMeta').innerHTML = `⚠ Datensatz konnte nicht geladen werden. Bitte GitHub Actions prüfen.<br><small>${e.message}</small>`;
+    document.getElementById('tableBody').innerHTML = '<tr><td colspan="7"><div class="empty-state"><div class="empty-icon">⚠️</div><p>Keine Daten verfügbar.<br>Bitte GitHub Actions Workflow manuell starten.</p></div></td></tr>';
+  }
+}
+
+function updateBanner(meta){
+  if(!meta){ document.getElementById('dataMeta').innerHTML='<strong>Datensatz geladen</strong>'; return; }
+  const ageDays=(Date.now()-new Date(meta.updated_iso||0))/86400000;
+  if(ageDays>2) document.getElementById('dataBanner').className='data-banner stale';
+  const regionsStr = meta.regions ? Object.entries(meta.regions).map(([k,v])=>`${k}: ${v}`).join(' · ') : '';
+  document.getElementById('dataMeta').innerHTML=`
+    <span>🕐 Aktualisiert: <strong>${meta.updated||'–'}</strong></span>
+    <span>📄 Artikel: <strong>${meta.articles||0}</strong></span>
+    <span>📋 Vorfälle: <strong>${meta.incidents||0}</strong></span>
+    <span>📅 Zeitraum: <strong>${fmtDE(meta.from_date)} – ${fmtDE(meta.to_date)}</strong></span>
+    ${regionsStr?`<span style="opacity:.7;font-size:10px">${regionsStr}</span>`:''}
+    ${ageDays>2?'<span style="color:var(--amber)">⚠ Daten älter als 2 Tage</span>':''}
+  `;
+  document.getElementById('lastUpdate').innerHTML=`<span class="tag">Stand: ${meta.updated||'–'}</span>`;
+}
+
+function fmtDE(iso){ if(!iso) return '–'; const[y,m,d]=iso.split('-'); return `${d}.${m}.${y}`; }
+function fmt(d){ return d.toISOString().slice(0,10); }
+
+function applyFilters(){
+  const cat=document.getElementById('filterCat').value;
+  const dist=document.getElementById('filterDist').value;
+  const region=document.getElementById('filterRegion').value;
+  const q=document.getElementById('searchbox').value.toLowerCase();
+  const fromVal=document.getElementById('dateFrom').value;
+  const toVal=document.getElementById('dateTo').value;
+
+  const note=document.getElementById('dateNote');
+  if(fromVal<dataFrom){ note.textContent=`⚠ Datensatz beginnt erst am ${fmtDE(dataFrom)}`; note.style.color='var(--amber)'; }
+  else { note.textContent=''; }
+
+  filtered=allData.filter(p=>{
+    if(fromVal&&p.dateSort<fromVal) return false;
+    if(toVal&&p.dateSort>toVal) return false;
+    if(cat&&p.kategorie!==cat) return false;
+    if(dist&&p.ort!==dist) return false;
+    if(region&&p.region!==region) return false;
+    if(q&&![p.titel,p.volltext,p.ort,p.kategorie].some(f=>(f||'').toLowerCase().includes(q))) return false;
+    return true;
+  });
+
+  sortData(); expandedRows.clear();
+  updateMetrics(); renderTable();
+  document.getElementById('statusText').textContent=`${filtered.length} von ${allData.length} Vorfällen angezeigt`;
+}
+
+function resetFilters(){
+  ['filterCat','filterDist','filterRegion'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('searchbox').value='';
+  setQuick(14, document.querySelectorAll('.qd-btn')[1]);
+}
+
+function setQuick(days,btn){
+  const to=dataTo||fmt(new Date());
+  const from=(()=>{ const d=new Date(to); d.setDate(d.getDate()-days); const s=fmt(d); return s<dataFrom?dataFrom:s; })();
+  document.getElementById('dateTo').value=to;
+  document.getElementById('dateFrom').value=from;
+  document.querySelectorAll('.qd-btn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  applyFilters();
+}
+
+function sortBy(col){
+  if(sortCol===col) sortDir*=-1; else{sortCol=col;sortDir=-1;}
+  document.querySelectorAll('th span').forEach(s=>s.textContent='↕');
+  const el=document.getElementById('si-'+col); if(el) el.textContent=sortDir===-1?'↓':'↑';
+  sortData(); renderTable();
+}
+
+function sortData(){
+  filtered.sort((a,b)=>{
+    const va=String(a[sortCol]??'').toLowerCase();
+    const vb=String(b[sortCol]??'').toLowerCase();
+    return va>vb?-sortDir:va<vb?sortDir:0;
+  });
+}
+
+function updateMetrics(){
+  document.getElementById('m-total').textContent=filtered.length;
+  document.getElementById('m-dist').textContent=new Set(filtered.map(p=>p.ort)).size;
+}
+
+function renderTable(){
+  const total=filtered.length;
+  if(!total){
+    document.getElementById('tableBody').innerHTML='<tr><td colspan="8"><div class="empty-state"><div class="empty-icon">🔍</div><p>Keine Vorfälle für aktuelle Filter.</p></div></td></tr>';
+    document.getElementById('tblFooter').textContent='';
+    return;
+  }
+
+  document.getElementById('tableBody').innerHTML=filtered.map((p,gi)=>{
+    const cc='b-'+(p.kategorie||'Sonstiges').replace(/\s/g,'');
+    const artNr=p.link?p.link.match(/\/(\d+)\//)?.[1]||'':'';
+    const isExp=expandedRows.has(gi);
+    const tHtml=isExp
+      ?`<div class="text-cell">${esc(p.volltext||'')}</div><button class="text-expand-btn" onclick="tog(${gi})">▲ Weniger</button>`
+      :`<div class="text-cell text-clamp">${esc(p.volltext||'')}</div><button class="text-expand-btn" onclick="tog(${gi})">▼ Mehr</button>`;
+    return `<tr>
+      <td class="date-cell">${p.date||'–'}</td>
+      <td class="time-cell">${p.time||'–'}</td>
+      <td class="nr-cell">${p.nr||'–'}</td>
+      <td><span class="badge ${cc}">${esc(p.kategorie||'Sonstiges')}</span></td>
+      <td style="font-size:11px;font-family:var(--mono);color:var(--accent2)">${esc(p.region||'–')}</td>
+      <td style="font-size:12px;color:var(--text2)">${esc(p.ort||'–')}</td>
+      <td>${tHtml}</td>
+      <td>${p.link?`<a class="link-btn" href="${p.link}" target="_blank">PM ${artNr}</a>`:'–'}</td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('tblFooter').textContent=`${total} Vorfälle angezeigt`;
+}
+
+function tog(i){ expandedRows.has(i)?expandedRows.delete(i):expandedRows.add(i); renderTable(); }
+
+function exportExcel(){
+  if(!filtered.length) return;
+  const rows=filtered.map(p=>({'Datum':p.date,'Uhrzeit':p.time,'Nr.':p.nr,'Region':p.region,'Kategorie':p.kategorie,'Stadtteil/Ort':p.ort,'Originaltext':p.volltext,'Quelle':p.link}));
+  const catC={},ortC={};
+  filtered.forEach(p=>{ catC[p.kategorie||'?']=(catC[p.kategorie||'?']||0)+1; ortC[p.ort||'?']=(ortC[p.ort||'?']||0)+1; });
+  const wb=XLSX.utils.book_new();
+  const ws=XLSX.utils.json_to_sheet(rows);
+  ws['!cols']=[{wch:12},{wch:7},{wch:6},{wch:20},{wch:24},{wch:100},{wch:55}];
+  XLSX.utils.book_append_sheet(wb,ws,'Vorfälle');
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(Object.entries(catC).sort((a,b)=>b[1]-a[1]).map(([k,v])=>({'Kategorie':k,'Anzahl':v}))),'nach Kategorie');
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(Object.entries(ortC).sort((a,b)=>b[1]-a[1]).map(([k,v])=>({'Ort':k,'Anzahl':v}))),'nach Ort');
+  XLSX.writeFile(wb,`muenchen_polizei_${new Date().toISOString().slice(0,10)}.xlsx`);
+}
+
+function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+init();
+</script>
+</body>
+</html>
