@@ -12,9 +12,11 @@ import requests
 from bs4 import BeautifulSoup
 
 # ── Konfiguration ─────────────────────────────────────────────────────────────
-DAYS_BACK  = 500
-MAX_ARTS   = 1500
-SLEEP_SEC  = 0.4
+DAYS_BACK        = 500
+MAX_ARTS         = 600
+MAX_PAGES        = 40
+SLEEP_SEC        = 1.5   # Längere Pause – höflicher gegenüber dem Server
+MAX_CONSEC_FAILS = 10    # Abbruch nach 10 aufeinanderfolgenden Timeouts
 
 BASE_URL   = "https://www.polizei.bayern.de"
 TG_CHANNELS = ["PressePolizeiMuenchen", "PolizeiBayern"]
@@ -146,12 +148,18 @@ def parse_date(text, fallback):
     return fallback
 
 
-def fetch(url, timeout=15):
-    try:
-        r = requests.get(url, headers=HEADERS, timeout=timeout)
-        r.raise_for_status(); r.encoding = "utf-8"; return r.text
-    except Exception as e:
-        print(f"  ✗ {url[-60:]} → {e}"); return None
+def fetch(url, timeout=8):
+    """Fetch mit kurzem Timeout und einem Retry."""
+    for attempt in range(2):
+        try:
+            r = requests.get(url, headers=HEADERS, timeout=timeout)
+            r.raise_for_status(); r.encoding = "utf-8"; return r.text
+        except Exception as e:
+            if attempt == 0:
+                time.sleep(1)  # Kurz warten, dann nochmal
+            else:
+                print(f"  ✗ {url[-50:]} → {e}")
+    return None
 
 
 def get_urls_from_telegram(channel):
@@ -161,7 +169,7 @@ def get_urls_from_telegram(channel):
     msg_pat = re.compile(r'data-post="[^/]+/(\d+)"')
     seen, urls, before_id = set(), [], None
 
-    for page in range(100):
+    for page in range(MAX_PAGES):
         url = f"https://t.me/s/{channel}" + (f"?before={before_id}" if before_id else "")
         html = fetch(url, timeout=25)
         if not html: break
@@ -314,12 +322,25 @@ def main():
     urls = sorted(all_urls)
     print(f"\n  Gesamt: {len(urls)} einzigartige Artikel-URLs\n")
 
-    # 2. IMMER frisch starten – alten Datensatz ignorieren
-    # (Nötig nach PP-Umstrukturierung um falsche Region-Werte zu bereinigen)
-    existing_links = set()
-    all_incidents  = []
-    print("  Starte frischen Aufbau des Datensatzes")
+    # 2. Daten laden – Reset nur wenn altes Format erkannt (kein pp-Feld)
+    existing_data, existing_links = [], set()
+    try:
+        with open("data/incidents.json", "r", encoding="utf-8") as f:
+            existing_data = json.load(f)
+        # Prüfen ob Daten noch das alte Format haben (kein "pp"-Feld)
+        needs_rebuild = existing_data and "pp" not in existing_data[0]
+        if needs_rebuild:
+            print(f"  Altes Datenformat erkannt – baue Datensatz neu auf")
+            existing_data, existing_links = [], set()
+        else:
+            existing_links = {p.get("link","") for p in existing_data}
+            print(f"  Bestehende Daten: {len(existing_data)} Vorfälle (inkrementell)")
+    except:
+        print("  Starte frisch")
+
+    all_incidents = list(existing_data)
     loaded = 0
+    consec_fails = 0  # Aufeinanderfolgende Timeouts zählen
 
     # 3. Artikel abrufen
     for i, url in enumerate(urls):
@@ -328,7 +349,17 @@ def main():
         art_id = url.split("/")[-2]
         print(f"  [{i+1:4d}/{len(urls)}] {art_id}", end=" … ")
         html = fetch(url)
-        if not html or len(html) < 300: print("leer"); continue
+        if not html or len(html) < 300:
+            print("leer")
+            consec_fails += 1
+            if consec_fails >= MAX_CONSEC_FAILS:
+                print(f"\n  ⚠ {MAX_CONSEC_FAILS} aufeinanderfolgende Fehler – Server blockt. Speichere bisherige Daten.")
+                break
+            continue
+
+        consec_fails = 0  # Erfolg → Zähler zurücksetzen
+
+        consec_fails = 0  # Erfolg → Zähler zurücksetzen
 
         incidents = parse_article(html, url, from_date, to_date)
         if incidents:
