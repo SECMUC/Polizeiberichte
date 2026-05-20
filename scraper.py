@@ -13,10 +13,10 @@ from bs4 import BeautifulSoup
 
 # ── Konfiguration ─────────────────────────────────────────────────────────────
 DAYS_BACK        = 500
-MAX_ARTS         = 600
+MAX_ARTS         = 200   # Pro Lauf max 200 neue Artikel – passt in ~20 Min
 MAX_PAGES        = 40
-SLEEP_SEC        = 1.5   # Längere Pause – höflicher gegenüber dem Server
-MAX_CONSEC_FAILS = 10    # Abbruch nach 10 aufeinanderfolgenden Timeouts
+SLEEP_SEC        = 1.2
+MAX_CONSEC_FAILS = 8
 
 BASE_URL   = "https://www.polizei.bayern.de"
 TG_CHANNELS = ["PressePolizeiMuenchen", "PolizeiBayern"]
@@ -359,8 +359,6 @@ def main():
 
         consec_fails = 0  # Erfolg → Zähler zurücksetzen
 
-        consec_fails = 0  # Erfolg → Zähler zurücksetzen
-
         incidents = parse_article(html, url, from_date, to_date)
         if incidents:
             pps = set(inc["pp"] for inc in incidents)
@@ -371,21 +369,33 @@ def main():
         else:
             print("✗")
 
+        # Zwischenspeichern alle 30 Artikel – damit bei Abbruch nichts verloren geht
+        if loaded > 0 and loaded % 30 == 0:
+            _save(all_incidents, from_date, to_date, loaded, partial=True)
+            print(f"  💾 Zwischenstand gespeichert ({loaded} neue Artikel)")
+
         time.sleep(SLEEP_SEC)
 
-    # 4. Sortieren & Deduplizieren
+    # 4. Final speichern
+    _save(all_incidents, from_date, to_date, loaded)
+
+
+def _save(all_incidents, from_date, to_date, loaded, partial=False):
+    """Sortiert, dedupliziert und speichert den Datensatz."""
+    from collections import Counter
+
     all_incidents.sort(key=lambda x:(x.get("dateSort",""),x.get("time","")),reverse=True)
     seen, deduped = set(), []
     for inc in all_incidents:
         key = f"{inc.get('dateSort','')}|{inc.get('titel','')[:60]}|{inc.get('nr','')}"
         if key not in seen: seen.add(key); deduped.append(inc)
 
-    from collections import Counter
     pp_counts = Counter(inc.get("pp","?") for inc in deduped)
-    print(f"\n  ✅ {loaded} neue Artikel · {len(deduped)} Vorfälle gesamt")
-    for pp, cnt in sorted(pp_counts.items()): print(f"     {pp}: {cnt}")
 
-    # 5. Speichern
+    if not partial:
+        print(f"\n  ✅ {loaded} neue Artikel · {len(deduped)} Vorfälle gesamt")
+        for pp, cnt in sorted(pp_counts.items()): print(f"     {pp}: {cnt}")
+
     Path("data").mkdir(exist_ok=True)
     with open("data/incidents.json","w",encoding="utf-8") as f:
         json.dump(deduped,f,ensure_ascii=False,indent=2)
@@ -398,11 +408,13 @@ def main():
         "articles":    loaded,
         "incidents":   len(deduped),
         "pp_counts":   dict(pp_counts),
+        "partial":     partial,
     }
     with open("data/meta.json","w",encoding="utf-8") as f:
         json.dump(meta,f,ensure_ascii=False,indent=2)
 
-    print(f"     → {os.path.getsize('data/incidents.json')//1024} KB")
+    if not partial:
+        print(f"     → {os.path.getsize('data/incidents.json')//1024} KB")
 
 
 if __name__ == "__main__":
