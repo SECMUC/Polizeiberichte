@@ -12,6 +12,7 @@ permissions:
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    timeout-minutes: 25  # Abbruch nach 25 Minuten
     steps:
       - uses: actions/checkout@v4
 
