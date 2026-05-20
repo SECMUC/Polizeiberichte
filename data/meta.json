@@ -1,13 +1,12 @@
 {
-  "updated": "19.05.2026 10:28",
-  "updated_iso": "2026-05-19T10:28:21.210385",
-  "from_date": "2025-01-04",
-  "to_date": "2026-05-19",
-  "articles": 0,
-  "incidents": 2595,
-  "regions": {
-    "München": 2578,
-    "Friedberg": 15,
-    "Planegg/Würmtal": 2
-  }
+  "updated": "20.05.2026 06:58",
+  "updated_iso": "2026-05-20T06:58:51.723119",
+  "from_date": "2025-01-05",
+  "to_date": "2026-05-20",
+  "articles": 230,
+  "incidents": 645,
+  "pp_counts": {
+    "PP München": 645
+  },
+  "partial": false
 }
