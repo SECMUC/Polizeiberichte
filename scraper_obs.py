@@ -110,7 +110,8 @@ def get_urls():
 def parse_article(html, url, from_date, to_date):
     soup = BeautifulSoup(html, "html.parser")
     title = (soup.find("title") or type("",(),{"get_text":lambda *a:""})()).get_text()
-    if "oberbayern süd" not in title.lower(): return []
+    tl = title.lower()
+    if "oberbayern süd" not in tl and "oberbayern sued" not in tl: return []
     dm = re.search(r"(\d{2})\.(\d{2})\.(\d{4})", title)
     if not dm: return []
     y = int(dm[3])
