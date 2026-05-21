@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""PP München Scraper – alle Vorfälle"""
+"""PP München Scraper – alle Vorfälle
+Format: Fließtext-Paragraphen, kein h3
+Quelle: @PressePolizeiMuenchen (Telegram)
+"""
 
 import json, re, time
 from datetime import datetime, timedelta
@@ -7,20 +10,23 @@ from pathlib import Path
 import requests
 from bs4 import BeautifulSoup
 
-DAYS_BACK = 500
-MAX_PAGES = 60
-SLEEP_SEC = 0.8
+DAYS_BACK        = 500
+MAX_PAGES        = 60
+SLEEP_SEC        = 0.8
 MAX_CONSEC_FAILS = 8
-MAX_NEW_PER_RUN = 200
-DATA_FILE = "data/incidents_muenchen.json"
-PP_NAME   = "PP München"
-TG_CHANNEL = "PressePolizeiMuenchen"
+MAX_NEW_PER_RUN  = 200
+DATA_FILE        = "data/incidents_muenchen.json"
+PP_NAME          = "PP München"
+TG_CHANNEL       = "PressePolizeiMuenchen"
 TITLE_MUST_CONTAIN = "münchen"
 
-HEADERS = {"User-Agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36","Accept-Language":"de-DE,de;q=0.9"}
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
+    "Accept-Language": "de-DE,de;q=0.9",
+}
 
 RULES = [
-    ("Tötungsdelikt",3,["tötungsdelikt","mord","totschlag","mordkommission","lebensgefahr","tödlich verletzt"]),
+    ("Tötungsdelikt",3,["tötungsdelikt","mord","totschlag","mordkommission","kommissariat 11","lebensgefahr","tödlich verletzt"]),
     ("Sexualdelikt",3,["vergewaltigung","sexuelle nötigung","missbrauch von kindern","sexueller missbrauch"]),
     ("Raub",3,["unter vorhalt einer schusswaffe","unter vorhalt eines messers","bewaffneter raubüberfall"]),
     ("Körperverletzung",3,["messer","gestochen","stichverletzung","schwere körperverletzung","gefährliche körperverletzung","notoperation"]),
@@ -50,7 +56,7 @@ ORT_MAP = [
     ("Maxvorstadt","Maxvorstadt"),("Schwabing-West","Schwabing-West"),("Schwabing","Schwabing"),
     ("Neuhausen-Nymphenburg","Neuhausen-Nymphenburg"),("Neuhausen","Neuhausen-Nymphenburg"),("Nymphenburg","Neuhausen-Nymphenburg"),
     ("Sendling","Sendling"),("Au-Haidhausen","Au-Haidhausen"),("Haidhausen","Au-Haidhausen"),
-    ("Bogenhausen","Bogenhausen"),("Pasing-Obermenzing","Pasing-Obermenzing"),("Pasing","Pasing-Obermenzing"),("Obermenzing","Pasing-Obermenzing"),
+    ("Bogenhausen","Bogenhausen"),("Pasing-Obermenzing","Pasing-Obermenzing"),("Pasing","Pasing-Obermenzing"),
     ("Obergiesing","Obergiesing"),("Untergiesing","Untergiesing"),("Harlaching","Harlaching"),
     ("Giesing","Giesing"),("Moosach","Moosach"),("Ramersdorf-Perlach","Ramersdorf-Perlach"),
     ("Ramersdorf","Ramersdorf-Perlach"),("Perlach","Ramersdorf-Perlach"),
@@ -61,140 +67,208 @@ ORT_MAP = [
     ("Ludwigsvorstadt","Ludwigsvorstadt"),("Isarvorstadt","Isarvorstadt"),
     ("Allach-Untermenzing","Allach-Untermenzing"),("Allach","Allach-Untermenzing"),
     ("Hauptbahnhof","Stadtmitte"),("Marienplatz","Stadtmitte"),("Stachus","Stadtmitte"),
-    ("Karlsplatz","Stadtmitte"),("Innenstadt","Stadtmitte"),
+    ("Karlsplatz","Stadtmitte"),("Bahnhofsviertel","Stadtmitte"),
+    ("Maximilianstraße","Stadtmitte"),("Kaufingerstraße","Stadtmitte"),
+    ("Schwabing","Schwabing"),("Neuperlach","Neuperlach"),("Fürstenried","Fürstenried"),
+    ("Solln","Solln"),("Forstenried","Forstenried"),("Aubing","Aubing"),
+    ("Lochhausen","Lochhausen"),("Langwied","Langwied"),
 ]
 
 def categorize(text):
-    t=text.lower()
-    for kat,sev,words in RULES:
-        if any(w in t for w in words): return kat,sev
-    return "Sonstiges",1
+    t = text.lower()
+    for kat, sev, words in RULES:
+        if any(w in t for w in words): return kat, sev
+    return "Sonstiges", 1
 
 def detect_ort(text):
-    for term,canonical in ORT_MAP:
+    for term, canonical in ORT_MAP:
         if term in text: return canonical
     return "Unbekannt"
 
-def parse_date(text,fallback):
-    for m in re.finditer(r"(\d{1,2})\.(\d{1,2})\.(\d{4})",text):
-        y=int(m[3])
-        if 2020<=y<=2030:
-            try: return datetime(y,int(m[2]),int(m[1]))
+def parse_date(text, fallback):
+    for m in re.finditer(r"(\d{1,2})\.(\d{1,2})\.(\d{4})", text):
+        y = int(m[3])
+        if 2020 <= y <= 2030:
+            try: return datetime(y, int(m[2]), int(m[1]))
             except: pass
     return fallback
 
 def parse_time(text):
-    m=re.search(r"(\d{1,2})[:.h](\d{2})\s*Uhr",text)
+    m = re.search(r"(\d{1,2})[:.h](\d{2})\s*Uhr", text)
     return f"{int(m[1]):02d}:{m[2]}" if m else ""
 
-def fetch(url,timeout=8):
+def fetch(url, timeout=8):
     for attempt in range(2):
         try:
-            r=requests.get(url,headers=HEADERS,timeout=timeout)
-            r.raise_for_status(); r.encoding="utf-8"; return r.text
+            r = requests.get(url, headers=HEADERS, timeout=timeout)
+            r.raise_for_status(); r.encoding = "utf-8"; return r.text
         except Exception as e:
-            if attempt==0: time.sleep(1.5)
+            if attempt == 0: time.sleep(1.5)
             else: print(f"  ✗ {url[-50:]} → {e}")
     return None
 
 def get_urls():
     print(f"  📡 @{TG_CHANNEL}…")
-    art_pat=re.compile(r'https?://(?:www\.)?polizei\.bayern\.de/aktuelles/pressemitteilungen/(\d{6})/index\.html')
-    msg_pat=re.compile(r'data-post="[^/]+/(\d+)"')
-    seen,urls,before_id=set(),[],None
+    art_pat = re.compile(r'https?://(?:www\.)?polizei\.bayern\.de/aktuelles/pressemitteilungen/(\d{6})/index\.html')
+    msg_pat = re.compile(r'data-post="[^/]+/(\d+)"')
+    seen, urls, before_id = set(), [], None
     for page in range(MAX_PAGES):
-        url=f"https://t.me/s/{TG_CHANNEL}"+(f"?before={before_id}" if before_id else "")
-        html=fetch(url,timeout=20)
+        url = f"https://t.me/s/{TG_CHANNEL}" + (f"?before={before_id}" if before_id else "")
+        html = fetch(url, timeout=20)
         if not html: break
-        new=0
+        new = 0
         for m in art_pat.finditer(html):
-            if m[0] not in seen: seen.add(m[0]); urls.append(m[0]); new+=1
-        msg_ids=[int(x) for x in msg_pat.findall(html)]
+            if m[0] not in seen: seen.add(m[0]); urls.append(m[0]); new += 1
+        msg_ids = [int(x) for x in msg_pat.findall(html)]
         if not msg_ids: break
-        min_id=min(msg_ids)
+        min_id = min(msg_ids)
         print(f"    Seite {page+1}: {new} neue, {len(urls)} gesamt (bis #{min_id})")
-        if min_id<=1 or min_id==before_id: break
-        before_id=min_id
+        if min_id <= 1 or min_id == before_id: break
+        before_id = min_id
         time.sleep(0.5)
     print(f"  {len(urls)} einzigartige Links")
     return urls
 
-def parse_article(html,url,from_date,to_date):
-    soup=BeautifulSoup(html,"html.parser")
-    title=(soup.find("title") or type("",(),{"get_text":lambda *a:""})()).get_text()
+def parse_article(html, url, from_date, to_date):
+    soup = BeautifulSoup(html, "html.parser")
+    title = (soup.find("title") or type("",(),{"get_text":lambda *a:""})()).get_text()
     if TITLE_MUST_CONTAIN not in title.lower(): return []
-    dm=re.search(r"(\d{2})\.(\d{2})\.(\d{4})",title)
+
+    dm = re.search(r"(\d{2})\.(\d{2})\.(\d{4})", title)
     if not dm: return []
-    y=int(dm[3])
-    if not (2020<=y<=2030): return []
-    pm_date=datetime(y,int(dm[2]),int(dm[1]))
-    if pm_date<from_date or pm_date>to_date: return []
+    y = int(dm[3])
+    if not (2020 <= y <= 2030): return []
+    pm_date = datetime(y, int(dm[2]), int(dm[1]))
+    if pm_date < from_date or pm_date > to_date: return []
+
     for tag in soup(["nav","header","footer","script","style"]): tag.decompose()
-    content=soup.find(class_="c-richtext") or soup.find("article") or soup.find("main")
+    content = soup.find(class_="c-richtext") or soup.find("article") or soup.find("main")
     if not content: return []
-    incidents=[]
-    for h in content.find_all("h3"):
-        heading=h.get_text(" ",strip=True)
-        num_m=re.match(r"^(\d+)\.\s+",heading)
-        nr=num_m[1] if num_m else ""
-        titel=re.sub(r"^\d+\.\s+","",heading).strip()
-        ort_m=re.search(r"–\s*(.+)$",titel)
-        ort=detect_ort(ort_m[1].strip()) if ort_m else "Unbekannt"
-        parts=[]
-        for sib in h.find_next_siblings():
-            if sib.name in ("h3","h2","hr"): break
-            parts.append(sib.get_text(" ",strip=True))
-        body=" ".join(parts).strip()
-        if len(body)<30: continue
-        inc_date=parse_date(body,pm_date)
-        kat,sev=categorize(titel+" "+body)
-        if ort=="Unbekannt": ort=detect_ort(body)
-        incidents.append({"date":inc_date.strftime("%d.%m.%Y"),"dateSort":inc_date.strftime("%Y-%m-%d"),
-            "time":parse_time(body),"nr":nr,"kategorie":kat,"schweregrad":sev,
-            "ort":ort,"pp":PP_NAME,"region":PP_NAME,"titel":titel[:120],"volltext":body[:1500],"link":url})
+
+    full_text = content.get_text(" ", strip=True)
+
+    # München Format 1: h3-Tags (ältere Artikel)
+    sections = content.find_all("h3")
+    if sections:
+        incidents = []
+        for h in sections:
+            heading = h.get_text(" ", strip=True)
+            num_m = re.match(r"^(\d+)\.\s+", heading)
+            nr = num_m[1] if num_m else ""
+            titel = re.sub(r"^\d+\.\s+", "", heading).strip()
+            ort_m = re.search(r"–\s*(.+)$", titel)
+            ort = detect_ort(ort_m[1].strip()) if ort_m else "Unbekannt"
+            parts = []
+            for sib in h.find_next_siblings():
+                if sib.name in ("h3","h2","hr"): break
+                parts.append(sib.get_text(" ", strip=True))
+            body = " ".join(parts).strip()
+            if len(body) < 30: continue
+            inc_date = parse_date(body, pm_date)
+            kat, sev = categorize(titel + " " + body)
+            if ort == "Unbekannt": ort = detect_ort(body)
+            incidents.append(_inc(inc_date, parse_time(body), nr, kat, sev, ort, titel[:120], body[:1500], url))
+        return incidents
+
+    # München Format 2 (aktuell): Fließtext-Paragraphen
+    # Jeder Paragraph beginnt mit "Am [Tag], [Datum]..." oder ist Fortsetzung
+    # Wir trennen nach Datum-Markern
+    incidents = []
+    paragraphs = [p.get_text(" ", strip=True) for p in content.find_all("p") if len(p.get_text(strip=True)) > 50]
+
+    if not paragraphs:
+        # Gesamten Text nach Datum-Markern aufteilen
+        parts = re.split(r'(?=Am (?:Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonntag),)', full_text)
+        paragraphs = [p.strip() for p in parts if len(p.strip()) > 50]
+
+    # Paragraphen die zusammengehören zusammenführen
+    # Neuer Vorfall beginnt typischerweise mit "Am [Wochentag]" oder enthält ein Datum
+    merged = []
+    current = ""
+    for p in paragraphs:
+        is_new = bool(re.match(r'^Am (?:Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonntag)', p))
+        has_date = bool(re.search(r'\d{2}\.\d{2}\.20\d{2}', p))
+        if (is_new or has_date) and current and len(current) > 80:
+            merged.append(current.strip())
+            current = p
+        else:
+            current = (current + " " + p).strip() if current else p
+    if current: merged.append(current.strip())
+
+    # Fallback: alle Paragraphen einzeln
+    if not merged: merged = paragraphs
+
+    for i, body in enumerate(merged):
+        if len(body) < 50: continue
+        inc_date = parse_date(body, pm_date)
+        kat, sev = categorize(body)
+        ort = detect_ort(body)
+        # Kurzen Titel aus erstem Satz extrahieren
+        first_sentence = re.split(r'(?<=[.!?])\s+', body)[0][:120]
+        incidents.append(_inc(inc_date, parse_time(body), str(i+1), kat, sev, ort, first_sentence, body[:1500], url))
+
     return incidents
 
+def _inc(dt, time_str, nr, kat, sev, ort, titel, volltext, link):
+    return {
+        "date": dt.strftime("%d.%m.%Y"), "dateSort": dt.strftime("%Y-%m-%d"),
+        "time": time_str, "nr": nr, "kategorie": kat, "schweregrad": sev,
+        "ort": ort, "pp": PP_NAME, "region": PP_NAME,
+        "titel": titel, "volltext": volltext, "link": link,
+    }
+
 def main():
-    to_date=datetime.now().replace(hour=23,minute=59,second=59)
-    from_date=(to_date-timedelta(days=DAYS_BACK)).replace(hour=0,minute=0,second=0)
+    to_date = datetime.now().replace(hour=23, minute=59, second=59)
+    from_date = (to_date - timedelta(days=DAYS_BACK)).replace(hour=0, minute=0, second=0)
     print(f"══ {PP_NAME} · {from_date.date()} → {to_date.date()} ══")
-    urls=get_urls()
-    existing,existing_links=[],set()
+
+    urls = get_urls()
+    existing, existing_links = [], set()
     try:
-        with open(DATA_FILE,"r",encoding="utf-8") as f: existing=json.load(f)
-        existing_links={p.get("link","") for p in existing}
+        with open(DATA_FILE, "r", encoding="utf-8") as f: existing = json.load(f)
+        existing_links = {p.get("link","") for p in existing}
         print(f"  Bestehend: {len(existing)} Vorfälle")
     except: print("  Starte frisch")
-    new_urls=[u for u in urls if u not in existing_links]
-    if len(new_urls)>MAX_NEW_PER_RUN:
-        print(f"  ⚠ {len(new_urls)} neue → verarbeite erste {MAX_NEW_PER_RUN}")
-        new_urls=new_urls[:MAX_NEW_PER_RUN]
-    print(f"  Verarbeite: {len(new_urls)} URLs\n")
-    all_incidents=list(existing); loaded=0; consec_fails=0
-    for i,url in enumerate(new_urls):
-        art_id=url.split("/")[-2]
-        print(f"  [{i+1:3d}/{len(new_urls)}] {art_id}",end=" … ")
-        html=fetch(url)
-        if not html or len(html)<300:
-            print("leer"); consec_fails+=1
-            if consec_fails>=MAX_CONSEC_FAILS: print("  ⚠ Stoppe"); break
-            continue
-        consec_fails=0
-        incidents=parse_article(html,url,from_date,to_date)
-        if incidents: print(f"✓ {len(incidents)}"); all_incidents.extend(incidents); existing_links.add(url); loaded+=1
-        else: print("✗")
-        if loaded>0 and loaded%30==0: _save(all_incidents,loaded,True)
-        time.sleep(SLEEP_SEC)
-    _save(all_incidents,loaded)
 
-def _save(data,loaded,partial=False):
-    data.sort(key=lambda x:(x.get("dateSort",""),x.get("time","")),reverse=True)
-    seen,deduped=set(),[]
+    new_urls = [u for u in urls if u not in existing_links]
+    if len(new_urls) > MAX_NEW_PER_RUN:
+        print(f"  ⚠ {len(new_urls)} neue → verarbeite erste {MAX_NEW_PER_RUN}")
+        new_urls = new_urls[:MAX_NEW_PER_RUN]
+    print(f"  Verarbeite: {len(new_urls)} URLs\n")
+
+    all_incidents = list(existing)
+    loaded = 0; consec_fails = 0
+
+    for i, url in enumerate(new_urls):
+        art_id = url.split("/")[-2]
+        print(f"  [{i+1:3d}/{len(new_urls)}] {art_id}", end=" … ")
+        html = fetch(url)
+        if not html or len(html) < 300:
+            print("leer"); consec_fails += 1
+            if consec_fails >= MAX_CONSEC_FAILS: print("  ⚠ Stoppe"); break
+            continue
+        consec_fails = 0
+        incidents = parse_article(html, url, from_date, to_date)
+        if incidents:
+            print(f"✓ {len(incidents)}")
+            all_incidents.extend(incidents)
+            existing_links.add(url); loaded += 1
+        else: print("✗")
+        if loaded > 0 and loaded % 30 == 0: _save(all_incidents, loaded, True)
+        time.sleep(SLEEP_SEC)
+
+    _save(all_incidents, loaded)
+
+def _save(data, loaded, partial=False):
+    data.sort(key=lambda x:(x.get("dateSort",""),x.get("time","")), reverse=True)
+    seen, deduped = set(), []
     for inc in data:
-        key=f"{inc.get('dateSort','')}|{inc.get('titel','')[:60]}|{inc.get('nr','')}"
+        key = f"{inc.get('dateSort','')}|{inc.get('titel','')[:60]}|{inc.get('nr','')}"
         if key not in seen: seen.add(key); deduped.append(inc)
     Path("data").mkdir(exist_ok=True)
-    with open(DATA_FILE,"w",encoding="utf-8") as f: json.dump(deduped,f,ensure_ascii=False,indent=2)
-    if not partial: print(f"\n  ✅ {loaded} neue · {len(deduped)} Vorfälle → {DATA_FILE}")
+    with open(DATA_FILE, "w", encoding="utf-8") as f:
+        json.dump(deduped, f, ensure_ascii=False, indent=2)
+    if not partial:
+        print(f"\n  ✅ {loaded} neue · {len(deduped)} Vorfälle → {DATA_FILE}")
 
-if __name__=="__main__": main()
+if __name__ == "__main__": main()
