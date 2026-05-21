@@ -1,11 +1,12 @@
 {
-  "updated": "21.05.2026 12:46",
-  "updated_iso": "2026-05-21T12:46:32.821864",
+  "updated": "21.05.2026 13:34",
+  "updated_iso": "2026-05-21T13:34:46.976786",
   "from_date": "2025-01-01",
   "to_date": "2026-05-21",
-  "incidents": 978,
+  "incidents": 1046,
   "pp_counts": {
     "PP Oberbayern Süd": 11,
-    "PP München": 967
+    "PP Oberbayern Nord": 7,
+    "PP München": 1028
   }
 }
