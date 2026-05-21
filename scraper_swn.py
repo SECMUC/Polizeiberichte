@@ -238,7 +238,7 @@ def main():
 
     all_incidents = list(existing)
     
-    if not urls:
+    if not new_urls:
         print("  ⚠ Keine neuen URLs gefunden (Quellen nicht erreichbar)")
         print(f"  ✅ Bestehende Daten unverändert: {len(all_incidents)} Vorfälle")
         return
