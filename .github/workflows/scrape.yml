@@ -2,34 +2,126 @@ name: Täglich Polizeidaten aktualisieren
 
 on:
   schedule:
-    # 04:00 UTC = 05:00 CET (Winter) / 06:00 MESZ (Sommer)
-    - cron: '0 4 * * *'
+    - cron: '0 4 * * *'   # 04:00 UTC = 05:00 CET / 06:00 MESZ → PP München
+    - cron: '0 5 * * *'   # 05:00 UTC → PP Oberbayern Nord
+    - cron: '0 6 * * *'   # 06:00 UTC → PP Oberbayern Süd
+    - cron: '0 7 * * *'   # 07:00 UTC → PP Schwaben Nord
+    - cron: '0 8 * * *'   # 08:00 UTC → Merge (Web-App aktualisiert)
   workflow_dispatch:
-
-permissions:
-  contents: write
+    inputs:
+      scraper:
+        description: 'Welcher Scraper? (all / muenchen / obn / obs / swn / merge)'
+        required: false
+        default: 'all'
 
 jobs:
-  scrape:
+  scrape-muenchen:
+    if: >
+      github.event_name == 'workflow_dispatch' && (github.event.inputs.scraper == 'all' || github.event.inputs.scraper == 'muenchen') ||
+      github.event_name == 'schedule' && github.event.schedule == '0 4 * * *'
     runs-on: ubuntu-latest
-    timeout-minutes: 35  # Abbruch nach 35 Minuten
+    timeout-minutes: 30
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
-      - name: Abhängigkeiten installieren
-        run: pip install requests beautifulsoup4
-
-      - name: Scraper ausführen
-        run: python scraper.py
-
-      - name: Daten speichern
-        run: |
+      - run: pip install requests beautifulsoup4
+      - run: python scraper_muenchen.py
+      - run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git diff --staged --quiet || git commit -m "Daten aktualisiert $(date '+%d.%m.%Y %H:%M')"
+          git add data/incidents_muenchen.json
+          git diff --staged --quiet || git commit -m "PP München aktualisiert $(date '+%d.%m.%Y %H:%M')"
+          git push
+
+  scrape-obn:
+    if: >
+      github.event_name == 'workflow_dispatch' && (github.event.inputs.scraper == 'all' || github.event.inputs.scraper == 'obn') ||
+      github.event_name == 'schedule' && github.event.schedule == '0 5 * * *'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests beautifulsoup4
+      - run: python scraper_obn.py
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/incidents_obn.json
+          git diff --staged --quiet || git commit -m "PP OBN aktualisiert $(date '+%d.%m.%Y %H:%M')"
+          git push
+
+  scrape-obs:
+    if: >
+      github.event_name == 'workflow_dispatch' && (github.event.inputs.scraper == 'all' || github.event.inputs.scraper == 'obs') ||
+      github.event_name == 'schedule' && github.event.schedule == '0 6 * * *'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests beautifulsoup4
+      - run: python scraper_obs.py
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/incidents_obs.json
+          git diff --staged --quiet || git commit -m "PP OBS aktualisiert $(date '+%d.%m.%Y %H:%M')"
+          git push
+
+  scrape-swn:
+    if: >
+      github.event_name == 'workflow_dispatch' && (github.event.inputs.scraper == 'all' || github.event.inputs.scraper == 'swn') ||
+      github.event_name == 'schedule' && github.event.schedule == '0 7 * * *'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests beautifulsoup4
+      - run: python scraper_swn.py
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/incidents_swn.json
+          git diff --staged --quiet || git commit -m "PP SWN aktualisiert $(date '+%d.%m.%Y %H:%M')"
+          git push
+
+  merge:
+    if: >
+      github.event_name == 'workflow_dispatch' && (github.event.inputs.scraper == 'all' || github.event.inputs.scraper == 'merge') ||
+      github.event_name == 'schedule' && github.event.schedule == '0 8 * * *'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python merge.py
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/incidents.json data/meta.json
+          git diff --staged --quiet || git commit -m "Merge aktualisiert $(date '+%d.%m.%Y %H:%M')"
           git push
