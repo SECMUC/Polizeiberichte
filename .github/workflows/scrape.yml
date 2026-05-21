@@ -127,13 +127,15 @@ jobs:
         with:
           python-version: '3.11'
       - name: Neuesten Stand holen
-        run: git pull origin main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          git reset --hard origin/main
       - name: Merge ausführen
         run: python merge.py
       - name: Ergebnis speichern
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/incidents.json data/meta.json
           git diff --staged --quiet || git commit -m "Merge $(date '+%d.%m.%Y %H:%M')"
           git push origin main
