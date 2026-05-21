@@ -31,10 +31,12 @@ jobs:
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase
+          git fetch origin main
+          git reset --hard origin/main
+          python scraper_muenchen.py || true
           git add data/incidents_muenchen.json
           git diff --staged --quiet || git commit -m "PP München $(date '+%d.%m.%Y %H:%M')"
-          git push
+          git push origin main
 
   scrape-obn:
     if: >
@@ -52,14 +54,15 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install requests beautifulsoup4
-      - run: python scraper_obn.py
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase
+          git fetch origin main
+          git reset --hard origin/main
+          python scraper_obn.py
           git add data/incidents_obn.json
           git diff --staged --quiet || git commit -m "PP OBN $(date '+%d.%m.%Y %H:%M')"
-          git push
+          git push origin main
 
   scrape-obs:
     if: >
@@ -77,14 +80,15 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install requests beautifulsoup4
-      - run: python scraper_obs.py
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase
+          git fetch origin main
+          git reset --hard origin/main
+          python scraper_obs.py
           git add data/incidents_obs.json
           git diff --staged --quiet || git commit -m "PP OBS $(date '+%d.%m.%Y %H:%M')"
-          git push
+          git push origin main
 
   scrape-swn:
     if: >
@@ -102,14 +106,15 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install requests beautifulsoup4
-      - run: python scraper_swn.py
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase
+          git fetch origin main
+          git reset --hard origin/main
+          python scraper_swn.py
           git add data/incidents_swn.json
           git diff --staged --quiet || git commit -m "PP SWN $(date '+%d.%m.%Y %H:%M')"
-          git push
+          git push origin main
 
   merge:
     needs: [scrape-muenchen, scrape-obn, scrape-obs, scrape-swn]
