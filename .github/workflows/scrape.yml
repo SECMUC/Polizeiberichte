@@ -2,11 +2,7 @@ name: Täglich Polizeidaten aktualisieren
 
 on:
   schedule:
-    - cron: '0 4 * * *'   # 04:00 UTC = 05:00 CET / 06:00 MESZ → PP München
-    - cron: '0 5 * * *'   # 05:00 UTC → PP Oberbayern Nord
-    - cron: '0 6 * * *'   # 06:00 UTC → PP Oberbayern Süd
-    - cron: '0 7 * * *'   # 07:00 UTC → PP Schwaben Nord
-    - cron: '0 8 * * *'   # 08:00 UTC → Merge (Web-App aktualisiert)
+    - cron: '0 4 * * *'   # 04:00 UTC = 05:00 CET / 06:00 MESZ
   workflow_dispatch:
     inputs:
       scraper:
@@ -17,8 +13,10 @@ on:
 jobs:
   scrape-muenchen:
     if: >
-      github.event_name == 'workflow_dispatch' && (github.event.inputs.scraper == 'all' || github.event.inputs.scraper == 'muenchen') ||
-      github.event_name == 'schedule' && github.event.schedule == '0 4 * * *'
+      github.event.inputs.scraper == 'all' ||
+      github.event.inputs.scraper == 'muenchen' ||
+      github.event.inputs.scraper == '' ||
+      github.event_name == 'schedule'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     permissions:
@@ -33,14 +31,17 @@ jobs:
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase
           git add data/incidents_muenchen.json
-          git diff --staged --quiet || git commit -m "PP München aktualisiert $(date '+%d.%m.%Y %H:%M')"
+          git diff --staged --quiet || git commit -m "PP München $(date '+%d.%m.%Y %H:%M')"
           git push
 
   scrape-obn:
     if: >
-      github.event_name == 'workflow_dispatch' && (github.event.inputs.scraper == 'all' || github.event.inputs.scraper == 'obn') ||
-      github.event_name == 'schedule' && github.event.schedule == '0 5 * * *'
+      github.event.inputs.scraper == 'all' ||
+      github.event.inputs.scraper == 'obn' ||
+      github.event.inputs.scraper == '' ||
+      github.event_name == 'schedule'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
@@ -55,14 +56,17 @@ jobs:
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase
           git add data/incidents_obn.json
-          git diff --staged --quiet || git commit -m "PP OBN aktualisiert $(date '+%d.%m.%Y %H:%M')"
+          git diff --staged --quiet || git commit -m "PP OBN $(date '+%d.%m.%Y %H:%M')"
           git push
 
   scrape-obs:
     if: >
-      github.event_name == 'workflow_dispatch' && (github.event.inputs.scraper == 'all' || github.event.inputs.scraper == 'obs') ||
-      github.event_name == 'schedule' && github.event.schedule == '0 6 * * *'
+      github.event.inputs.scraper == 'all' ||
+      github.event.inputs.scraper == 'obs' ||
+      github.event.inputs.scraper == '' ||
+      github.event_name == 'schedule'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
@@ -77,14 +81,17 @@ jobs:
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase
           git add data/incidents_obs.json
-          git diff --staged --quiet || git commit -m "PP OBS aktualisiert $(date '+%d.%m.%Y %H:%M')"
+          git diff --staged --quiet || git commit -m "PP OBS $(date '+%d.%m.%Y %H:%M')"
           git push
 
   scrape-swn:
     if: >
-      github.event_name == 'workflow_dispatch' && (github.event.inputs.scraper == 'all' || github.event.inputs.scraper == 'swn') ||
-      github.event_name == 'schedule' && github.event.schedule == '0 7 * * *'
+      github.event.inputs.scraper == 'all' ||
+      github.event.inputs.scraper == 'swn' ||
+      github.event.inputs.scraper == '' ||
+      github.event_name == 'schedule'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
@@ -99,14 +106,15 @@ jobs:
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase
           git add data/incidents_swn.json
-          git diff --staged --quiet || git commit -m "PP SWN aktualisiert $(date '+%d.%m.%Y %H:%M')"
+          git diff --staged --quiet || git commit -m "PP SWN $(date '+%d.%m.%Y %H:%M')"
           git push
 
   merge:
-    if: >
-      github.event_name == 'workflow_dispatch' && (github.event.inputs.scraper == 'all' || github.event.inputs.scraper == 'merge') ||
-      github.event_name == 'schedule' && github.event.schedule == '0 8 * * *'
+    # Wartet bis ALLE 4 Scraper fertig sind
+    needs: [scrape-muenchen, scrape-obn, scrape-obs, scrape-swn]
+    if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
@@ -122,6 +130,7 @@ jobs:
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase
           git add data/incidents.json data/meta.json
-          git diff --staged --quiet || git commit -m "Merge aktualisiert $(date '+%d.%m.%Y %H:%M')"
+          git diff --staged --quiet || git commit -m "Merge $(date '+%d.%m.%Y %H:%M')"
           git push
