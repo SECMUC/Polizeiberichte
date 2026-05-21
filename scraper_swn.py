@@ -90,7 +90,9 @@ def get_urls(existing_links):
     for page in range(1, 60):
         params = f"?Verband=SWN&Suchbegriff=&Zeitraum=eigeneDaten&DatumVon={from_date}&DatumBis={to_date_str}&page={page}"
         html = fetch("https://www.polizei.bayern.de/suche/presse/index.html" + params, timeout=15)
-        if not html: break
+        if not html:
+            print("    Archiv nicht erreichbar – überspringe")
+            break
         found = 0
         for m in art_pat.finditer(html):
             full = f"https://www.polizei.bayern.de{m[1]}"
@@ -235,6 +237,12 @@ def main():
     print(f"  Verarbeite: {len(new_urls)} URLs\n")
 
     all_incidents = list(existing)
+    
+    if not urls:
+        print("  ⚠ Keine neuen URLs gefunden (Quellen nicht erreichbar)")
+        print(f"  ✅ Bestehende Daten unverändert: {len(all_incidents)} Vorfälle")
+        return
+    
     loaded = 0; consec_fails = 0
 
     for i, url in enumerate(new_urls):
