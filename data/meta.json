@@ -1,13 +1,8 @@
 {
-  "updated": "20.05.2026 15:23",
-  "updated_iso": "2026-05-20T15:23:14.694013",
-  "from_date": "2025-01-05",
-  "to_date": "2026-05-20",
-  "articles": 308,
-  "incidents": 2641,
-  "pp_counts": {
-    "PP München": 2621,
-    "PP Schwaben Nord": 20
-  },
-  "partial": false
+  "updated": "21.05.2026 07:08",
+  "updated_iso": "2026-05-21T07:08:38.742472",
+  "from_date": "",
+  "to_date": "",
+  "incidents": 0,
+  "pp_counts": {}
 }
