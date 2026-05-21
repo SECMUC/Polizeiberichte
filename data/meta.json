@@ -1,10 +1,10 @@
 {
-  "updated": "21.05.2026 10:27",
-  "updated_iso": "2026-05-21T10:27:48.691106",
-  "from_date": "2025-01-22",
+  "updated": "21.05.2026 11:02",
+  "updated_iso": "2026-05-21T11:02:36.946119",
+  "from_date": "2025-01-01",
   "to_date": "2026-05-20",
-  "incidents": 539,
+  "incidents": 841,
   "pp_counts": {
-    "PP München": 539
+    "PP München": 841
   }
 }
