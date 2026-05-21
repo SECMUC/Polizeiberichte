@@ -94,10 +94,12 @@ def get_urls_from_archive(from_date, existing_links):
     print(f"  🗄 Sucharchiv ({ARCHIVE_VERBAND})…")
     base = f"https://www.polizei.bayern.de/suche/presse/index.html"
 
-    for page in range(1, 60):  # Max 60 Seiten à ~10 Artikel = ~600 Artikel
+    for page in range(1, 60):
         params = f"?Verband={ARCHIVE_VERBAND}&Suchbegriff=&Zeitraum=eigeneDaten&DatumVon={from_date.strftime('%d.%m.%Y')}&DatumBis={datetime.now().strftime('%d.%m.%Y')}&page={page}"
         html = fetch(base + params, timeout=15)
-        if not html: break
+        if not html:
+            print("    Archiv nicht erreichbar (403?) – überspringe")
+            break
 
         found = 0
         for m in art_pat.finditer(html):
@@ -244,6 +246,12 @@ def main():
         urls = urls[:MAX_NEW_PER_RUN]
 
     all_incidents = list(existing)
+    
+    if not urls:
+        print("  ⚠ Keine neuen URLs gefunden (Quellen nicht erreichbar)")
+        print(f"  ✅ Bestehende Daten unverändert: {len(all_incidents)} Vorfälle")
+        return
+    
     loaded = 0; consec_fails = 0
 
     for i, url in enumerate(urls):
