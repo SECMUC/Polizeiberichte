@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """
 PP München + Umland OSINT – GitHub Actions Scraper
-Unterstützt alle PP-Formate korrekt:
-  - PP München:         ### NR. Titel – Stadtteil
-  - PP Schwaben Nord:   0065 – Ort · Fließtext (kein h3)
-  - PP Oberbayern Nord: ORT – Fließtext (kein h3, Großbuchstaben)
-  - PP Oberbayern Süd:  ähnlich OBN
+PP-Formate:
+  PP München:       ### NR. Titel – Stadtteil (echte h3-Tags)
+  PP Schwaben Nord: **0701 – Ort** – Fließtext (Bold-Tags statt h3)
+  PP Oberbayern N/S: ORT – Fließtext (Paragraphen)
 """
 
 import json, os, re, time
@@ -16,14 +15,21 @@ from bs4 import BeautifulSoup
 
 # ── Konfiguration ─────────────────────────────────────────────────────────────
 DAYS_BACK        = 500
-MAX_ARTS         = 200   # Pro Lauf – inkrementell, täglich ergänzt
+MAX_ARTS         = 200
 MAX_PAGES        = 50
 SLEEP_SEC        = 1.2
 MAX_CONSEC_FAILS = 8
 
-BASE_URL    = "https://www.polizei.bayern.de"
 TG_CHANNELS = ["PressePolizeiMuenchen", "PolizeiBayern"]
 
+# Direkte PP-Listenseiten für PPs ohne Telegram-Kanal
+# (PP OBN und OBS posten auf polizei.bayern.de aber haben keinen eigenen TG-Kanal)
+PP_DIRECT_PAGES = [
+    # PP Oberbayern Nord – Seitentitel enthält "Oberbayern Nord"
+    "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/index.html?PolizeilicheOrganisationseinheit=OBN",
+    # PP Oberbayern Süd – Seitentitel enthält "Oberbayern Süd"  
+    "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/index.html?PolizeilicheOrganisationseinheit=OBS",
+]
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
     "Accept-Language": "de-DE,de;q=0.9",
@@ -37,28 +43,30 @@ PP_PATTERNS = [
     ("oberbayern süd",   "PP Oberbayern Süd",   True),
     ("schwaben nord",    "PP Schwaben Nord",     True),
     ("nordschwaben",     "PP Schwaben Nord",     True),
-    ("schwaben süd",     "PP Schwaben Süd",      True),
-    ("mittelfranken",    "PP Mittelfranken",     True),
-    ("oberfranken",      "PP Oberfranken",       True),
-    ("unterfranken",     "PP Unterfranken",      True),
-    ("oberpfalz",        "PP Oberpfalz",         True),
-    ("niederbayern",     "PP Niederbayern",      True),
     ("münchen",          "PP München",           False),
 ]
 
-# ── Relevante Orte für gefilterte PPs ────────────────────────────────────────
+# ── Ortsfilter für PP mit needs_filter=True ───────────────────────────────────
+# WICHTIG: Nur genaue Ortsnamen – keine Straßennamen die zufällig passen
 RELEVANT_PLACES = [
-    # Würmtal / PP Oberbayern Nord
-    "Planegg","Martinsried","Krailling","Gräfelfing","Gauting","Neuried",
-    "Germering","Stockdorf","Lochham","Würmtal",
-    # Wörthsee / Starnberg / PP Oberbayern Süd
-    "Wörthsee","Steinebach","Herrsching","Hechendorf","Walchstadt",
-    "Andechs","Seefeld","Starnberg","Inning","Weßling","Pöcking",
-    "Tutzing","Feldafing","Berg","Münsing","Wörthsee",
-    # Friedberg / Aichach / PP Schwaben Nord
-    "Friedberg","Kissing","Mering","Dasing","Aichach","Eurasburg",
-    "Merching","Ried","Schmiechen","Steindorf","Adelzhausen",
-    "Aichach-Friedberg","BAB A8","A 8","Autobahn A8",
+    # Würmtal (PP Oberbayern Nord)
+    "Planegg", "Martinsried", "Krailling", "Gräfelfing", "Gauting",
+    "Neuried", "Germering", "Stockdorf", "Lochham",
+    # Wörthsee / Starnberg (PP Oberbayern Süd)
+    "Wörthsee", "Steinebach", "Herrsching", "Hechendorf", "Walchstadt",
+    "Andechs", "Seefeld", "Starnberg", "Inning", "Weßling", "Pöcking",
+    "Tutzing", "Feldafing",
+    # Friedberg / Aichach (PP Schwaben Nord) – NUR Orte, keine Straßen!
+    "Friedberg", "Kissing", "Mering", "Dasing", "Aichach", "Eurasburg",
+    "Merching", "Adelzhausen",
+    # Autobahn A8 bei Friedberg
+    "Anschlussstelle Friedberg", "AS Friedberg", "Kirchholz",
+]
+
+# Wörter die NICHT als Ortstreffer zählen (False Positives)
+RELEVANT_EXCLUSIONS = [
+    "Friedberger Straße",   # Augsburger Straßenname, nicht Friedberg-Stadt
+    "Friedberger Allee",
 ]
 
 # ── Kategorisierung ───────────────────────────────────────────────────────────
@@ -85,29 +93,29 @@ RULES = [
     ("Verkehr",          1, ["verkehrsunfall","unfall","auffahrunfall","unfallflucht","fahrerflucht","alkohol am steuer","überladung","stürzte","rotlicht"]),
     ("Vandalismus",      1, ["sachbeschädigung","graffiti","beschmiert","schmähschrift"]),
     ("Fahndung",         1, ["zeugenaufruf","zeugen gesucht","hinweise erbeten"]),
-    ("Prävention",       1, ["prävention","warnt","warnung","hinweis der polizei","fahrradcodier","terminhinweis","mobile wache"]),
+    ("Prävention",       1, ["prävention","warnt","warnung","hinweis der polizei","fahrradcodier","terminhinweis"]),
 ]
 
-# Stadtteil-Mapping
 ORT_MAP = [
-    # München
+    # München Stadtteile
     ("Altstadt-Lehel","Altstadt-Lehel"),("Altstadt","Altstadt-Lehel"),("Lehel","Altstadt-Lehel"),
     ("Maxvorstadt","Maxvorstadt"),("Schwabing-West","Schwabing-West"),("Schwabing","Schwabing"),
-    ("Neuhausen-Nymphenburg","Neuhausen-Nymphenburg"),("Neuhausen","Neuhausen-Nymphenburg"),("Nymphenburg","Neuhausen-Nymphenburg"),
-    ("Sendling","Sendling"),("Au-Haidhausen","Au-Haidhausen"),("Haidhausen","Au-Haidhausen"),
+    ("Neuhausen-Nymphenburg","Neuhausen-Nymphenburg"),("Neuhausen","Neuhausen-Nymphenburg"),
+    ("Nymphenburg","Neuhausen-Nymphenburg"),("Sendling","Sendling"),
+    ("Au-Haidhausen","Au-Haidhausen"),("Haidhausen","Au-Haidhausen"),
     ("Bogenhausen","Bogenhausen"),("Pasing-Obermenzing","Pasing-Obermenzing"),
     ("Pasing","Pasing-Obermenzing"),("Obermenzing","Pasing-Obermenzing"),
     ("Obergiesing","Obergiesing"),("Untergiesing","Untergiesing"),("Harlaching","Harlaching"),
     ("Giesing","Giesing"),("Moosach","Moosach"),
-    ("Ramersdorf-Perlach","Ramersdorf-Perlach"),("Ramersdorf","Ramersdorf-Perlach"),("Perlach","Ramersdorf-Perlach"),
-    ("Milbertshofen","Milbertshofen"),("Freimann","Milbertshofen"),
+    ("Ramersdorf-Perlach","Ramersdorf-Perlach"),("Ramersdorf","Ramersdorf-Perlach"),
+    ("Perlach","Ramersdorf-Perlach"),("Milbertshofen","Milbertshofen"),("Freimann","Milbertshofen"),
     ("Trudering","Trudering"),("Hadern","Hadern"),("Laim","Laim"),("Berg am Laim","Berg am Laim"),
     ("Feldmoching-Hasenbergl","Feldmoching-Hasenbergl"),("Feldmoching","Feldmoching-Hasenbergl"),
     ("Hasenbergl","Feldmoching-Hasenbergl"),("Schwanthalerhöhe","Schwanthalerhöhe"),
-    ("Thalkirchen","Thalkirchen"),("Ludwigsvorstadt","Ludwigsvorstadt"),("Isarvorstadt","Isarvorstadt"),
-    ("Allach-Untermenzing","Allach-Untermenzing"),("Allach","Allach-Untermenzing"),
-    ("Hauptbahnhof","Stadtmitte"),("Marienplatz","Stadtmitte"),("Stachus","Stadtmitte"),
-    ("Karlsplatz","Stadtmitte"),("Innenstadt","Stadtmitte"),("Stadtmitte","Stadtmitte"),
+    ("Thalkirchen","Thalkirchen"),("Ludwigsvorstadt","Ludwigsvorstadt"),
+    ("Isarvorstadt","Isarvorstadt"),("Allach-Untermenzing","Allach-Untermenzing"),
+    ("Allach","Allach-Untermenzing"),("Hauptbahnhof","Stadtmitte"),("Marienplatz","Stadtmitte"),
+    ("Stachus","Stadtmitte"),("Karlsplatz","Stadtmitte"),("Innenstadt","Stadtmitte"),
     # Würmtal
     ("Planegg","Planegg"),("Martinsried","Martinsried"),("Krailling","Krailling"),
     ("Gräfelfing","Gräfelfing"),("Gauting","Gauting"),("Neuried","Neuried"),
@@ -119,10 +127,6 @@ ORT_MAP = [
     # Friedberg/Aichach
     ("Friedberg","Friedberg"),("Kissing","Kissing"),("Mering","Mering"),
     ("Dasing","Dasing"),("Aichach","Aichach"),("Eurasburg","Eurasburg"),("Merching","Merching"),
-    # Augsburg Stadtteile (für PP SWN Kontext)
-    ("Innenstadt","Augsburg-Innenstadt"),("Oberhausen","Augsburg-Oberhausen"),
-    ("Hochzoll","Augsburg-Hochzoll"),("Lechhausen","Augsburg-Lechhausen"),
-    ("Haunstetten","Augsburg-Haunstetten"),("Göggingen","Augsburg-Göggingen"),
 ]
 
 
@@ -135,7 +139,12 @@ def detect_pp(title_text):
 
 
 def is_relevant(text):
-    return any(p in text for p in RELEVANT_PLACES)
+    """Prüft ob relevanter Ort vorkommt – schließt False-Positive-Straßennamen aus."""
+    # Erst Exclusions aus dem Text entfernen
+    clean = text
+    for excl in RELEVANT_EXCLUSIONS:
+        clean = clean.replace(excl, "")
+    return any(place in clean for place in RELEVANT_PLACES)
 
 
 def categorize(text):
@@ -176,6 +185,27 @@ def fetch(url, timeout=8):
     return None
 
 
+def get_urls_from_pp_website(pp_url):
+    """Crawlt direkt die PP-Listenseite auf polizei.bayern.de."""
+    print(f"\n  🌐 Direkt: {pp_url[-60:]}…")
+    art_pat = re.compile(r'href="(/aktuelles/pressemitteilungen/(\d{6})/index\.html)"')
+    seen, urls = set(), []
+
+    html = fetch(pp_url, timeout=15)
+    if not html:
+        print("    Nicht erreichbar")
+        return []
+
+    for m in art_pat.finditer(html):
+        full_url = f"https://www.polizei.bayern.de{m[1]}"
+        if full_url not in seen:
+            seen.add(full_url)
+            urls.append(full_url)
+
+    print(f"    {len(urls)} Links gefunden")
+    return urls
+
+
 def get_urls_from_telegram(channel):
     print(f"\n  📡 @{channel}…")
     art_pat = re.compile(r'https?://(?:www\.)?polizei\.bayern\.de/aktuelles/pressemitteilungen/(\d{6})/index\.html')
@@ -186,23 +216,24 @@ def get_urls_from_telegram(channel):
         url = f"https://t.me/s/{channel}" + (f"?before={before_id}" if before_id else "")
         html = fetch(url, timeout=20)
         if not html: break
-        new = sum(1 for m in art_pat.finditer(html) if m[0] not in seen and not seen.add(m[0]) and urls.append(m[0]) is None)
+        for m in art_pat.finditer(html):
+            if m[0] not in seen:
+                seen.add(m[0]); urls.append(m[0])
         msg_ids = [int(x) for x in msg_pat.findall(html)]
         if not msg_ids: break
         min_id = min(msg_ids)
-        print(f"    Seite {page+1}: {new} neue Links (bis #{min_id})")
-        if len(urls) >= MAX_ARTS * 3 or min_id <= 1 or min_id == before_id: break
+        if len(urls) >= MAX_ARTS * 5 or min_id <= 1 or min_id == before_id: break
         before_id = min_id
         time.sleep(0.5)
 
-    print(f"    @{channel}: {len(urls)} Links")
+    print(f"    {len(urls)} Links")
     return urls
 
 
-# ── Format-spezifische Parser ─────────────────────────────────────────────────
+# ── Format-Parser ─────────────────────────────────────────────────────────────
 
 def parse_muenchen(content, pm_date, url):
-    """PP München: ### NR. Titel – Stadtteil"""
+    """PP München: echte h3-Tags ### NR. Titel – Stadtteil"""
     incidents = []
     for h in content.find_all("h3"):
         heading = h.get_text(" ", strip=True)
@@ -210,8 +241,7 @@ def parse_muenchen(content, pm_date, url):
         nr      = num_m[1] if num_m else ""
         titel   = re.sub(r"^\d+\.\s+", "", heading).strip()
         ort_m   = re.search(r"–\s*(.+)$", titel)
-        ort_raw = ort_m[1].strip() if ort_m else ""
-        ort     = detect_ort(ort_raw) if ort_raw else "Unbekannt"
+        ort     = detect_ort(ort_m[1].strip()) if ort_m else "Unbekannt"
 
         parts = []
         for sib in h.find_next_siblings():
@@ -223,68 +253,88 @@ def parse_muenchen(content, pm_date, url):
         inc_date = parse_date(body, pm_date)
         kat, sev = categorize(titel + " " + body)
         if ort == "Unbekannt": ort = detect_ort(body)
-
         incidents.append(_make(inc_date, parse_time(body), nr, kat, sev,
                                ort, titel[:120], body[:1500], url, "PP München"))
     return incidents
 
 
 def parse_schwaben_nord(content, pm_date, url):
-    """PP Schwaben Nord: 0065 – Ort · Fließtext, kein h3"""
-    full = content.get_text("\n", strip=True)
-
-    # Abschnitte durch nummeriertes Muster trennen: "0065 – " oder "· Ort –"
-    # Alternativ: Vorfälle beginnen mit Ortsname gefolgt von " – "
-    sections = re.split(r'\n(?=\d{4}\s*[–-])', full)
-    if len(sections) <= 1:
-        # Fallback: durch Zeilenumbrüche trennen wo Ortsname steht
-        sections = re.split(r'\n(?=[A-ZÄÖÜ][a-zäöüß]+\s+[–-]\s)', full)
-
+    """
+    PP Schwaben Nord: Bold-Tags als Überschriften
+    Format: **0701 – Ort** – Fließtext
+    Prävention/Terminhinweise werden übersprungen.
+    """
     incidents = []
-    for sec in sections:
-        sec = sec.strip()
-        if len(sec) < 40: continue
 
-        # Vorfall-Nummer extrahieren (z.B. "0065")
-        nr_m = re.match(r'^(\d{4})\s*[–-]\s*', sec)
-        nr   = nr_m[1] if nr_m else ""
-        if nr_m: sec = sec[nr_m.end():]
+    # Präventions-Keywords die ganze Abschnitte überspringen
+    SKIP_KEYWORDS = [
+        "mobile wache", "tag der offenen tür", "aktionstag",
+        "terminhinweis", "pressestelle", "medienvertreter",
+    ]
 
-        # Ort: steht vor " – " am Zeilenanfang
-        ort_m = re.match(r'^([A-ZÄÖÜa-zäöüß/ -]+?)\s*[–-]\s*', sec)
-        ort_raw = ort_m[1].strip() if ort_m else ""
-        ort = detect_ort(ort_raw) if ort_raw else "Unbekannt"
+    # Bold-Tags als Abschnittstrenner nutzen
+    bolds = content.find_all(["strong", "b"])
 
-        # Nur aufnehmen wenn relevanter Ort
-        if not is_relevant(sec): continue
+    for bold in bolds:
+        heading = bold.get_text(" ", strip=True)
+        if len(heading) < 5: continue
 
-        # Titel: erste Zeile oder erster Satz
-        titel = sec.split("\n")[0][:100] if "\n" in sec else sec[:100]
-        body  = sec[:1500]
+        # Nur nummerierte Vorfälle: "0701 – Ort" Pattern
+        nr_m = re.match(r'^(\d{4})\s*[–-]\s*(.+)$', heading)
+        if not nr_m: continue
+
+        nr      = nr_m[1]
+        ort_raw = nr_m[2].strip()
+        ort     = detect_ort(ort_raw)
+
+        # Fließtext: Text nach dem Bold-Tag bis zum nächsten Bold
+        body_parts = []
+        for sib in bold.parent.find_next_siblings():
+            next_bold = sib.find(["strong","b"])
+            if next_bold and re.match(r'^\d{4}\s*[–-]', next_bold.get_text(strip=True)):
+                break
+            body_parts.append(sib.get_text(" ", strip=True))
+        body = " ".join(body_parts).strip()
+
+        # Auch Text im gleichen Absatz nach dem Bold
+        parent_text = bold.parent.get_text(" ", strip=True)
+        bold_text   = bold.get_text(" ", strip=True)
+        after_bold  = parent_text[parent_text.find(bold_text)+len(bold_text):].strip()
+        if after_bold:
+            body = (after_bold + " " + body).strip()
+
+        if len(body) < 20: continue
+
+        # Prävention/Termine überspringen
+        full = (heading + " " + body).lower()
+        if any(kw in full for kw in SKIP_KEYWORDS): continue
+
+        # Relevanzfilter
+        if not is_relevant(heading + " " + body + " " + ort_raw): continue
 
         inc_date = parse_date(body, pm_date)
         kat, sev = categorize(body)
         if ort == "Unbekannt": ort = detect_ort(body)
 
         incidents.append(_make(inc_date, parse_time(body), nr, kat, sev,
-                               ort, titel, body, url, "PP Schwaben Nord"))
+                               ort, f"{nr} – {ort_raw}"[:120], body[:1500],
+                               url, "PP Schwaben Nord"))
+
     return incidents
 
 
 def parse_oberbayern(content, pm_date, url, pp_name):
-    """PP Oberbayern Nord/Süd: ORT – Fließtext (oft ohne h3)"""
-    sections = content.find_all("h3")
+    """PP Oberbayern Nord/Süd: Paragraphen-Format"""
+    incidents = []
 
+    # Versuche h3 zuerst
+    sections = content.find_all("h3")
     if sections:
-        # Hat h3 → ähnlich München-Format
-        incidents = []
         for h in sections:
             heading = h.get_text(" ", strip=True)
             titel   = re.sub(r"^\d+\.\s+", "", heading).strip()
             ort_m   = re.search(r"–\s*(.+)$", titel)
-            ort_raw = ort_m[1].strip() if ort_m else ""
-            ort     = detect_ort(ort_raw) if ort_raw else "Unbekannt"
-
+            ort     = detect_ort(ort_m[1].strip()) if ort_m else "Unbekannt"
             parts = []
             for sib in h.find_next_siblings():
                 if sib.name in ("h3","h2","hr"): break
@@ -292,7 +342,6 @@ def parse_oberbayern(content, pm_date, url, pp_name):
             body = " ".join(parts).strip()
             if len(body) < 30: continue
             if not is_relevant(heading + " " + body): continue
-
             num_m = re.match(r"^(\d+)\.\s+", heading)
             nr = num_m[1] if num_m else ""
             inc_date = parse_date(body, pm_date)
@@ -302,30 +351,23 @@ def parse_oberbayern(content, pm_date, url, pp_name):
                                    ort, titel[:120], body[:1500], url, pp_name))
         return incidents
 
-    # Kein h3 → Paragraphen parsen
-    incidents = []
+    # Fallback: Paragraphen
     for p in content.find_all("p"):
         text = p.get_text(" ", strip=True)
-        if len(text) < 40: continue
+        if len(text) < 50: continue
         if not is_relevant(text): continue
-
-        ort_m = re.match(r'^([A-ZÄÖÜ][A-ZÄÖÜa-zäöüß/ -]+?)\s*[–-]\s*', text)
-        ort_raw = ort_m[1].strip() if ort_m else ""
-        ort = detect_ort(ort_raw) if ort_raw else "Unbekannt"
-
+        ort_m = re.match(r'^([A-ZÄÖÜ][A-ZÄÖÜa-zäöüß /.-]+?)\s*[–-]\s*', text)
+        ort   = detect_ort(ort_m[1].strip()) if ort_m else detect_ort(text)
         inc_date = parse_date(text, pm_date)
         kat, sev = categorize(text)
-        if ort == "Unbekannt": ort = detect_ort(text)
-        titel = text[:100]
-
         incidents.append(_make(inc_date, parse_time(text), "", kat, sev,
-                               ort, titel, text[:1500], url, pp_name))
+                               ort, text[:100], text[:1500], url, pp_name))
+
     return incidents
 
 
 def parse_article(html, url, from_date, to_date):
     soup = BeautifulSoup(html, "html.parser")
-
     title_text = (soup.find("title") or type("",(),{"get_text":lambda *a:""})()).get_text()
     pp_name, needs_filter = detect_pp(title_text)
     if not pp_name: return []
@@ -341,23 +383,20 @@ def parse_article(html, url, from_date, to_date):
     content = soup.find(class_="c-richtext") or soup.find("article") or soup.find("main")
     if not content: return []
 
-    # Format-spezifisch parsen
     if pp_name == "PP München":
         sections = content.find_all("h3")
         if sections:
             return parse_muenchen(content, pm_date, url)
-        else:
-            # Einzelner Artikel ohne h3
-            body = content.get_text(" ", strip=True)
-            if len(body) < 50: return []
-            kat, sev = categorize(body)
-            return [_make(parse_date(body, pm_date), parse_time(body), "",
-                          kat, sev, detect_ort(body), body[:120], body[:1500], url, "PP München")]
+        body = content.get_text(" ", strip=True)
+        if len(body) < 50: return []
+        kat, sev = categorize(body)
+        return [_make(parse_date(body, pm_date), parse_time(body), "",
+                      kat, sev, detect_ort(body), body[:120], body[:1500], url, "PP München")]
 
     elif pp_name == "PP Schwaben Nord":
         return parse_schwaben_nord(content, pm_date, url)
 
-    else:  # PP Oberbayern Nord/Süd + andere
+    else:
         return parse_oberbayern(content, pm_date, url, pp_name)
 
 
@@ -422,25 +461,27 @@ def main():
     print(f"  Zeitraum: {from_date.date()} → {to_date.date()}")
     print(f"═══════════════════════════════════════════════════")
 
-    # URLs aus Telegram
     all_urls = set()
     for ch in TG_CHANNELS:
         all_urls.update(get_urls_from_telegram(ch))
+
+    # Direkt PP-Webseiten crawlen für PPs ohne Telegram-Kanal (OBN, OBS)
+    for pp_url in PP_DIRECT_PAGES:
+        all_urls.update(get_urls_from_pp_website(pp_url))
+        time.sleep(1)
     urls = sorted(all_urls)
     print(f"\n  Gesamt: {len(urls)} URLs\n")
 
-    # Bestehende Daten laden
     existing_data, existing_links = [], set()
     try:
         with open("data/incidents.json","r",encoding="utf-8") as f:
             existing_data = json.load(f)
-        needs_rebuild = existing_data and "pp" not in existing_data[0]
-        if needs_rebuild:
+        if existing_data and "pp" not in existing_data[0]:
             print("  Altes Format – baue neu auf")
             existing_data, existing_links = [], set()
         else:
             existing_links = {p.get("link","") for p in existing_data}
-            print(f"  Bestehend: {len(existing_data)} Vorfälle")
+            print(f"  Bestehend: {len(existing_data)} Vorfälle (inkrementell)")
     except: print("  Starte frisch")
 
     all_incidents = list(existing_data)
