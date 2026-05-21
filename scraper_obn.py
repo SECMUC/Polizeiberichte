@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""PP Oberbayern Nord Scraper – Planegg, Gauting, Starnberg, Würmtal"""
+"""PP Oberbayern Nord Scraper – Planegg, Gauting, Starnberg, Würmtal
+Liest direkt von polizei.bayern.de (kein Telegram-Kanal verfügbar)
+"""
 
 import json, os, re, time
 from datetime import datetime, timedelta
@@ -8,9 +10,8 @@ import requests
 from bs4 import BeautifulSoup
 
 DAYS_BACK        = 500
-MAX_PAGES        = 15
-SLEEP_SEC        = 0.8
 MAX_CONSEC_FAILS = 8
+SLEEP_SEC        = 0.8
 DATA_FILE        = "data/incidents_obn.json"
 PP_NAME          = "PP Oberbayern Nord"
 
@@ -21,36 +22,38 @@ HEADERS = {
 
 RELEVANT_PLACES = [
     "Planegg","Martinsried","Krailling","Gräfelfing","Gauting","Neuried",
-    "Germering","Stockdorf","Lochham","Würmtal","Gilching","Weßling",
-    "Starnberg","Wörthsee","Herrsching","Seefeld","Inning","Andechs",
-    "Pöcking","Tutzing","Feldafing","Berg","Münsing","Dießen",
-    "Landsberg","Fürstenfeldbruck","Olching","Dachau",
+    "Germering","Stockdorf","Lochham","Gilching","Weßling",
+    "Starnberg","Herrsching","Seefeld","Inning","Andechs",
+    "Pöcking","Tutzing","Feldafing","Dießen",
+    "Wörthsee","Steinebach",
+    "Fürstenfeldbruck","Olching","Gröbenzell","Puchheim",
+    "Dachau","Markt Indersdorf","Karlsfeld",
+    "Landsberg","Kaufering","Penzing",
 ]
 
 RULES = [
-    ("Tötungsdelikt",3,["tötungsdelikt","mord","totschlag","mordkommission","lebensgefahr","tödlich verletzt"]),
-    ("Sexualdelikt",3,["vergewaltigung","sexuelle nötigung","missbrauch von kindern","sexueller missbrauch"]),
-    ("Raub",3,["unter vorhalt einer schusswaffe","unter vorhalt eines messers","bewaffneter raubüberfall"]),
-    ("Körperverletzung",3,["messer","gestochen","stichverletzung","schwere körperverletzung","gefährliche körperverletzung","notoperation"]),
+    ("Tötungsdelikt",3,["tötungsdelikt","mord","totschlag","lebensgefahr","tödlich verletzt"]),
+    ("Sexualdelikt",3,["vergewaltigung","sexuelle nötigung","missbrauch von kindern"]),
+    ("Raub",3,["unter vorhalt einer schusswaffe","unter vorhalt eines messers"]),
+    ("Körperverletzung",3,["messer","gestochen","schwere körperverletzung","notoperation"]),
     ("Einbruch",3,["wohnungseinbruch"]),
-    ("Branddelikt",3,["schwere brandstiftung","vorsätzliche brandleg","feuer gelegt","in brand gesetzt"]),
-    ("Sexualdelikt",2,["sexuelle belästigung","unsittlich berührt","exhibitionistisch"]),
-    ("Raub",2,["raub","beraubt","entrissen","handtaschenraub","erpressung"]),
-    ("Körperverletzung",2,["körperverletzung","schlägerei","geschlagen","getreten","faustschlag","bewusstlos","angriff"]),
-    ("Einbruch",2,["einbruch","einbrecher","eingebrochen","aufgehebelt","aufgebrochen","einbruchsversuch"]),
+    ("Branddelikt",3,["schwere brandstiftung","feuer gelegt","in brand gesetzt","vorsätzliche brandleg"]),
+    ("Sexualdelikt",2,["sexuelle belästigung","unsittlich berührt"]),
+    ("Raub",2,["raub","beraubt","entrissen","erpressung"]),
+    ("Körperverletzung",2,["körperverletzung","schlägerei","geschlagen","getreten","angriff","bewusstlos"]),
+    ("Einbruch",2,["einbruch","eingebrochen","aufgehebelt","einbruchsversuch","gewaltsam zutritt"]),
     ("Branddelikt",2,["brandstiftung","brand","flammen"]),
-    ("Drogen",2,["kokain","heroin","amphetamin","crystal","drogenhandel"]),
+    ("Drogen",2,["kokain","heroin","amphetamin","drogenhandel"]),
     ("Betrug",2,["enkeltrick","schockanruf","falscher polizist","trickbetrug"]),
-    ("Vermisstenfall",2,["vermisst","vermisstenfall","abgängig","kind vermisst"]),
+    ("Vermisstenfall",2,["vermisst","abgängig","kind vermisst"]),
     ("Fahndung",2,["öffentlichkeitsfahndung","haftbefehl","festgenommen"]),
-    ("Verkehr",2,["rettungshubschrauber","kollision mit","zusammenstoß mit"]),
-    ("Diebstahl",1,["diebstahl","gestohlen","entwendet","taschendiebstahl","fahrraddiebstahl","kfz-diebstahl"]),
-    ("Drogen",1,["cannabis","marihuana","btm","betäubungsmittel","dealer"]),
-    ("Betrug",1,["betrug","betrüger","phishing","cybercrime"]),
-    ("Verkehr",1,["verkehrsunfall","unfall","auffahrunfall","unfallflucht","fahrerflucht","alkohol am steuer","rotlicht"]),
-    ("Vandalismus",1,["sachbeschädigung","graffiti","beschmiert"]),
+    ("Diebstahl",1,["diebstahl","gestohlen","entwendet","fahrraddiebstahl","kfz-diebstahl"]),
+    ("Drogen",1,["cannabis","marihuana","btm","dealer"]),
+    ("Betrug",1,["betrug","betrüger","phishing"]),
+    ("Verkehr",1,["verkehrsunfall","unfall","unfallflucht","fahrerflucht","alkohol am steuer","rotlicht"]),
+    ("Vandalismus",1,["sachbeschädigung","graffiti"]),
     ("Fahndung",1,["zeugenaufruf","zeugen gesucht","hinweise erbeten"]),
-    ("Prävention",1,["prävention","warnung","hinweis der polizei","terminhinweis"]),
+    ("Prävention",1,["prävention","warnung","terminhinweis"]),
 ]
 
 def categorize(text):
@@ -79,7 +82,7 @@ def parse_time(text):
     m = re.search(r"(\d{1,2})[:.h](\d{2})\s*Uhr", text)
     return f"{int(m[1]):02d}:{m[2]}" if m else ""
 
-def fetch(url, timeout=8):
+def fetch(url, timeout=10):
     for attempt in range(2):
         try:
             r = requests.get(url, headers=HEADERS, timeout=timeout)
@@ -90,17 +93,17 @@ def fetch(url, timeout=8):
     return None
 
 def get_urls():
-    """Kombiniert Telegram @PolizeiBayern + direkte OBN Listenseite."""
+    """Holt URLs direkt von polizei.bayern.de Listenseite für OBN."""
     seen, urls = set(), []
 
-    # 1. Telegram @PolizeiBayern
-    print("  📡 @PolizeiBayern (OBN-Filter)…")
+    # Telegram @PolizeiBayern als erste Quelle
+    print("  📡 @PolizeiBayern…")
     art_pat = re.compile(r'https?://(?:www\.)?polizei\.bayern\.de/aktuelles/pressemitteilungen/(\d{6})/index\.html')
     msg_pat = re.compile(r'data-post="[^/]+/(\d+)"')
     before_id = None
-    for page in range(MAX_PAGES):
-        url = "https://t.me/s/PolizeiBayern" + (f"?before={before_id}" if before_id else "")
-        html = fetch(url, timeout=20)
+    for page in range(15):
+        tg_url = "https://t.me/s/PolizeiBayern" + (f"?before={before_id}" if before_id else "")
+        html = fetch(tg_url, timeout=20)
         if not html: break
         for m in art_pat.finditer(html):
             if m[0] not in seen: seen.add(m[0]); urls.append(m[0])
@@ -111,14 +114,16 @@ def get_urls():
         before_id = min_id
         time.sleep(0.5)
 
-    # 2. Direkte OBN Listenseite
-    print("  🌐 polizei.bayern.de (OBN direkt)…")
+    # Direkt polizei.bayern.de Hauptlistenseite (zeigt alle PPs)
+    print("  🌐 polizei.bayern.de Listenseite…")
     list_html = fetch("https://www.polizei.bayern.de/aktuelles/pressemitteilungen/index.html", timeout=15)
     if list_html:
         link_pat = re.compile(r'href="(/aktuelles/pressemitteilungen/(\d{6})/index\.html)"')
+        new = 0
         for m in link_pat.finditer(list_html):
             full = f"https://www.polizei.bayern.de{m[1]}"
-            if full not in seen: seen.add(full); urls.append(full)
+            if full not in seen: seen.add(full); urls.append(full); new += 1
+        print(f"    {new} neue Links von Listenseite")
 
     print(f"  {len(urls)} Links gesamt")
     return urls
@@ -126,13 +131,18 @@ def get_urls():
 def parse_article(html, url, from_date, to_date):
     soup = BeautifulSoup(html, "html.parser")
     title = (soup.find("title") or type("",(),{"get_text":lambda *a:""})()).get_text()
-    if "oberbayern nord" not in title.lower(): return []
+    tl = title.lower()
+
+    # Alle OBN-Titelformen abfangen
+    if "oberbayern nord" not in tl: return []
+
     dm = re.search(r"(\d{2})\.(\d{2})\.(\d{4})", title)
     if not dm: return []
     y = int(dm[3])
     if not (2020 <= y <= 2030): return []
     pm_date = datetime(y, int(dm[2]), int(dm[1]))
     if pm_date < from_date or pm_date > to_date: return []
+
     for tag in soup(["nav","header","footer","script","style"]): tag.decompose()
     content = soup.find(class_="c-richtext") or soup.find("article") or soup.find("main")
     if not content: return []
@@ -141,44 +151,80 @@ def parse_article(html, url, from_date, to_date):
     if not is_relevant(full_text): return []
 
     incidents = []
-    sections = content.find_all("h3")
 
+    # Format 1: h3-Tags
+    sections = content.find_all("h3")
     if sections:
         for h in sections:
             heading = h.get_text(" ", strip=True)
-            num_m = re.match(r"^(\d+)\.\s+", heading)
-            nr    = num_m[1] if num_m else ""
             titel = re.sub(r"^\d+\.\s+", "", heading).strip()
             parts = []
             for sib in h.find_next_siblings():
                 if sib.name in ("h3","h2","hr"): break
                 parts.append(sib.get_text(" ", strip=True))
             body = " ".join(parts).strip()
-            if len(body) < 30: continue
-            if not is_relevant(heading + " " + body): continue
-            inc_date = parse_date(body, pm_date)
+            if len(body) < 30 or not is_relevant(heading + " " + body): continue
             ort_m = re.search(r"–\s*(.+)$", titel)
             ort = detect_ort(ort_m[1].strip() if ort_m else body)
             kat, sev = categorize(titel + " " + body)
             incidents.append({
-                "date": inc_date.strftime("%d.%m.%Y"), "dateSort": inc_date.strftime("%Y-%m-%d"),
-                "time": parse_time(body), "nr": nr, "kategorie": kat, "schweregrad": sev,
+                "date": pm_date.strftime("%d.%m.%Y"), "dateSort": pm_date.strftime("%Y-%m-%d"),
+                "time": parse_time(body), "nr": "", "kategorie": kat, "schweregrad": sev,
                 "ort": ort, "pp": PP_NAME, "region": PP_NAME,
                 "titel": titel[:120], "volltext": body[:1500], "link": url,
             })
-    else:
-        for p in content.find_all("p"):
-            text = p.get_text(" ", strip=True)
-            if len(text) < 50 or not is_relevant(text): continue
-            inc_date = parse_date(text, pm_date)
-            ort = detect_ort(text)
-            kat, sev = categorize(text)
+        return incidents
+
+    # Format 2: "Ort, Lkr. X\nVorfallstitel\nFließtext" (typisch OBN)
+    # Bold-Tags markieren Ortswechsel
+    current_ort = detect_ort(full_text)  # Fallback: Ort aus Gesamttext
+    collected = []
+
+    for p in content.find_all("p"):
+        text = p.get_text(" ", strip=True)
+        if len(text) < 5: continue
+
+        bold = p.find(["strong","b"])
+        bold_text = bold.get_text(" ", strip=True) if bold else ""
+
+        # Ist das ein Orts-Marker? (enthält "Lkr." oder ist ein relevanter Ort)
+        is_ort_marker = bold_text and (
+            ", lkr." in bold_text.lower() or
+            "lkr." in bold_text.lower() or
+            is_relevant(bold_text)
+        )
+
+        if is_ort_marker:
+            # Speichere gesammelten Text als Vorfall
+            if collected:
+                body = " ".join(collected)
+                if is_relevant(body + " " + current_ort):
+                    kat, sev = categorize(body)
+                    incidents.append({
+                        "date": pm_date.strftime("%d.%m.%Y"), "dateSort": pm_date.strftime("%Y-%m-%d"),
+                        "time": parse_time(body), "nr": "", "kategorie": kat, "schweregrad": sev,
+                        "ort": current_ort, "pp": PP_NAME, "region": PP_NAME,
+                        "titel": collected[0][:100], "volltext": body[:1500], "link": url,
+                    })
+                collected = []
+            # Neuen Ort setzen
+            detected = detect_ort(bold_text)
+            if detected != "Unbekannt": current_ort = detected
+        elif len(text) > 30:
+            collected.append(text)
+
+    # Letzten Block
+    if collected:
+        body = " ".join(collected)
+        if is_relevant(body + " " + current_ort):
+            kat, sev = categorize(body)
             incidents.append({
-                "date": inc_date.strftime("%d.%m.%Y"), "dateSort": inc_date.strftime("%Y-%m-%d"),
-                "time": parse_time(text), "nr": "", "kategorie": kat, "schweregrad": sev,
-                "ort": ort, "pp": PP_NAME, "region": PP_NAME,
-                "titel": text[:100], "volltext": text[:1500], "link": url,
+                "date": pm_date.strftime("%d.%m.%Y"), "dateSort": pm_date.strftime("%Y-%m-%d"),
+                "time": parse_time(body), "nr": "", "kategorie": kat, "schweregrad": sev,
+                "ort": current_ort, "pp": PP_NAME, "region": PP_NAME,
+                "titel": collected[0][:100], "volltext": body[:1500], "link": url,
             })
+
     return incidents
 
 def main():
@@ -196,11 +242,14 @@ def main():
     except: print("  Starte frisch")
 
     new_urls = [u for u in urls if u not in existing_links]
-    print(f"  Neu: {len(new_urls)} URLs\n")
+    MAX_NEW = 100
+    if len(new_urls) > MAX_NEW:
+        print(f"  ⚠ {len(new_urls)} neue URLs – verarbeite erste {MAX_NEW}")
+        new_urls = new_urls[:MAX_NEW]
+    print(f"  Verarbeite: {len(new_urls)} URLs\n")
 
     all_incidents = list(existing)
-    loaded = 0
-    consec_fails = 0
+    loaded = 0; consec_fails = 0
 
     for i, url in enumerate(new_urls):
         art_id = url.split("/")[-2]
@@ -214,22 +263,17 @@ def main():
         incidents = parse_article(html, url, from_date, to_date)
         if incidents: print(f"✓ {len(incidents)}"); all_incidents.extend(incidents); existing_links.add(url); loaded += 1
         else: print("✗")
-        if loaded % 20 == 0 and loaded > 0: save(all_incidents, loaded, True)
         time.sleep(SLEEP_SEC)
 
-    save(all_incidents, loaded)
-
-def save(data, loaded, partial=False):
-    data.sort(key=lambda x:(x.get("dateSort",""),x.get("time","")),reverse=True)
+    all_incidents.sort(key=lambda x:(x.get("dateSort",""),x.get("time","")),reverse=True)
     seen, deduped = set(), []
-    for inc in data:
+    for inc in all_incidents:
         key = f"{inc.get('dateSort','')}|{inc.get('titel','')[:60]}|{inc.get('nr','')}"
         if key not in seen: seen.add(key); deduped.append(inc)
     Path("data").mkdir(exist_ok=True)
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(deduped, f, ensure_ascii=False, indent=2)
-    if not partial:
-        print(f"\n  ✅ {loaded} neue Artikel · {len(deduped)} Vorfälle → {DATA_FILE}")
+    print(f"\n  ✅ {loaded} neue Artikel · {len(deduped)} Vorfälle → {DATA_FILE}")
 
 if __name__ == "__main__":
     main()
