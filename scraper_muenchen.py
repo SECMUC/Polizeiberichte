@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""PP München Scraper – alle Vorfälle
-Format: Fließtext-Paragraphen, kein h3
+"""PP München Scraper
 Quelle: @PressePolizeiMuenchen (Telegram)
+Format: h3-Tags (ältere Artikel) ODER Fließtext-Paragraphen (neuere Artikel)
+Jeder Paragraph = ein Vorfall
 """
-
 import json, re, time
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -56,7 +56,7 @@ ORT_MAP = [
     ("Maxvorstadt","Maxvorstadt"),("Schwabing-West","Schwabing-West"),("Schwabing","Schwabing"),
     ("Neuhausen-Nymphenburg","Neuhausen-Nymphenburg"),("Neuhausen","Neuhausen-Nymphenburg"),("Nymphenburg","Neuhausen-Nymphenburg"),
     ("Sendling","Sendling"),("Au-Haidhausen","Au-Haidhausen"),("Haidhausen","Au-Haidhausen"),
-    ("Bogenhausen","Bogenhausen"),("Pasing-Obermenzing","Pasing-Obermenzing"),("Pasing","Pasing-Obermenzing"),
+    ("Bogenhausen","Bogenhausen"),("Pasing-Obermenzing","Pasing-Obermenzing"),("Pasing","Pasing-Obermenzing"),("Obermenzing","Pasing-Obermenzing"),
     ("Obergiesing","Obergiesing"),("Untergiesing","Untergiesing"),("Harlaching","Harlaching"),
     ("Giesing","Giesing"),("Moosach","Moosach"),("Ramersdorf-Perlach","Ramersdorf-Perlach"),
     ("Ramersdorf","Ramersdorf-Perlach"),("Perlach","Ramersdorf-Perlach"),
@@ -67,11 +67,9 @@ ORT_MAP = [
     ("Ludwigsvorstadt","Ludwigsvorstadt"),("Isarvorstadt","Isarvorstadt"),
     ("Allach-Untermenzing","Allach-Untermenzing"),("Allach","Allach-Untermenzing"),
     ("Hauptbahnhof","Stadtmitte"),("Marienplatz","Stadtmitte"),("Stachus","Stadtmitte"),
-    ("Karlsplatz","Stadtmitte"),("Bahnhofsviertel","Stadtmitte"),
-    ("Maximilianstraße","Stadtmitte"),("Kaufingerstraße","Stadtmitte"),
-    ("Schwabing","Schwabing"),("Neuperlach","Neuperlach"),("Fürstenried","Fürstenried"),
-    ("Solln","Solln"),("Forstenried","Forstenried"),("Aubing","Aubing"),
-    ("Lochhausen","Lochhausen"),("Langwied","Langwied"),
+    ("Karlsplatz","Stadtmitte"),("Bahnhofsviertel","Stadtmitte"),("Innenstadt","Stadtmitte"),
+    ("Neuperlach","Neuperlach"),("Fürstenried","Fürstenried"),("Solln","Solln"),
+    ("Aubing","Aubing"),("Lochhausen","Lochhausen"),
 ]
 
 def categorize(text):
@@ -145,9 +143,7 @@ def parse_article(html, url, from_date, to_date):
     content = soup.find(class_="c-richtext") or soup.find("article") or soup.find("main")
     if not content: return []
 
-    full_text = content.get_text(" ", strip=True)
-
-    # München Format 1: h3-Tags (ältere Artikel)
+    # ── Format 1: h3-Tags (ältere Artikel) ───────────────────────────────────
     sections = content.find_all("h3")
     if sections:
         incidents = []
@@ -170,42 +166,59 @@ def parse_article(html, url, from_date, to_date):
             incidents.append(_inc(inc_date, parse_time(body), nr, kat, sev, ort, titel[:120], body[:1500], url))
         return incidents
 
-    # München Format 2 (aktuell): Fließtext-Paragraphen
-    # Jeder Paragraph beginnt mit "Am [Tag], [Datum]..." oder ist Fortsetzung
-    # Wir trennen nach Datum-Markern
+    # ── Format 2: Fließtext-Paragraphen (neuere Artikel) ─────────────────────
+    # Jeder <p>-Tag ist ein eigenständiger Vorfall
+    # Erkennungsmuster: Paragraphen beginnen mit "Am [Wochentag], [Datum]..."
     incidents = []
-    paragraphs = [p.get_text(" ", strip=True) for p in content.find_all("p") if len(p.get_text(strip=True)) > 50]
+    paragraphs = content.find_all("p")
 
-    if not paragraphs:
-        # Gesamten Text nach Datum-Markern aufteilen
-        parts = re.split(r'(?=Am (?:Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonntag),)', full_text)
-        paragraphs = [p.strip() for p in parts if len(p.strip()) > 50]
+    # Gruppiere zusammengehörige Paragraphen zu Vorfällen
+    # Neuer Vorfall: Paragraph beginnt mit "Am [Wochentag]" UND enthält ein Datum
+    WOCHENTAGE = r'(?:Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonntag)'
+    new_incident_pat = re.compile(rf'^Am {WOCHENTAGE},\s+\d{{1,2}}\.\d{{1,2}}\.\d{{4}}')
 
-    # Paragraphen die zusammengehören zusammenführen
-    # Neuer Vorfall beginnt typischerweise mit "Am [Wochentag]" oder enthält ein Datum
-    merged = []
-    current = ""
+    groups = []  # Liste von Paragraph-Gruppen, je Gruppe = ein Vorfall
+    current_group = []
+
     for p in paragraphs:
-        is_new = bool(re.match(r'^Am (?:Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonntag)', p))
-        has_date = bool(re.search(r'\d{2}\.\d{2}\.20\d{2}', p))
-        if (is_new or has_date) and current and len(current) > 80:
-            merged.append(current.strip())
-            current = p
+        text = p.get_text(" ", strip=True)
+        if len(text) < 20: continue
+
+        if new_incident_pat.match(text):
+            # Neuer Vorfall beginnt
+            if current_group:
+                groups.append(current_group)
+            current_group = [text]
+        elif current_group:
+            # Continuation: zum aktuellen Vorfall hinzufügen
+            current_group.append(text)
         else:
-            current = (current + " " + p).strip() if current else p
-    if current: merged.append(current.strip())
+            # Noch kein Vorfall begonnen (z.B. Einleitung) → eigene Gruppe
+            current_group = [text]
 
-    # Fallback: alle Paragraphen einzeln
-    if not merged: merged = paragraphs
+    if current_group:
+        groups.append(current_group)
 
-    for i, body in enumerate(merged):
+    for i, group in enumerate(groups):
+        body = " ".join(group).strip()
         if len(body) < 50: continue
+
         inc_date = parse_date(body, pm_date)
         kat, sev = categorize(body)
         ort = detect_ort(body)
-        # Kurzen Titel aus erstem Satz extrahieren
-        first_sentence = re.split(r'(?<=[.!?])\s+', body)[0][:120]
-        incidents.append(_inc(inc_date, parse_time(body), str(i+1), kat, sev, ort, first_sentence, body[:1500], url))
+
+        # Titel: erster Satz (bis zum ersten Punkt/Komma nach mindestens 30 Zeichen)
+        first = group[0]
+        titel = first[:120]
+
+        incidents.append(_inc(inc_date, parse_time(body), str(i+1), kat, sev, ort, titel, body[:1500], url))
+
+    # Fallback: gesamter Text als ein Eintrag
+    if not incidents:
+        full = content.get_text(" ", strip=True)
+        if len(full) > 50:
+            kat, sev = categorize(full)
+            incidents.append(_inc(pm_date, parse_time(full), "1", kat, sev, detect_ort(full), full[:120], full[:1500], url))
 
     return incidents
 
@@ -251,8 +264,7 @@ def main():
         incidents = parse_article(html, url, from_date, to_date)
         if incidents:
             print(f"✓ {len(incidents)}")
-            all_incidents.extend(incidents)
-            existing_links.add(url); loaded += 1
+            all_incidents.extend(incidents); existing_links.add(url); loaded += 1
         else: print("✗")
         if loaded > 0 and loaded % 30 == 0: _save(all_incidents, loaded, True)
         time.sleep(SLEEP_SEC)
