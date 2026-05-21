@@ -8,7 +8,7 @@ import requests
 from bs4 import BeautifulSoup
 
 DAYS_BACK        = 500
-MAX_PAGES        = 60    # München hat viele Posts
+MAX_PAGES        = 60
 SLEEP_SEC        = 0.8
 MAX_CONSEC_FAILS = 8
 DATA_FILE        = "data/incidents_muenchen.json"
@@ -102,21 +102,28 @@ def get_urls():
     print("  📡 @PressePolizeiMuenchen…")
     art_pat = re.compile(r'https?://(?:www\.)?polizei\.bayern\.de/aktuelles/pressemitteilungen/(\d{6})/index\.html')
     msg_pat = re.compile(r'data-post="[^/]+/(\d+)"')
-    seen, urls, before_id = set(), [], None
+    seen_arts = set()  # Deduplizierung auf Artikel-URL-Ebene
+    urls = []
+    before_id = None
     for page in range(MAX_PAGES):
         url = "https://t.me/s/PressePolizeiMuenchen" + (f"?before={before_id}" if before_id else "")
         html = fetch(url, timeout=20)
         if not html: break
+        new_on_page = 0
         for m in art_pat.finditer(html):
-            if m[0] not in seen: seen.add(m[0]); urls.append(m[0])
+            art_url = m[0]
+            if art_url not in seen_arts:
+                seen_arts.add(art_url)
+                urls.append(art_url)
+                new_on_page += 1
         msg_ids = [int(x) for x in msg_pat.findall(html)]
         if not msg_ids: break
         min_id = min(msg_ids)
-        print(f"    Seite {page+1}: {len(urls)} Links (bis Post #{min_id})")
+        print(f"    Seite {page+1}: {new_on_page} neue Links, {len(urls)} gesamt (bis Post #{min_id})")
         if min_id <= 1 or min_id == before_id: break
         before_id = min_id
         time.sleep(0.5)
-    print(f"  {len(urls)} Links gefunden")
+    print(f"  {len(urls)} einzigartige Links gefunden")
     return urls
 
 def parse_article(html, url, from_date, to_date):
@@ -173,7 +180,12 @@ def main():
     except: print("  Starte frisch")
 
     new_urls = [u for u in urls if u not in existing_links]
-    print(f"  Neu: {len(new_urls)} URLs\n")
+    # Beim ersten Lauf max 200 URLs – Rest kommt beim nächsten Lauf
+    MAX_NEW_PER_RUN = 200
+    if len(new_urls) > MAX_NEW_PER_RUN:
+        print(f"  ⚠ {len(new_urls)} neue URLs – verarbeite nur erste {MAX_NEW_PER_RUN} (Rest beim nächsten Lauf)")
+        new_urls = new_urls[:MAX_NEW_PER_RUN]
+    print(f"  Verarbeite: {len(new_urls)} URLs\n")
 
     all_incidents = list(existing)
     loaded = 0
