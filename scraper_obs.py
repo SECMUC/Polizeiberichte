@@ -95,7 +95,7 @@ def get_urls_from_archive(from_date, existing_links):
     base = f"https://www.polizei.bayern.de/suche/presse/index.html"
 
     for page in range(1, 60):  # Max 60 Seiten à ~10 Artikel = ~600 Artikel
-        params = f"?Verband={ARCHIVE_VERBAND  = "OBS"
+        params = f"?Verband={ARCHIVE_VERBAND}&Suchbegriff=&Zeitraum=eigeneDaten&DatumVon={from_date.strftime('%d.%m.%Y')}&DatumBis={datetime.now().strftime('%d.%m.%Y')}&page={page}"
         html = fetch(base + params, timeout=15)
         if not html: break
 
@@ -229,7 +229,7 @@ def main():
 
     existing, existing_links = [], set()
     try:
-        with open(DATA_FILE        = "data/incidents_obs.json"
+        with open(DATA_FILE, "r", encoding="utf-8") as f: existing = json.load(f)
         existing_links = {p.get("link","") for p in existing}
         print(f"  Bestehend: {len(existing)} Vorfälle")
     except: print("  Starte frisch")
@@ -272,7 +272,7 @@ def _save(data, loaded, partial=False):
         key = f"{inc.get('dateSort','')}|{inc.get('titel','')[:60]}"
         if key not in seen: seen.add(key); deduped.append(inc)
     Path("data").mkdir(exist_ok=True)
-    with open(DATA_FILE        = "data/incidents_obs.json"
+    with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(deduped, f, ensure_ascii=False, indent=2)
     if not partial:
         print(f"\n  ✅ {loaded} neue · {len(deduped)} Vorfälle → {DATA_FILE}")
