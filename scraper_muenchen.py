@@ -14,7 +14,7 @@ DAYS_BACK        = 500
 MAX_PAGES        = 60
 SLEEP_SEC        = 0.8
 MAX_CONSEC_FAILS = 8
-MAX_NEW_PER_RUN  = 200
+MAX_NEW_PER_RUN  = 400  # Erhöht für schnelleren Wiederaufbau – nach erstem Lauf auf 50 reduzieren
 DATA_FILE        = "data/incidents_muenchen.json"
 PP_NAME          = "PP München"
 TG_CHANNEL       = "PressePolizeiMuenchen"
@@ -167,58 +167,67 @@ def parse_article(html, url, from_date, to_date):
         return incidents
 
     # ── Format 2: Fließtext-Paragraphen (neuere Artikel) ─────────────────────
-    # Jeder <p>-Tag ist ein eigenständiger Vorfall
-    # Erkennungsmuster: Paragraphen beginnen mit "Am [Wochentag], [Datum]..."
+    full_text = content.get_text(" ", strip=True)
     incidents = []
-    paragraphs = content.find_all("p")
 
-    # Gruppiere zusammengehörige Paragraphen zu Vorfällen
-    # Neuer Vorfall: Paragraph beginnt mit "Am [Wochentag]" UND enthält ein Datum
-    WOCHENTAGE = r'(?:Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonntag)'
-    new_incident_pat = re.compile(rf'^Am {WOCHENTAGE},\s+\d{{1,2}}\.\d{{1,2}}\.\d{{4}}')
+    paragraphs = [p.get_text(" ", strip=True) for p in content.find_all("p") if len(p.get_text(strip=True)) > 30]
 
-    groups = []  # Liste von Paragraph-Gruppen, je Gruppe = ein Vorfall
-    current_group = []
+    if not paragraphs:
+        WOCHENTAGE = r'(?:Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonntag)'
+        parts = re.split(rf'(?=Am {WOCHENTAGE},)', full_text)
+        paragraphs = [p.strip() for p in parts if len(p.strip()) > 50]
+
+    # Breites Muster für Vorfalls-Beginn:
+    # "Am Montag, 01.01.2025..." / "Im Zeitraum von..." / "Seit Montag..."
+    # "In der Nacht..." / "Gegen 12:00 Uhr..." / Paragraph beginnt direkt mit Datum
+    INCIDENT_START = re.compile(
+        r'^(?:'
+        r'Am (?:Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonntag)|'
+        r'Im Zeitraum|'
+        r'Seit (?:Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonntag)|'
+        r'In der Nacht|'
+        r'Bereits am |'
+        r'Wie bereits|'
+        r'Am heutigen|'
+        r'Am gestrigen|'
+        r'\d{2}\.\d{2}\.20\d{2}'  # Beginnt direkt mit Datum
+        r')'
+    )
+    DATE_IN_TEXT = re.compile(r'\d{1,2}\.\d{1,2}\.20\d{2}')
+
+    groups = []
+    current = []
 
     for p in paragraphs:
-        text = p.get_text(" ", strip=True)
-        if len(text) < 20: continue
+        # Neuer Vorfall wenn: Muster passt UND Datum im ersten Teil
+        is_new = INCIDENT_START.match(p) and DATE_IN_TEXT.search(p[:100])
 
-        if new_incident_pat.match(text):
-            # Neuer Vorfall beginnt
-            if current_group:
-                groups.append(current_group)
-            current_group = [text]
-        elif current_group:
-            # Continuation: zum aktuellen Vorfall hinzufügen
-            current_group.append(text)
+        if is_new:
+            if current: groups.append(current)
+            current = [p]
+        elif current:
+            current.append(p)
         else:
-            # Noch kein Vorfall begonnen (z.B. Einleitung) → eigene Gruppe
-            current_group = [text]
+            current = [p]
 
-    if current_group:
-        groups.append(current_group)
+    if current: groups.append(current)
+
+    # Fallback: jeden Paragraph einzeln wenn keine Muster erkannt
+    if len(groups) <= 1 and len(paragraphs) > 1:
+        groups = [[p] for p in paragraphs]
 
     for i, group in enumerate(groups):
         body = " ".join(group).strip()
         if len(body) < 50: continue
-
         inc_date = parse_date(body, pm_date)
         kat, sev = categorize(body)
         ort = detect_ort(body)
-
-        # Titel: erster Satz (bis zum ersten Punkt/Komma nach mindestens 30 Zeichen)
-        first = group[0]
-        titel = first[:120]
-
+        titel = group[0][:120]
         incidents.append(_inc(inc_date, parse_time(body), str(i+1), kat, sev, ort, titel, body[:1500], url))
 
-    # Fallback: gesamter Text als ein Eintrag
-    if not incidents:
-        full = content.get_text(" ", strip=True)
-        if len(full) > 50:
-            kat, sev = categorize(full)
-            incidents.append(_inc(pm_date, parse_time(full), "1", kat, sev, detect_ort(full), full[:120], full[:1500], url))
+    if not incidents and len(full_text) > 50:
+        kat, sev = categorize(full_text)
+        incidents.append(_inc(pm_date, parse_time(full_text), "1", kat, sev, detect_ort(full_text), full_text[:120], full_text[:1500], url))
 
     return incidents
 
