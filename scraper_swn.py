@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """
 PP Schwaben Nord Scraper
-Format: "DD.MM.YYYY, Polizeipräsidium Schwaben Nord"
-        dann "0701 – Ort – Vorfallstitel" als Bold-Tags
-Quelle: @PolizeiBayern Telegram + polizei.bayern.de Listenseite
+Strategie: Bekannte Artikel-IDs als Startpunkte + sequentielles Scanning
+Da @PolizeiBayern von GitHub Actions geblockt wird, nutzen wir:
+1. Bekannte Seed-IDs die wir bereits kennen
+2. Vom letzten bekannten ID vorwärts scannen
+Format: Bold-Tags "0701 – Ort – Titel"
 """
 import json, re, time
 from datetime import datetime, timedelta
@@ -11,13 +13,21 @@ from pathlib import Path
 import requests
 from bs4 import BeautifulSoup
 
-DAYS_BACK       = 500
-SLEEP_SEC       = 0.8
-MAX_CONSEC_FAILS= 8
-MAX_NEW_PER_RUN = 150
-DATA_FILE       = "data/incidents_swn.json"
-PP_NAME         = "PP Schwaben Nord"
-PP_IDENTIFIERS  = ["schwaben nord", "polizeipräsidium schwaben nord", "nordschwaben"]
+DAYS_BACK        = 500
+SLEEP_SEC        = 0.5
+MAX_CONSEC_FAILS = 15   # Mehr Toleranz beim sequentiellen Scan
+MAX_NEW_PER_RUN  = 150
+DATA_FILE        = "data/incidents_swn.json"
+PP_NAME          = "PP Schwaben Nord"
+PP_IDENTIFIERS   = ["schwaben nord", "polizeipräsidium schwaben nord", "nordschwaben"]
+
+# Bekannte SWN Artikel-IDs als Startpunkte (aus alten Daten + Recherche)
+SEED_IDS = [
+    79373, 81162, 84371, 85854, 87620,
+    98869, 98949, 99005, 99064, 99276, 99546,
+    100490, 100646, 100776, 100891, 101038,
+    101761, 101830, 101989, 102184,
+]
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
@@ -68,127 +78,107 @@ def parse_time(text):
     m = re.search(r"(\d{1,2})[:.h](\d{2})\s*Uhr", text)
     return f"{int(m[1]):02d}:{m[2]}" if m else ""
 
-def fetch(url, timeout=10):
+def fetch(url, timeout=8):
     for attempt in range(2):
         try:
             r = requests.get(url, headers=HEADERS, timeout=timeout)
+            if r.status_code == 404: return None  # Artikel existiert nicht
             r.raise_for_status(); r.encoding = "utf-8"; return r.text
         except Exception as e:
-            if attempt == 0: time.sleep(1.5)
-            else: print(f"  ✗ {url[-50:]} → {e}")
+            if attempt == 0: time.sleep(1)
+            else: pass  # Kein Print beim sequentiellen Scan
     return None
 
-def get_urls(existing_links):
+def is_swn(title, body_start=""):
+    combined = (title + " " + body_start).lower()
+    return any(ident in combined for ident in PP_IDENTIFIERS)
+
+def get_urls(existing_links, from_date):
+    """
+    Generiert URLs zum Scannen:
+    1. Bekannte Seed-IDs die noch nicht verarbeitet wurden
+    2. Sequentiell vorwärts vom höchsten bekannten ID
+    """
     seen = set(existing_links)
     urls = []
 
-    # 1. Sucharchiv (Hauptquelle für historische Artikel)
-    print(f"  🗄 Sucharchiv (SWN)…")
-    art_pat = re.compile(r'href="(/aktuelles/pressemitteilungen/(\d{6})/index\.html)"')
-    from_date = (datetime.now() - timedelta(days=500)).strftime('%d.%m.%Y')
-    to_date_str = datetime.now().strftime('%d.%m.%Y')
-    for page in range(1, 60):
-        params = f"?Verband=SWN&Suchbegriff=&Zeitraum=eigeneDaten&DatumVon={from_date}&DatumBis={to_date_str}&page={page}"
-        html = fetch("https://www.polizei.bayern.de/suche/presse/index.html" + params, timeout=15)
-        if not html:
-            print("    Archiv nicht erreichbar – überspringe")
-            break
-        found = 0
-        for m in art_pat.finditer(html):
-            full = f"https://www.polizei.bayern.de{m[1]}"
-            if full not in seen: seen.add(full); urls.append(full); found += 1
-        print(f"    Seite {page}: {found} neue ({len(urls)} gesamt)")
-        if found == 0: break
-        time.sleep(0.5)
+    # Alle bereits bekannten IDs aus existing_links
+    known_ids = set()
+    for link in existing_links:
+        m = re.search(r'/(\d{6})/', link)
+        if m: known_ids.add(int(m[1]))
 
-    # 2. Telegram als Ergänzung
-    print("  📡 @PolizeiBayern…")
-    art_pat2 = re.compile(r'https?://(?:www\.)?polizei\.bayern\.de/aktuelles/pressemitteilungen/(\d{6})/index\.html')
-    msg_pat  = re.compile(r'data-post="[^/]+/(\d+)"')
-    before_id = None
-    for page in range(15):
-        tg_url = "https://t.me/s/PolizeiBayern" + (f"?before={before_id}" if before_id else "")
-        html = fetch(tg_url, timeout=20)
-        if not html: break
-        for m in art_pat2.finditer(html):
-            if m[0] not in seen: seen.add(m[0]); urls.append(m[0])
-        msg_ids = [int(x) for x in msg_pat.findall(html)]
-        if not msg_ids: break
-        min_id = min(msg_ids)
-        if min_id <= 1 or min_id == before_id: break
-        before_id = min_id
-        time.sleep(0.5)
+    # Seed-IDs die noch nicht bekannt sind
+    for art_id in SEED_IDS:
+        url = f"https://www.polizei.bayern.de/aktuelles/pressemitteilungen/{art_id:06d}/index.html"
+        if url not in seen:
+            urls.append(url)
 
-    print(f"  {len(urls)} neue URLs total")
+    # Höchste bekannte ID ermitteln
+    all_known = known_ids | set(SEED_IDS)
+    if all_known:
+        max_known = max(all_known)
+        # Vorwärts scannen ab max_known bis aktuelle ID
+        # Schätzung: SWN postet ~1-2x/Tag, also ~1 SWN-ID pro 200-400 gesamt-IDs
+        # Wir scannen jeden 50. ID vorwärts (SWN ist ca. 1 von 10 PPs)
+        current_max = max_known + 1
+        while current_max <= max_known + 5000:  # Max 5000 IDs vorwärts
+            url = f"https://www.polizei.bayern.de/aktuelles/pressemitteilungen/{current_max:06d}/index.html"
+            if url not in seen:
+                urls.append(url)
+            current_max += 1
+
+    print(f"  {len(urls)} URLs zum Scannen")
     return urls
-
-def is_swn_article(title, body_start):
-    combined = (title + " " + body_start).lower()
-    return any(ident in combined for ident in PP_IDENTIFIERS)
 
 def parse_article(html, url, from_date, to_date):
     soup = BeautifulSoup(html, "html.parser")
     title = (soup.find("title") or type("",(),{"get_text":lambda *a:""})()).get_text()
+    body_start = html[:500]
+
+    if not is_swn(title, body_start): return []
+
+    dm = re.search(r"(\d{2})\.(\d{2})\.(\d{4})", title)
+    if not dm: return []
+    y = int(dm[3])
+    if not (2020 <= y <= 2030): return []
+    pm_date = datetime(y, int(dm[2]), int(dm[1]))
+    if pm_date < from_date or pm_date > to_date: return []
 
     for tag in soup(["nav","header","footer","script","style"]): tag.decompose()
     content = soup.find(class_="c-richtext") or soup.find("article") or soup.find("main")
     if not content: return []
 
-    full_text = content.get_text(" ", strip=True)
-    body_start = full_text[:300]
-
-    if not is_swn_article(title, body_start): return []
-
-    # Datum aus Artikelanfang: "20.05.2026, Polizeipräsidium Schwaben Nord"
-    pm_date = parse_date(body_start, None) or parse_date(title, None)
-    if not pm_date: return []
-    if pm_date < from_date or pm_date > to_date: return []
-
     incidents = []
 
-    # SWN Format: Bold-Tags als Abschnittstrenner
-    # "0701 – Ort – Vorfallstitel" oder "Ort – Vorfallstitel"
-    bolds = content.find_all(["strong", "b"])
-
-    for bold in bolds:
+    # SWN Format: Bold-Tags "0701 – Ort – Titel"
+    for bold in content.find_all(["strong","b"]):
         heading = bold.get_text(" ", strip=True)
-
-        # Nummeriertes Format: "0701 – Ort" oder "0701 - Ort"
         nr_m = re.match(r'^(\d{3,4})\s*[–-]\s*(.+)$', heading)
         if not nr_m: continue
 
         nr   = nr_m[1]
         rest = nr_m[2].strip()
-
-        # Ort aus "Ort – Vorfallstitel" extrahieren
         ort_m = re.match(r'^([^–-]+?)\s*[–-]\s*', rest)
         ort   = ort_m[1].strip() if ort_m else rest[:50]
-
-        # Titel: Rest nach dem Ort
         titel_part = rest[ort_m.end():].strip() if ort_m else rest
-        titel = f"{nr} – {ort} – {titel_part}" if titel_part else f"{nr} – {ort}"
+        titel = f"{nr} – {ort}" + (f" – {titel_part}" if titel_part else "")
 
-        # Fließtext: Text im gleichen Absatz nach dem Bold + folgende Absätze
         parent = bold.parent
         parent_full = parent.get_text(" ", strip=True)
-        bold_text   = bold.get_text(" ", strip=True)
-        after_bold  = parent_full[parent_full.find(bold_text) + len(bold_text):].strip()
+        bold_text = bold.get_text(" ", strip=True)
+        after = parent_full[parent_full.find(bold_text)+len(bold_text):].strip()
 
-        body_parts = [after_bold] if after_bold else []
+        body_parts = [after] if after else []
         for sib in parent.find_next_siblings():
-            # Stoppe beim nächsten nummerierten Bold
-            next_bold = sib.find(["strong", "b"])
-            if next_bold:
-                nb_text = next_bold.get_text(strip=True)
-                if re.match(r'^\d{3,4}\s*[–-]', nb_text): break
+            nb = sib.find(["strong","b"])
+            if nb and re.match(r'^\d{3,4}\s*[–-]', nb.get_text(strip=True)): break
             t = sib.get_text(" ", strip=True)
             if t: body_parts.append(t)
 
         body = " ".join(body_parts).strip()
         if len(body) < 20: continue
-
-        # "Mobile Wache" Einträge überspringen
-        if "mobile wache" in (heading + body).lower() and len(body) < 100: continue
+        if "mobile wache" in (heading+body).lower() and len(body) < 100: continue
 
         inc_date = parse_date(body, pm_date)
         kat, sev = categorize(heading + " " + body)
@@ -200,12 +190,11 @@ def parse_article(html, url, from_date, to_date):
             "titel": titel[:120], "volltext": body[:1500], "link": url,
         })
 
-    # Fallback: keine Bold-Tags → Paragraphen parsen
+    # Fallback: Paragraphen
     if not incidents:
         for p in content.find_all("p"):
             text = p.get_text(" ", strip=True)
             if len(text) < 50: continue
-            # Ort – Fließtext Format
             ort_m = re.match(r'^([A-ZÄÖÜ][A-ZÄÖÜa-zäöüß/ -]+?)\s*[–-]\s*', text)
             ort = ort_m[1].strip() if ort_m else "Unbekannt"
             kat, sev = categorize(text)
@@ -227,39 +216,51 @@ def main():
     try:
         with open(DATA_FILE, "r", encoding="utf-8") as f: existing = json.load(f)
         existing_links = {p.get("link","") for p in existing}
+        # Normalisiere URLs (mit/ohne www)
+        existing_links |= {l.replace("//www.", "//").replace("//polizei", "//www.polizei") for l in existing_links}
         print(f"  Bestehend: {len(existing)} Vorfälle")
     except: print("  Starte frisch")
 
-    new_urls = get_urls(existing_links)
-    if len(new_urls) > MAX_NEW_PER_RUN:
-        print(f"  ⚠ {len(new_urls)} URLs → verarbeite erste {MAX_NEW_PER_RUN}")
-        new_urls = new_urls[:MAX_NEW_PER_RUN]
-    print(f"  Verarbeite: {len(new_urls)} URLs\n")
+    urls = get_urls(existing_links, from_date)
+
+    if len(urls) > MAX_NEW_PER_RUN:
+        print(f"  ⚠ {len(urls)} URLs → verarbeite erste {MAX_NEW_PER_RUN}")
+        urls = urls[:MAX_NEW_PER_RUN]
+
+    print(f"  Verarbeite: {len(urls)} URLs\n")
 
     all_incidents = list(existing)
-    
-    if not new_urls:
-        print("  ⚠ Keine neuen URLs gefunden (Quellen nicht erreichbar)")
-        print(f"  ✅ Bestehende Daten unverändert: {len(all_incidents)} Vorfälle")
-        return
-    
-    loaded = 0; consec_fails = 0
+    loaded = 0; consec_non_swn = 0
 
-    for i, url in enumerate(new_urls):
-        art_id = url.split("/")[-2]
-        print(f"  [{i+1:3d}/{len(new_urls)}] {art_id}", end=" … ")
+    for i, url in enumerate(urls):
         html = fetch(url)
-        if not html or len(html) < 300:
-            print("leer"); consec_fails += 1
-            if consec_fails >= MAX_CONSEC_FAILS: print("  ⚠ Stoppe"); break
+        if not html:
+            consec_non_swn += 1
+            if consec_non_swn >= MAX_CONSEC_FAILS:
+                print(f"  {MAX_CONSEC_FAILS} nicht-SWN Artikel in Folge – stoppe")
+                break
             continue
-        consec_fails = 0
+
+        # Prüfe ob SWN-Artikel
+        if not is_swn(html[:300]):
+            consec_non_swn += 1
+            if i % 50 == 0:
+                art_id = url.split("/")[-2]
+                print(f"  [{i+1}/{len(urls)}] {art_id}: kein SWN")
+            continue
+        else:
+            consec_non_swn = 0
+
+        art_id = url.split("/")[-2]
+        print(f"  [{i+1}/{len(urls)}] {art_id}", end=" … ")
         incidents = parse_article(html, url, from_date, to_date)
         if incidents:
             print(f"✓ {len(incidents)}")
             all_incidents.extend(incidents); existing_links.add(url); loaded += 1
-        else: print("✗")
-        if loaded > 0 and loaded % 30 == 0: _save(all_incidents, loaded, True)
+        else:
+            print("✗")
+
+        if loaded > 0 and loaded % 20 == 0: _save(all_incidents, loaded, True)
         time.sleep(SLEEP_SEC)
 
     _save(all_incidents, loaded)
