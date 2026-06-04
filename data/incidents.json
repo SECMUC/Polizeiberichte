@@ -28,6 +28,20 @@
     "pp": "PP München"
   },
   {
+    "date": "11.06.2026",
+    "dateSort": "2026-06-11",
+    "time": "09:00",
+    "nr": "827",
+    "kategorie": "Betrug",
+    "schweregrad": 1,
+    "ort": "Unbekannt",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Terminhinweis:Sicherheitskurse für Senioren",
+    "volltext": "Die Verkehrspolizeiinspektion Verkehrserziehung des Polizeipräsidiums München bietet einen Sicherheitskurse für Senioren an. Der Straßenverkehr stellt wegen seiner zunehmenden Dynamik und Komplexität immer höhere Anforderungen an alle Verkehrsteilnehmer. Die Menschen und damit auch die Verkehrsteilnehmer werden älter, erfreuen sich längerer Gesundheit und sind viel mobiler. Wie die Statistiken zeigen, sind gerade Personen ab 65 Jahren mit einem steigenden Anteil bei Verkehrsunfällen beteiligt. Damit sie sich vor solchen Verkehrsgefahren schützen können, bietet das Polizeipräsidium München ein spezielles Sicherheitstraining für diese Altersgruppe an, das gleichermaßen Radfahrer, Fußgänger und Fahrzeugführer anspricht. In kleinen Gruppen sollen sie lernen, kritische Situationen zu erkennen und zu bewältigen, damit sie später im Alltag selbstbewusster und kompetenter auftreten können. Ergänzt wird der Sicherheitskurs durch Kriminalprävention bei der unter anderem über das Phänomen der Trickbetrügerei informiert und Themen der Zivilcourage besprochen werden. Der Sicherheitskurs wird durch die Verkehrspolizeiinspektion Verkehrserziehung München in den Räumlichkeiten der Tegernseer Landstraße 210, 81549 München, angeboten. Der nächste Termin für den Sicherheitskurs für Senioren in München findet am Donnerstag, 11.06.2026 statt. Die Teilnahme am Sicherheitskurs ist kostenlos. Bei Interesse und für weitere Informationen melden Sie sich bitte unter der Telefonnummer 089/6216-3616 (Mo.",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/103730/index.html"
+  },
+  {
     "date": "10.06.2026",
     "dateSort": "2026-06-10",
     "time": "23:00",
@@ -40,6 +54,48 @@
     "volltext": "Am Dienstag, 10.06.2026, gegen 23:00 Uhr, fuhr ein 22-Jähriger mit Wohnsitz in München mit einem Fahrrad durch den Westpark. Auf Höhe des Wasserspielplatzes versperrte ihm eine Gruppe bislang unbekannter Täter den Weg, so dass er anhalten musste. Im weiteren Verlauf wurde er von diesen geschlagen und zu Boden geschubst. Ihm wurde sein Rucksack abgenommen und die unbekannten Täter flüchteten in Richtung U-Bahnhof Westpark. Der 22-Jährige verständigte sofort über den Notruf die Polizei. Daraufhin begaben sich mehrere Streifen zur Tatörtlichkeit. Im Rahmen der sofort eingeleiteten Fahndung wurden mehrere Personen kontrolliert. Eine mögliche Tatbeteiligung dieses Personenkreises bedarf weiterer Ermittlungen. Der 22-Jährige wurde bei dem Vorfall leicht verletzt. Es wurde jedoch kein Rettungsdienst benötigt. In seinem Rucksack befanden sich mehrere Elektronikgeräte sowie Bargeld. Das Kommissariat 21 hat die weiteren Ermittlungen übernommen.",
     "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/086471/index.html",
     "pp": "PP München"
+  },
+  {
+    "date": "03.06.2026",
+    "dateSort": "2026-06-03",
+    "time": "23:55",
+    "nr": "826",
+    "kategorie": "Verkehr",
+    "schweregrad": 2,
+    "ort": "Giesing",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Einsatz im U-Bahn-Tunnel; eine Person unverletzt geborgen – Giesing",
+    "volltext": "Am Mittwoch, 03.06.2026, gegen 23:55 Uhr, war ein U-Bahn-Fahrer der Linie U 8 vom Bahnhof Giesing in Richtung Karl-Preis-Platz unterwegs. Kurz nach der Einfahrt in den Tunnel bemerkte er eine Person, die neben dem Gleisstrang lag. Er leitete sofort eine Schnellbremsung ein. Durch die Bremsung wurde niemand in der U-Bahn verletzt. Die hinzugerufenen Einsatzkräfte der Feuerwehr, der Polizei und der U-Bahnwache fanden einen 15-jährigen Deutschen mit Wohnsitz im Landkreis Altötting, in einem Versorgungsgang neben den Gleisen liegend. Augenscheinlich schlief er. Der 15-Jährige wurde zur Abklärung möglicher Verletzungen durch die Feuerwehr geborgen und vom Rettungsdienst in ein Krankenhaus gebracht. Dort stellte sich heraus, dass er unverletzt war. Ein Zusammenstoß mit der U-Bahn hatte nicht stattgefunden. Während des Einsatzes verhielt sich der 15-Jährige unkooperativ. Nach ersten Erkenntnissen stand er unter dem Einfluss von Betäubungsmitteln. Der 15-Jährige erhält nun eine Anzeige wegen gefährlichen Eingriffes in den Bahnverkehr. Die weiteren Ermittlungen führt die Münchner Verkehrspolizei.",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/103730/index.html"
+  },
+  {
+    "date": "03.06.2026",
+    "dateSort": "2026-06-03",
+    "time": "16:20",
+    "nr": "825",
+    "kategorie": "Verkehr",
+    "schweregrad": 1,
+    "ort": "Neuhausen-Nymphenburg",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Verkehrsunfall zwischen Fahrrad und E-Scooter; eine Person verletzt – Neuhausen-Nymphenburg",
+    "volltext": "Am Mittwoch, 03.06.2026, gegen 16:20 Uhr, fuhr eine 34-Jährige mit thailändischer Staatsangehörigkeit und mit Wohnsitz in München mit einem E-Scooter auf der Nederlinger Straße in südlicher Richtung. An der Einmündung zur Zamboninistraße wollte sie geradeaus weiterfahren. Zur gleichen Zeit fuhr eine bislang unbekannte Fahrradfahrerin auf der Nederlinger Straße in nördlicher Richtung und beabsichtigte nach links in die Zamboninistraße abzubiegen. Um einen Zusammenstoß zu vermeiden, führte die E-Scooter-Fahrerin eine Gefahrenbremsung durch, stürzte und zog sich Verletzungen zu. Sie musste anschließend vom Rettungsdienst in ein Krankenhaus gebracht werden. Die unbekannte Fahrradfahrerin blieb zunächst noch kurz an der Unfallstelle, entfernte sich jedoch unerlaubt, noch vor dem Eintreffen der Polizei. Die weiteren Ermittlungen zum Unfallhergang führt die Münchner Verkehrspolizei. Zeugenaufruf: Personen, die sachdienliche Hinweise zum Unfallhergang oder der Fahrradfahrerin machen können, insbesondere die unfallbeteiligte Fahrradfahrerin selbst, werden gebeten, sich mit dem Unfallkommando, Tegernseer Landstr. 210, 81549 München, Tel.: (089) 6216- 3322, in Verbindung zu setzen.",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/103730/index.html"
+  },
+  {
+    "date": "03.06.2026",
+    "dateSort": "2026-06-03",
+    "time": "14:35",
+    "nr": "824",
+    "kategorie": "Verkehr",
+    "schweregrad": 1,
+    "ort": "Giesing",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Verkehrsunfall zwischen Pkw und Fahrrad; eine Person schwer verletzt – Giesing",
+    "volltext": "Am Mittwoch, 03.06.2026, gegen 14:35 Uhr, fuhr ein 85-Jähriger mit türkischer Staatsangehörigkeit und mit Wohnsitz in München auf der Chiemgaustraße in südwestlicher Richtung. Der 85-Jährige war gerade dabei, die Kreuzung an der Balanstraße geradeaus zu überqueren, als zeitgleich ein 87-jähriger Deutscher mit Wohnsitz in München mit einem Fahrrad ordnungsgemäß auf dem Radweg der Balanstraße in südlicher Richtung fuhr. Der Fahrradfahrer wollte die Chiemgaustraße an der Kreuzung geradeaus queren. Im Kreuzungsbereich kam es zum Zusammenstoß. Der Fahrradfahrer wurde dabei erfasst, schwer verletzt und vom Rettungsdienst zur weiteren Behandlung in ein Münchner Krankenhaus gebracht. Der 87-Jährige trug zum Unfallzeitpunkt keinen Fahrradhelm. Der Pkw-Fahrer sowie ein Mitfahrer blieben unverletzt. Die Münchner Verkehrspolizei hat die weiteren Ermittlungen übernommen. Hinweis der Münchner Verkehrspolizei: Durch das Tragen von Fahrradhelmen können Kopfverletzungen oft vermieden oder zumindest kann das Ausmaß der Verletzungen verringert werden. Obwohl das Tragen von Fahrradhelmen gesetzlich nicht vorgeschrieben ist, empfiehlt die Münchner Polizei grundsätzlich allen Fahrradfahrenden entsprechende Helme zu tragen.",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/103730/index.html"
   },
   {
     "date": "02.06.2026",
@@ -96,6 +152,20 @@
     "titel": "Verkehrsunfall mit mehreren Fahrzeugen; vier Personen verletzt – Garching",
     "volltext": "Am Dienstag, 02.06.2026, gegen 17:00 Uhr, ist es auf der Bundesstraße 471 bei Garching zu einem Verkehrsunfall mit insgesamt fünf beteiligten Fahrzeugen gekommen. Ein 42-jähriger Deutscher mit Wohnsitz im Landkreis München fuhr mit einem Polestar Pkw auf der Bundesstraße 471 in Fahrtrichtung Ismaning. Vor ihm fuhr eine 23-jährige Deutsche mit Wohnsitz im Landkreis Erding mit einem BMW Pkw. An der Kreuzung zur Staatsstraße 2350 musste die 23-jährige ihren Pkw verkehrsbedingt abbremsen. Der 42-Jährige fuhr mit seinem Fahrzeug auf den Pkw der 23-jährigen auf. Durch die Wucht des Aufpralls wurde der BMW gegen einen auf dem linken Fahrstreifen in selbe Richtung fahrenden Fiat Pkw einer 42-jährigen Deutschen mit Wohnsitz im Landkreis München geschoben. Anschließend kollidierte der BMW noch mit einem vorausfahrenden VW Pkw, eines 73-jährigen Deutschen mit Wohnsitz im Landkreis München. Der Polestar wurde nach dem Zusammenstoß gegen die rechte Leitplanke geschoben und prallte anschließend gegen das Heck eines Rettungswagens, welcher die B 471 ebenfalls in dieselbe Richtung befuhr. Die 23-jährige BMW-Fahrerin wurde bei dem Unfall leicht verletzt und musste vom hinzugerufenen Rettungsdienst zur weiteren Behandlung in ein Krankenhaus gebracht werden. Die Besatzung des Rettungswagens erlitt ebenfalls leichte Verletzungen und begab sich im Anschluss selbstständig in ärztliche Behandlung. An dem Polestar und dem BMW entstand wirtschaftlicher Totalschaden. Beide Fahrzeuge mussten abgeschlep",
     "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/103705/index.html"
+  },
+  {
+    "date": "02.06.2026",
+    "dateSort": "2026-06-02",
+    "time": "03:00",
+    "nr": "823",
+    "kategorie": "Fahndung",
+    "schweregrad": 2,
+    "ort": "Trudering",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Festnahme eines Tatverdächtigen nach versuchtem Diebstahl an Pkw – Trudering-Riem",
+    "volltext": "Am Dienstag, 02.06.2026, gegen 03:00 Uhr, bemerkte ein aufmerksamer Zeuge Geräusche eines Winkelschleifers und meldete dies beim Polizeinotruf 110. Im Rahmen einer sofort eingeleiteten Fahndung konnte im Umfeld ein 37-Jähriger mit bulgarischer Staatsangehörigkeit und mit Wohnsitz im Landkreis Ebersberg in seinem Pkw sitzend angetroffen werden. Im unmittelbaren Umfeld des Pkw lag ein kürzlich benutzter Winkelschleifer. In der Nähe der Kontrollörtlichkeit des 37-Jährigen wurde durch die Polizeibeamten ein Fahrzeug festgestellt, bei dem offensichtlich kurz zuvor versucht wurde, den Katalysator mit einer Flex abzutrennen. Nachdem die Polizeibeamten an dem 37-Jährigen noch weitere Spuren feststellten, die den Tatverdacht gegen ihn erhärtete, wurde dieser vorläufig festgenommen. Der Winkelschleifer und weitere Gegenstände, die zur Tat verwendet worden waren, wurden sichergestellt. Der Tatverdächtige wurde nach Durchführung sämtlicher polizeilicher Maßnahmen wieder entlassen. Die Identifizierung des geschädigten Pkw-Halters ist Gegenstand der Ermittlungen. Am Pkw entstand ein Sachschaden in Höhe eines niedrigen dreistelligen Eurobetrages. Das Kommissariat 54 hat die weiteren Ermittlungen übernommen.",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/103730/index.html"
   },
   {
     "date": "01.06.2026",
@@ -7852,6 +7922,20 @@
     "volltext": "Am Freitag, 20.02.2026, gegen 09:30 Uhr, wurde der Rettungsleitstelle der Feuerwehr mitgeteilt, dass Flammen aus einer Wohnung in einem Mehrfamilienhauses in der Ludwigsvorstadt zu sehen sind. Kurz darauf trafen neben der Berufsfeuerwehr München auch mehrere Polizeistreifen am Brandort ein. Mehrere Personen mussten durch die Feuerwehr mittels Drehleiter aus dem brennenden Haus gerettet werden. Im Rahmen der ersten polizeilichen Ermittlungen konnte festgestellt werden, dass sich in der betreffenden Wohnung eines 22-jährigen Inders mehrere Akkus befanden und einer davon zum Aufladen an einem Ladegerät angeschlossen war. Nach ersten Erkenntnissen fing dieser Akku nach einer kurzen Explosion Feuer. Durch den Brand wurden vier männliche Personen im Alter von 21, 22, 24 und 29 Jahren verletzt und wurden allesamt durch den Rettungsdienst in Münchner Krankenhäuser verbracht. Mehrere Wohnungen waren nach dem Brand nicht mehr bewohnbar. Der Sachschaden wird auf einen mittleren sechsstelligen Betrag geschätzt. Die weiteren Ermittlungen übernimmt das Kommissariat 13.",
     "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/098558/index.html",
     "pp": "PP München"
+  },
+  {
+    "date": "20.02.2026",
+    "dateSort": "2026-02-20",
+    "time": "02:06",
+    "nr": "822",
+    "kategorie": "Tötungsdelikt",
+    "schweregrad": 3,
+    "ort": "Altstadt-Lehel",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Tötungsdelikt; ergänzende Informationen – Altstadt",
+    "volltext": "-siehe Pressemeldung vom 20.02.2026, Nr. 275 Wie bereits berichtet, kam es am Samstag, 31.01.2026, gegen 02:06 Uhr, zu einem Tötungsdelikt in der Sonnenstraße in der Münchner Altstadt. Die erste Streife konnte vor Ort einen bewusstlosen 45-jährigen Mazedonier mit Wohnsitz in München feststellen. Trotz unverzüglicher medizinischer Versorgung durch den Rettungsdienst und später in einem Krankenhaus, verstarb der Geschädigte am Mittwoch, 04.02.2026. Nach derzeitigem Ermittlungsstand trafen der 45-Jährige und die zunächst unbekannten männlichen Tatverdächtigen im Bereich des Tatortes aufeinander. Einer der beiden schlug dem 45-Jährigen unvermittelt mit der Faust gegen den Kopf, woraufhin dieser bewusstlos zu Boden ging. Die unbekannten Täter und deren Begleiter flohen anschließend vom Tatort Im Laufe der weiteren umfangreichen Ermittlungen konnte ein 21-jähriger Deutscher mit Wohnsitz in Nordrhein-Westfalen als Tatverdächtiger ermittelt werden. Am Mittwoch, 18.02.2026, wurde der Haftbefehl in Nordrhein-Westfalen vollstreckt und der 21-Jährige festgenommen. Im Zuge der weiteren Ermittlungen konnte zwischenzeitlich ein weiterer Tatverdächtiger identifiziert werden. Nach derzeitigem Stand der Ermittlungen wird davon ausgegangen, dass ein 23-jähriger Deutscher mit Wohnsitz in der Städteregion Aachen, dem bereits am Boden liegenden 45-Jährigen, im Anschluss an die Schläge des bereits festgenommenen Beschuldigten, einen Fußtritt gegen den Kopf versetzte. Gegen den 23-Jährigen wurde auf",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/103730/index.html"
   },
   {
     "date": "19.02.2026",
