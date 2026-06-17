@@ -1,11 +1,11 @@
 {
-  "updated": "16.06.2026 09:35",
-  "updated_iso": "2026-06-16T09:35:01.489556",
+  "updated": "17.06.2026 09:12",
+  "updated_iso": "2026-06-17T09:12:57.711486",
   "from_date": "1995-04-10",
   "to_date": "2205-03-24",
-  "incidents": 3007,
+  "incidents": 3015,
   "pp_counts": {
-    "PP München": 2776,
+    "PP München": 2784,
     "PP Oberbayern Süd": 11,
     "PP Oberbayern Nord": 7,
     "PP Schwaben Nord": 213
