@@ -11,10 +11,11 @@ import requests
 from bs4 import BeautifulSoup
 
 DAYS_BACK        = 500
-SLEEP_SEC        = 0.4   # Kurze Pause beim Scan
-MAX_CONSEC_FAILS = 20    # Viele erlaubt weil Artikel anderer PPs normal sind
-MAX_NEW_PER_RUN  = 50   # Neue SWN-Artikel pro Lauf
-SCAN_STEP        = 50    # Jeden 50. ID prüfen zwischen bekannten IDs
+SLEEP_SEC        = 0.5
+MAX_CONSEC_FAILS = 20
+MAX_NEW_PER_RUN  = 50    # Weniger pro Lauf
+MAX_SCAN_IDS     = 300   # Absolutes Maximum an IDs pro Lauf
+SCAN_STEP        = 50    # Jeden 50. ID prüfen
 DATA_FILE        = "data/incidents_obs.json"
 PP_NAME          = "PP Oberbayern Süd"
 PP_IDENTIFIERS   = ["oberbayern süd", "polizeipräsidium oberbayern süd", "südliches oberbayern"]
@@ -22,7 +23,7 @@ PP_IDENTIFIERS   = ["oberbayern süd", "polizeipräsidium oberbayern süd", "sü
 # Bekannte SWN Artikel-IDs (aus Recherche + alten Daten)
 # Werden als Ankerpunkte für den Scan genutzt
 KNOWN_IDS = sorted([
-    79000, 85000, 91000, 96000, 100000,  # Startpunkte
+    79000, 85000, 90000, 95000, 100000, 103000,
 ])
 
 HEADERS = {
