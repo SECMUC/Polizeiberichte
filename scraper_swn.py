@@ -11,10 +11,11 @@ import requests
 from bs4 import BeautifulSoup
 
 DAYS_BACK        = 500
-SLEEP_SEC        = 0.4   # Kurze Pause beim Scan
-MAX_CONSEC_FAILS = 20    # Viele erlaubt weil Artikel anderer PPs normal sind
-MAX_NEW_PER_RUN  = 100   # Neue SWN-Artikel pro Lauf
-SCAN_STEP        = 50    # Jeden 50. ID prüfen zwischen bekannten IDs
+SLEEP_SEC        = 0.5
+MAX_CONSEC_FAILS = 20
+MAX_NEW_PER_RUN  = 50    # Weniger pro Lauf
+MAX_SCAN_IDS     = 300   # Absolutes Maximum an IDs pro Lauf
+SCAN_STEP        = 50    # Jeden 50. ID prüfen
 DATA_FILE        = "data/incidents_swn.json"
 PP_NAME          = "PP Schwaben Nord"
 PP_IDENTIFIERS   = ["schwaben nord", "polizeipräsidium schwaben nord", "nordschwaben"]
@@ -91,48 +92,46 @@ def is_swn(text):
     return any(ident in t for ident in PP_IDENTIFIERS)
 
 def get_scan_ids(existing_links, from_date):
-    """Generiert IDs zum Scannen: Bekannte + Lücken-Scan."""
-    # IDs aus bestehenden Links
+    """Generiert eine kurze, effiziente Liste von IDs zum Scannen."""
     known = set(KNOWN_IDS)
     for link in existing_links:
         m = re.search(r'/(\d{6})/', link)
         if m: known.add(int(m[1]))
 
-    # Datumsbasierte Mindest-ID schätzen
-    # Ab ID ~079000 = Jan 2025, ~103000 = Mai 2026
-    # Linearer Anstieg: ~200 IDs/Tag für alle PPs zusammen
-    days_since_jan25 = (from_date - datetime(2025, 1, 1)).days
-    min_id = max(79000, 79000 + days_since_jan25 * 180)
+    max_known = max(known) if known else 103000
+    to_scan = []
 
-    # IDs generieren: jeden SCAN_STEP-ten zwischen min_id und aktuellem Max
-    max_id = max(known) if known else 103000
-    current_max = max(known) + 1  # Ab dem nächsten nach dem höchsten bekannten
-
-    to_scan = set()
-
-    # 1. Alle bekannten IDs die noch nicht verarbeitet wurden
-    for art_id in known:
+    # 1. Bekannte IDs die noch nicht verarbeitet wurden (höchste Priorität)
+    for art_id in sorted(known, reverse=True):
         url = f"https://www.polizei.bayern.de/aktuelles/pressemitteilungen/{art_id:06d}/index.html"
         if url not in existing_links:
-            to_scan.add(art_id)
+            to_scan.append(art_id)
 
-    # 2. Zwischen bekannten IDs scannen (jeden SCAN_STEP-ten)
-    sorted_known = sorted(known)
-    for i in range(len(sorted_known)-1):
-        start = sorted_known[i] + 1
-        end   = sorted_known[i+1]
-        for scan_id in range(start, end, SCAN_STEP):
-            url = f"https://www.polizei.bayern.de/aktuelles/pressemitteilungen/{scan_id:06d}/index.html"
-            if url not in existing_links:
-                to_scan.add(scan_id)
-
-    # 3. Vorwärts ab höchstem bekanntem ID (täglich neue Artikel)
-    for scan_id in range(current_max, current_max + 3000, 1):
+    # 2. Vorwärts ab höchstem bekanntem ID – nur 500 IDs
+    # (SWN postet ~1 Artikel pro 1800 IDs, also ~0.3 Treffer erwartet → reicht für täglich)
+    for scan_id in range(max_known + 1, max_known + 501):
         url = f"https://www.polizei.bayern.de/aktuelles/pressemitteilungen/{scan_id:06d}/index.html"
         if url not in existing_links:
-            to_scan.add(scan_id)
+            to_scan.append(scan_id)
 
-    return sorted(to_scan)
+    # 3. Rückwärts-Stichproben in Lücken (nur wenn noch Kapazität)
+    if len(to_scan) < MAX_SCAN_IDS:
+        sorted_known = sorted(known)
+        for i in range(len(sorted_known)-1, 0, -1):  # Von neuesten rückwärts
+            start = sorted_known[i-1] + SCAN_STEP
+            end   = sorted_known[i]
+            for scan_id in range(start, end, SCAN_STEP):
+                url = f"https://www.polizei.bayern.de/aktuelles/pressemitteilungen/{scan_id:06d}/index.html"
+                if url not in existing_links:
+                    to_scan.append(scan_id)
+                    if len(to_scan) >= MAX_SCAN_IDS:
+                        break
+            if len(to_scan) >= MAX_SCAN_IDS:
+                break
+
+    result = sorted(set(to_scan))[:MAX_SCAN_IDS]
+    print(f"  {len(result)} IDs zum Scannen (max {MAX_SCAN_IDS})")
+    return result
 
 def parse_article(html, url, from_date, to_date):
     soup = BeautifulSoup(html, "html.parser")
