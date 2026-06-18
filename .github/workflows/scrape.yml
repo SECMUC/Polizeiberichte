@@ -2,11 +2,11 @@ name: Täglich Polizeidaten aktualisieren
 
 on:
   schedule:
-    - cron: '0 4 * * *'   # 04:00 UTC = 05:00 CET / 06:00 MESZ
+    - cron: '0 4 * * *'
   workflow_dispatch:
     inputs:
       scraper:
-        description: 'Welcher Scraper? (all / muenchen / obn / obs / swn / merge)'
+        description: 'all / muenchen / obn / obs / swn / merge'
         required: false
         default: 'all'
 
@@ -33,7 +33,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git fetch origin main
           git reset --hard origin/main
-          python scraper_muenchen.py || true
+          python scraper_muenchen.py
           git add data/incidents_muenchen.json
           git diff --staged --quiet || git commit -m "PP München $(date '+%d.%m.%Y %H:%M')"
           git push origin main
@@ -45,7 +45,7 @@ jobs:
       github.event.inputs.scraper == '' ||
       github.event_name == 'schedule'
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
     permissions:
       contents: write
     steps:
@@ -71,7 +71,7 @@ jobs:
       github.event.inputs.scraper == '' ||
       github.event_name == 'schedule'
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
     permissions:
       contents: write
     steps:
@@ -97,7 +97,7 @@ jobs:
       github.event.inputs.scraper == '' ||
       github.event_name == 'schedule'
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
     permissions:
       contents: write
     steps:
@@ -131,16 +131,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Neuesten Stand holen
-        run: |
+      - run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git fetch origin main
           git reset --hard origin/main
-      - name: Merge ausführen
-        run: python merge.py
-      - name: Ergebnis speichern
-        run: |
+          python merge.py
           git add data/incidents.json data/meta.json
           git diff --staged --quiet || git commit -m "Merge $(date '+%d.%m.%Y %H:%M')"
           git push origin main
