@@ -28,6 +28,34 @@
     "pp": "PP München"
   },
   {
+    "date": "13.08.2026",
+    "dateSort": "2026-08-13",
+    "time": "01:30",
+    "nr": "1200",
+    "kategorie": "Raub",
+    "schweregrad": 2,
+    "ort": "Ludwigsvorstadt",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Festnahme von drei Tatverdächtigen nach einem Raubdelikt – Ludwigsvorstadt",
+    "volltext": "Am Donnerstag, 13.08.2026, gegen 01:30 Uhr, befand sich ein 44-jähriger Iraker mit Wohnsitz in München im Bereich der Schillerstraße. Dort traf er auf einen 36-jährigen Syrer mit Wohnsitz in München. Nach bisherigen Erkenntnissen nahm der 36-Jährige das Mobiltelefon des 44-Jährigen gewaltsam an sich. Kurz darauf kamen zwei weitere männliche Personen hinzu. Gemeinsam hielten sie den 44-Jährigen fest und entwendeten Bargeld sowie eine Versicherungskarte. Anschließend entfernten sich die drei Tatverdächtigen mit der Beute. Der 44-Jährige erlitt bei dem Vorfall leichte Verletzungen. Ein auf den Vorfall aufmerksam gewordener Passant verständigte daraufhin den Polizeinotruf 110. Im Rahmen der sofort eingeleiteten Fahndungsmaßnahmen konnte eine Wohnung ermittelt werden, in der sich die drei Tatverdächtigen aufhielten. Nach Rücksprache mit der Staatsanwaltschaft wurde die betreffende Wohnung durchsucht. Dabei nahmen die Einsatzkräfte den 36-Jährigen sowie einen 32-jährigen Syrer mit Wohnsitz im Landkreis Landshut und einen 29-jährigen Syrer mit Wohnsitz in München vorläufig fest. Zudem konnte die Tatbeute aufgefunden und sichergestellt werden. Nach einer erkennungsdienstlichen Behandlung und Abschluss der polizeilichen Maßnahmen wurden die drei Tatverdächtigen wieder entlassen. Die weiteren Ermittlungen wegen des Raubdelikts führt das Kommissariat 21 der Münchner Kriminalpolizei.",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/107136/index.html"
+  },
+  {
+    "date": "12.08.2026",
+    "dateSort": "2026-08-12",
+    "time": "15:45",
+    "nr": "1197",
+    "kategorie": "Verkehr",
+    "schweregrad": 2,
+    "ort": "Unbekannt",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Verkehrsunfall zwischen zivilem Polizeifahrzeug und Kleinkraftrad; eine Person verletzt – Garching bei München",
+    "volltext": "Am Mittwoch, 12.08.2026, gegen 15:45 Uhr, fuhr in der Münchner Straße in Garching, auf Höhe der Hausnummer 77, ein mit zwei Polizeibeamten besetztes ziviles Polizeifahrzeug vom rechten Fahrbahnrand in den fließenden Verkehr ein. Zeitgleich befuhr ein 32-jähriger koreanischer Kleinkraftradfahrer mit Wohnsitz in München mit einem Kymco Motorroller die Münchner Straße in gleiche Richtung. Um einen Zusammenstoß mit dem Polizeifahrzeug zu vermeiden, musste der 32-Jährige stark abbremsen. Dabei verlor er die Kontrolle über das Kleinkraftrad und stürzte. Zu einer Berührung zwischen den beiden Fahrzeugen kam es nicht. Der 32-Jährige wurde dabei verletzt und musste vor Ort durch einen hinzugerufenen Rettungsdienst versorgt werden. Am Kleinkraftrad entstand ein Sachschaden im niedrigen dreistelligen Bereich. Das zivile Dienstfahrzeug wurde nicht beschädigt. Die weiteren Ermittlungen führt die Münchner Verkehrspolizei.",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/107136/index.html"
+  },
+  {
     "date": "12.08.2026",
     "dateSort": "2026-08-12",
     "time": "03:50",
@@ -40,6 +68,48 @@
     "titel": "Wohnungsbrand; eine Person schwer verletzt – Untergiesing",
     "volltext": "Am Mittwoch, 12.08.2026, gegen 03:50 Uhr, wurde der Einsatzzentrale des Polizeipräsidiums München ein Wohnungsbrand in einem Mehrfamilienhaus in Untergiesing mitgeteilt. Sofort wurden mehrere Polizeistreifen sowie Einsatzkräfte der Feuerwehr und des Rettungsdienstes zur Einsatzörtlichkeit geschickt. Vor Ort trafen die Einsatzkräfte auf einen 41-jährigen Deutschen mit Wohnsitz in München. Dieser hatte sich zuvor in der vom Brand betroffenen Wohnung im 3. OG aufgehalten und sei vom Balkon gesprungen. Der 41-Jährige wurde schwer verletzt und musste zur weiteren Behandlung in ein Krankenhaus gebracht werden. Nach aktuellem Stand besteht keine Lebensgefahr. Weitere im Anwesen befindliche Personen wurden nicht verletzt. Die Feuerwehr löschte das Feuer der vollständig ausgebrannten Wohnung. Die übrigen Wohnungen des vierstöckigen Mehrfamilienhauses wurden von dem Brand nicht betroffen und sind weiterhin bewohnbar. Der entstandene Sachschaden wird auf mehrere zehntausend Euro geschätzt. Während des Einsatzes musste die Peter-Auzinger-Straße zeitweise gesperrt werden. Hierdurch kam es zu Verkehrsbehinderungen. Die weiteren Ermittlungen, insbesondere zur Brandursache, führt das Kommissariat 13.",
     "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/107071/index.html"
+  },
+  {
+    "date": "12.08.2026",
+    "dateSort": "2026-08-12",
+    "time": "03:50",
+    "nr": "1198",
+    "kategorie": "Branddelikt",
+    "schweregrad": 2,
+    "ort": "Untergiesing",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Wohnungsbrand; eine Person schwer verletzt – Untergiesing",
+    "volltext": "-siehe Medieninformation Nr. 1189, vom 12.08.2026 Wie bereits berichtet, kam es am Mittwoch, 12.08.2026, gegen 03:50 Uhr, zu einem Wohnungsbrand in einem Mehrfamilienhaus in Untergiesing. Dabei wurde der 41-jährige deutsche Bewohner der betroffenen Wohnung schwer verletzt, nachdem er während des Brandes vom Balkon im dritten Obergeschoss gestürzt war. Im Rahmen der weiteren Ermittlungen ergaben sich Hinweise darauf, dass der Brand möglicherweise vorsätzlich verursacht wurde. Gegen den 41-Jährigen wird deshalb wegen des Verdachts der schweren Brandstiftung ermittelt. Die genaue Brandursache ist weiterhin Gegenstand der Ermittlungen. Der bei dem Brand entstandene Sachschaden wird nach aktuellem Stand auf einen niedrigen sechsstelligen Betrag geschätzt. Die weiteren Ermittlungen führt das Kommissariat 13 der Münchner Kriminalpolizei. Zeugenaufruf: Personen, die am Mittwoch, 12.08.2026, gegen 03:50 Uhr, im Bereich der Peter-Auzinger-Straße und der näheren Umgebung (Untergiesing) Wahrnehmungen gemacht haben, die im Zusammenhang mit dem Brand stehen könnten, werden gebeten, sich mit dem Polizeipräsidium München, Kommissariat 13, Tel. 089 2910-0, oder jeder anderen Polizeidienststelle in Verbindung zu setzen.",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/107136/index.html"
+  },
+  {
+    "date": "12.08.2026",
+    "dateSort": "2026-08-12",
+    "time": "00:00",
+    "nr": "1199",
+    "kategorie": "Einbruch",
+    "schweregrad": 2,
+    "ort": "Au-Haidhausen",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Einbruch in gewerbliches Lager – Haidhausen",
+    "volltext": "Am Mittwoch, 12.08.2026, zwischen 00:00 Uhr und 11:00 Uhr, verschafften sich ein oder mehrere bislang unbekannte Täter gewaltsam Zutritt zu einem Lager einer Veranstaltungsörtlichkeit im Bereich der Ludwigsbrücke. Aus dem Lager wurde Veranstaltungstechnik im Wert eines hohen vierstelligen Betrages entwendet. Anschließend entfernten sich der oder die Täter in unbekannte Richtung. Nachdem der Betreiber der Veranstaltungsörtlichkeit den Einbruch bemerkt hatte, verständigte er den Polizeinotruf 110. Vor Ort wurden umfangreiche Spurensicherungsmaßnahmen durchgeführt. Die weiteren Ermittlungen führt das Kommissariat 52 der Münchner Kriminalpolizei. Zeugenaufruf: Wer hat im angegebenen Zeitraum im Bereich der Ludwigsbrücke und der näheren Umgebung (Haidhausen) Wahrnehmungen gemacht, die im Zusammenhang mit diesem Vorfall stehen könnten? Personen, die sachdienliche Hinweise geben können, werden gebeten, sich mit dem Polizeipräsidium München, Kommissariat 52, Tel. 089 2910-0, oder jeder anderen Polizeidienststelle in Verbindung zu setzen.",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/107136/index.html"
+  },
+  {
+    "date": "12.08.2026",
+    "dateSort": "2026-08-12",
+    "time": "",
+    "nr": "1202",
+    "kategorie": "Diebstahl",
+    "schweregrad": 1,
+    "ort": "Unbekannt",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Schwerpunktkontrollen zur Sicherheit des Radverkehrs – Stadtgebiet München",
+    "volltext": "Am Mittwoch, 12.08.2026, führte das Polizeipräsidium München im Münchner Osten eine Schwerpunktaktion zur Sicherheit des Radverkehrs durch. Insgesamt waren knapp 70 Polizeibeamte an den Kontrollen beteiligt. Radfahrer und E-Scooter-Fahrer gehören insbesondere im innerstädtischen Verkehr zu den weniger geschützten Verkehrsteilnehmern. Gleichzeitig können insbesondere Rotlichtverstöße, die Nutzung eines Mobiltelefons während der Fahrt oder das verbotswidrige Befahren von Gehwegen zu gefährlichen Situationen führen. Ziel der Schwerpunktaktion war es daher, entsprechende Verstöße konsequent zu verfolgen und zugleich das Bewusstsein für ein regelkonformes und rücksichtsvolles Verhalten im Straßenverkehr zu stärken. Im Verlauf der Kontrollen überprüften die Einsatzkräfte über 320 Radfahrer sowie knapp 50 E-Scooter-Fahrer. Insgesamt wurden etwa 280 Verstöße beanstandet. Die Beamten fertigten über 70 Ordnungswidrigkeitenanzeigen und sprachen ca. 200 Verwarnungen aus. Bei den Radfahrern stellten die Einsatzkräfte vorwiegend die verbotswidrige Nutzung von Verkehrsflächen fest. In 129 Fällen waren Radfahrer beispielsweise entgegen der vorgeschriebenen Fahrtrichtung oder auf Gehwegen unterwegs. Zudem wurden 52 Rotlichtverstöße und 40 Fälle der verbotswidrigen Nutzung eines Mobiltelefons festgestellt. Bei einem E-Bike stellten die Beamten zudem eine Manipulation fest. Auch E-Scooter wurden gezielt kontrolliert. Dabei stellten die Einsatzkräfte unter anderem Verstöße wegen der falschen Ben",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/107136/index.html"
   },
   {
     "date": "11.08.2026",
@@ -236,6 +306,20 @@
     "titel": "Größerer Polizeieinsatz – Ramersdorf",
     "volltext": "Am Sonntag, 09.08.2026, gegen 00:05 Uhr, wurde der Polizeinotruf 110 darüber verständigt, dass sich in einer U-Bahn-Linie U2 in Richtung Messestadt Ost eine männliche Person mit Messer befindet. Ein Fahrgast verhielt sich während der Fahrt auffällig, schrie andere Fahrgäste an, gestikulierte mit einem Messer in Richtung dieser und stach zudem auf eine Fensterscheibe ein. Durch einen Fahrgast wurde die U-Bahnfahrerin auf die Situation aufmerksam gemacht. Sie informierte daraufhin die Polizei und der Verursacher konnte am U-Bahnhof Karl-Preis-Platz von den eingesetzten Polizeibeamten widerstandslos festgenommen werden. Das Messer wurde sichergestellt. Bei ihm handelt es sich um einen 47-Jährigen mit deutscher Staatsangehörigkeit und ohne festen Wohnsitz in Deutschland. Durch den Vorfall wurde niemand verletzt. An einem Fenster der U-Bahn entstand ein Sachschaden in Höhe von mehreren hundert Euro. Der 47-Jährige wurde nach Abschluss der polizeilichen Maßnahmen aufgrund seiner psychischen Auffälligkeiten in einer psychiatrischen Einrichtung untergebracht. Die weiteren Ermittlungen werden durch die Münchner Kriminalpolizei geführt.",
     "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/106966/index.html"
+  },
+  {
+    "date": "08.08.2026",
+    "dateSort": "2026-08-08",
+    "time": "21:00",
+    "nr": "1201",
+    "kategorie": "Fahndung",
+    "schweregrad": 2,
+    "ort": "Pasing-Obermenzing",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Festnahme von zwei Tatverdächtigen nach Fahrraddiebstählen – Untermenzing",
+    "volltext": "Am Samstag, 08.08.2026, zwischen 21:00 Uhr und 22:00 Uhr, wurde das Pedelec eines 63-Jährigen Deutschen mit Wohnsitz in München entwendet. Dieser hatte sein Pedelec im Bereich eines Biergartens in der Verdistraße abgestellt und versperrt. Den Diebstahl brachte er daraufhin zur Anzeige. Am Mittwoch, 12.08.2026, entdeckte er sein entwendetes Pedelec auf einem Online Verkaufsportal und meldete dies der Polizeiinspektion 45 (Pasing). Im Verlauf der darauffolgenden Ermittlungen konnten ein 14-jähriger Ukrainer und ein 14-jähriger Deutscher, beide mit Wohnsitz in München, als Tatverdächtige ermittelt und vorläufig festgenommen werden. Das entwendete Fahrrad im Wert eines niedrigen vierstelligen Betrages konnte hierbei aufgefunden und sichergestellt werden. Im Anschluss wurden auf richterliche Anordnung die Wohnungen der beiden 14-Jährigen durchsucht. Dabei fanden die Einsatzkräfte ein am Freitag, 07.08.2026, im Bereich der Pfarrer-Grimm-Straße entwendetes und ein am Montag, 03.08.2026, im Bereich der Zwiedineckstraße entwendetes Fahrrad. Außerdem konnte ein am Dienstag, 11.08.2026, im Bereich der Zwiedineckstraße entwendeter E-Scooter aufgefunden werden. Darüber hinaus ergaben sich Hinweise auf weitere Straftaten. Unter anderem wurden Ermittlungsverfahren wegen Kennzeichendiebstählen, Urkundenfälschungen und eines Verstoßes gegen das Waffengesetz eingeleitet. Nach einer durchgeführten erkennungsdienstlichen Behandlung und Abschluss der weiteren polizeilichen Maßnahmen wurden die be",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/107136/index.html"
   },
   {
     "date": "08.08.2026",
@@ -726,6 +810,20 @@
     "titel": "Festnahme eines Tatverdächtigen nach schwerem Raub – Bogenhausen",
     "volltext": "Am Sonntag, 02.08.2026, gegen 20:30 Uhr, befand sich ein 29-jähriger türkischer Staatsangehöriger mit Wohnsitz in München auf dem Nachhauseweg im Bereich des Arabellaparks. Nach den bisherigen Ermittlungen bedrohte ein zunächst unbekannter Täter den Geschädigten im Bereich eines Hauseingangs unter Vorhalt eines Messers und forderte die Herausgabe von Wertgegenständen. Anschließend übergab der 29-Jährige seine mitgeführten Gegenstände. Da sich kein Bargeld im Geldbeutel des 29-Jährigen befand, forderte der Täter ihn auf, ihn zu einem Geldautomaten zu begleiten, um dort Geld abzuheben. Beide fuhren hierzu mit einem Linienbus in Richtung Rosenkavalierplatz. Dort gelang dem 29-Jährigen die Flucht. Der Täter entfernte sich anschließend in unbekannte Richtung. Ein auf den Vorfall aufmerksam gewordener Busfahrer verständigte die Polizei. Sofort eingeleitete Fahndungsmaßnahmen führten dabei nicht zur Festnahme und Ermittlung des Täters. Der 29-Jährige wurde bei dem Raub nicht verletzt. Am Montag, 03.08.2026, gegen 21:00 Uhr, begab sich der 29-Jährige wegen einer Anzeigenbestätigung des Raubes zum Dienstgebäude der Polizeiinspektion 22 (Bogenhausen). Dort erkannte er den zufällig vor Ort befindlichen Täter des Raubes wieder, welcher gerade als Geschädigter eines Diebstahls eine Anzeige aufgeben wollte. Hierbei handelt es sich um einen 15-jährigen Deutschen mit Wohnsitz in München. Dieser wurde anschließend vor Ort festgenommen. Im Rahmen der weiteren Ermittlungen wurde die elterliche ",
     "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/106741/index.html"
+  },
+  {
+    "date": "02.08.2026",
+    "dateSort": "2026-08-02",
+    "time": "18:15",
+    "nr": "1196",
+    "kategorie": "Diebstahl",
+    "schweregrad": 1,
+    "ort": "Altstadt-Lehel",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Diebstahl von Teilen einer Bronzeskulptur – Altstadt",
+    "volltext": "Im Zeitraum von Sonntag, 02.08.2026, 18:15 Uhr, bis Montag, 03.08.2026, 12:30 Uhr, entwendeten ein oder mehrere bislang unbekannte Täter Teile einer vor einem Museum aufgestellten Bronzeskulptur. Bei den entwendeten Teilen handelt es sich um zwei Bronzeabgüsse von Maschinenpistolen der Modelle MP5K und MAC-10. Der entstandene Entwendungsschaden liegt im niedrigen fünfstelligen Bereich. Die Münchner Kriminalpolizei führte vor Ort umfangreiche Maßnahmen zur Spurensicherung durch. Das Kommissariat 52 hat die weiteren Ermittlungen übernommen. Zeugenaufruf: Wer hat im angegebenen Zeitraum im Bereich der Hotterstraße (Altstadt) Wahrnehmungen gemacht, die im Zusammenhang mit diesem Vorfall stehen könnten? Wer kann Hinweise zum Verbleib der entwendeten Bronzeabgüsse geben? Personen, die sachdienliche Hinweise geben können, werden gebeten, sich mit dem Polizeipräsidium München, Kommissariat 52, Tel. 089 2910-0, oder jeder anderen Polizeidienststelle in Verbindung zu setzen. Hinweis der Münchner Polizei: Die Münchner Polizei warnt ausdrücklich vor dem Ankauf der entwendeten Bronzeabgüsse. Bei den Gegenständen handelt es sich um Bestandteile eines Kunstwerks, die Schusswaffen nachbilden. Insbesondere aufgrund ihrer auffälligen Gestaltung und Herkunft ist nicht auszuschließen, dass diese zum Kauf angeboten werden. Von einem Ankauf wird daher ausdrücklich abgeraten.",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/107136/index.html"
   },
   {
     "date": "02.08.2026",
