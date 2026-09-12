@@ -28,6 +28,20 @@
     "pp": "PP München"
   },
   {
+    "date": "09.09.2026",
+    "dateSort": "2026-09-09",
+    "time": "13:00",
+    "nr": "1325",
+    "kategorie": "Diebstahl",
+    "schweregrad": 1,
+    "ort": "Schwabing-West",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Terminhinweis:",
+    "volltext": "Gemeinsame Fahrradcodieraktion des ADFC und der Polizei München – Georg-Birk-Straße (neben der Bushaltestelle) Schwabing-West Am Mittwoch, 09.09.2026, im Zeitraum von 13:00 Uhr bis 18:00 Uhr, findet die letzte gemeinsame Fahrradcodieraktion des Allgemeinen Deutschen Fahrrad-Clubs München e.V. (ADFC) und der Münchner Polizei in der Georg-Birk-Straße (neben der Bushaltestelle) statt. Im Rahmen dieser Veranstaltung klären Polizeibeamte insbesondere zum Thema Fahrraddiebstahl auf und geben nützliche Hinweise und Tipps, um nicht Opfer eines Fahrraddiebstahls zu werden. Aus polizeilicher Sicht ist ein codiertes Fahrrad sehr sinnvoll, um beispielsweise im Falle eines Verlustes oder Diebstahls das Fahrrad dem Geschädigten bzw. Verlierer schnell zuzuordnen und es ihm wieder aushändigen zu können. Bei einem Diebstahl kann eine Codierung auch der Polizei sehr nützliche Hinweise für die Ermittlung eines Täters geben. Der Kreisverband München des ADFC codiert seit über 20 Jahren Fahrräder mit dem EIN-Code (Eigentümer-Identifizierungs-Nachweis). Dieser Code wurde Anfang der 1990er Jahre von der hessischen Polizei entwickelt und wird heute in fast allen Bundesländern verwendet. Der Code setzt sich zusammen aus Stadt- bzw. Landkreis, einem Straßenschlüssel, der Hausnummer sowie den Initialen des Besitzers und der Jahreszahl der Codierung. So kann man über den Code Rückschlüsse auf den Eigentümer erhalten und eine Registrierung oder Datenverwaltung ist nicht notwendig. Wie läuft eine Codierun",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/108208/index.html"
+  },
+  {
     "date": "07.09.2026",
     "dateSort": "2026-09-07",
     "time": "16:20",
@@ -86,6 +100,20 @@
   {
     "date": "06.09.2026",
     "dateSort": "2026-09-06",
+    "time": "15:30",
+    "nr": "1320",
+    "kategorie": "Verkehr",
+    "schweregrad": 2,
+    "ort": "Unbekannt",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Unfall zwischen Pkw und Fahrradfahrer; eine Person verletzt – Oberhaching",
+    "volltext": "Am Sonntag, 06.09.2026, gegen 15:30 Uhr, befuhr eine über 80-jährige Deutsche mit Wohnsitz im Landkreis München mit einem Opel Pkw den Bahnhofplatz in Oberhaching von der Gartenstraße kommend in Richtung Gleißentalstraße. Zur gleichen Zeit befuhr ein 63-jähriger Deutscher mit Wohnsitz in München mit einem Rennrad den Bahnhofplatz in entgegengesetzte Richtung. Auf Höhe der Hausnummer 2 wollte die über 80-Jährige nach links in eine Parklücke abbiegen. Dabei kam es zum Zusammenstoß mit dem 63-Jährigen. Der 63-Jährige wurde bei dem Unfall schwer verletzt. Er wurde nach einer Erstversorgung vor Ort vom Rettungsdienst zur weiteren Behandlung in ein Krankenhaus gebracht. Die über 80-Jährige blieb unverletzt. An beiden Fahrzeugen entstand ein Sachschaden in Höhe eines niedrigen vierstelligen Betrags. Das Rennrad wurde zur Eigentumssicherung sichergestellt. Im Rahmen der Unfallaufnahme musste der Bahnhofplatz für etwa eineinviertel Stunden in nördlicher Fahrtrichtung gesperrt werden. Es kam zu keinen nennenswerten Verkehrsbeeinträchtigungen. Die weiteren Ermittlungen übernimmt die Münchner Verkehrspolizei. Zeugenaufruf: Personen, die sachdienliche Hinweise zum Unfallhergang machen können, werden gebeten, sich mit dem Unfallkommando, Tegernseer Landstraße 210, 81549 München, Tel.: 089 6216-3322, in Verbindung zu setzen.",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/108208/index.html"
+  },
+  {
+    "date": "06.09.2026",
+    "dateSort": "2026-09-06",
     "time": "03:20",
     "nr": "1331",
     "kategorie": "Einbruch",
@@ -96,6 +124,20 @@
     "titel": "Festnahme eines Einbrechers – Berg am Laim",
     "volltext": "Am Sonntag, 06.09.2026, gegen 03:20 Uhr, bemerkte der Betreiber eines Imbisses über seine Videokameraanlage einen zunächst unbekannten Mann, der sich an zwei Kassen zu schaffen machte und daraus Bargeld entwendete. Daraufhin verständigte er den Polizeinotruf 110. Umgehend wurden mehrere Polizeistreifen zur Einsatzörtlichkeit geschickt. Beim Eintreffen der Einsatzkräfte war der Täter bereits geflüchtet. Im Rahmen der sofort eingeleiteten Fahndung wurde ein 20-jähriger Deutscher mit Wohnsitz in München als Tatverdächtiger festgestellt und festgenommen. Der 20-Jährige wurde nach den polizeilichen Maßnahmen an die Haftanstalt des Polizeipräsidium Münchens überstellt und einem Ermittlungsrichter vorgeführt. Dieser erließ Haftbefehl gegen ihn. Die weiteren Ermittlungen wegen Einbruchs übernimmt das Kommissariat 52.",
     "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/108259/index.html"
+  },
+  {
+    "date": "06.09.2026",
+    "dateSort": "2026-09-06",
+    "time": "02:40",
+    "nr": "1322",
+    "kategorie": "Raub",
+    "schweregrad": 2,
+    "ort": "Altstadt-Lehel",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Festnahme von zwei Tatverdächtigen nach Raubdelikt – Altstadt",
+    "volltext": "Am Sonntag, 06.09.2026, gegen 02:40 Uhr, befand sich ein 32-Jähriger mit moldauischer Staatsangehörigkeit mit Wohnsitz im Landkreis Freising in der Sonnenstraße am Stachus. Der 32-Jährige hielt sich dort mit mehreren Bekanntschaften auf. Hier wurde er anschließend unvermittelt von einem 43-Jährigen mit ukrainischer Staatsangehörigkeit und Wohnsitz in München zu Boden gedrückt. Eine weitere 39-Jährige mit ukrainischer Staatsbürgerschaft und Wohnsitz in München entnahm anschließend Bargeld in Höhe eines kleinen dreistelligen Betrags aus der Hosentasche des 32-Jährigen. Der 32-Jährige wurde durch die Tathandlungen leicht verletzt. Durch eine schnell hinzukommenden Streifenbesatzungen konnten alle Beteiligten an der Örtlichkeit gesichert werden. Der 43-Jährige und die 39-Jährige wurden vorläufig festgenommen und anschließend der Haftanstalt des Polizeipräsidiums München überstellt. Die Tatbeute konnte zudem bei dem 43-Jährigen aufgefunden werden. Vor Ort wurden umfangreichen Spurensicherungen durchgeführt. Die weiteren Ermittlungen führt das Kommissariat 21.",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/108208/index.html"
   },
   {
     "date": "06.09.2026",
@@ -138,6 +180,20 @@
     "titel": "Festnahme nach Aggressionsdelikt im Straßenverkehr - Ludwigsvorstadt",
     "volltext": "Am Samstag, 05.09.2026, gegen 20:00 Uhr, wollte ein 40-Jähriger mit italienischer Staatsangehörigkeit und Wohnsitz in München mit seinem Pkw Audi in der Schwanthalerstraße rückwärts am Fahrbahnrand einparken. Hinter ihm fuhr ein 32-Jähriger mit syrischer Staatsangehörigkeit und Wohnsitz in München mit seinem Pkw Mercedes. Als der 40-Jährige ihn bat, Rücksicht zu nehmen, damit er weiter einparken könnte, eskalierte die Situation plötzlich. Der 32-Jährige beleidigte seinen Kontrahenten, stieg aus seinem Pkw, griff durch das Beifahrerfenster des 40-Jährigen, nahm diverse Gegenstände an sich und warf sie auf den Boden. Zudem schlug er dem 40-Jährigen ins Gesicht. Als der 40-Jährige ausstieg, packte ihn der 32-Jährige am Hals und schlug seinen Kopf auf die Motorhaube des Fahrzeugs. Mehrere unbeteiligte Passanten wurden auf die Situation aufmerksam. Sie zeigten Zivilcourage indem sie die Polizei verständigten und couragiert einschritten. Dabei zogen sie den 32-Jährigen weg und unterbanden weitere Angriffe. Dem 32-Jährigen gelang es, sich mit seinem Pkw vom Tatort zu entfernen. Er konnte jedoch durch eine schnell eintreffende Polizeistreife im Umfeld angehalten und festgenommen werden. Der 40-Jährige erlitt leichte Verletzungen, musste jedoch nicht ärztlich behandelt werden. Am Tatort wurden Spurensicherungsmaßnahmen durchgeführt. Nach den polizeilichen Maßnahmen und einer Anzeige unter anderem wegen Körperverletzung und Beleidigung wurde der 32-Jährige wieder entlassen. Die weitere",
     "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/108165/index.html"
+  },
+  {
+    "date": "05.09.2026",
+    "dateSort": "2026-09-05",
+    "time": "10:15",
+    "nr": "1323",
+    "kategorie": "Fahndung",
+    "schweregrad": 2,
+    "ort": "Milbertshofen",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Verkehrsunfall mit Fahrerflucht – Milbertshofen-Am Hart",
+    "volltext": "Am 05.09.2026, gegen 10:15 Uhr, wurde die Polizeiinspektion 43 durch eine 29-Jährige mit deutscher Staatsangehörigkeit und Wohnsitz in München, telefonisch kontaktiert. Die 29-Jährige konnte in der Schleißheimer Straße 500 einen 30-Jährigen mit kosovarischer Staatsangehörigkeit und Wohnsitz in München beobachten, wie dieser mit einem Leichtkraftrad einen Verkehrsunfall mit einem parkenden Pkw verursachte. Anschließend soll sich der 30-Jährige von der Unfallörtlichkeit entfernt haben. Daraufhin wurde eine uniformierte Streifenbesatzung zur Einsatzörtlichkeit beordert. Hier konnte der 30-Jährige noch angetroffen werden. Im Rahmen der weiteren Sachbearbeitung konnte festgestellt werden, dass er alkoholisiert und nicht im Besitz einer gültigen Fahrerlaubnis war. Des Weiteren konnte unter dem Sitz des Leichtkraftrades eine Schreckschusswaffe mit dazugehörigem Magazin und Munition aufgefunden werden. Den zum Führen notwendig kleinen Waffenschein besitzt der 30-Jährige nicht. Auch bestand gegen ihn ein offener Vollstreckungshaftbefehl, welchen er jedoch durch Zahlung abwenden konnte. Bei dem 30-Jährigen wurde eine Blutentnahme durchgeführt. Gegen ihn wird nun wegen Gefährdung des Straßenverkehrs, Fahren ohne Fahrerlaubnis sowie eines Verstoßes nach dem Waffengesetzes ermittelt. Nach Beendigung aller Maßnahmen und der Anzeigenerstattung wurde er entlassen. Die weiteren Ermittlungen führt unter anderem das Kommissariat 24 und die Münchner Verkehrspolizei.",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/108208/index.html"
   },
   {
     "date": "04.09.2026",
@@ -194,6 +250,34 @@
     "titel": "Verkehrsunfall zwischen Bus und Fahrrad, eine Person schwer verletzt - Garching-Hochbrück",
     "volltext": "Am Freitag, 04.09.2026, gegen 18:10 Uhr, fuhr ein 44-jähriger Busfahrer mit seinem Linienbus von der U-Bahnhaltestelle Garching-Hochbrück los und wollte an einer Einmündung nach rechts in die Daimlerstraße Richtung Schleißheimer Straßen abbiegen. Zeitgleich fuhr eine 58-Jährige mit rumänischer Staatsangehörigkeit und Wohnsitz im Landkreis München mit ihrem E-Bike den Radweg der Daimlerstraße ebenfalls in Richtung Schleißheimer Straße. An der Einmündung missachte der 44-jährige Busfahrer die Vorfahrt und es kam zur Kollision mit der Radfahrerin. Diese stürzte zu Boden und geriet mit ihren Beinen unter einen Reifen des Busses. Hierdurch erlitt sie schwere Verletzungen. Sie wurde mit Notarzt und Rettungswagen in ein Münchner Krankenhaus gebracht und dort stationär aufgenommen. An den Fahrzeuge entstand leichter Schaden. Die weiteren Ermittlungen zum Unfallhergang werden von der Münchner Verkehrspolizei geführt.",
     "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/108165/index.html"
+  },
+  {
+    "date": "04.09.2026",
+    "dateSort": "2026-09-04",
+    "time": "17:00",
+    "nr": "1324",
+    "kategorie": "Körperverletzung",
+    "schweregrad": 2,
+    "ort": "Altstadt-Lehel",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Widerstand gegen Vollstreckungsbeamte – Altstadt",
+    "volltext": "Am Freitag, 04.09.2026, gegen 17:00 Uhr, randalierten eine 16-Jährige und eine 19-Jährigen, beide mit deutscher Staatsangehörigkeit und Wohnsitzen im Landkreis Ebersberg, vor einem Hotel in der Altstadt. Als sie von Mitarbeitern des Platzes verwiesen werden sollten, kam es zu einer Körperverletzung zum Nachteil einer Hotelmitarbeiterin. Diese wurde leicht verletzt. Anschließend wurde der Polizeinotruf verständigt. Gegenüber einer schnell eintreffenden Polizeistreife verhielten sich die jungen Frauen ebenfalls aggressiv. Aufgrund ihrer starken Alkoholisierung stürzte die 19-Jährige zu Boden. Durch die Polizeibeamten wurde versucht, Erste Hilfe zu leisten. Die 16-Jährige störte dies durch Tätlichkeiten und musste von den Polizeibeamten gefesselt werden. Die 19-Jährige versuchte daraufhin, die Polizeibeamten zu treten und musste ebenfalls fixiert und gefesselt werden. Während der Widerstandshandlungen kam ein unbeteiligter 48-Jähriger mit deutscher Staatsangehörigkeit und Wohnsitz im Landkreis Ansbach hinzu und störte die Maßnahme. Er erhielt einen Platzverweis, kam diesem jedoch nicht nach und wurde zunehmend aggressiv. Auch er musste fixiert und gefesselt werden, wogegen er sich körperlich zur Wehr setzte. Aufgrund ihrer starken Alkoholisierung kam die 19-Jährige mit dem Rettungsdienst in ein Münchner Krankenhaus. Aufgrund psychischer Auffälligkeiten wurde sie im Verlauf des Abends in ein psychiatrisches Krankenhaus überstellt. Die 16-Jährige wurden nach den polizeilichen Maßn",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/108208/index.html"
+  },
+  {
+    "date": "04.09.2026",
+    "dateSort": "2026-09-04",
+    "time": "14:25",
+    "nr": "1321",
+    "kategorie": "Diebstahl",
+    "schweregrad": 1,
+    "ort": "Neuhausen-Nymphenburg",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Zeugenaufruf nach Trickdiebstahl – Neuhausen",
+    "volltext": "Am Freitag, 04.09.2026, gegen 14:25 Uhr, befand sich eine über 70-jährige Deutsche mit Wohnsitz in München im Außenbereich einer Bäckerei am Rotkreuzplatz. Aus persönlichen Gründen begann die Frau zu weinen, weshalb sich ein ihr unbekannter Mann gegenüber und sie in ein Gespräch verwickelte. Dabei vermittelte er den Eindruck sie trösten zu wollen. Im weiteren Verlauf des Gesprächs legte der unbekannte Mann den Arm um sie und entwendete dabei unbemerkt eine getragene, goldenen Halskette. Anschließend bot er der über 70-Jährigen an, seine Familie zu holen, weshalb er sich in Richtung Rotkreuzplatz entfernte. Die weiteren Ermittlungen übernimmt das Kommissariat 55. Der Täter kann wie folgt beschrieben werden: Männlich, ca. 45 Jahre, ca. 1,70 m, schwarze, leicht gewellte, nach hinten gegelte Haare, weißes Hemd, lange, weite Jeans, türkis-blauer Schal, leicht gebräunte Haut, gab der über 70-Jährigen an Slowene zu sein, gesamte linke Unterarm tätowiert, u.a. mit einem Schriftzug „jasni“ Zeugenaufruf: Wer hat im angegebenen Zeitraum im Bereich Wendl–Dietrich-Straße, Donnersbergerstraße, Rotkreuzplatz, Nymphenburger Straße (Neuhausen) Wahrnehmungen gemacht, die im Zusammenhang mit diesem Vorfall stehen könnten? Personen, die sachdienliche Hinweise geben können, werden gebeten, sich mit dem Polizeipräsidium München, Kommissariat 55, Tel. 089 2910-0, oder jeder anderen Polizeidienststelle in Verbindung zu setzen.",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/108208/index.html"
   },
   {
     "date": "04.09.2026",
