@@ -240,6 +240,20 @@
   {
     "date": "16.09.2026",
     "dateSort": "2026-09-16",
+    "time": "02:00",
+    "nr": "1382",
+    "kategorie": "Einbruch",
+    "schweregrad": 2,
+    "ort": "Isarvorstadt",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Festnahme eines Tatverdächtigen nach versuchtem Einbruch in eine Apotheke – Isarvorstadt",
+    "volltext": "Am Mittwoch, 16.09.2026, gegen 02:00 Uhr, beobachtete eine Passantin, wie ein Mann versuchte, gewaltsam die Eingangstür einer Apotheke am Sendlinger-Tor-Platz zu öffnen. Als ihm dies nicht gelang, entfernte er sich vom Tatort. Die Passantin verständigte daraufhin den Polizeinotruf 110. Es wurden direkt mehrere Polizeistreifen zum Einsatzort geschickt. Im Rahmen der unmittelbar eingeleiteten Fahndung konnte ein Tatverdächtiger angetroffen und vorläufig festgenommen werden. Bei ihm handelte es sich um einen 18-jährigen mit ukrainischer Staatsangehörigkeit und ohne festen Wohnsitz in Deutschland. An der Eingangstür entstand geringer Sachschaden. Vor Ort wurden Spurensicherungsmaßnahmen durchgeführt. Nach Abschluss der polizeilichen Maßnahmen und einer Anzeigenerstattung wegen des versuchten schweren Diebstahls wurde der 18-Jährige der Haftanstalt des Polizeipräsidiums München überstellt. Er wird im Laufe des heutigen Tages einem Ermittlungsrichter vorgeführt, der über den Erlass eines Haftbefehls entscheidet. Das Kommissariat 52 hat die weiteren Ermittlungen übernommen.",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/108613/index.html"
+  },
+  {
+    "date": "16.09.2026",
+    "dateSort": "2026-09-16",
     "time": "",
     "nr": "1390",
     "kategorie": "Verkehr",
@@ -250,6 +264,48 @@
     "titel": "Verkehrsunfall zwischen Pkw und Kraftomnibus; eine Person verletzt – Moosach",
     "volltext": "Am Mittwoch, 16.09.2026, gegen 15:00, fuhr ein 56-jähriger Deutscher mit Wohnsitz im Landkreis Starnberg mit einem Toyota Pkw auf der Ludwigsfelder Straße in Richtung Dachauer Straße. Zur gleichen Zeit fuhr ein 72-Jähriger mit kroatischer Staatsangehörigkeit und Wohnsitz in Nordrhein-Westfalen mit einem Mercedes Bus ebenfalls auf der Ludwigsfelder Straße in entgegengesetzter Richtung. Dabei stießen die beiden Fahrzeuge zusammen. Durch den Zusammenstoß kam der Bus von der Fahrbahn ab und der Pkw kam quer auf der Fahrbahn der Ludwigsfelder Straße zum Stillstand. Beide Fahrer wurden leicht verletzt. Der 56-Jährige musste vom Rettungsdienst in ein Krankenhaus gebracht werden. Beide Kraftfahrzeuge mussten abgeschleppt werden, da sie nicht mehr fahrbereit waren. Es entstand ein Schaden von mehreren Tausend Euro. Die Ludwigsfelder Straße wurde während der Verkehrsunfallaufnahme für zwei Stunden in eine Fahrtrichtung gesperrt. Es kam zu umfangreichen Verkehrsbehinderungen. Die Münchner Verkehrspolizei hat die weiteren Ermittlungen übernommen.",
     "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/108647/index.html"
+  },
+  {
+    "date": "16.09.2026",
+    "dateSort": "2026-09-16",
+    "time": "",
+    "nr": "1379",
+    "kategorie": "Sonstiges",
+    "schweregrad": 1,
+    "ort": "Unbekannt",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Gemeinsame Pressekonferenz von Polizei und KVR München zur Sicherheit auf dem Oktoberfest",
+    "volltext": "Sonderbeilage Polizei und KVR 2026",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/108613/index.html"
+  },
+  {
+    "date": "15.09.2026",
+    "dateSort": "2026-09-15",
+    "time": "18:25",
+    "nr": "1381",
+    "kategorie": "Verkehr",
+    "schweregrad": 1,
+    "ort": "Altstadt-Lehel",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Radfahrerin stürzt alleinbeteiligt; eine Person verletzt – Altstadt-Lehel",
+    "volltext": "Am Dienstag, 15.09.2026, gegen 18:25 Uhr, fuhr eine 70-jährige Deutsche mit Wohnsitz in München mit einem Fahrrad auf der Zweibrückenstraße von der Ludwigsbrücke kommend in Richtung Isartorplatz. Dort wollte die 70-Jährige von der Fahrbahn nach rechts auf den dort baulich getrennten Radweg auffahren. Beim Überfahren des Randsteins stürzte sie zu Boden. Die 70-Jährige wurde bei dem Sturz schwer verletzt (darunter auch Kopfverletzung). Sie trug bei dem Unfall keinen Helm. Sie musste vom Rettungsdienst zur stationären Behandlung in ein Krankenhaus gebracht werden. Das Fahrrad wurde bei dem Unfall leicht beschädigt. Die weiteren Ermittlungen zum Unfallhergang führt die Münchner Verkehrspolizei. Hinweis der Münchner Verkehrspolizei: Durch das Tragen von Fahrradhelmen können Kopfverletzungen oft vermieden oder zumindest kann das Ausmaß der Verletzungen verringert werden. Obwohl das Tragen von Fahrradhelmen gesetzlich nicht vorgeschrieben ist, empfiehlt die Münchner Polizei grundsätzlich allen Radfahrern, entsprechende Helme zu tragen.",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/108613/index.html"
+  },
+  {
+    "date": "15.09.2026",
+    "dateSort": "2026-09-15",
+    "time": "15:10",
+    "nr": "1380",
+    "kategorie": "Raub",
+    "schweregrad": 2,
+    "ort": "Unbekannt",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Verkehrsunfall zwischen Pkw und Lkw; eine Person verletzt – Aying",
+    "volltext": "Am Dienstag, 15.09.2026, gegen 15:10 Uhr, fuhr ein über 80-jähriger Deutscher mit Wohnsitz im Landkreis Rosenheim mit einem Volvo Pkw auf der Rosenheimer Straße von Aying kommend in Richtung Großhelfendorf. Zur selben Zeit fuhr ein 61-jähriger Deutscher mit Wohnsitz im Landkreis Erding mit einem Mercedes Lkw auf der Rosenheimer Straße in entgegengesetzte Richtung. In Großhelfendorf geriet der über 80-Jährige aus bislang ungeklärter Ursache mit seinem Pkw auf die Gegenfahrbahn. Dort kam es zum Frontalzusammenstoß mit dem entgegenkommenden Lkw. Der über 80-Jährige wurde bei dem Unfall schwer verletzt. Nach einer Erstversorgung vor Ort wurde er mit einem Rettungshubschrauber zur stationären Behandlung in ein Krankenhaus gebracht. Der 61-Jährige blieb unverletzt. Beide Fahrzeuge wurden bei dem Unfall schwer beschädigt, waren nicht mehr fahrbereit und mussten abgeschleppt werden. Es entstand ein Gesamtschaden in sechsstelliger Höhe. Für die Dauer der Unfallaufnahme und der Bergungsmaßnahmen musste die Rosenheimer Straße zwischen der Hirschbergstraße und der Glonner Straße für etwa vier Stunden komplett gesperrt werden. Es kam zu erheblichen Verkehrsbehinderungen. Die weiteren Ermittlungen zum Unfallhergang führt die Münchner Verkehrspolizei.",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/108613/index.html"
   },
   {
     "date": "15.09.2026",
@@ -334,6 +390,20 @@
     "titel": "Verkehrsunfall zwischen Pkw und Fahrrad; eine Person verletzt – Unterschleißheim",
     "volltext": "Am Montag, 14.09.2026, gegen 16:15 Uhr, befuhr eine 32-jährige Deutsche mit Wohnsitz im Landkreis München mit einem Peugeot Pkw die Röntgenstraße in Unterschleißheim in Richtung Landshuter Straße. Zur selben Zeit befuhr eine 74-jährige Deutsche mit Wohnsitz im Landkreis München mit ihrem Pedelec den Geh- und Radweg in entgegengesetzter Fahrtrichtung in Richtung Oberschleißheim. Inwieweit das Befahren des Geh- und Radwegs an dieser Stelle freigegeben ist, obliegt den weiteren Ermittlungen. Nach derzeitigen Erkenntnissen bog die 32-Jährige aus der Röntgenstraße nach rechts in die Landshuter Straße ab. Dabei stieß sie mit der von rechts kommenden 74-Jährigen zusammen, die die dort vorhandene Radfahrerfurt überquerte. Durch die Kollision und den anschließenden Sturz wurde die 74-Jährige schwer verletzt. Sie wurde vom Rettungsdienst zur stationären Behandlung in ein Krankenhaus verbracht. Das Pedelec und der Pkw wurden leicht beschädigt. Die weiteren Ermittlungen, insbesondere zum genauen Unfallhergang, übernimmt die Verkehrspolizei München.",
     "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/108564/index.html"
+  },
+  {
+    "date": "14.09.2026",
+    "dateSort": "2026-09-14",
+    "time": "03:00",
+    "nr": "1383",
+    "kategorie": "Einbruch",
+    "schweregrad": 2,
+    "ort": "Unbekannt",
+    "pp": "PP München",
+    "region": "PP München",
+    "titel": "Einbruch in einen gewerblichen Betrieb – Unterföhring",
+    "volltext": "Am Montag, 14.09.2026, gegen 03:00 Uhr, gelangten zwei bislang unbekannte Täter gewaltsam über eine Tür in einen gewerblichen Betrieb in Unterföhring. Anschließend begaben sie sich in die Geschäftsräume und entwendeten dort einen Tresor. Danach flüchteten die Täter mit ihrer Beute in unbekannte Richtung. Als der Einbruch am darauffolgenden Tag bemerkt wurde, wurde umgehend die Polizei verständigt. Vor Ort wurden umfangreiche Spurensicherungsmaßnahmen durchgeführt. Das Kommissariat 52 hat die weiteren Ermittlungen übernommen. Zeugenaufruf: Wer hat im angegebenen Zeitraum im Bereich der Apianstraße (Unterföhring) Wahrnehmungen gemacht, die im Zusammenhang mit diesem Vorfall stehen könnten? Personen, die sachdienliche Hinweise geben können, werden gebeten, sich mit dem Polizeipräsidium München, Kommissariat 52, Tel. 089 2910-0, oder jeder anderen Polizeidienststelle in Verbindung zu setzen.",
+    "link": "https://polizei.bayern.de/aktuelles/pressemitteilungen/108613/index.html"
   },
   {
     "date": "14.09.2026",
