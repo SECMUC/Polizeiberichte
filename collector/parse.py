@@ -202,7 +202,8 @@ def parse_article(html: str, pm_id: str, url: str):
             if mm["nr"] not in best or len(mm["text"]) > len(best[mm["nr"]]["text"]):
                 best[mm["nr"]] = mm
         meldungen = [mm for mm in best.values() if len(mm["text"]) >= 20]
-    else:
+    if not meldungen:
+        # kein (verwertbares) Nummernformat: gesamtes Dokument = eine Meldung
         body = _norm("\n".join((b.get("full") or b["text"]) for b in blocks if not (b["kind"] == "head" and b["text"] == title)))
         if len(body) >= 20:
             meldungen = [{"nr": None, "titel": title, "abschnitt": None, "text": body}]

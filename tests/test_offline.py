@@ -14,7 +14,7 @@ def run():
     config.DATA = tmp
     ids = sorted(p.stem for p in SAMPLES.glob("*.html") if p.stem.isdigit())
     sources.discover_listing = lambda http: ([{"id": i, "pp": None, "ts": None, "titel": None} for i in ids], len(ids))
-    sources.discover_archive = lambda http, pp, a, b: []
+    sources.discover_archive = lambda http, pp, a, b: ([], [])
     sources.discover_telegram = lambda http, ch, max_pages=3: []
     sources.fetch_article = lambda http, i: (SAMPLES / f"{i}.html").read_text(encoding="utf-8")
     rc = cli.main(["--budget-min", "5"])

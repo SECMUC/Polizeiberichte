@@ -58,12 +58,17 @@ def _archive_query(http, pp_name, d_from: date, d_to: date):
 
 
 def discover_archive(http, pp, d_from: date, d_to: date):
-    """Pressearchiv-Suche je Präsidium. Fenster werden geteilt, falls Treffer gekappt sind."""
+    """Pressearchiv-Suche je Präsidium. Fenster werden geteilt, falls Treffer gekappt sind.
+    Liefert (Treffer, nicht abfragbare Zeitfenster)."""
     pp_name = config.PRAESIDIEN[pp]["name"]
-    out, windows = [], [(d_from, d_to)]
+    out, windows, failed = [], [(d_from, d_to)], []
     while windows:
         a, b = windows.pop()
-        hits, total = _archive_query(http, pp_name, a, b)
+        try:
+            hits, total = _archive_query(http, pp_name, a, b)
+        except RuntimeError:
+            failed.append((a, b))
+            continue
         if len(hits) < total:
             if a == b:
                 print(f"    ⚠ Archiv {pp} {a}: {len(hits)}/{total} Treffer (nicht teilbar)")
@@ -79,7 +84,7 @@ def discover_archive(http, pp, d_from: date, d_to: date):
             if m:
                 out.append({"id": _norm_id(m[1]), "pp": pp, "ts": _ts_to_iso(src.get("sort_date_js")),
                             "titel": src.get("title")})
-    return out
+    return out, failed
 
 
 def fetch_article(http, pm_id):

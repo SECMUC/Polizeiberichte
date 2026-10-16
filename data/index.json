@@ -1,15 +1,15 @@
 {
  "schema": 2,
- "aktualisiert": "2026-10-16T20:35:03+00:00",
+ "aktualisiert": "2026-10-16T21:02:50+00:00",
  "zeitraum": {
   "von": "2025-01-01",
   "bis": "2026-10-16"
  },
  "summen": {
-  "pressemitteilungen": 719,
+  "pressemitteilungen": 716,
   "meldungen": 3763,
   "social": 0,
-  "warteschlange": 25
+  "warteschlange": 28
  },
  "praesidien": {
   "PP München": {
@@ -39,7 +39,7 @@
    "datei_meldungen": "meldungen/2026-10.json",
    "datei_social": null,
    "meldungen": 217,
-   "pressemitteilungen": 52,
+   "pressemitteilungen": 51,
    "social": 0,
    "pp": {
     "PP Schwaben Nord": 83,
@@ -251,7 +251,7 @@
    "datei_meldungen": "meldungen/2025-03.json",
    "datei_social": null,
    "meldungen": 161,
-   "pressemitteilungen": 39,
+   "pressemitteilungen": 37,
    "social": 0,
    "pp": {
     "PP München": 161

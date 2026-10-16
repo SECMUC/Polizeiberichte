@@ -60,7 +60,10 @@ class Http:
                 if attempt == retries:
                     print(f"    ✗ {method} {url} → {self.last_error}: {e}")
                     return None
-                time.sleep(5 * (attempt + 1))
+                if isinstance(e, requests.ConnectTimeout):
+                    time.sleep(config.CONNECT_BACKOFF_SEC)
+                else:
+                    time.sleep(5 * (attempt + 1))
         return None
 
     def get(self, url, **kw):

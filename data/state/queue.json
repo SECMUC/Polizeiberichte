@@ -40,6 +40,24 @@
   "titel": "Medieninformation der Polizei München vom 07.03.2025",
   "letzter_fehler": "ConnectTimeout (25s)"
  },
+ "081748": {
+  "pp": "PP München",
+  "quellen": [
+   "nachbearbeitung"
+  ],
+  "versuche": 0,
+  "veroeffentlicht_ts": "2025-03-13T16:11:00+00:00",
+  "titel": "Terminhinweis: Infostand der Sicherheitswacht des Polizeipräsidiums München"
+ },
+ "081790": {
+  "pp": "PP München",
+  "quellen": [
+   "nachbearbeitung"
+  ],
+  "versuche": 0,
+  "veroeffentlicht_ts": "2025-03-14T11:58:00+00:00",
+  "titel": "Terminhinweis: Infostand der Sicherheitswacht des Polizeipräsidiums München"
+ },
  "084690": {
   "pp": "PP München",
   "quellen": [
@@ -255,5 +273,14 @@
   "veroeffentlicht_ts": "2026-07-10T10:14:00+00:00",
   "titel": "Medieninformation der Polizei München vom 10.07.2026",
   "letzter_fehler": "ConnectTimeout (25s)"
+ },
+ "109585": {
+  "pp": "PP Oberbayern Süd",
+  "quellen": [
+   "nachbearbeitung"
+  ],
+  "versuche": 0,
+  "veroeffentlicht_ts": "2026-10-07T07:20:00+00:00",
+  "titel": "Polizei macht den Einstellungstest zum Erlebnis – Recruiting-Veranstaltungen an Schulen und Sporttest-Challenges in Oberbayern Süd"
  }
 }

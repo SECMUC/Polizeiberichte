@@ -63,18 +63,34 @@ def main(argv=None):
             fail("uebersicht", e)
 
         d_from = args.backfill_from or (today - timedelta(days=config.DAILY_LOOKBACK_DAYS))
+        pending = {pp: list(month_windows(d_from, today)) for pp in config.PRAESIDIEN}
+        found_by_pp = {pp: [] for pp in config.PRAESIDIEN}
+        for runde in range(3):  # fehlgeschlagene Zeitfenster später erneut versuchen
+            if not any(pending.values()):
+                break
+            if runde:
+                print(f"    … Wiederholung Pressearchiv (Runde {runde + 1}) nach Pause")
+                time.sleep(60)
+            for pp, wins in pending.items():
+                still = []
+                for a, b in wins:
+                    items, failed = sources.discover_archive(http, pp, a, b)
+                    found_by_pp[pp] += items
+                    still += failed
+                pending[pp] = still
         for pp in config.PRAESIDIEN:
             name = f"archiv:{config.PRAESIDIEN[pp]['kurz']}"
-            try:
-                found = []
-                for a, b in month_windows(d_from, today):
-                    found += sources.discover_archive(http, pp, a, b)
-                n = sum(store.enqueue(i["id"], pp, "archiv", i["ts"], i["titel"]) for i in found)
-                ok(name, {"treffer": len(found), "neu": n, "ab": d_from.isoformat()})
-            except BudgetExceeded:
-                raise
-            except Exception as e:
-                fail(name, e)
+            found = found_by_pp[pp]
+            n = sum(store.enqueue(i["id"], pp, "archiv", i["ts"], i["titel"]) for i in found)
+            info = {"treffer": len(found), "neu": n, "ab": d_from.isoformat()}
+            if pending[pp]:
+                missing = [f"{a}–{b}" for a, b in pending[pp]]
+                if not found:
+                    fail(name, "Pressearchiv nicht erreichbar: " + ", ".join(missing[:4]))
+                    continue
+                info["fehlende_zeitraeume"] = missing
+                fehler.append(f"{name}: Zeiträume nicht abgefragt: {', '.join(missing[:6])}")
+            ok(name, info)
 
         for channel, pp in config.TELEGRAM_CHANNELS.items():
             name = f"telegram:{channel}"

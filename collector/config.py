@@ -41,7 +41,8 @@ X_ACCOUNTS = {
 X_MAX_POSTS_PER_ACCOUNT = 50   # Kostenbremse pro Lauf
 
 # Netzwerkverhalten
-REQUEST_TIMEOUT = 25
+REQUEST_TIMEOUT = (10, 30)      # (Verbindungsaufbau, Antwort) in Sekunden
+CONNECT_BACKOFF_SEC = 45        # Pause, wenn der Server Verbindungen vorübergehend ablehnt
 REQUEST_PAUSE_SEC = 1.0        # Höflicher Abstand zwischen Abrufen
 USER_AGENT = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
               "(KHTML, like Gecko) Chrome/126.0 Safari/537.36")
