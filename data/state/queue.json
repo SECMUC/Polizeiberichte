@@ -1,0 +1,41 @@
+{
+ "109285": {
+  "pp": null,
+  "quellen": [
+   "telegram"
+  ],
+  "versuche": 1,
+  "veroeffentlicht_ts": "2026-09-30T12:42:33+00:00",
+  "letzter_fehler": "nicht abrufbar"
+ },
+ "109358": {
+  "pp": null,
+  "quellen": [
+   "telegram"
+  ],
+  "versuche": 1,
+  "veroeffentlicht_ts": "2026-10-01T12:42:32+00:00",
+  "letzter_fehler": "nicht abrufbar"
+ },
+ "109548": {
+  "pp": "PP München",
+  "quellen": [
+   "uebersicht",
+   "telegram"
+  ],
+  "versuche": 1,
+  "veroeffentlicht_ts": "2026-10-06T09:58:00+00:00",
+  "titel": "Medieninformation der Polizei MÃ¼nchen vom 06.10.2026",
+  "letzter_fehler": "nicht abrufbar"
+ },
+ "109622": {
+  "pp": "PP Oberbayern Nord",
+  "quellen": [
+   "uebersicht"
+  ],
+  "versuche": 1,
+  "veroeffentlicht_ts": "2026-10-07T14:17:00+00:00",
+  "titel": "MÃ¶gliche Sichtung einer GroÃkatze im Naturschutzgebiet Notzinger Moos",
+  "letzter_fehler": "nicht abrufbar"
+ }
+}

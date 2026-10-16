@@ -1,0 +1,132 @@
+{
+ "schema": 2,
+ "aktualisiert": "2026-10-16T19:01:38+00:00",
+ "zeitraum": {
+  "von": "2026-08-16",
+  "bis": "2026-10-16"
+ },
+ "summen": {
+  "pressemitteilungen": 93,
+  "meldungen": 511,
+  "social": 0,
+  "warteschlange": 4
+ },
+ "praesidien": {
+  "PP München": {
+   "name": "Polizeipräsidium München",
+   "kurz": "MUC",
+   "fokus": true
+  },
+  "PP Oberbayern Nord": {
+   "name": "Polizeipräsidium Oberbayern Nord",
+   "kurz": "OBN",
+   "fokus": true
+  },
+  "PP Oberbayern Süd": {
+   "name": "Polizeipräsidium Oberbayern Süd",
+   "kurz": "OBS",
+   "fokus": true
+  },
+  "PP Schwaben Nord": {
+   "name": "Polizeipräsidium Schwaben Nord",
+   "kurz": "SWN",
+   "fokus": false
+  }
+ },
+ "monate": [
+  {
+   "monat": "2026-10",
+   "datei_meldungen": "meldungen/2026-10.json",
+   "datei_social": null,
+   "meldungen": 200,
+   "pressemitteilungen": 49,
+   "social": 0,
+   "pp": {
+    "PP Schwaben Nord": 83,
+    "PP München": 93,
+    "PP Oberbayern Süd": 11,
+    "PP Oberbayern Nord": 13
+   }
+  },
+  {
+   "monat": "2026-09",
+   "datei_meldungen": "meldungen/2026-09.json",
+   "datei_social": null,
+   "meldungen": 235,
+   "pressemitteilungen": 30,
+   "social": 0,
+   "pp": {
+    "PP München": 235
+   }
+  },
+  {
+   "monat": "2026-08",
+   "datei_meldungen": "meldungen/2026-08.json",
+   "datei_social": null,
+   "meldungen": 76,
+   "pressemitteilungen": 14,
+   "social": 0,
+   "pp": {
+    "PP München": 76
+   }
+  }
+ ],
+ "letzter_lauf": {
+  "zeit": "2026-10-16T19:01:38+00:00",
+  "dauer_sek": 934,
+  "modus": "täglich",
+  "budget_erreicht": false,
+  "quellen": {
+   "uebersicht": {
+    "ok": true,
+    "eintraege_gesamt": 199,
+    "relevant": 51,
+    "neu": 51
+   },
+   "archiv:MUC": {
+    "ok": true,
+    "treffer": 7,
+    "neu": 7,
+    "ab": "2026-10-09"
+   },
+   "archiv:OBN": {
+    "ok": true,
+    "treffer": 8,
+    "neu": 8,
+    "ab": "2026-10-09"
+   },
+   "archiv:OBS": {
+    "ok": true,
+    "treffer": 2,
+    "neu": 2,
+    "ab": "2026-10-09"
+   },
+   "archiv:SWN": {
+    "ok": true,
+    "treffer": 7,
+    "neu": 7,
+    "ab": "2026-10-09"
+   },
+   "telegram:PressePolizeiMuenchen": {
+    "ok": true,
+    "links": 59,
+    "neu": 59
+   },
+   "x": {
+    "ok": null,
+    "hinweis": "nicht aktiv (kein X_BEARER_TOKEN hinterlegt)"
+   }
+  },
+  "statistik": {
+   "neu_pm": 93,
+   "neu_meldungen": 511,
+   "aktualisiert_pm": 0,
+   "abgerufen": 97,
+   "social_neu": 0,
+   "http_anfragen": 129,
+   "http_fehler": 28
+  },
+  "warteschlange": 4,
+  "fehler": []
+ }
+}
