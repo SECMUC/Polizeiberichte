@@ -1,15 +1,9 @@
 import requests, time, json, pathlib, re
 H={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36","Accept-Language":"de-DE,de;q=0.9"}
 U={
- "pm_index":"https://www.polizei.bayern.de/aktuelles/pressemitteilungen/index.html",
- "home":"https://www.polizei.bayern.de/",
- "robots":"https://www.polizei.bayern.de/robots.txt",
- "sitemap":"https://www.polizei.bayern.de/sitemap.xml",
- "art_muc":"https://www.polizei.bayern.de/aktuelles/pressemitteilungen/109953/index.html",
- "art_obn":"https://www.polizei.bayern.de/aktuelles/pressemitteilungen/103055/index.html",
- "art_swn":"https://www.polizei.bayern.de/aktuelles/pressemitteilungen/103208/index.html",
- "tg_muc":"https://t.me/s/PressePolizeiMuenchen",
- "pp_muc":"https://www.polizei.bayern.de/wir/organisation/dienststellen/ppmuc/index.html",
+ "js_main":"https://www.polizei.bayern.de/static/js/bp-main.js",
+ "js_addons":"https://www.polizei.bayern.de/static/js/bp-main-addons.js",
+ "suche_presse":"https://www.polizei.bayern.de/suche/presse/index.html",
 }
 out=pathlib.Path("debug"); out.mkdir(exist_ok=True); log=[]
 for k,u in U.items():
