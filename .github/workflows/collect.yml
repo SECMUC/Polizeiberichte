@@ -45,8 +45,8 @@ jobs:
       - name: Erfassen
         env:
           X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
-          BUDGET: ${{ github.event.inputs.budget_minutes || '25' }}
-          BACKFILL: ${{ github.event.inputs.backfill_from }}
+          BUDGET: ${{ github.event_name == 'push' && '300' || github.event.inputs.budget_minutes || '25' }}  # TEMP-TEST
+          BACKFILL: ${{ github.event_name == 'push' && '2025-01-01' || github.event.inputs.backfill_from }}  # TEMP-TEST
         run: |
           ARGS="--budget-min $BUDGET"
           if [ -n "$BACKFILL" ]; then ARGS="$ARGS --backfill-from $BACKFILL"; fi
