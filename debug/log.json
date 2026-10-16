@@ -1,83 +1,29 @@
 [
  {
-  "k": "pm_index",
-  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/index.html",
+  "k": "js_main",
+  "url": "https://www.polizei.bayern.de/static/js/bp-main.js",
   "status": 200,
-  "sec": 1.42,
-  "len": 171497,
-  "final": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/index.html",
-  "ct": "text/html"
+  "sec": 1.65,
+  "len": 589976,
+  "final": "https://www.polizei.bayern.de/static/js/bp-main.js",
+  "ct": "application/javascript"
  },
  {
-  "k": "home",
-  "url": "https://www.polizei.bayern.de/",
+  "k": "js_addons",
+  "url": "https://www.polizei.bayern.de/static/js/bp-main-addons.js",
   "status": 200,
-  "sec": 1.01,
-  "len": 81332,
-  "final": "https://www.polizei.bayern.de/",
-  "ct": "text/html"
+  "sec": 1.13,
+  "len": 270815,
+  "final": "https://www.polizei.bayern.de/static/js/bp-main-addons.js",
+  "ct": "application/javascript"
  },
  {
-  "k": "robots",
-  "url": "https://www.polizei.bayern.de/robots.txt",
+  "k": "suche_presse",
+  "url": "https://www.polizei.bayern.de/suche/presse/index.html",
   "status": 200,
-  "sec": 0.97,
-  "len": 14066,
-  "final": "https://www.polizei.bayern.de/robots.txt",
-  "ct": "text/plain"
- },
- {
-  "k": "sitemap",
-  "url": "https://www.polizei.bayern.de/sitemap.xml",
-  "status": 200,
-  "sec": 0.68,
-  "len": 13664,
-  "final": "https://www.polizei.bayern.de/sitemap.xml",
-  "ct": "application/xml"
- },
- {
-  "k": "art_muc",
-  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/109953/index.html",
-  "status": 200,
-  "sec": 1.02,
-  "len": 54091,
-  "final": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/109953/index.html",
-  "ct": "text/html"
- },
- {
-  "k": "art_obn",
-  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/103055/index.html",
-  "status": 200,
-  "sec": 0.82,
-  "len": 40875,
-  "final": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/103055/index.html",
-  "ct": "text/html"
- },
- {
-  "k": "art_swn",
-  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/103208/index.html",
-  "status": 200,
-  "sec": 0.65,
-  "len": 57053,
-  "final": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/103208/index.html",
-  "ct": "text/html"
- },
- {
-  "k": "tg_muc",
-  "url": "https://t.me/s/PressePolizeiMuenchen",
-  "status": 200,
-  "sec": 0.75,
-  "len": 97638,
-  "final": "https://t.me/s/PressePolizeiMuenchen",
-  "ct": "text/html; charset=utf-8"
- },
- {
-  "k": "pp_muc",
-  "url": "https://www.polizei.bayern.de/wir/organisation/dienststellen/ppmuc/index.html",
-  "status": 404,
-  "sec": 0.66,
-  "len": 30912,
-  "final": "https://www.polizei.bayern.de/wir/organisation/dienststellen/ppmuc/index.html",
+  "sec": 0.92,
+  "len": 37178,
+  "final": "https://www.polizei.bayern.de/suche/presse/index.html",
   "ct": "text/html"
  }
 ]
