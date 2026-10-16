@@ -1,15 +1,15 @@
 {
  "schema": 2,
- "aktualisiert": "2026-10-16T19:01:38+00:00",
+ "aktualisiert": "2026-10-16T19:02:42+00:00",
  "zeitraum": {
   "von": "2026-08-16",
   "bis": "2026-10-16"
  },
  "summen": {
-  "pressemitteilungen": 93,
-  "meldungen": 511,
+  "pressemitteilungen": 97,
+  "meldungen": 538,
   "social": 0,
-  "warteschlange": 4
+  "warteschlange": 0
  },
  "praesidien": {
   "PP München": {
@@ -38,25 +38,25 @@
    "monat": "2026-10",
    "datei_meldungen": "meldungen/2026-10.json",
    "datei_social": null,
-   "meldungen": 200,
-   "pressemitteilungen": 49,
+   "meldungen": 217,
+   "pressemitteilungen": 52,
    "social": 0,
    "pp": {
     "PP Schwaben Nord": 83,
-    "PP München": 93,
+    "PP München": 109,
     "PP Oberbayern Süd": 11,
-    "PP Oberbayern Nord": 13
+    "PP Oberbayern Nord": 14
    }
   },
   {
    "monat": "2026-09",
    "datei_meldungen": "meldungen/2026-09.json",
    "datei_social": null,
-   "meldungen": 235,
-   "pressemitteilungen": 30,
+   "meldungen": 245,
+   "pressemitteilungen": 31,
    "social": 0,
    "pp": {
-    "PP München": 235
+    "PP München": 245
    }
   },
   {
@@ -72,8 +72,8 @@
   }
  ],
  "letzter_lauf": {
-  "zeit": "2026-10-16T19:01:38+00:00",
-  "dauer_sek": 934,
+  "zeit": "2026-10-16T19:02:42+00:00",
+  "dauer_sek": 11,
   "modus": "täglich",
   "budget_erreicht": false,
   "quellen": {
@@ -81,36 +81,36 @@
     "ok": true,
     "eintraege_gesamt": 199,
     "relevant": 51,
-    "neu": 51
+    "neu": 0
    },
    "archiv:MUC": {
     "ok": true,
     "treffer": 7,
-    "neu": 7,
+    "neu": 0,
     "ab": "2026-10-09"
    },
    "archiv:OBN": {
     "ok": true,
     "treffer": 8,
-    "neu": 8,
+    "neu": 0,
     "ab": "2026-10-09"
    },
    "archiv:OBS": {
     "ok": true,
     "treffer": 2,
-    "neu": 2,
+    "neu": 0,
     "ab": "2026-10-09"
    },
    "archiv:SWN": {
     "ok": true,
     "treffer": 7,
-    "neu": 7,
+    "neu": 0,
     "ab": "2026-10-09"
    },
    "telegram:PressePolizeiMuenchen": {
     "ok": true,
     "links": 59,
-    "neu": 59
+    "neu": 0
    },
    "x": {
     "ok": null,
@@ -118,15 +118,16 @@
    }
   },
   "statistik": {
-   "neu_pm": 93,
-   "neu_meldungen": 511,
+   "neu_pm": 4,
+   "neu_meldungen": 27,
    "aktualisiert_pm": 0,
-   "abgerufen": 97,
+   "abgerufen": 4,
    "social_neu": 0,
-   "http_anfragen": 129,
-   "http_fehler": 28
+   "http_anfragen": 12,
+   "http_fehler": 0,
+   "fehlerarten": {}
   },
-  "warteschlange": 4,
+  "warteschlange": 0,
   "fehler": []
  }
 }
