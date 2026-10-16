@@ -1,0 +1,34 @@
+{
+ "noauthor": {
+  "status": 200,
+  "total": {
+   "value": 87,
+   "relation": "eq"
+  },
+  "n": 87
+ },
+ "obn_og2": {
+  "status": 200,
+  "total": {
+   "value": 0,
+   "relation": "eq"
+  },
+  "n": 0
+ },
+ "obn_name": {
+  "status": 200,
+  "total": {
+   "value": 124,
+   "relation": "eq"
+  },
+  "n": 124
+ },
+ "muc_og2_long": {
+  "status": 200,
+  "total": {
+   "value": 0,
+   "relation": "eq"
+  },
+  "n": 0
+ }
+}
