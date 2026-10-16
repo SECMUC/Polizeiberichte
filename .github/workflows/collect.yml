@@ -1,0 +1,69 @@
+name: Polizeimeldungen erfassen
+
+on:
+  schedule:
+    # 05:41 und 15:41 UTC = 07:41 / 17:41 Uhr MESZ (Winterzeit eine Stunde früher)
+    - cron: '41 5,15 * * *'
+  push:            # TEMP-TEST
+    branches: [v2-datenbank]
+    paths: ['collector/**', '.github/workflows/collect.yml']
+  workflow_dispatch:
+    inputs:
+      backfill_from:
+        description: 'Nachladen ab Datum (JJJJ-MM-TT), leer = normaler Lauf'
+        required: false
+        default: ''
+      budget_minutes:
+        description: 'Zeitbudget in Minuten'
+        required: false
+        default: '25'
+
+concurrency:
+  group: collector
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Selbsttest Parser (offline)
+        run: python tests/test_offline.py
+
+      - name: Erfassen
+        env:
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+          BUDGET: ${{ github.event.inputs.budget_minutes || '25' }}
+          BACKFILL: ${{ github.event.inputs.backfill_from }}
+        run: |
+          ARGS="--budget-min $BUDGET"
+          if [ -n "$BACKFILL" ]; then ARGS="$ARGS --backfill-from $BACKFILL"; fi
+          python -m collector $ARGS
+
+      - name: Datenbank prüfen
+        run: python tools/validate.py
+
+      - name: Speichern
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data
+          if git diff --staged --quiet; then echo "Keine Änderungen"; exit 0; fi
+          git commit -q -m "Daten $(TZ=Europe/Berlin date '+%d.%m.%Y %H:%M')"
+          for i in 1 2 3; do
+            git pull --rebase -q origin "$GITHUB_REF_NAME" && git push -q origin "HEAD:$GITHUB_REF_NAME" && exit 0
+            sleep 5
+          done
+          exit 1
