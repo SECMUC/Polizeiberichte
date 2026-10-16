@@ -71,6 +71,7 @@ class Store:
                 pm.setdefault("quellen", []).append(via)
                 self.dirty["pressemitteilungen"].add(_month(pm))
             return False
+        is_new = pm_id not in self.queue
         q = self.queue.setdefault(pm_id, {"pp": pp, "quellen": [], "versuche": 0})
         if via not in q["quellen"]:
             q["quellen"].append(via)
@@ -80,7 +81,7 @@ class Store:
             q["titel"] = titel
         if pp and not q.get("pp"):
             q["pp"] = pp
-        return True
+        return is_new
 
     # ---------- Speichern ----------
     def save(self, run_info: dict):

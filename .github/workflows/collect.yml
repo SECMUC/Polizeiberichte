@@ -50,7 +50,9 @@ jobs:
         run: |
           ARGS="--budget-min $BUDGET"
           if [ -n "$BACKFILL" ]; then ARGS="$ARGS --backfill-from $BACKFILL"; fi
-          python -m collector $ARGS
+          set -o pipefail
+          mkdir -p data/state
+          python -u -m collector $ARGS 2>&1 | tee data/state/lauf.log
 
       - name: Datenbank prüfen
         run: python tools/validate.py

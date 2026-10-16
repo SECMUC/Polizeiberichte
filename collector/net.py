@@ -20,6 +20,8 @@ class Http:
         self._last = 0.0
         self.requests = 0
         self.errors = 0
+        self.last_error = None
+        self.error_kinds = {}
 
     def time_left(self) -> float:
         return self.deadline - time.monotonic()
@@ -41,6 +43,7 @@ class Http:
             self.check_budget(reserve_sec=30)
             self._pace()
             self.requests += 1
+            started = time.monotonic()
             try:
                 r = self.s.request(method, url, **kw)
                 if r.status_code == 404:
@@ -51,10 +54,13 @@ class Http:
                 return r
             except requests.RequestException as e:
                 self.errors += 1
+                kind = type(e).__name__ if not isinstance(e, requests.HTTPError) else str(e)
+                self.error_kinds[kind] = self.error_kinds.get(kind, 0) + 1
+                self.last_error = f"{kind} ({time.monotonic() - started:.0f}s)"
                 if attempt == retries:
-                    print(f"    ✗ {method} {url} → {e}")
+                    print(f"    ✗ {method} {url} → {self.last_error}: {e}")
                     return None
-                time.sleep(3 * (attempt + 1))
+                time.sleep(5 * (attempt + 1))
         return None
 
     def get(self, url, **kw):

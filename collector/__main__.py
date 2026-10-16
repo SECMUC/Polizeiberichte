@@ -104,12 +104,13 @@ def main(argv=None):
             http.check_budget(reserve_sec=90)
             q = store.queue.get(pm_id)
             existing = store.get("pressemitteilungen", pm_id)
+            http.last_error = None
             html = sources.fetch_article(http, pm_id)
             stats["abgerufen"] += 1
             if html is None:
                 if q is not None:
                     q["versuche"] = q.get("versuche", 0) + 1
-                    q["letzter_fehler"] = "nicht abrufbar"
+                    q["letzter_fehler"] = http.last_error or "HTTP 404 (nicht vorhanden)"
                 continue
             try:
                 pm, meldungen = parse_article(html, pm_id, config.ARTICLE_URL.format(id=pm_id))
@@ -188,7 +189,8 @@ def main(argv=None):
         "modus": f"backfill ab {args.backfill_from}" if args.backfill_from else "täglich",
         "budget_erreicht": stopped_by_budget,
         "quellen": status,
-        "statistik": stats | {"http_anfragen": http.requests, "http_fehler": http.errors},
+        "statistik": stats | {"http_anfragen": http.requests, "http_fehler": http.errors,
+                              "fehlerarten": http.error_kinds},
         "warteschlange": len(store.queue),
         "fehler": fehler[:50],
     }

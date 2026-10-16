@@ -28,6 +28,7 @@ def discover_listing(http):
     r = http.get(config.LISTING_URL)
     if not r:
         raise RuntimeError("Übersichtsseite nicht erreichbar")
+    r.encoding = "utf-8"
     html = r.text
     i = html.find("window.montagedata")
     if i < 0:
