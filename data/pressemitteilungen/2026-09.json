@@ -10,7 +10,8 @@
   "sha256": "3f30afc768790d44e8d2e79b2d482f1aef29def3c1397168d11d220bc7d7ff0f",
   "anzahl_meldungen": 10,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-30T12:42:33+00:00",
   "erstmals_erfasst": "2026-10-16T19:02:42+00:00",
@@ -28,7 +29,8 @@
   "sha256": "ab60fd143323d95547ac10e7376f7beded7fa04c86a74f068c42ede303de7ddf",
   "anzahl_meldungen": 11,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-29T12:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T18:58:34+00:00",
@@ -46,7 +48,8 @@
   "sha256": "30884fea04de92782a9a6b51f2cc5d19e9c2e880373db7e368ac03685711851e",
   "anzahl_meldungen": 12,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-28T12:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T18:58:35+00:00",
@@ -64,7 +67,8 @@
   "sha256": "9098ffafbb6228691fee43b18736410dae5ce8290cf69c097be1750435c59bf1",
   "anzahl_meldungen": 21,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-27T12:42:33+00:00",
   "erstmals_erfasst": "2026-10-16T18:58:36+00:00",
@@ -82,7 +86,8 @@
   "sha256": "a0d81d832655c161e033459cf836eba498d41838231e5b3179d6f4fd02522b21",
   "anzahl_meldungen": 1,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-25T17:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T18:58:37+00:00",
@@ -100,7 +105,8 @@
   "sha256": "5813e1a5ae98b99ed0e70e41419a7ed7e984e7f7d65d3fdb8614f518e0869ae3",
   "anzahl_meldungen": 13,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-25T12:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T18:58:38+00:00",
@@ -118,7 +124,8 @@
   "sha256": "adf776bf1430121c6db2dda253a8dd983fc4a035c8a5c29c3f287b171827a0ad",
   "anzahl_meldungen": 5,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-24T12:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T18:58:39+00:00",
@@ -136,7 +143,8 @@
   "sha256": "7abc3a169ced0daa89a4a76aeabcaee3d3254a0ed24c7ff0b63477ee29182e7a",
   "anzahl_meldungen": 14,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-24T12:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T18:58:40+00:00",
@@ -154,7 +162,8 @@
   "sha256": "a14446f89243157c5ada55f684401d881db3ce5710018a9b7db65ec53ec992f6",
   "anzahl_meldungen": 11,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-23T12:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T18:58:41+00:00",
@@ -172,7 +181,8 @@
   "sha256": "74bd1940c59754a48b568410ad23406bb488ef43bd905b2d55c752c79205f423",
   "anzahl_meldungen": 10,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-22T12:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T18:58:42+00:00",
@@ -190,7 +200,8 @@
   "sha256": "c60a09c6e02e7975ac49b811111b454aa92e0400b8eca40149d9cf33f84483b0",
   "anzahl_meldungen": 1,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-22T00:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T18:58:43+00:00",
@@ -208,7 +219,8 @@
   "sha256": "c4ec9013ef8cb793ff12038f62a6def6f1f83b257e51dd865a0cd2e2e044a5be",
   "anzahl_meldungen": 13,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-21T12:42:33+00:00",
   "erstmals_erfasst": "2026-10-16T18:58:44+00:00",
@@ -226,7 +238,8 @@
   "sha256": "64284bf3382831f6ee86e6971ccc6ea8c39a18ff13bdd6decf0c26a890445b3f",
   "anzahl_meldungen": 11,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-20T12:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T18:58:45+00:00",
@@ -244,7 +257,8 @@
   "sha256": "c6f32b5195b6fcbb1bb4578ad6a844fe9be8f200b68c5922ed7ce0c60d7ebe44",
   "anzahl_meldungen": 9,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-18T12:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T18:58:46+00:00",
@@ -262,7 +276,8 @@
   "sha256": "3b12d03ed7cdd4b1965f3b3e20284b38c935189ae12afb9c4b63a5371691ab17",
   "anzahl_meldungen": 8,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-17T12:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T18:58:47+00:00",
@@ -280,7 +295,8 @@
   "sha256": "68d4353b52d185ea3527bcee445af1837e21e27f7ad5204736efffaffd210f47",
   "anzahl_meldungen": 5,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-16T12:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T18:58:48+00:00",
@@ -298,7 +314,8 @@
   "sha256": "74f7b1f1dcefbcf956c663592f418a641e0728fed0c3683d81a0139beb83f83a",
   "anzahl_meldungen": 9,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-15T12:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T18:58:49+00:00",
@@ -316,7 +333,8 @@
   "sha256": "1a624ee0277cce39b4b0633056e78028f078d07563bda42e2c3a28329b592159",
   "anzahl_meldungen": 4,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-14T13:42:33+00:00",
   "erstmals_erfasst": "2026-10-16T18:59:18+00:00",
@@ -334,7 +352,8 @@
   "sha256": "de9203e0b9b61c9ea1e75b4df7b5b2bc8810e72ee18c1b3c6cea95d90694e365",
   "anzahl_meldungen": 10,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-13T14:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T18:59:20+00:00",
@@ -352,7 +371,8 @@
   "sha256": "9bf209842acb4403ac6dee70f0feb17244b4ede9e488ad18b921c4adbb36bf08",
   "anzahl_meldungen": 1,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-11T12:42:33+00:00",
   "erstmals_erfasst": "2026-10-16T18:59:20+00:00",
@@ -370,7 +390,8 @@
   "sha256": "371230deac49620fd8d7e52529cfce29f2804595b43681861137f4e9366d26c5",
   "anzahl_meldungen": 5,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-11T12:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T18:59:50+00:00",
@@ -388,7 +409,8 @@
   "sha256": "86410fd3233219793915550e38eecf9aa789744359d7bd229563312debfa7982",
   "anzahl_meldungen": 1,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-10T12:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T18:59:51+00:00",
@@ -406,7 +428,8 @@
   "sha256": "460ccdb0d0b51aa8e5cdab89584e66c87f926314b9dcacf11f40c33ad843dde7",
   "anzahl_meldungen": 7,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-10T12:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T18:59:52+00:00",
@@ -424,7 +447,8 @@
   "sha256": "bc7221a4740216f79a3c2c206324ce4df67310c1740504666c23bf4a91bfb7ee",
   "anzahl_meldungen": 9,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-09T12:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T18:59:53+00:00",
@@ -442,7 +466,8 @@
   "sha256": "a66b6e4b99da0c915cf1fe66f6ef5085a937e0ac07a5f335db8191b179ce6549",
   "anzahl_meldungen": 7,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-08T12:42:33+00:00",
   "erstmals_erfasst": "2026-10-16T19:00:22+00:00",
@@ -460,7 +485,8 @@
   "sha256": "4810c442dd22bfb5436a1a4ee4393e82c3a73167c2520b65c52b9877b02a1f8a",
   "anzahl_meldungen": 6,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-07T12:42:36+00:00",
   "erstmals_erfasst": "2026-10-16T19:00:23+00:00",
@@ -478,7 +504,8 @@
   "sha256": "3130bedced8f5d2eb841d4f335706950f369fecd331965edf397d821aa9d2267",
   "anzahl_meldungen": 8,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-06T12:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T19:00:24+00:00",
@@ -496,7 +523,8 @@
   "sha256": "32d8078982508683f9c521d229457c55270039748b1ed6ddc4d24934d54a2a60",
   "anzahl_meldungen": 8,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-04T12:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T19:00:25+00:00",
@@ -514,7 +542,8 @@
   "sha256": "02d1037c22c7b5f7e943db925a8ff3c114d3f446b26bde037831ee9b9f680e11",
   "anzahl_meldungen": 7,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-03T12:42:33+00:00",
   "erstmals_erfasst": "2026-10-16T19:00:54+00:00",
@@ -532,7 +561,8 @@
   "sha256": "3b90d682872e97fe08df548b1600767e2dcf90b736673440d54547a851dcb7dd",
   "anzahl_meldungen": 5,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-02T12:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T19:00:55+00:00",
@@ -550,7 +580,8 @@
   "sha256": "b66221d8b938ced353239612c1f9fcd5dc3cc3ed1c697f23314496eb46746db2",
   "anzahl_meldungen": 3,
   "quellen": [
-   "telegram"
+   "telegram",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-09-01T12:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T19:00:56+00:00",
