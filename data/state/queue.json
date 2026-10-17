@@ -1,121 +1,10 @@
 {
- "078241": {
-  "pp": "PP Oberbayern Süd",
-  "quellen": [
-   "archiv"
-  ],
-  "versuche": 0,
-  "veroeffentlicht_ts": "2025-01-01T08:05:00+00:00",
-  "titel": "Oberbayern Süd: Vorläufige Silvesterbilanz"
- },
- "078246": {
-  "pp": "PP Oberbayern Nord",
-  "quellen": [
-   "archiv"
-  ],
-  "versuche": 0,
-  "veroeffentlicht_ts": "2025-01-01T10:35:00+00:00",
-  "titel": "Bilanz des Polizeipräsidiums Oberbayern Nord zur Einsatzlage in der Silvesternacht"
- },
- "078258": {
-  "pp": "PP Schwaben Nord",
-  "quellen": [
-   "archiv"
-  ],
-  "versuche": 0,
-  "veroeffentlicht_ts": "2025-01-01T13:05:00+00:00",
-  "titel": "Medieninfo Nordschwaben - 01.01.2025"
- },
- "078273": {
-  "pp": "PP Oberbayern Süd",
-  "quellen": [
-   "archiv"
-  ],
-  "versuche": 0,
-  "veroeffentlicht_ts": "2025-01-02T08:29:00+00:00",
-  "titel": "Feldkirchen-Westerham: Hoher Sachschaden nach Brand eines Schuppens an einem landwirtschaftlichen Anwesen - Kriminalpolizei ermittelt "
- },
- "078290": {
-  "pp": "PP Schwaben Nord",
-  "quellen": [
-   "archiv"
-  ],
-  "versuche": 0,
-  "veroeffentlicht_ts": "2025-01-02T12:52:00+00:00",
-  "titel": "Medieninfo Nordschwaben - 02.01.2025"
- },
- "078296": {
-  "pp": "PP Oberbayern Nord",
-  "quellen": [
-   "archiv"
-  ],
-  "versuche": 0,
-  "veroeffentlicht_ts": "2025-01-02T13:20:00+00:00",
-  "titel": "Brandstiftung in Mehrfamilienhaus – Unterbringung des Tatverdächtigen angeordnet"
- },
- "078308": {
-  "pp": "PP Oberbayern Süd",
-  "quellen": [
-   "archiv"
-  ],
-  "versuche": 0,
-  "veroeffentlicht_ts": "2025-01-02T14:54:00+00:00",
-  "titel": "Hoher Sachschaden nach Zimmerbrand "
- },
- "078335": {
-  "pp": "PP Schwaben Nord",
-  "quellen": [
-   "archiv"
-  ],
-  "versuche": 0,
-  "veroeffentlicht_ts": "2025-01-03T11:51:00+00:00",
-  "titel": "Medieninfo Nordschwaben - 03.01.2025"
- },
- "078360": {
-  "pp": "PP Oberbayern Nord",
-  "quellen": [
-   "archiv"
-  ],
-  "versuche": 0,
-  "veroeffentlicht_ts": "2025-01-04T08:47:00+00:00",
-  "titel": "Zwei Verletzte nach Zimmerbrand"
- },
- "078639": {
-  "pp": "PP Schwaben Nord",
-  "quellen": [
-   "archiv"
-  ],
-  "versuche": 1,
-  "veroeffentlicht_ts": "2025-01-12T10:05:00+00:00",
-  "titel": "Medieninfo Nordschwaben - 12.01.2025",
-  "letzter_fehler": "ConnectTimeout (11s)"
- },
- "079164": {
-  "pp": "PP Schwaben Nord",
-  "quellen": [
-   "archiv"
-  ],
-  "versuche": 1,
-  "veroeffentlicht_ts": "2025-01-21T13:51:00+00:00",
-  "titel": "Medieninfo Nordschwaben - 21.01.2025",
-  "letzter_fehler": "ConnectTimeout (10s)"
- },
- "079712": {
-  "pp": "PP München",
-  "quellen": [
-   "archiv"
-  ],
-  "versuche": 2,
-  "veroeffentlicht_ts": "2025-01-31T11:05:00+00:00",
-  "titel": "Medieninformation der Polizei München vom 31.01.2025",
-  "letzter_fehler": "ConnectTimeout (10s)"
- },
  "085774": {
   "pp": null,
   "quellen": [
    "telegram"
   ],
-  "versuche": 3,
+  "versuche": 4,
   "veroeffentlicht_ts": "2025-05-27T13:15:46+00:00",
   "letzter_fehler": "HTTP 404 (nicht vorhanden)"
  },
@@ -124,7 +13,7 @@
   "quellen": [
    "telegram"
   ],
-  "versuche": 3,
+  "versuche": 4,
   "veroeffentlicht_ts": "2025-06-16T10:00:46+00:00",
   "letzter_fehler": "HTTP 404 (nicht vorhanden)"
  },
@@ -133,26 +22,16 @@
   "quellen": [
    "telegram"
   ],
-  "versuche": 3,
+  "versuche": 4,
   "veroeffentlicht_ts": "2025-06-27T09:45:46+00:00",
   "letzter_fehler": "HTTP 404 (nicht vorhanden)"
- },
- "091692": {
-  "pp": "PP Oberbayern Süd",
-  "quellen": [
-   "archiv"
-  ],
-  "versuche": 2,
-  "veroeffentlicht_ts": "2025-10-01T09:32:00+00:00",
-  "titel": "Fall aus 2022 am 8. Oktober 2025 in „Aktenzeichen XY…ungelöst“: Totes Neugeborenes in Ruhpolding aufgefunden",
-  "letzter_fehler": "ConnectTimeout (10s)"
  },
  "091975": {
   "pp": null,
   "quellen": [
    "telegram"
   ],
-  "versuche": 3,
+  "versuche": 4,
   "veroeffentlicht_ts": "2025-10-08T11:15:46+00:00",
   "letzter_fehler": "HTTP 404 (nicht vorhanden)"
  },
@@ -161,28 +40,8 @@
   "quellen": [
    "telegram"
   ],
-  "versuche": 3,
+  "versuche": 4,
   "veroeffentlicht_ts": "2026-02-05T15:15:46+00:00",
-  "letzter_fehler": "ConnectTimeout (10s)"
- },
- "098473": {
-  "pp": "PP Schwaben Nord",
-  "quellen": [
-   "archiv"
-  ],
-  "versuche": 2,
-  "veroeffentlicht_ts": "2026-02-20T12:00:00+00:00",
-  "titel": "Medieninfo Nordschwaben - 20.02.2026",
-  "letzter_fehler": "ConnectTimeout (10s)"
- },
- "101247": {
-  "pp": "PP Schwaben Nord",
-  "quellen": [
-   "archiv"
-  ],
-  "versuche": 2,
-  "veroeffentlicht_ts": "2026-04-14T12:27:00+00:00",
-  "titel": "Medieninfo Nordschwaben - 14.04.2026",
-  "letzter_fehler": "ConnectTimeout (10s)"
+  "letzter_fehler": "HTTP 404 (nicht vorhanden)"
  }
 }

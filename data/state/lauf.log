@@ -1,27 +1,13 @@
-══ Polizei-Collector · 2026-10-17T09:55:32+00:00 · Budget 25 min ══
+══ Polizei-Collector · 2026-10-17T17:55:27+00:00 · Budget 25 min ══
 
 [1] Neue Pressemitteilungen entdecken
-  ✓ uebersicht: {'eintraege_gesamt': 191, 'relevant': 46, 'neu': 2}
+  ✓ uebersicht: {'eintraege_gesamt': 192, 'relevant': 46, 'neu': 0}
   ✓ archiv:MUC: {'treffer': 6, 'neu': 0, 'ab': '2026-10-10'}
   ✓ archiv:OBN: {'treffer': 6, 'neu': 0, 'ab': '2026-10-10'}
   ✓ archiv:OBS: {'treffer': 3, 'neu': 0, 'ab': '2026-10-10'}
   ✓ archiv:SWN: {'treffer': 6, 'neu': 0, 'ab': '2026-10-10'}
   ✓ telegram:PressePolizeiMuenchen: {'links': 59, 'neu': 0}
 
-[2] Abruf: 167 Dokumente (Warteschlange 161, Nachprüfung 6)
-    ✗ GET https://www.polizei.bayern.de/aktuelles/pressemitteilungen/101247/index.html → ConnectTimeout (10s): HTTPSConnectionPool(host='www.polizei.bayern.de', port=443): Max retries exceeded with url: /aktuelles/pressemitteilungen/101247/index.html (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.polizei.bayern.de', port=443) at 0x7ff11f2ecf20>, 'Connection to www.polizei.bayern.de timed out. (connect timeout=10)'))
-    … 25/167 abgerufen, 68 neue Meldungen
-    ✗ GET https://www.polizei.bayern.de/aktuelles/pressemitteilungen/098473/index.html → ConnectTimeout (10s): HTTPSConnectionPool(host='www.polizei.bayern.de', port=443): Max retries exceeded with url: /aktuelles/pressemitteilungen/098473/index.html (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.polizei.bayern.de', port=443) at 0x7ff11f1e0bf0>, 'Connection to www.polizei.bayern.de timed out. (connect timeout=10)'))
-    ✗ GET https://www.polizei.bayern.de/aktuelles/pressemitteilungen/091692/index.html → ConnectTimeout (10s): HTTPSConnectionPool(host='www.polizei.bayern.de', port=443): Max retries exceeded with url: /aktuelles/pressemitteilungen/091692/index.html (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.polizei.bayern.de', port=443) at 0x7ff11f24ba10>, 'Connection to www.polizei.bayern.de timed out. (connect timeout=10)'))
-    … 50/167 abgerufen, 126 neue Meldungen
-    … 75/167 abgerufen, 217 neue Meldungen
-    ✗ GET https://www.polizei.bayern.de/aktuelles/pressemitteilungen/079712/index.html → ConnectTimeout (10s): HTTPSConnectionPool(host='www.polizei.bayern.de', port=443): Max retries exceeded with url: /aktuelles/pressemitteilungen/079712/index.html (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.polizei.bayern.de', port=443) at 0x7ff11f77c080>, 'Connection to www.polizei.bayern.de timed out. (connect timeout=10)'))
-    … 100/167 abgerufen, 268 neue Meldungen
-    ✗ GET https://www.polizei.bayern.de/aktuelles/pressemitteilungen/079164/index.html → ConnectTimeout (10s): HTTPSConnectionPool(host='www.polizei.bayern.de', port=443): Max retries exceeded with url: /aktuelles/pressemitteilungen/079164/index.html (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.polizei.bayern.de', port=443) at 0x7ff11f24b1a0>, 'Connection to www.polizei.bayern.de timed out. (connect timeout=10)'))
-    … 125/167 abgerufen, 340 neue Meldungen
-    ✗ GET https://www.polizei.bayern.de/aktuelles/pressemitteilungen/078639/index.html → ConnectTimeout (11s): HTTPSConnectionPool(host='www.polizei.bayern.de', port=443): Max retries exceeded with url: /aktuelles/pressemitteilungen/078639/index.html (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.polizei.bayern.de', port=443) at 0x7ff11f660b30>, 'Connection to www.polizei.bayern.de timed out. (connect timeout=10)'))
-    … 150/167 abgerufen, 425 neue Meldungen
+[2] Abruf: 26 Dokumente (Warteschlange 20, Nachprüfung 6)
 
-  ⏱ Zeitbudget erreicht – Rest folgt im nächsten Lauf
-
-══ Fertig: {'neu_pm': 141, 'neu_meldungen': 427, 'aktualisiert_pm': 0, 'abgerufen': 152, 'social_neu': 0} · Warteschlange 20 · 0 Fehler ══
+══ Fertig: {'neu_pm': 15, 'neu_meldungen': 63, 'aktualisiert_pm': 0, 'abgerufen': 26, 'social_neu': 0} · Warteschlange 5 · 0 Fehler ══

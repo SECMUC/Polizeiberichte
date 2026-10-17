@@ -1,15 +1,15 @@
 {
  "schema": 2,
- "aktualisiert": "2026-10-17T10:20:51+00:00",
+ "aktualisiert": "2026-10-17T17:56:01+00:00",
  "zeitraum": {
   "von": "2025-01-01",
   "bis": "2026-10-17"
  },
  "summen": {
-  "pressemitteilungen": 2551,
-  "meldungen": 8863,
+  "pressemitteilungen": 2566,
+  "meldungen": 8926,
   "social": 0,
-  "warteschlange": 20
+  "warteschlange": 5
  },
  "praesidien": {
   "PP München": {
@@ -122,12 +122,12 @@
    "monat": "2026-04",
    "datei_meldungen": "meldungen/2026-04.json",
    "datei_social": null,
-   "meldungen": 374,
-   "pressemitteilungen": 114,
+   "meldungen": 379,
+   "pressemitteilungen": 115,
    "social": 0,
    "pp": {
     "PP Oberbayern Süd": 31,
-    "PP Schwaben Nord": 155,
+    "PP Schwaben Nord": 160,
     "PP München": 159,
     "PP Oberbayern Nord": 29
    }
@@ -150,12 +150,12 @@
    "monat": "2026-02",
    "datei_meldungen": "meldungen/2026-02.json",
    "datei_social": null,
-   "meldungen": 321,
-   "pressemitteilungen": 113,
+   "meldungen": 327,
+   "pressemitteilungen": 114,
    "social": 0,
    "pp": {
     "PP München": 143,
-    "PP Schwaben Nord": 121,
+    "PP Schwaben Nord": 127,
     "PP Oberbayern Süd": 32,
     "PP Oberbayern Nord": 25
    }
@@ -206,14 +206,14 @@
    "monat": "2025-10",
    "datei_meldungen": "meldungen/2025-10.json",
    "datei_social": null,
-   "meldungen": 497,
-   "pressemitteilungen": 140,
+   "meldungen": 498,
+   "pressemitteilungen": 141,
    "social": 0,
    "pp": {
     "PP Oberbayern Nord": 33,
     "PP München": 212,
     "PP Schwaben Nord": 216,
-    "PP Oberbayern Süd": 36
+    "PP Oberbayern Süd": 37
    }
   },
   {
@@ -332,28 +332,28 @@
    "monat": "2025-01",
    "datei_meldungen": "meldungen/2025-01.json",
    "datei_social": null,
-   "meldungen": 391,
-   "pressemitteilungen": 111,
+   "meldungen": 442,
+   "pressemitteilungen": 123,
    "social": 0,
    "pp": {
-    "PP Oberbayern Nord": 25,
-    "PP Schwaben Nord": 163,
-    "PP Oberbayern Süd": 29,
-    "PP München": 174
+    "PP Oberbayern Nord": 28,
+    "PP Schwaben Nord": 203,
+    "PP Oberbayern Süd": 32,
+    "PP München": 179
    }
   }
  ],
  "letzter_lauf": {
-  "zeit": "2026-10-17T10:20:28+00:00",
-  "dauer_sek": 1496,
+  "zeit": "2026-10-17T17:56:01+00:00",
+  "dauer_sek": 34,
   "modus": "täglich",
-  "budget_erreicht": true,
+  "budget_erreicht": false,
   "quellen": {
    "uebersicht": {
     "ok": true,
-    "eintraege_gesamt": 191,
+    "eintraege_gesamt": 192,
     "relevant": 46,
-    "neu": 2
+    "neu": 0
    },
    "archiv:MUC": {
     "ok": true,
@@ -383,21 +383,23 @@
     "ok": true,
     "links": 59,
     "neu": 0
+   },
+   "x": {
+    "ok": null,
+    "hinweis": "nicht aktiv (kein X_BEARER_TOKEN hinterlegt)"
    }
   },
   "statistik": {
-   "neu_pm": 141,
-   "neu_meldungen": 427,
+   "neu_pm": 15,
+   "neu_meldungen": 63,
    "aktualisiert_pm": 0,
-   "abgerufen": 152,
+   "abgerufen": 26,
    "social_neu": 0,
-   "http_anfragen": 183,
-   "http_fehler": 29,
-   "fehlerarten": {
-    "ConnectTimeout": 29
-   }
+   "http_anfragen": 34,
+   "http_fehler": 0,
+   "fehlerarten": {}
   },
-  "warteschlange": 20,
+  "warteschlange": 5,
   "fehler": []
  }
 }
