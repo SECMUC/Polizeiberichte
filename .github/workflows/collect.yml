@@ -4,9 +4,6 @@ on:
   schedule:
     # 05:41 und 15:41 UTC = 07:41 / 17:41 Uhr MESZ (Winterzeit eine Stunde früher)
     - cron: '41 5,15 * * *'
-  push:            # TEMP-TEST
-    branches: [v2-datenbank]
-    paths: ['collector/**']
   workflow_dispatch:
     inputs:
       backfill_from:
@@ -45,8 +42,8 @@ jobs:
       - name: Erfassen
         env:
           X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
-          BUDGET: ${{ github.event_name == 'push' && '300' || github.event.inputs.budget_minutes || '25' }}  # TEMP-TEST
-          BACKFILL: ${{ github.event_name == 'push' && '2025-01-01' || github.event.inputs.backfill_from }}  # TEMP-TEST
+          BUDGET: ${{ github.event.inputs.budget_minutes || '25' }}
+          BACKFILL: ${{ github.event.inputs.backfill_from }}
         run: |
           ARGS="--budget-min $BUDGET"
           if [ -n "$BACKFILL" ]; then ARGS="$ARGS --backfill-from $BACKFILL"; fi

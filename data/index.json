@@ -1,6 +1,6 @@
 {
  "schema": 2,
- "aktualisiert": "2026-10-17T02:02:31+00:00",
+ "aktualisiert": "2026-10-17T02:16:09+00:00",
  "zeitraum": {
   "von": "2025-01-01",
   "bis": "2026-10-16"
@@ -56,9 +56,9 @@
    "pressemitteilungen": 125,
    "social": 0,
    "pp": {
-    "PP München": 245,
     "PP Schwaben Nord": 139,
     "PP Oberbayern Nord": 33,
+    "PP München": 245,
     "PP Oberbayern Süd": 35
    }
   },
@@ -70,10 +70,10 @@
    "pressemitteilungen": 112,
    "social": 0,
    "pp": {
-    "PP München": 165,
     "PP Oberbayern Süd": 34,
     "PP Oberbayern Nord": 23,
-    "PP Schwaben Nord": 189
+    "PP Schwaben Nord": 189,
+    "PP München": 165
    }
   },
   {
@@ -84,9 +84,9 @@
    "pressemitteilungen": 111,
    "social": 0,
    "pp": {
-    "PP München": 158,
     "PP Oberbayern Nord": 24,
     "PP Schwaben Nord": 164,
+    "PP München": 158,
     "PP Oberbayern Süd": 36
    }
   },
@@ -98,8 +98,8 @@
    "pressemitteilungen": 106,
    "social": 0,
    "pp": {
-    "PP München": 156,
     "PP Oberbayern Süd": 24,
+    "PP München": 156,
     "PP Schwaben Nord": 164,
     "PP Oberbayern Nord": 23
    }
@@ -112,9 +112,9 @@
    "pressemitteilungen": 113,
    "social": 0,
    "pp": {
-    "PP München": 166,
     "PP Oberbayern Nord": 38,
     "PP Schwaben Nord": 118,
+    "PP München": 166,
     "PP Oberbayern Süd": 28
    }
   },
@@ -126,9 +126,9 @@
    "pressemitteilungen": 112,
    "social": 0,
    "pp": {
-    "PP München": 159,
     "PP Oberbayern Süd": 30,
     "PP Schwaben Nord": 144,
+    "PP München": 159,
     "PP Oberbayern Nord": 29
    }
   },
@@ -140,9 +140,9 @@
    "pressemitteilungen": 122,
    "social": 0,
    "pp": {
-    "PP München": 164,
     "PP Schwaben Nord": 138,
     "PP Oberbayern Nord": 37,
+    "PP München": 164,
     "PP Oberbayern Süd": 30
    }
   },
@@ -182,8 +182,8 @@
    "pressemitteilungen": 94,
    "social": 0,
    "pp": {
-    "PP München": 151,
     "PP Schwaben Nord": 176,
+    "PP München": 151,
     "PP Oberbayern Süd": 22,
     "PP Oberbayern Nord": 21
    }
@@ -196,8 +196,8 @@
    "pressemitteilungen": 111,
    "social": 0,
    "pp": {
-    "PP München": 186,
     "PP Schwaben Nord": 167,
+    "PP München": 186,
     "PP Oberbayern Süd": 27,
     "PP Oberbayern Nord": 23
    }
@@ -210,8 +210,8 @@
    "pressemitteilungen": 139,
    "social": 0,
    "pp": {
-    "PP München": 212,
     "PP Oberbayern Nord": 32,
+    "PP München": 212,
     "PP Schwaben Nord": 216,
     "PP Oberbayern Süd": 36
    }
@@ -224,8 +224,8 @@
    "pressemitteilungen": 119,
    "social": 0,
    "pp": {
-    "PP München": 215,
     "PP Schwaben Nord": 200,
+    "PP München": 215,
     "PP Oberbayern Nord": 26,
     "PP Oberbayern Süd": 33
    }
@@ -252,9 +252,9 @@
    "pressemitteilungen": 129,
    "social": 0,
    "pp": {
-    "PP München": 179,
     "PP Oberbayern Nord": 32,
     "PP Schwaben Nord": 205,
+    "PP München": 179,
     "PP Oberbayern Süd": 38
    }
   },
@@ -266,9 +266,9 @@
    "pressemitteilungen": 108,
    "social": 0,
    "pp": {
-    "PP München": 180,
     "PP Schwaben Nord": 198,
     "PP Oberbayern Süd": 28,
+    "PP München": 180,
     "PP Oberbayern Nord": 18
    }
   },
@@ -308,10 +308,10 @@
    "pressemitteilungen": 127,
    "social": 0,
    "pp": {
-    "PP München": 171,
     "PP Oberbayern Nord": 32,
     "PP Schwaben Nord": 202,
-    "PP Oberbayern Süd": 28
+    "PP Oberbayern Süd": 28,
+    "PP München": 171
    }
   },
   {

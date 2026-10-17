@@ -27,6 +27,7 @@ RULES = [
     ("Fahndung", 2, r"öffentlichkeitsfahndung|fahndung|haftbefehl"),
     ("Drogen", 2, r"kokain|heroin|amphetamin|crystal|drogenhandel|rauschgift|betäubungsmittel|marihuana|cannabis"),
     ("Waffen", 2, r"waffengesetz|schusswaffe|schreckschuss|messer"),
+    ("Unfall (kein Verkehr)", 2, r"arbeitsunfall|badeunfall|bergunfall|kletterunfall|skiunfall|freizeitunfall|badeunglück|ertrunken"),
     ("Verkehr", 2, r"tödlicher? (verkehrs)?unfall|rettungshubschrauber|schwer verletzt"),
     ("Todesfall", 2, r"\btot\b.*(geborgen|aufgefunden)|leichenfund|todesermittlung"),
     ("Diebstahl", 1, r"diebstahl|gestohlen|entwendet|dieb"),
