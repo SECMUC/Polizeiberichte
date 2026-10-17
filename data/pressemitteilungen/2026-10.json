@@ -473,7 +473,8 @@
   "sha256": "8cfe4762bc275e36616d734c1d6e9e35dc2c2a039fb20d9a33a3697e48faa961",
   "anzahl_meldungen": 1,
   "quellen": [
-   "uebersicht"
+   "uebersicht",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-10-08T12:48:00+00:00",
   "erstmals_erfasst": "2026-10-16T18:46:36+00:00",
@@ -491,7 +492,8 @@
   "sha256": "b1c7019de3211cc5ca0e92d033612ae778617b9ffe506606c071814fa957f9fd",
   "anzahl_meldungen": 8,
   "quellen": [
-   "uebersicht"
+   "uebersicht",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-10-08T12:11:00+00:00",
   "erstmals_erfasst": "2026-10-16T18:46:37+00:00",
@@ -509,7 +511,8 @@
   "sha256": "c1a60c856e0937203551b26c2c7ecd3168d27bf5242fe57d7df041b835d536d2",
   "anzahl_meldungen": 1,
   "quellen": [
-   "uebersicht"
+   "uebersicht",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-10-08T11:39:00+00:00",
   "erstmals_erfasst": "2026-10-16T18:46:38+00:00",
@@ -527,7 +530,8 @@
   "sha256": "5dfc447fe624dc766673d779d22e4ccd6000dcd0d6c8c695d18cc634f31effbb",
   "anzahl_meldungen": 1,
   "quellen": [
-   "uebersicht"
+   "uebersicht",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-10-08T11:13:00+00:00",
   "erstmals_erfasst": "2026-10-16T18:47:26+00:00",
@@ -565,7 +569,8 @@
   "sha256": "ff073eeb508a50ee5aa3e76e1803ac40e544672cc85b468f7dc56576b0f3b212",
   "anzahl_meldungen": 1,
   "quellen": [
-   "uebersicht"
+   "uebersicht",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-10-08T09:34:00+00:00",
   "erstmals_erfasst": "2026-10-16T18:47:28+00:00",
@@ -583,7 +588,8 @@
   "sha256": "99487cdd224c6afc70e8e2a3ce5bfc1534ed58c7f6ed4e969b4383fa2147684a",
   "anzahl_meldungen": 1,
   "quellen": [
-   "uebersicht"
+   "uebersicht",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-10-08T09:26:00+00:00",
   "erstmals_erfasst": "2026-10-16T18:47:29+00:00",
@@ -601,7 +607,8 @@
   "sha256": "b34874546f39a85ecbf65ea82c4d493e1779780ccb00af16278d459340d44fd7",
   "anzahl_meldungen": 1,
   "quellen": [
-   "uebersicht"
+   "uebersicht",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-10-07T14:17:00+00:00",
   "erstmals_erfasst": "2026-10-16T19:02:39+00:00",
@@ -619,7 +626,8 @@
   "sha256": "ca63458f38220ca336604cc634320e6bebb87f28e692b7fa7e0b9b7955056818",
   "anzahl_meldungen": 11,
   "quellen": [
-   "uebersicht"
+   "uebersicht",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-10-07T13:43:00+00:00",
   "erstmals_erfasst": "2026-10-16T18:48:55+00:00",
@@ -657,7 +665,8 @@
   "sha256": "ee7737db6ea77a8df559cb1707f0a735e8fb81fccc3d713e9ac78cc79a4c0228",
   "anzahl_meldungen": 1,
   "quellen": [
-   "uebersicht"
+   "uebersicht",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-10-07T08:35:00+00:00",
   "erstmals_erfasst": "2026-10-16T18:50:42+00:00",
@@ -675,7 +684,8 @@
   "sha256": "59f49b58c75f892020aac96414fad692cfa12f3c213832fc789b346688131868",
   "anzahl_meldungen": 4,
   "quellen": [
-   "uebersicht"
+   "uebersicht",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-10-06T12:53:00+00:00",
   "erstmals_erfasst": "2026-10-16T18:51:44+00:00",
@@ -693,7 +703,8 @@
   "sha256": "59994a330cc6a18e747ad6680180557e4dcc7e322f625bfd036e275723d57208",
   "anzahl_meldungen": 1,
   "quellen": [
-   "uebersicht"
+   "uebersicht",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-10-06T12:36:00+00:00",
   "erstmals_erfasst": "2026-10-16T18:52:13+00:00",
@@ -731,7 +742,8 @@
   "sha256": "8b1f57a2022579c527c3b277ed8aa7cbc0a91ca13272828160906fdaceb18878",
   "anzahl_meldungen": 1,
   "quellen": [
-   "uebersicht"
+   "uebersicht",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-10-06T08:02:00+00:00",
   "erstmals_erfasst": "2026-10-16T18:53:38+00:00",
@@ -769,7 +781,8 @@
   "sha256": "03310790960be27607ab8f6be41b9e78a4fa5a261e29bab7f46bef5942f9a143",
   "anzahl_meldungen": 14,
   "quellen": [
-   "uebersicht"
+   "uebersicht",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-10-05T12:14:00+00:00",
   "erstmals_erfasst": "2026-10-16T18:54:09+00:00",
@@ -807,7 +820,8 @@
   "sha256": "e564991f00a06b9336a0c2fa8d2335ebbb5b3972e79a73a364181ef16a38fbea",
   "anzahl_meldungen": 1,
   "quellen": [
-   "uebersicht"
+   "uebersicht",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-10-03T14:12:00+00:00",
   "erstmals_erfasst": "2026-10-16T18:54:11+00:00",
@@ -825,7 +839,8 @@
   "sha256": "3f175bf910608c0b6c39c541cf71ec915e2916a3d8366f1ec5716d43a163a582",
   "anzahl_meldungen": 1,
   "quellen": [
-   "uebersicht"
+   "uebersicht",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-10-02T13:16:00+00:00",
   "erstmals_erfasst": "2026-10-16T18:54:12+00:00",
@@ -843,7 +858,8 @@
   "sha256": "ecdd5d78e220ab983931ffcb4e39e4ab3f1dd0a8c28e0bd9e9d11ae2ef1095f4",
   "anzahl_meldungen": 1,
   "quellen": [
-   "uebersicht"
+   "uebersicht",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-10-02T12:22:00+00:00",
   "erstmals_erfasst": "2026-10-16T18:54:13+00:00",
@@ -861,7 +877,8 @@
   "sha256": "0f3dc4828bbe717eb5333170c83865e8727a68acf04fa06460b31cb342433f06",
   "anzahl_meldungen": 4,
   "quellen": [
-   "uebersicht"
+   "uebersicht",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-10-02T11:33:00+00:00",
   "erstmals_erfasst": "2026-10-16T18:54:16+00:00",
@@ -879,7 +896,8 @@
   "sha256": "6ebd3b83a27860c8e5c4a398404146e4996af04b5401e8c90f0b0f0a3e4049e8",
   "anzahl_meldungen": 1,
   "quellen": [
-   "uebersicht"
+   "uebersicht",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-10-02T10:49:00+00:00",
   "erstmals_erfasst": "2026-10-16T18:54:45+00:00",
@@ -897,7 +915,8 @@
   "sha256": "8cc5a4f1cbdd3409093bff2a2511f9cad522d243e686705c216e4e516d8aba6b",
   "anzahl_meldungen": 1,
   "quellen": [
-   "uebersicht"
+   "uebersicht",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-10-02T10:04:00+00:00",
   "erstmals_erfasst": "2026-10-16T18:55:14+00:00",
@@ -935,11 +954,66 @@
   "sha256": "c04c5a1bf80e515f6779a48aeabc143fcb8196726fe3921ad8cb085c7581f897",
   "anzahl_meldungen": 1,
   "quellen": [
-   "uebersicht"
+   "uebersicht",
+   "archiv"
   ],
   "zeitstempel_quelle": "2026-10-02T06:15:00+00:00",
   "erstmals_erfasst": "2026-10-16T18:55:16+00:00",
   "zuletzt_geprueft": "2026-10-16T18:55:16+00:00",
+  "revision": 0
+ },
+ {
+  "id": "109376",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/109376/index.html",
+  "pp": "PP Oberbayern Süd",
+  "pp_name": "Polizeipräsidium Oberbayern Süd",
+  "veroeffentlicht": "2026-10-01",
+  "titel": "Mann in psychischem Ausnahmezustand - SEK-Einsatz in Wasserburg",
+  "text": "WASSERBURG, LKR. ROSENHEIM. Am Donnerstagnachmittag, 1. Oktober 2026, kam es in Wasserburg zu einem Polizeieinsatz, bei dem unter anderem auch Spezialeinsatzkräfte (SEK) im Einsatz waren. Der Polizei wurde bekannt, dass sich ein 52-Jähriger in einer psychischen Ausnahmesituation befinden soll. Der Mann konnte einige Zeit später in polizeilichen Gewahrsam genommen werden.\nAm Donnerstag (1. Oktober 2026), gegen 15.25 Uhr, wurde über den Polizeinotruf mitgeteilt, dass sich ein 52-Jähriger aus Wasserburg in einer psychischen Ausnahmesituation befinden soll. Im Zuge der ersten polizeilichen Kontaktaufnahme bedrohte der Mann die eingesetzten Beamten und warf mit Eisenstangen nach ihnen. Im weiteren Verlauf zog sich der 52-Jährige in sein Wohnanwesen zurück.\nDa zu diesem Zeitpunkt konkrete Anhaltspunkte dafür vorlagen, dass von dem Mann eine Fremdgefährlichkeit ausgehen könnte, wurden unter der Einsatzleitung des Polizeipräsidiums Oberbayern Süd zahlreiche Einsatzkräfte der umliegenden Dienststellen zum Einsatzort beordert und Beamte des Spezialeinsatzkommandos Südbayern (SEK) sowie der Verhandlungsgruppe angefordert.\nDa hinsichtlich der weiteren polizeilichen Maßnahmen eine Gefährdung der eingesetzten Polizeibeamten nicht ausgeschlossen werden konnte, wurde das Wohngebäude, in dem sich der 52-Jährige aufhielt, zunächst umstellt und ein möglicher Zugriff durch Kräfte des SEK vorbereitet. Die Ingewahrsamnahme durch die Spezialkräfte erfolgte kurze Zeit später. Der Mann wurde anschließend zur Durchführung weiterer polizeirechtlicher Maßnahmen an die Einsatzkräfte der Polizeiinspektion Wasserburg übergeben.\nEine Gefahr für die Bevölkerung bzw. das unmittelbare Umfeld des Mannes bestand zu keinem Zeitpunkt.",
+  "sha256": "37c5883a5e8191f8241a6d14559a1da1f5e2a1a2bc8ae425b2613eb89530beee",
+  "anzahl_meldungen": 1,
+  "quellen": [
+   "archiv"
+  ],
+  "zeitstempel_quelle": "2026-10-01T17:56:00+00:00",
+  "erstmals_erfasst": "2026-10-16T21:26:06+00:00",
+  "zuletzt_geprueft": "2026-10-16T21:26:06+00:00",
+  "revision": 0
+ },
+ {
+  "id": "109368",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/109368/index.html",
+  "pp": "PP Schwaben Nord",
+  "pp_name": "Polizeipräsidium Schwaben Nord",
+  "veroeffentlicht": "2026-10-01",
+  "titel": "Medieninfo Nordschwaben - 01.10.2026",
+  "text": "TERMINHINWEIS | TERMINERINNERUNG\nMobile Wache unterwegs\nDie aktuellen Termine sind für Sie unter folgendem Link aufgeführt:\nDie Bayerische Polizei - Termine der Mobilen Wache des PP SWN\n1558 - Präventionstheater „Lug und Betrug“ in Pöttmes\nDie Kriminalpolizei Augsburg veranstaltet in Kooperation mit der Krebsbachtaler Dorfbühne Hollenbach ein Präventionstheater (nicht nur) für Seniorinnen und Senioren zum Thema Lug und Betrug.\nWann: Freitag, 30.10.2026, 15.00 Uhr\nWo: Im Kultursaal (Marktplatz 18, 86554 Pöttmes)\nVon der Theatergruppe „Krebsbachtaler Dorfbühne Hollenbach“ werden interessierten Bürgerinnen und Bürgern anschaulich die verschiedenen Maschen der Täter dargestellt. Dabei gibt es Tipps, wie man sich beispielsweise vor falschen Handwerkern, falschen Polizisten, Schockanrufen, betrügerischen Gewinnmitteilungen oder Überweisungsbetrug schützen kann.\nDer Besuch der Theatervorstellung ist kostenlos .\nEine Anmeldung unter seniorenbeauftragte@markt-poettmes.de oder telefonisch unter 0160 / 92 77 13 67 ist zwingend erforderlich .\nAUGSBURG - Polizeimeldungen aus dem Stadtgebiet\n1559 – Polizei ermittelt nach Fahrraddiebstählen\nPfersee – Im Zeitraum von Dienstag (29.09.2026), 22.00 Uhr bis Mittwoch (30.09.2026), 08.30 Uhr entwendeten ein oder mehrere bislang unbekannte Täter ein versperrtes schwarzes E-Bike der Marke Cube in der Augsburger Straße.\nDer Beuteschaden liegt im mittleren vierstelligen Bereich.\nDie Polizei ermittelt wegen des besonders schweren Falls des Diebstahls eines Fahrrades.\nZeugenhinweise nimmt die Polizeiinspektion Augsburg West unter der Telefonnummer 0821/323-2510 entgegen.\nInnenstadt – Im Zeitraum von Sonntag (27.09.2026), 10.30 Uhr bis Montag (28.09.2026), 17.30 Uhr entwendeten ein oder mehrere bislang unbekannte Täter ein versperrtes grün-orangenes E-Bike der Marke Cube am Hauptbahnhof.\nDer Beuteschaden liegt im unteren vierstelligen Bereich.\nDie Polizei ermittelt wegen des besonders schweren Falls des Diebstahls eines Fahrrades.\nZeugenhinweise nimmt die Polizeiinspektion Augsburg Mitte unter der Telefonnummer 0821/323-2110 entgegen.\nLechhausen – Im Zeitraum von Montag (28.09.2026), 18.00 Uhr bis Dienstag (29.09.2026), 07.45 Uhr entwendeten ein oder mehrere bislang unbekannte Täter ein versperrtes graues E-Bike der Marke KTM in der Schillstraße.\nDer Beuteschaden liegt im mittleren vierstelligen Bereich.\nDie Polizei ermittelt wegen des besonders schweren Falls des Diebstahls eines Fahrrades.\nZeugenhinweise nimmt die Polizeiinspektion Augsburg Ost unter der Telefonnummer 0821/323-2310 entgegen.\n1560 – Polizei ermittelt nach Unfallflucht mit einer verletzten Person\nInnenstadt – Am Dienstag (29.09.2026) stürzte eine Radfahrerin in der Eserwallstraße aufgrund eines Ausweichmanövers und verletzte sich dabei leicht. Ein bislang unbekannter Unfallbeteiligter entfernte sich, ohne den gesetzlichen Pflichten nachzukommen.\nDie 40-jährige Radfahrerin befuhr gegen 15.00 Uhr den Rad- und Fußweg der Eserwallstraße in südliche Richtung und wollte nach links in die Straße „Am Roten Tor“ abbiegen. Aufgrund eines plötzlich in den Weg laufenden Kindes, musste die 40-jährige Radfahrerin stark bremsen und stürzte. Die ebenfalls anwesende Mutter des Kindes entfernte sich daraufhin mit dem Kind, ohne den gesetzlichen Pflichten nachzukommen.\nDie 40-Jährige wurde durch den Sturz leicht verletzt und musste zur medizinischen Behandlung in ein nahegelegenes Krankenhaus verbracht werden.\nDie Polizei ermittelt nun wegen unerlaubten Entfernens vom Unfallort und fahrlässiger Körperverletzung.\nZeugenhinweise nimmt die Polizeiinspektion Augsburg Mitte unter der Telefonnummer 0821/323-2110 entgegen.\nDie 40-Jährige besitzt die deutsche Staatsangehörigkeit.\n1561 – Polizei ermittelt nach Brand eines Heuballens\nStadtbergen – Am Mittwoch (30.09.2026) geriet gegen 19.00 Uhr ein Heuballen in der Lohfeldstraße im Rahmen eines Verladungsvorgangs in Brand und verursachte eine starke Rauchentwicklung.\nDer Heuballen konnte durch die eintreffende Feuerwehr gelöscht werden und verursachte keine weiteren Sachschäden.\nPersonen wurden hierbei nicht verletzt.\nDie Polizei ermittelt wegen eines Brandfalls ohne Personenschaden.\nREGIONAL - Polizeimeldungen aus den Landkreisen Augsburg, Aichach Friedberg, Dillingen u. Donau-Ries\n1562 - Beleuchtungskontrollen in der dunklen Jahreszeit\nNordschwaben - Im vergangenen Jahr kam es in Nordschwaben zu über 2000 Verkehrsunfällen bei Dämmerung oder Dunkelheit - sogenannte Kleinunfälle sind nicht eingerechnet. Dabei wurden über 900 Personen leicht oder schwer verletzt und sogar 15 Menschen getötet.\nDie Polizei vertritt den Standpunkt, dass jede/r Verletzte und jede/r Tote im Straßenverkehr eine/r zu viel ist.\nEin gravierender Aspekt in puncto Sicherheit im Straßenverkehr stellt der Themenbereich „Sehen und Gesehenwerden“ dar. Gerade in der dunkleren Jahreszeit kommt der intakten und richtig genutzten Fahrzeugbeleuchtung eine hohe Bedeutung zu.\nNur so ist gewährleistet, als Fahrzeugführer selbst eine gute Sicht zu haben und von anderen Verkehrsteilnehmern frühzeitig wahrgenommen zu werden.\nUnsere Kolleginnen und Kollegen stellen immer wieder fest, dass manchen Verkehrsteilnehmer der hohe Stellenwert einer vorschriftsmäßigen Beleuchtung nicht bewusst ist. Um dieses Bewusstsein zu schärfen, werden die Beamten und Beamtinnen des Polizeipräsidiums Schwaben Nord gerade zum Herbstanfang bei Verkehrskontrollen verstärkt auf eine vorschriftsmäßige Beleuchtung achten und so die Sicherheit im Straßenverkehr erhöhen.\nGerne weisen wir auch auf den jährlich von der Deutschen Verkehrswacht in Zusammenarbeit mit dem Zentralverband des deutschen Kraftfahrzeuggewerbes bundesweit durchgeführten Lichttest hin, welcher ab 1. Oktober dieses Jahres wieder angeboten wird. Dies ist ein Service, bei dem Kfz-Meisterbetriebe kleine Licht-Mängel an Kraftfahrzeugen in der Regel sofort und kostenlos zu beheben. Näheres dazu sowie die teilnehmenden Werkstätten können der Internetseite www.licht-test.de entnommen werden.\nWeitere Informationen zu den Themen „Fahren mit Lichtautomatik“ und „Sehen und Gesehenwerden für mehr Verkehrssicherheit“ finden sie unter folgenden Links:\nhttps://www.polizei.bayern.de/verkehr/003786/index.html\nhttps://www.polizei.bayern.de/verkehr/005339/index.html",
+  "sha256": "7ce4d187039f3abc5924710bdf4ca38b4b276c124029745c218503abcede00d3",
+  "anzahl_meldungen": 5,
+  "quellen": [
+   "archiv"
+  ],
+  "zeitstempel_quelle": "2026-10-01T11:20:00+00:00",
+  "erstmals_erfasst": "2026-10-16T21:26:07+00:00",
+  "zuletzt_geprueft": "2026-10-16T21:26:07+00:00",
+  "revision": 0
+ },
+ {
+  "id": "109367",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/109367/index.html",
+  "pp": "PP Oberbayern Süd",
+  "pp_name": "Polizeipräsidium Oberbayern Süd",
+  "veroeffentlicht": "2026-10-01",
+  "titel": "Serie von Juweliers-Diebstählen im Bereich Rosenheim - Polizei bittet um Hinweise",
+  "text": "ROSENHEIM. Die Polizei Rosenheim ermittelt derzeit wegen einer Serie von Diebstählen sowie mehreren Diebstahlsversuchen in verschiedenen Juweliergeschäften im Stadtgebiet. Die Täter agierten als eingespieltes Team. Zur Identifizierung der Beteiligten bittet die Polizei die Bevölkerung um Mithilfe.\nAm Mittwoch, den 15. Juli 2026, kam es im Stadtgebiet Rosenheim zu mehreren Delikten in Schmuckgeschäften. Während es in einigen Fällen zu erfolgreichen Diebstählen kam, blieben andere Taten im Versuch stecken.\nDie Ermittlungen zeigen ein wiederkehrendes Muster: Die Täter betreten die Geschäfte und lassen sich verschiedene Schmuckstücke zeigen. Dabei zeigen sie überwiegend ein sehr gezieltes Interesse an Schmuckstücken ohne Steine oder auffällige Merkmale. Durch gezielte Ablenkung des Verkaufspersonals gelang es den Tätern, in unbemerkten Augenblicken die Schmuckstücke einzustecken. Während der Gespräche kommunizieren die Beteiligten untereinander in einer romanischen Sprache (mutmaßlich Spanisch oder Portugiesisch).\nDer Gesamtwert der Beute liegt in einem mittleren vierstelligen Bereich.\nZu den gestohlenen Gegenständen gehört unter anderem ein Panzerarmband aus Gelbgold mit eingesetzten Saphiren.\nPersonenbeschreibung und Bildmaterial\nDie Täterschaft besteht aus zwei Personen. Zur Unterstützung der Ermittlungen veröffentlicht die Polizei Aufnahmen aus der Videoüberwachung der betroffenen Geschäfte, die dieser Pressemitteilung beigefügt sind.\nDie Zeugenaussagen und die Videoauswertung beschreiben die Beteiligten wie folgt:\nMännliche Person:\nAlter: ca. 40 Jahre\nErscheinungsbild: südländisches Aussehen, normale Statur und durchschnittliche Körpergröße\nBesondere Merkmale: Dreitagebart und Oberlippenbart\nWeibliche Person:\nAlter: ca. 35 Jahre\nErscheinungsbild: eher kräftige Statur, lange, dunkelblonde Haare\nDabei bitten die Ermittler auch um Hinweise aus der Bevölkerung:\nWer hat die beschriebenen Personen zum Tatzeitpunkt beobachten können?\nWer kann Hinweise zu der beschriebenen Person geben?\nWer hat Hinweise zum Verbleib der gestohlenen Schmuckstücke (u. a. ein Gelbgold-Panzerarmband mit Saphiren) ?\nHinweise nimmt die Polizeiinspektion Rosenheim unter der Telefonnummer 08031/200-0 oder jede anderen Polizeidienststelle entgegen.",
+  "sha256": "2318cca18b1e5e88ad278b5e60dad7e4f56e963a24f5f922e37f7ddd2935fda9",
+  "anzahl_meldungen": 1,
+  "quellen": [
+   "archiv"
+  ],
+  "zeitstempel_quelle": "2026-10-01T11:13:00+00:00",
+  "erstmals_erfasst": "2026-10-16T21:26:08+00:00",
+  "zuletzt_geprueft": "2026-10-16T21:26:08+00:00",
   "revision": 0
  },
  {
@@ -959,6 +1033,60 @@
   "zeitstempel_quelle": "2026-10-01T12:42:32+00:00",
   "erstmals_erfasst": "2026-10-16T19:02:42+00:00",
   "zuletzt_geprueft": "2026-10-16T19:02:42+00:00",
+  "revision": 0
+ },
+ {
+  "id": "109352",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/109352/index.html",
+  "pp": "PP Oberbayern Süd",
+  "pp_name": "Polizeipräsidium Oberbayern Süd",
+  "veroeffentlicht": "2026-10-01",
+  "titel": "Mehrere Führungswechsel beim Polizeipräsidium Oberbayern Süd im Oktober 2026",
+  "text": "RAUBLING, LKR. ROSENHEIM / GARMISCH-PARTENKIRCHEN. Zum 1. Oktober 2026 kommt es im Bereich des Polizeipräsidiums Oberbayern Süd bei mehreren Polizeidienststellen zu einem Wechsel in den Dienststellenleitungen. Polizeioberrat Karl Heinz Pauler übernimmt die Leitung der Grenzpolizeiinspektion Raubling. Polizeirat Andreas Feuerecker leitet ab sofort die Polizeiinspektion Garmisch-Partenkirchen. „Die wichtigen Führungspositionen konnten wir sehr gut besetzen“, zeigt sich auch Polizeipräsident Frank Hellwig sehr zufrieden.\nNachdem Christian Langenmair, der bisherige Leiter der Grenzpolizeiinspektion Raubling, bereits zum 1. Juli 2026 zum Leiter der Kriminalpolizeiinspektion Weilheim bestellt worden war, übernahm am heutigen 1. Oktober sein Nachfolger, Polizeioberrat Karl Heinz Pauler, die Leitung der Raublinger Grenzpolizeiinspektion. Der 55-jährige verheiratete Familienvater war bis Ende September stellvertretender Leiter der Kriminalpolizeiinspektion Rosenheim.\nPolizeipräsident Frank Hellwig begrüßt diese Entscheidung: „Karl Heinz Pauler bringt aus seinen bisherigen Führungstätigkeiten bei den Kriminalpolizeiinspektionen Traunstein und Rosenheim einen umfangreichen Erfahrungsschatz aus dem Bereich der Kriminalitätsbekämpfung mit. Von diesem und auch seiner menschlichen Kompetenzen kann nun die Raublinger Grenzpolizei profitieren“.\nDie bisherigen Aufgaben von Karl Heinz Pauler übernimmt ab sofort Kriminalrat Thomas Stumpf. „Thomas Stumpf hatte seit 2024 die Polizeiinspektion Garmisch-Partenkirchen erfolgreich geleitet. Mit ihm bekommt unsere Kriminalpolizeiinspektion in Rosenheim einen engagierten Kollegen mit Besonnenheit und ausgeprägtem Fingerspitzengefühl“, so Polizeipräsident Frank Hellwig.\nMit dem heutigen 1. Oktober 2026 übergibt Thomas Stumpf nahtlos seine Amtsgeschäfte an Polizeirat Andreas Feuerecker, der zum neuen Leiter der Polizeiinspektion Garmisch-Partenkirchen bestellt wurde.\nNach seinen sehr guten Leistungen in der 3. Qualifikationsebene (gehobener Dienst) freute sich Frank Hellwig über die Rückkehr des 34-jährigen verheirateten und zweifachen Familienvaters. Er gratulierte Andreas Feuerecker zum erfolgreichen Abschluss seines Studiums an der Deutschen Hochschule der Polizei in Münster, dem Aufstieg in die 4. Qualifikationsebene und seiner kürzlichen Ernennung zum Polizeirat. „Mit Andreas Feuerecker erhält die Polizeiinspektion Garmisch-Partenkirchen einen ausgezeichneten Leiter, der über große Führungskompetenz verfügt. Für die kommenden Herausforderungen wünschen wir Andreas Feuerecker viel Erfolg und stets ein glückliches Händchen.“\nFür Andreas Feuerecker ist die neue Aufgabe eine Herzensangelegenheit. Als Leiter der Werdenfelser Polizeidienststelle künftig Verantwortung zu übernehmen, bedeutet für ihn zugleich, in seine Heimatdienststelle zurückzukehren, schließlich ist er im Landkreis Garmisch-Partenkirchen wohnhaft.\nMit Blick auf die Personalentscheidungen zum 1. Oktober 2026 ergänzte Polizeipräsident Frank Hellwig: „Wir freuen uns, mit Karl Heinz Pauler, Andreas Feuerecker und Thomas Stumpf kompetente Führungskräfte für diese wichtigen Positionen zu gewinnen. Für die Zukunft wünschen wir ihnen alles Gute und vor allem viel Freude bei der Arbeit auf ihren neuen Dienststellen sowie eine gute und vertrauensvolle Zusammenarbeit mit unseren motivierten Kolleginnen und Kollegen.“",
+  "sha256": "eaeb66aef097ab0ff1b771c3e12a2bd1ce3ac518f19720e549f1e03cd1a58982",
+  "anzahl_meldungen": 1,
+  "quellen": [
+   "archiv"
+  ],
+  "zeitstempel_quelle": "2026-10-01T09:25:00+00:00",
+  "erstmals_erfasst": "2026-10-16T21:26:09+00:00",
+  "zuletzt_geprueft": "2026-10-16T21:26:09+00:00",
+  "revision": 0
+ },
+ {
+  "id": "109325",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/109325/index.html",
+  "pp": "PP Oberbayern Nord",
+  "pp_name": "Polizeipräsidium Oberbayern Nord",
+  "veroeffentlicht": "2026-10-01",
+  "titel": "Drohnen im Bereich des Münchner Flughafens - die Polizei bittet um Beachtung",
+  "text": "FLUGHAFEN MÜNCHEN, 01.10.2026_Da in den letzten Tagen im Umfeld des Flughafens München vermehrt Drohnenlenker festgestellt wurden, die sich nicht an die gesetzlichen Vorgaben gehalten haben, wird von polizeilicher Seite nochmals dringend auf die bestehenden Flugverbotszonen für Drohnen hingewiesen.\nIn zwei Fällen führte dieses Verhalten zu kurzzeitigen Flugbetriebseinschränkungen am Münchner Flughafen.\nEs wird darauf hingewiesen, dass neben Ordnungswidrigkeiten gemäß der Luftverkehrsordnung aufgrund des Drohnenflugs in einer Kontrollzone ohne Flugverkehrskontrollfreigabe auch Straftatbestände erfüllt sein können, wenn die Luftsicherheit durch den Drohnenflug gefährdet wird.\nZudem haben die Fluggesellschaften und der Flughafenbetreiber die Möglichkeit, für durch Flugbetriebseinschränkungen entstandene Kosten beim verantwortlichen Drohnenlenker Schadensersatz von mehreren tausend Euro zu fordern.\nDrohnenlenker werden gebeten, sich vor dem Start einer Drohne über die örtlichen Gegebenheiten zu informieren. Besonders geeignet ist hierzu die „Digitale Plattform unbemannte Luftfahrt“ (DiPuL) des Bundesverkehrsministeriums, die sowohl als App als auch browserbasiert (www.dipul.de) zugänglich ist und dem Drohnenpiloten punktgenau Hinweise über die rechtlichen Vorgaben an seinem aktuellen Standort gibt.\nEin Schaubild der von der Deutschen Flugsicherung GmbH eingerichteten Kontrollzone liegt bei. Darüber hinaus sind – wie bereits am 17.09.2026 veröffentlicht - während der Dauer des Oktoberfestes zusätzlich in einem Radius von 6 km um den Tower des Flughafens Drohnenstarts grundsätzlich verboten.",
+  "sha256": "b8d0b9fd00ac50f43ddb7e379803889c7e1a76212c1693f7552bad030fc01f5b",
+  "anzahl_meldungen": 1,
+  "quellen": [
+   "archiv"
+  ],
+  "zeitstempel_quelle": "2026-10-01T08:06:00+00:00",
+  "erstmals_erfasst": "2026-10-16T21:26:10+00:00",
+  "zuletzt_geprueft": "2026-10-16T21:26:10+00:00",
+  "revision": 0
+ },
+ {
+  "id": "109324",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/109324/index.html",
+  "pp": "PP Oberbayern Süd",
+  "pp_name": "Polizeipräsidium Oberbayern Süd",
+  "veroeffentlicht": "2026-10-01",
+  "titel": "Tödlicher Bergunfall am Hochstaufen",
+  "text": "BAD REICHENHALL, LKR. BERCHTESGADENER LAND. Am Mittwoch, 30. September 2026, wurde ein 70-jähriger Mann im Bereich des Hochstaufens in Bad Reichenhall leblos aufgefunden. Die Alpine Einsatzgruppe der Grenzpolizeiinspektion Piding übernahm die Ermittlungen.\nAm Mittwoch (30. September 2026) gegen 13.00 Uhr wurde über den Notruf bei der Leitstelle in Österreich bekannt, dass unterhalb des Steinernen Jägers am Hochstaufen in Bad Reichenhall eine leblose Person festgestellt worden war.\nEin sofort alarmierter Notarzt des Rettungshubschraubers Christoph 14 konnte nur noch den Tod eines 70-jährigen Österreichers feststellen.\nZwei Mitglieder der Alpinen Einsatzgruppe der Polizei bargen mit Unterstützung der Bergwacht Bad Reichenhall den Leichnam mittels Polizeihubschrauber.\nDie Alpine Einsatzgruppe der Grenzpolizeiinspektion Piding übernahm unter Sachleitung der Staatsanwaltschaft Traunstein die Ermittlungen. Derzeit ist von einem selbstverschuldeten Absturzgeschehen auszugehen.\nInsgesamt waren drei Mitglieder der Alpinen Einsatzgruppe der Grenzpolizei Piding, vier Angehörige der Bergwacht Bad Reichenhall, der Rettungshubschrauber Christoph 14 sowie ein Polizeihubschrauber an dem Einsatz beteiligt.",
+  "sha256": "1f6707669edbbe02453edd25454aca1d9bad796d5995af2ac16e383e8b6bc7a2",
+  "anzahl_meldungen": 1,
+  "quellen": [
+   "archiv"
+  ],
+  "zeitstempel_quelle": "2026-10-01T07:36:00+00:00",
+  "erstmals_erfasst": "2026-10-16T21:26:11+00:00",
+  "zuletzt_geprueft": "2026-10-16T21:26:11+00:00",
   "revision": 0
  }
 ]

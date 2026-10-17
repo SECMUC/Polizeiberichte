@@ -1,15 +1,15 @@
 {
  "schema": 2,
- "aktualisiert": "2026-10-16T21:02:50+00:00",
+ "aktualisiert": "2026-10-17T02:02:31+00:00",
  "zeitraum": {
   "von": "2025-01-01",
   "bis": "2026-10-16"
  },
  "summen": {
-  "pressemitteilungen": 716,
-  "meldungen": 3763,
+  "pressemitteilungen": 2410,
+  "meldungen": 8436,
   "social": 0,
-  "warteschlange": 28
+  "warteschlange": 159
  },
  "praesidien": {
   "PP München": {
@@ -38,234 +38,294 @@
    "monat": "2026-10",
    "datei_meldungen": "meldungen/2026-10.json",
    "datei_social": null,
-   "meldungen": 217,
-   "pressemitteilungen": 51,
+   "meldungen": 227,
+   "pressemitteilungen": 57,
    "social": 0,
    "pp": {
-    "PP Schwaben Nord": 83,
+    "PP Schwaben Nord": 88,
     "PP München": 109,
-    "PP Oberbayern Süd": 11,
-    "PP Oberbayern Nord": 14
+    "PP Oberbayern Süd": 15,
+    "PP Oberbayern Nord": 15
    }
   },
   {
    "monat": "2026-09",
    "datei_meldungen": "meldungen/2026-09.json",
    "datei_social": null,
-   "meldungen": 245,
-   "pressemitteilungen": 31,
+   "meldungen": 452,
+   "pressemitteilungen": 125,
    "social": 0,
    "pp": {
-    "PP München": 245
+    "PP München": 245,
+    "PP Schwaben Nord": 139,
+    "PP Oberbayern Nord": 33,
+    "PP Oberbayern Süd": 35
    }
   },
   {
    "monat": "2026-08",
    "datei_meldungen": "meldungen/2026-08.json",
    "datei_social": null,
-   "meldungen": 165,
-   "pressemitteilungen": 27,
+   "meldungen": 411,
+   "pressemitteilungen": 112,
    "social": 0,
    "pp": {
-    "PP München": 165
+    "PP München": 165,
+    "PP Oberbayern Süd": 34,
+    "PP Oberbayern Nord": 23,
+    "PP Schwaben Nord": 189
    }
   },
   {
    "monat": "2026-07",
    "datei_meldungen": "meldungen/2026-07.json",
    "datei_social": null,
-   "meldungen": 154,
-   "pressemitteilungen": 28,
+   "meldungen": 382,
+   "pressemitteilungen": 111,
    "social": 0,
    "pp": {
-    "PP München": 154
+    "PP München": 158,
+    "PP Oberbayern Nord": 24,
+    "PP Schwaben Nord": 164,
+    "PP Oberbayern Süd": 36
    }
   },
   {
    "monat": "2026-06",
    "datei_meldungen": "meldungen/2026-06.json",
    "datei_social": null,
-   "meldungen": 152,
-   "pressemitteilungen": 34,
+   "meldungen": 367,
+   "pressemitteilungen": 106,
    "social": 0,
    "pp": {
-    "PP München": 152
+    "PP München": 156,
+    "PP Oberbayern Süd": 24,
+    "PP Schwaben Nord": 164,
+    "PP Oberbayern Nord": 23
    }
   },
   {
    "monat": "2026-05",
    "datei_meldungen": "meldungen/2026-05.json",
    "datei_social": null,
-   "meldungen": 166,
-   "pressemitteilungen": 26,
+   "meldungen": 350,
+   "pressemitteilungen": 113,
    "social": 0,
    "pp": {
-    "PP München": 166
+    "PP München": 166,
+    "PP Oberbayern Nord": 38,
+    "PP Schwaben Nord": 118,
+    "PP Oberbayern Süd": 28
    }
   },
   {
    "monat": "2026-04",
    "datei_meldungen": "meldungen/2026-04.json",
    "datei_social": null,
-   "meldungen": 159,
-   "pressemitteilungen": 31,
+   "meldungen": 362,
+   "pressemitteilungen": 112,
    "social": 0,
    "pp": {
-    "PP München": 159
+    "PP München": 159,
+    "PP Oberbayern Süd": 30,
+    "PP Schwaben Nord": 144,
+    "PP Oberbayern Nord": 29
    }
   },
   {
    "monat": "2026-03",
    "datei_meldungen": "meldungen/2026-03.json",
    "datei_social": null,
-   "meldungen": 157,
-   "pressemitteilungen": 28,
+   "meldungen": 369,
+   "pressemitteilungen": 122,
    "social": 0,
    "pp": {
-    "PP München": 157
+    "PP München": 164,
+    "PP Schwaben Nord": 138,
+    "PP Oberbayern Nord": 37,
+    "PP Oberbayern Süd": 30
    }
   },
   {
    "monat": "2026-02",
    "datei_meldungen": "meldungen/2026-02.json",
    "datei_social": null,
-   "meldungen": 143,
-   "pressemitteilungen": 28,
+   "meldungen": 319,
+   "pressemitteilungen": 111,
    "social": 0,
    "pp": {
-    "PP München": 143
+    "PP München": 143,
+    "PP Schwaben Nord": 121,
+    "PP Oberbayern Süd": 30,
+    "PP Oberbayern Nord": 25
    }
   },
   {
    "monat": "2026-01",
    "datei_meldungen": "meldungen/2026-01.json",
    "datei_social": null,
-   "meldungen": 161,
-   "pressemitteilungen": 27,
+   "meldungen": 369,
+   "pressemitteilungen": 115,
    "social": 0,
    "pp": {
-    "PP München": 161
+    "PP München": 168,
+    "PP Oberbayern Süd": 37,
+    "PP Schwaben Nord": 141,
+    "PP Oberbayern Nord": 23
    }
   },
   {
    "monat": "2025-12",
    "datei_meldungen": "meldungen/2025-12.json",
    "datei_social": null,
-   "meldungen": 144,
-   "pressemitteilungen": 26,
+   "meldungen": 370,
+   "pressemitteilungen": 94,
    "social": 0,
    "pp": {
-    "PP München": 144
+    "PP München": 151,
+    "PP Schwaben Nord": 176,
+    "PP Oberbayern Süd": 22,
+    "PP Oberbayern Nord": 21
    }
   },
   {
    "monat": "2025-11",
    "datei_meldungen": "meldungen/2025-11.json",
    "datei_social": null,
-   "meldungen": 186,
-   "pressemitteilungen": 37,
+   "meldungen": 403,
+   "pressemitteilungen": 111,
    "social": 0,
    "pp": {
-    "PP München": 186
+    "PP München": 186,
+    "PP Schwaben Nord": 167,
+    "PP Oberbayern Süd": 27,
+    "PP Oberbayern Nord": 23
    }
   },
   {
    "monat": "2025-10",
    "datei_meldungen": "meldungen/2025-10.json",
    "datei_social": null,
-   "meldungen": 211,
-   "pressemitteilungen": 40,
+   "meldungen": 496,
+   "pressemitteilungen": 139,
    "social": 0,
    "pp": {
-    "PP München": 211
+    "PP München": 212,
+    "PP Oberbayern Nord": 32,
+    "PP Schwaben Nord": 216,
+    "PP Oberbayern Süd": 36
    }
   },
   {
    "monat": "2025-09",
    "datei_meldungen": "meldungen/2025-09.json",
    "datei_social": null,
-   "meldungen": 203,
-   "pressemitteilungen": 29,
+   "meldungen": 474,
+   "pressemitteilungen": 119,
    "social": 0,
    "pp": {
-    "PP München": 203
+    "PP München": 215,
+    "PP Schwaben Nord": 200,
+    "PP Oberbayern Nord": 26,
+    "PP Oberbayern Süd": 33
    }
   },
   {
    "monat": "2025-08",
    "datei_meldungen": "meldungen/2025-08.json",
    "datei_social": null,
-   "meldungen": 156,
-   "pressemitteilungen": 28,
+   "meldungen": 389,
+   "pressemitteilungen": 110,
    "social": 0,
    "pp": {
-    "PP München": 156
+    "PP München": 157,
+    "PP Schwaben Nord": 177,
+    "PP Oberbayern Süd": 33,
+    "PP Oberbayern Nord": 22
    }
   },
   {
    "monat": "2025-07",
    "datei_meldungen": "meldungen/2025-07.json",
    "datei_social": null,
-   "meldungen": 178,
-   "pressemitteilungen": 32,
+   "meldungen": 454,
+   "pressemitteilungen": 129,
    "social": 0,
    "pp": {
-    "PP München": 178
+    "PP München": 179,
+    "PP Oberbayern Nord": 32,
+    "PP Schwaben Nord": 205,
+    "PP Oberbayern Süd": 38
    }
   },
   {
    "monat": "2025-06",
    "datei_meldungen": "meldungen/2025-06.json",
    "datei_social": null,
-   "meldungen": 174,
-   "pressemitteilungen": 36,
+   "meldungen": 424,
+   "pressemitteilungen": 108,
    "social": 0,
    "pp": {
-    "PP München": 174
+    "PP München": 180,
+    "PP Schwaben Nord": 198,
+    "PP Oberbayern Süd": 28,
+    "PP Oberbayern Nord": 18
    }
   },
   {
    "monat": "2025-05",
    "datei_meldungen": "meldungen/2025-05.json",
    "datei_social": null,
-   "meldungen": 154,
-   "pressemitteilungen": 32,
+   "meldungen": 416,
+   "pressemitteilungen": 115,
    "social": 0,
    "pp": {
-    "PP München": 154
+    "PP München": 166,
+    "PP Schwaben Nord": 197,
+    "PP Oberbayern Süd": 30,
+    "PP Oberbayern Nord": 23
    }
   },
   {
    "monat": "2025-04",
    "datei_meldungen": "meldungen/2025-04.json",
    "datei_social": null,
-   "meldungen": 162,
-   "pressemitteilungen": 39,
+   "meldungen": 422,
+   "pressemitteilungen": 124,
    "social": 0,
    "pp": {
-    "PP München": 162
+    "PP München": 162,
+    "PP Oberbayern Süd": 33,
+    "PP Schwaben Nord": 200,
+    "PP Oberbayern Nord": 27
    }
   },
   {
    "monat": "2025-03",
    "datei_meldungen": "meldungen/2025-03.json",
    "datei_social": null,
-   "meldungen": 161,
-   "pressemitteilungen": 37,
+   "meldungen": 433,
+   "pressemitteilungen": 127,
    "social": 0,
    "pp": {
-    "PP München": 161
+    "PP München": 171,
+    "PP Oberbayern Nord": 32,
+    "PP Schwaben Nord": 202,
+    "PP Oberbayern Süd": 28
    }
   },
   {
    "monat": "2025-02",
    "datei_meldungen": "meldungen/2025-02.json",
    "datei_social": null,
-   "meldungen": 141,
-   "pressemitteilungen": 34,
+   "meldungen": 373,
+   "pressemitteilungen": 115,
    "social": 0,
    "pp": {
-    "PP München": 141
+    "PP München": 151,
+    "PP Oberbayern Süd": 33,
+    "PP Schwaben Nord": 167,
+    "PP Oberbayern Nord": 22
    }
   },
   {
@@ -281,62 +341,60 @@
   }
  ],
  "letzter_lauf": {
-  "zeit": "2026-10-16T20:35:03+00:00",
-  "dauer_sek": 5500,
+  "zeit": "2026-10-17T02:02:31+00:00",
+  "dauer_sek": 17958,
   "modus": "backfill ab 2025-01-01",
-  "budget_erreicht": false,
+  "budget_erreicht": true,
   "quellen": {
    "uebersicht": {
     "ok": true,
-    "eintraege_gesamt": 199,
+    "eintraege_gesamt": 200,
     "relevant": 51,
     "neu": 0
    },
    "archiv:MUC": {
     "ok": true,
     "treffer": 701,
-    "neu": 642,
+    "neu": 0,
     "ab": "2025-01-01"
    },
    "archiv:OBN": {
-    "ok": false,
-    "fehler": "Pressearchiv: keine Antwort für Polizeipräsidium Oberbayern Nord 2026-10-01–2026-10-16"
+    "ok": true,
+    "treffer": 593,
+    "neu": 579,
+    "ab": "2025-01-01"
    },
    "archiv:OBS": {
-    "ok": false,
-    "fehler": "Pressearchiv: keine Antwort für Polizeipräsidium Oberbayern Süd 2025-01-01–2025-01-31"
+    "ok": true,
+    "treffer": 698,
+    "neu": 686,
+    "ab": "2025-01-01"
    },
    "archiv:SWN": {
-    "ok": false,
-    "fehler": "Pressearchiv: keine Antwort für Polizeipräsidium Schwaben Nord 2025-03-01–2025-03-31"
+    "ok": true,
+    "treffer": 572,
+    "neu": 560,
+    "ab": "2025-01-01"
    },
    "telegram:PressePolizeiMuenchen": {
     "ok": true,
     "links": 590,
-    "neu": 5
-   },
-   "x": {
-    "ok": null,
-    "hinweis": "nicht aktiv (kein X_BEARER_TOKEN hinterlegt)"
+    "neu": 0
    }
   },
   "statistik": {
-   "neu_pm": 622,
-   "neu_meldungen": 3225,
+   "neu_pm": 1694,
+   "neu_meldungen": 4673,
    "aktualisiert_pm": 0,
-   "abgerufen": 647,
+   "abgerufen": 1761,
    "social_neu": 0,
-   "http_anfragen": 854,
-   "http_fehler": 151,
+   "http_anfragen": 2157,
+   "http_fehler": 339,
    "fehlerarten": {
-    "ConnectTimeout": 151
+    "ConnectTimeout": 339
    }
   },
-  "warteschlange": 25,
-  "fehler": [
-   "archiv:OBN: Pressearchiv: keine Antwort für Polizeipräsidium Oberbayern Nord 2026-10-01–2026-10-16",
-   "archiv:OBS: Pressearchiv: keine Antwort für Polizeipräsidium Oberbayern Süd 2025-01-01–2025-01-31",
-   "archiv:SWN: Pressearchiv: keine Antwort für Polizeipräsidium Schwaben Nord 2025-03-01–2025-03-31"
-  ]
+  "warteschlange": 159,
+  "fehler": []
  }
 }
