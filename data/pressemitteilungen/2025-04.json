@@ -1284,6 +1284,24 @@
   "revision": 0
  },
  {
+  "id": "083422",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/083422/index.html",
+  "pp": "PP Oberbayern Süd",
+  "pp_name": "Polizeipräsidium Oberbayern Süd",
+  "veroeffentlicht": "2025-04-12",
+  "titel": "Mutter mit Stichwaffe verletzt - SEK-Einsatz in Garmisch-Partenkirchen",
+  "text": "GARMISCH-PARTENKIRCHEN. Am Freitagnachmittag, 11. April 2025, kam es in Garmisch-Partenkirchen zu einem Polizeieinsatz bei welchem unter anderem auch Spezialeinsatzkräfte (SEK) im Einsatz waren. Eine 15-Jährige hatte in einer Gemeinschaftsunterkunft ihre Mutter mit einer Stichwaffe verletzt. Die Angreiferin konnte vorläufig festgenommen werden, ihre verletzte Mutter wurde medizinisch versorgt. Gegen die Beschuldigte wird nun wegen gefährlicher Körperverletzung ermittelt.\nAm Freitagnachmittag (11. April 2025) wurde der Polizei gegen 15.00 Uhr über Notruf mitgeteilt, dass eine 15-Jährige ihre Mutter in einer Gemeinschaftsunterkunft mit einem Stichwerkzeug im Bereich des Oberkörpers verletzt hatte. Die verletzte 48-Jährige konnte sich in ein anderes Zimmer flüchten und wurde von den ersten eintreffenden Polizeibeamten dem hinzugerufenen Rettungsdienst zur medizinischen Versorgung zugeführt. Weitere Bewohner des betroffenen Gebäudetrakts wurden von der Polizei evakuiert.\nWeil sich die 15-Jährige nach Erkenntnissen der Polizei vor Ort im Besitz des Tatwerkzeugs, in einem Zimmer der Unterkunft verschanzt hielt, wurden unter der Einsatzleitung des Polizeipräsidiums Oberbayern Süd zahlreiche Einsatzkräfte der umliegenden Dienststellen, sowie Spezialeinsatzkräfte (SEK) und speziell geschulte Beamte der Verhandlungsgruppe in das Einsatzgeschehen eingebunden.\nDie tatverdächtige 15-Jährige konnte schließlich unverletzt von den SEK-Beamten widerstandlos vorläufig festgenommen und im Anschluss in einer psychiatrischen Klinik untergebracht werden. Das betreffende Gebäude war während der gesamten Dauer des Polizeieinsatzes mit starken polizeilichen Kräften umstellt und gesichert.\nDie polizeilichen Ermittlungen wegen gefährlicher Körperverletzung werden von der Polizeiinspektion Garmisch-Partenkirchen geführt.",
+  "sha256": "1260b6516da6b34d41b4001bdee97d510cf63e645721b4c75ec1b5e3bf98dfe6",
+  "anzahl_meldungen": 1,
+  "quellen": [
+   "archiv"
+  ],
+  "zeitstempel_quelle": "2025-04-12T07:48:00+00:00",
+  "erstmals_erfasst": "2026-10-17T10:06:29+00:00",
+  "zuletzt_geprueft": "2026-10-17T10:06:29+00:00",
+  "revision": 0
+ },
+ {
   "id": "083407",
   "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/083407/index.html",
   "pp": "PP Oberbayern Nord",

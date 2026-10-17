@@ -731,6 +731,24 @@
   "revision": 0
  },
  {
+  "id": "104534",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/104534/index.html",
+  "pp": "PP Oberbayern Süd",
+  "pp_name": "Polizeipräsidium Oberbayern Süd",
+  "veroeffentlicht": "2026-06-20",
+  "titel": "Vermisstenfall - Polizei bittet Bevölkerung um Mithilfe",
+  "text": "MÜHLDORF A. INN. Seit Freitagabend, 19. Juni 2026, wird der xx-jährige +++personenbezogene Daten gelöscht+++ aus einer Wohngruppe vermisst. Zuletzt gelesen wurde der Mann Freitagnachmittag am Bahnhof Mühldorf. Herr +++personenbezogene Daten gelöscht+++ sollte mit dem Zug in Richtung München unterwegs sein, ist bislang jedoch nicht an seinem Zeil im Bereich Fürstenfeldbruck angekommen. Es kann sein, dass sich die Person in einer hilflosen Lage befindet. Die Polizeiinspektion Mühldorf bittet die Bevölkerung um Hinweise zum Aufenthaltsort.\nSeit Freitagabend (19. Juni 2026), sucht die Polizeiinspektion Mühldorf den xx-jährigen Herrn +++personenbezogene Daten gelöscht+++ aus einer Außenwohngruppe. Herr +++personenbezogene Daten gelöscht+++ wurde zuletzt am Freitagnachmittag am Bahnhof Mühldorf gesehen, von wo aus er mit dem Zug in Richtung München fahren sollte, jedoch bislang nicht an seinem Ziel im Bereich Fürstenfeldbruck angekommen ist.\n+++Personenbeschreibung und Photo gelöscht+++\nEs kann nicht ausgeschlossen werden, dass Herr +++personenbezogene Daten gelöscht+++ sich in einer hilflosen Lage befindet.\nDie Polizeiinspektion Mühldorf bittet deshalb Zeugen, die Herrn +++personenbezogene Daten gelöscht+++ gesehen haben oder Hinweise zu seinem Aufenthaltsort geben können, sich unter der Telefonnummer 08631/3673-0 oder jeder anderen Polizeidienststelle zu melden.",
+  "sha256": "61f367f6686ac2031aff1c3c3d2f715dff9e54a466ddf7bd890cb31b5f82d2da",
+  "anzahl_meldungen": 1,
+  "quellen": [
+   "archiv"
+  ],
+  "zeitstempel_quelle": "2026-06-20T21:54:00+00:00",
+  "erstmals_erfasst": "2026-10-17T09:55:55+00:00",
+  "zuletzt_geprueft": "2026-10-17T09:55:55+00:00",
+  "revision": 0
+ },
+ {
   "id": "104521",
   "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/104521/index.html",
   "pp": "PP München",
@@ -1390,6 +1408,24 @@
   "zeitstempel_quelle": "2026-06-11T12:23:00+00:00",
   "erstmals_erfasst": "2026-10-16T19:18:49+00:00",
   "zuletzt_geprueft": "2026-10-16T19:18:49+00:00",
+  "revision": 0
+ },
+ {
+  "id": "104010",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/104010/index.html",
+  "pp": "PP Oberbayern Nord",
+  "pp_name": "Polizeipräsidium Oberbayern Nord",
+  "veroeffentlicht": "2026-06-11",
+  "titel": "Psychisch erkrankter Mann löst Polizeieinsatz aus",
+  "text": "KARLSFELD, LANDKREIS DACHAU. In den Mittagstunden am vergangenen Dienstag (09.06.2026) kam es in Karlsfeld zu einem größeren Polizeieinsatz. Ein 61-jähriger Mann randalierte zunächst laut schreiend in seiner Dachgeschosswohnung am Eichendorffring. Nachdem Nachbarn zudem noch Rauch aus dem Haus quillen sahen, alarmierten sie über Notruf Feuerwehr-, Polizei- und Rettungskräfte. Als die Einsatzkräfte am Einsatzort eintrafen, stießen sie auf einen hoch aggressiven Mann, der sich offenbar in einen psychischen Ausnahmezustand befand. Mit Hilfe der Unterstützung von Spezialkräften gelang es schließlich, den Erkrankten in Gewahrsam zu nehmen und in die Obhut einer Spezialklinik zu verbringen. Verletzt wurde dabei niemand. Die Polizei Dachau und die Kriminalpolizei Fürstenfeldbruck haben unter Sachleitung der Staatsanwaltschaft München II die Ermittlungen aufgenommen.\nPolizeiliche Untersuchungen in der Wohnung ergaben, dass der psychisch erkrankte Mann in seinem Ausnahmezustand offenbar versucht hatte, seine Wohnung in Brand zu setzen. Einer zu geringen Sauerstoffzufuhr war es letztendlich zu verdanken, dass sich das Feuer nicht weiter ausbreitete und somit zu keinem Vollbrand führte. Dennoch entstand ein Brandschaden in Höhe von ca. 20.000 Euro. Die Ermittlungen dauern an.",
+  "sha256": "6e642e551b5bd7627b83fe831457d0302e714cfc1bba3cd9491a4f3e6b8fa669",
+  "anzahl_meldungen": 1,
+  "quellen": [
+   "archiv"
+  ],
+  "zeitstempel_quelle": "2026-06-11T06:54:00+00:00",
+  "erstmals_erfasst": "2026-10-17T09:55:56+00:00",
+  "zuletzt_geprueft": "2026-10-17T09:55:56+00:00",
   "revision": 0
  },
  {

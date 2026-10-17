@@ -1836,6 +1836,24 @@
   "erfasst": "2026-10-16T23:14:27+00:00"
  },
  {
+  "id": "098432-0",
+  "pm_id": "098432",
+  "nr": null,
+  "pp": "PP Oberbayern Süd",
+  "veroeffentlicht": "2026-02-19",
+  "tatdatum": "2026-02-18",
+  "uhrzeit": "17:30",
+  "titel": "Kellerbrände in Rosenheim",
+  "ort": "ROSENHEIM",
+  "ort_quelle": "text",
+  "abschnitt": null,
+  "text": "ROSENHEIM. Am Mittwochnachmittag, den 18. Februar 2026, kam es in zwei Mehrparteienhäusern zu Kellerbränden. Verletzt wurde dabei niemand. Der entstandene Sachschaden beläuft sich auf einen niedrigeren sechsstelligen Betrag. Die Kriminalpolizei Rosenheim führt die Ermittlungen zur Brandursache.\nAm Mittwochnachmittag (18. Februar 2026), gegen 17.30 Uhr, wurde über die Integrierte Leitstelle Rosenheim ein ausgelöster Feuermelder in einem Mehrparteienhaus in der Lena-Christ-Straße in Rosenheim gemeldet. Vor Ort stellten die sofort alarmierten Einsatzkräfte der Feuerwehr einen kleineren Brandherd im Keller fest und löschten diesen umgehend ab.\nNach weiterem Erkunden durch die Feuerwehr konnte im Nebengebäude – ebenfalls im Kellerraum eines Mehrfamilienhauses, eine starke Rauchentwicklung festgestellt werden. Der Brand konnten rasch gelöscht werden; das Kellerabteil brannte vollständig aus.\nVerletzt wurde durch die Brände glücklicherweise niemand. Durch das größere Feuer entstand jedoch ein Sachschaden im niedrigeren sechsstelligen Bereich.\nDie ersten Maßnahmen vor Ort trafen Beamte der Polizeiinspektion Rosenheim. Nach Einbindung des Kriminaldauerdienstes (KDD) werden die weiteren Ermittlungen durch die Brandfahnder der Kriminalpolizei Rosenheim, unter Sachleitung der Staatsanwaltschaft Traunstein, Zweigstelle Rosenheim, fortgeführt.\nZur genauen Brandursache können derzeit noch keine Aussagen getroffen werden. Die kriminalpolizeilichen Untersuchungen hierzu dauern noch an und die Ermittler bitten zur Klärung des Sachverhalts auch um Hinweise aus der Bevölkerung:\nWer hat am Mittwoch, den 18. Januar 2026, zwischen ca. 16.50 und 17.30 Uhr im Bereich der Lena-Christ-Straße in Rosenheim verdächtige Wahrnehmungen gemacht?\nWer kann sonst sachdienliche Hinweise geben, die für die Ermittlungen zur Brandursache von Bedeutung sein könnten?\nHinweise werden an die Kriminalpolizeiinspektion Rosenheim unter der Telefonnummer 08031/200-0 oder an jede andere Polizeidienststelle erbeten.",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/098432/index.html",
+  "kategorie": "Branddelikt",
+  "schweregrad": 2,
+  "erfasst": "2026-10-17T10:01:04+00:00"
+ },
+ {
   "id": "098431-0260",
   "pm_id": "098431",
   "nr": "0260",
@@ -3544,6 +3562,24 @@
   "kategorie": "Sonstiges",
   "schweregrad": 1,
   "erfasst": "2026-10-16T19:33:40+00:00"
+ },
+ {
+  "id": "098135-0",
+  "pm_id": "098135",
+  "nr": null,
+  "pp": "PP Oberbayern Süd",
+  "veroeffentlicht": "2026-02-11",
+  "tatdatum": "2026-02-09",
+  "uhrzeit": null,
+  "titel": "Polizei findet Kokain bei Kontrolle auf der B21 – Tatverdächtiger (25) in Untersuchungshaft",
+  "ort": "BAD REICHENHALL",
+  "ort_quelle": "text",
+  "abschnitt": null,
+  "text": "BAD REICHENHALL, LKR. BERCHTESGADENER LAND. Am Montagnachmittag, den 9. Februar 2026, stellten Beamte der Bundespolizei Freilassing im Rahmen einer Einreisekontrolle an der B21, im Bereich Bad Reichenhall, eine nicht unerhebliche Menge an Kokain sicher. Der festgenommene Tatverdächtige befindet sich mittlerweile in Untersuchungshaft. Die Staatsanwaltschaft und die Kriminalpolizeiinspektion Traunstein übernahmen die Ermittlungen.\nDen richtigen Riecher hatten die Beamten der Bundespolizei Freilassing am Montag (9. Februar 2026), gegen 14.30 Uhr, als sie ein Fahrzeug auf der B21 bei der Einreise in Bad Reichenhall kontrollierten. Im Zuge der Kontrolle wurden im Fahrzeug eines 25-jährigen mit Wohnsitz in Österreich über 40 Gramm Kokain aufgefunden und sichergestellt. Des Weiteren ergaben sich konkrete Verdachtsmomente, dass der 25-Jährige afghanische Staatsangehörige sein Fahrzeug offensichtlich unter Betäubungsmitteleinfluss fuhr.\nNoch vor Ort wurde der dringend Tatverdächtige vorläufig festgenommen. Das Fachkommissariat 4 für Rauschgiftdelikte der Kriminalpolizeiinspektion Traunstein übernahm unter der Sachleitung der Staatsanwaltschaft Traunstein die weiteren Ermittlungen.\nAufgrund des vorliegenden Sachverhalts beantragte die sachleitende Staatsanwaltschaft Traunstein beim zuständigen Amtsgericht Laufen einen Haftbefehl gegen den 25-jährigen dringend tatverdächtigen Mann.\nIm Laufe des gestrigen Dienstag (10. Februar 2026) wurde dieser dem zuständigen Richter zur Klärung der Haftfrage vorgeführt. Nach Erlass eines Untersuchungshaftbefehls wurde er in eine Justizvollzugsanstalt eingeliefert.",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/098135/index.html",
+  "kategorie": "Drogen",
+  "schweregrad": 2,
+  "erfasst": "2026-10-17T10:01:05+00:00"
  },
  {
   "id": "098123-0218",

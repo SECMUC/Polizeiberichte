@@ -2466,6 +2466,24 @@
   "erfasst": "2026-10-16T22:16:56+00:00"
  },
  {
+  "id": "104534-0",
+  "pm_id": "104534",
+  "nr": null,
+  "pp": "PP Oberbayern Süd",
+  "veroeffentlicht": "2026-06-20",
+  "tatdatum": "2026-06-19",
+  "uhrzeit": null,
+  "titel": "Vermisstenfall - Polizei bittet Bevölkerung um Mithilfe",
+  "ort": "MÜHLDORF A",
+  "ort_quelle": "text",
+  "abschnitt": null,
+  "text": "MÜHLDORF A. INN. Seit Freitagabend, 19. Juni 2026, wird der xx-jährige +++personenbezogene Daten gelöscht+++ aus einer Wohngruppe vermisst. Zuletzt gelesen wurde der Mann Freitagnachmittag am Bahnhof Mühldorf. Herr +++personenbezogene Daten gelöscht+++ sollte mit dem Zug in Richtung München unterwegs sein, ist bislang jedoch nicht an seinem Zeil im Bereich Fürstenfeldbruck angekommen. Es kann sein, dass sich die Person in einer hilflosen Lage befindet. Die Polizeiinspektion Mühldorf bittet die Bevölkerung um Hinweise zum Aufenthaltsort.\nSeit Freitagabend (19. Juni 2026), sucht die Polizeiinspektion Mühldorf den xx-jährigen Herrn +++personenbezogene Daten gelöscht+++ aus einer Außenwohngruppe. Herr +++personenbezogene Daten gelöscht+++ wurde zuletzt am Freitagnachmittag am Bahnhof Mühldorf gesehen, von wo aus er mit dem Zug in Richtung München fahren sollte, jedoch bislang nicht an seinem Ziel im Bereich Fürstenfeldbruck angekommen ist.\n+++Personenbeschreibung und Photo gelöscht+++\nEs kann nicht ausgeschlossen werden, dass Herr +++personenbezogene Daten gelöscht+++ sich in einer hilflosen Lage befindet.\nDie Polizeiinspektion Mühldorf bittet deshalb Zeugen, die Herrn +++personenbezogene Daten gelöscht+++ gesehen haben oder Hinweise zu seinem Aufenthaltsort geben können, sich unter der Telefonnummer 08631/3673-0 oder jeder anderen Polizeidienststelle zu melden.",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/104534/index.html",
+  "kategorie": "Vermisstenfall",
+  "schweregrad": 2,
+  "erfasst": "2026-10-17T09:55:55+00:00"
+ },
+ {
   "id": "104521-908",
   "pm_id": "104521",
   "nr": "908",
@@ -4642,6 +4660,24 @@
   "kategorie": "Verkehr",
   "schweregrad": 2,
   "erfasst": "2026-10-16T19:18:49+00:00"
+ },
+ {
+  "id": "104010-0",
+  "pm_id": "104010",
+  "nr": null,
+  "pp": "PP Oberbayern Nord",
+  "veroeffentlicht": "2026-06-11",
+  "tatdatum": "2026-06-09",
+  "uhrzeit": null,
+  "titel": "Psychisch erkrankter Mann löst Polizeieinsatz aus",
+  "ort": "KARLSFELD",
+  "ort_quelle": "text",
+  "abschnitt": null,
+  "text": "KARLSFELD, LANDKREIS DACHAU. In den Mittagstunden am vergangenen Dienstag (09.06.2026) kam es in Karlsfeld zu einem größeren Polizeieinsatz. Ein 61-jähriger Mann randalierte zunächst laut schreiend in seiner Dachgeschosswohnung am Eichendorffring. Nachdem Nachbarn zudem noch Rauch aus dem Haus quillen sahen, alarmierten sie über Notruf Feuerwehr-, Polizei- und Rettungskräfte. Als die Einsatzkräfte am Einsatzort eintrafen, stießen sie auf einen hoch aggressiven Mann, der sich offenbar in einen psychischen Ausnahmezustand befand. Mit Hilfe der Unterstützung von Spezialkräften gelang es schließlich, den Erkrankten in Gewahrsam zu nehmen und in die Obhut einer Spezialklinik zu verbringen. Verletzt wurde dabei niemand. Die Polizei Dachau und die Kriminalpolizei Fürstenfeldbruck haben unter Sachleitung der Staatsanwaltschaft München II die Ermittlungen aufgenommen.\nPolizeiliche Untersuchungen in der Wohnung ergaben, dass der psychisch erkrankte Mann in seinem Ausnahmezustand offenbar versucht hatte, seine Wohnung in Brand zu setzen. Einer zu geringen Sauerstoffzufuhr war es letztendlich zu verdanken, dass sich das Feuer nicht weiter ausbreitete und somit zu keinem Vollbrand führte. Dennoch entstand ein Brandschaden in Höhe von ca. 20.000 Euro. Die Ermittlungen dauern an.",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/104010/index.html",
+  "kategorie": "Branddelikt",
+  "schweregrad": 2,
+  "erfasst": "2026-10-17T09:55:56+00:00"
  },
  {
   "id": "104001-0",

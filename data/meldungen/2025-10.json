@@ -846,6 +846,24 @@
   "erfasst": "2026-10-16T19:47:12+00:00"
  },
  {
+  "id": "092911-0",
+  "pm_id": "092911",
+  "nr": null,
+  "pp": "PP Oberbayern Nord",
+  "veroeffentlicht": "2025-10-29",
+  "tatdatum": "2025-10-27",
+  "uhrzeit": null,
+  "titel": "Streit in Wettbüro eskaliert - 31-jähriger Tatverdächtiger in psychiatrische Einrichtung untergebracht",
+  "ort": "DORFEN",
+  "ort_quelle": "text",
+  "abschnitt": null,
+  "text": "DORFEN, LANDKREIS ERDING. Am Montagabend (27.10.2025) gerieten in einem Wettbüro in der Rosenaustraße zwei 31-jährige Männer in Streit. Im Verlauf der Auseinandersetzung verletzte der 31-jähriger türkische Staatsbürger seinen österreichischen Kontrahenten mit einem mitgeführten Teppichmesser im Stirn- und Nackenbereich. Das Opfer wurde ärztlich versorgt. Lebensgefahr bestand nicht.\nDie Kriminalpolizei Erding hat die Ermittlungen wegen Verdachts eines versuchten Tötungsdelikts aufgenommen. Nachdem konkrete Anhaltspunkte für eine psychische Erkrankung des dringend Tatverdächtigen vorlagen, beantragte die Staatsanwaltschaft Landshut gegen den Festgenommen einen Unterbringungsbefehl, der gestern antragsgemäß vom zuständigen Ermittlungsrichter des Amtsgerichts Landshut erlassen wurde. Der Tatverdächtige wurde anschließend in ein psychiatrisches Krankenhaus verbracht. Die Ermittlungen dauern an.",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/092911/index.html",
+  "kategorie": "Tötungsdelikt",
+  "schweregrad": 3,
+  "erfasst": "2026-10-17T10:02:14+00:00"
+ },
+ {
   "id": "092895-0",
   "pm_id": "092895",
   "nr": null,
