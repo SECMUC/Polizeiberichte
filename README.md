@@ -6,7 +6,7 @@ Automatisch gepflegte Datenbank aller Pressemeldungen der Polizeipräsidien Mün
 
 - **Nur echte Meldungen.** Erfasst wird ausschließlich, was die Polizei veröffentlicht hat. Jeder Datensatz verweist auf das Original auf polizei.bayern.de und enthält den Text wörtlich. Eine automatische Prüfung (`tools/validate.py`) bricht den Lauf ab, wenn ein Text nicht exakt im Original vorkommt.
 - **Nichts wird geraten.** Tatdatum, Uhrzeit und Ort werden nur eingetragen, wenn sie eindeutig im Text stehen. Andernfalls bleibt das Feld leer.
-- **Abgeleitet ist gekennzeichnet.** Kategorie und Schweregrad stammen aus einer regelbasierten Einordnung (`collector/classify.py`) und stehen nicht in der Polizeimeldung selbst.
+- **Abgeleitet ist gekennzeichnet.** Das Delikt (Feld `kategorie`) stammt aus einer regelbasierten Zuordnung ohne Gewichtung (`collector/classify.py`) und steht nicht in der Polizeimeldung selbst.
 
 ## Quellen
 
@@ -28,7 +28,7 @@ Automatisch gepflegte Datenbank aller Pressemeldungen der Polizeipräsidien Mün
 | `state/queue.json` | Entdeckte, noch nicht abgerufene Dokumente |
 | `legacy/` | Datenbestand der alten Scraper (nur Archiv, wird nicht mehr genutzt) |
 
-Felder einer Meldung: `id`, `pm_id`, `nr`, `pp`, `veroeffentlicht`, `tatdatum`, `uhrzeit`, `titel`, `ort`, `ort_quelle`, `abschnitt`, `text`, `url`, `kategorie`, `schweregrad`, `erfasst`.
+Felder einer Meldung: `id`, `pm_id`, `nr`, `pp`, `veroeffentlicht`, `tatdatum`, `uhrzeit`, `titel`, `ort`, `ort_quelle`, `abschnitt`, `text`, `url`, `kategorie` (Delikt), `erfasst`.
 
 ## Betrieb
 

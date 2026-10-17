@@ -126,8 +126,7 @@ tbody tr:hover td{background:color-mix(in srgb,var(--color-primary) 5%,transpare
 .muted{color:var(--color-text-muted);font-size:.85rem}
 .pp-tag{font-size:.78rem;font-weight:700;padding:.1rem .45rem;border-radius:6px;background:var(--blue-100);color:var(--blue-800)}
 :root[data-theme="dark"] .pp-tag{background:var(--blue-800);color:var(--blue-100)}
-.sev{display:inline-flex;align-items:center;gap:.3rem;font-weight:600;font-size:.85rem;white-space:nowrap}
-.sev-3{color:var(--color-danger)} .sev-2{color:var(--color-warning)} .sev-1{color:var(--color-info)}
+.delikt{font-weight:600;font-size:.88rem;color:var(--color-text-strong);white-space:nowrap}
 .titel{font-weight:600;color:var(--color-text-strong)}
 .text{margin-top:.3rem;color:var(--color-text);white-space:pre-line;max-width:80ch}
 .text.clamp{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -163,8 +162,8 @@ footer.note p{margin:.3rem 0}
 
   <section class="kpis" aria-label="Kennzahlen">
     <div class="kpi accent"><div class="label">Meldungen im Filter</div><div class="value" id="kTotal">–</div><div class="sub" id="kRange">&nbsp;</div></div>
-    <div class="kpi"><div class="label">Schweregrad hoch</div><div class="value" id="kHigh">–</div><div class="sub">▲ abgeleitete Einordnung</div></div>
-    <div class="kpi"><div class="label">Häufigste Kategorie</div><div class="value" id="kTopCat" style="font-size:1.35rem">–</div><div class="sub" id="kTopCatN">&nbsp;</div></div>
+    <div class="kpi"><div class="label">Betroffene Orte</div><div class="value" id="kOrte">–</div><div class="sub">Orte / Stadtteile im Filter</div></div>
+    <div class="kpi"><div class="label">Häufigstes Delikt</div><div class="value" id="kTopCat" style="font-size:1.35rem">–</div><div class="sub" id="kTopCatN">&nbsp;</div></div>
     <div class="kpi"><div class="label">Datenbestand</div><div class="value" id="kDb">–</div><div class="sub" id="kDbSub">&nbsp;</div></div>
   </section>
 
@@ -185,9 +184,7 @@ footer.note p{margin:.3rem 0}
       <span class="lbl">Präsidium</span>
       <div class="pp-list" id="ppList"></div>
     </div>
-    <div class="field"><label for="fCat">Kategorie</label><select id="fCat"><option value="">Alle</option></select></div>
-    <div class="field"><label for="fSev">Schweregrad</label>
-      <select id="fSev"><option value="">Alle</option><option value="3">▲ hoch</option><option value="2">■ mittel und höher</option></select></div>
+    <div class="field"><label for="fCat">Delikt</label><select id="fCat"><option value="">Alle</option></select></div>
     <div class="field"><label for="fOrt">Ort / Stadtteil</label><input type="text" id="fOrt" placeholder="z. B. Schwabing"></div>
     <div class="field wide"><label for="fQ">Volltext</label><input type="search" id="fQ" placeholder="Suchbegriff in Titel und Text"></div>
   </form>
@@ -213,7 +210,7 @@ footer.note p{margin:.3rem 0}
           <th scope="col">Tatzeit</th>
           <th scope="col"><button type="button" data-sort="pp">PP ↕</button></th>
           <th scope="col"><button type="button" data-sort="ort">Ort ↕</button></th>
-          <th scope="col"><button type="button" data-sort="schweregrad">Einordnung ↕</button></th>
+          <th scope="col"><button type="button" data-sort="kategorie">Delikt ↕</button></th>
           <th scope="col">Meldung</th>
           <th scope="col">Quelle</th>
         </tr></thead>
@@ -229,7 +226,7 @@ footer.note p{margin:.3rem 0}
     <div class="table-wrap">
       <table>
         <caption class="sr-only">Posts offizieller Polizeiaccounts</caption>
-        <thead><tr><th scope="col">Zeit</th><th scope="col">Account</th><th scope="col">Einordnung</th><th scope="col">Post</th><th scope="col">Quelle</th></tr></thead>
+        <thead><tr><th scope="col">Zeit</th><th scope="col">Account</th><th scope="col">Delikt</th><th scope="col">Post</th><th scope="col">Quelle</th></tr></thead>
         <tbody id="tbodySoc"></tbody>
       </table>
     </div>
@@ -238,7 +235,7 @@ footer.note p{margin:.3rem 0}
 
   <footer class="note">
     <p><strong>Datengrundlage:</strong> ausschließlich veröffentlichte Pressemitteilungen von polizei.bayern.de (entdeckt über Übersichtsseite, Pressearchiv und den offiziellen Telegram-Kanal des PP München) sowie optional Posts offizieller Polizei-Accounts. Titel, Ort und Text sind wörtlich übernommen; jede Zeile verlinkt das Original.</p>
-    <p><strong>Abgeleitet:</strong> Kategorie und Schweregrad sind eine automatische, regelbasierte Einordnung. Tatdatum und Uhrzeit werden nur angezeigt, wenn sie eindeutig im Text stehen.</p>
+    <p><strong>Abgeleitet:</strong> Das Delikt ist eine automatische, regelbasierte Zuordnung ohne Gewichtung. Tatdatum und Uhrzeit werden nur angezeigt, wenn sie eindeutig im Text stehen.</p>
     <p>Für Beschuldigte gilt die Unschuldsvermutung.</p>
   </footer>
 </main>
@@ -258,7 +255,6 @@ const el = (tag, props = {}, ...kids) => {
   for (const c of kids) if (c != null) n.append(c);
   return n;
 };
-const SEV = {3: ["▲", "hoch"], 2: ["■", "mittel"], 1: ["●", "niedrig"]};
 const fmtDate = (iso) => iso ? iso.slice(8, 10) + "." + iso.slice(5, 7) + "." + iso.slice(0, 4) : "";
 const todayIso = () => new Date(Date.now() - new Date().getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
 const addDays = (iso, d) => { const t = new Date(iso + "T12:00:00"); t.setDate(t.getDate() + d); return t.toISOString().slice(0, 10); };
@@ -286,7 +282,7 @@ document.addEventListener("keydown", (e) => {
 const state = {
   index: null, loadedMonths: new Set(), rows: [], social: [],
   from: addDays(todayIso(), -6), to: todayIso(), pps: new Set(),
-  cat: "", sev: "", ort: "", q: "", sort: {key: "veroeffentlicht", dir: -1},
+  cat: "", ort: "", q: "", sort: {key: "veroeffentlicht", dir: -1},
   shown: 100, filtered: [],
 };
 
@@ -364,7 +360,6 @@ function applyFilters() {
   const out = state.rows.filter(r =>
     (!state.from || r.veroeffentlicht >= state.from) && (!state.to || r.veroeffentlicht <= state.to) &&
     state.pps.has(r.pp) && (!state.cat || r.kategorie === state.cat) &&
-    (!state.sev || r.schweregrad >= +state.sev) &&
     (!ort || (r.ort || "").toLowerCase().includes(ort) || (r.abschnitt || "").toLowerCase().includes(ort)) &&
     q.every(w => r._s.includes(w)));
   const {key, dir} = state.sort;
@@ -383,14 +378,13 @@ function rowEl(r) {
     const open = textDiv.classList.toggle("clamp") === false;
     toggle.setAttribute("aria-expanded", String(open)); toggle.textContent = open ? "Weniger anzeigen" : "Volltext anzeigen";
   });
-  const [sym, lbl] = SEV[r.schweregrad] || SEV[1];
   const kurz = state.index.praesidien[r.pp]?.kurz || r.pp;
   return el("tr", {},
     el("td", {class: "nowrap", text: fmtDate(r.veroeffentlicht)}),
     el("td", {class: "nowrap"}, r.tatdatum ? el("span", {text: fmtDate(r.tatdatum) + (r.uhrzeit ? " " + r.uhrzeit : "")}) : el("span", {class: "muted", text: "–"})),
     el("td", {}, el("span", {class: "pp-tag", title: r.pp, text: kurz})),
     el("td", {}, el("div", {text: r.ort || "–"}), r.abschnitt ? el("div", {class: "muted", text: r.abschnitt.split(" - ")[0]}) : null),
-    el("td", {}, el("span", {class: "sev sev-" + r.schweregrad, title: "Schweregrad " + lbl + " (abgeleitet)"}, el("span", {"aria-hidden": "true", text: sym}), el("span", {text: r.kategorie}))),
+    el("td", {}, el("span", {class: "delikt", text: r.kategorie})),
     el("td", {}, el("div", {class: "titel", text: (r.nr ? r.nr + " · " : "") + r.titel}), textDiv, r.text.length > 180 ? toggle : null),
     el("td", {class: "nowrap"}, el("a", {href: r.url, target: "_blank", rel: "noopener", text: "Original ↗"}), el("div", {class: "muted", text: "PM " + r.pm_id})));
 }
@@ -405,7 +399,7 @@ function renderKpis() {
   const rows = state.filtered;
   $("#kTotal").textContent = rows.length.toLocaleString("de-DE");
   $("#kRange").textContent = state.from ? `${fmtDate(state.from)} – ${fmtDate(state.to)}` : "gesamter Bestand";
-  $("#kHigh").textContent = rows.filter(r => r.schweregrad === 3).length.toLocaleString("de-DE");
+  $("#kOrte").textContent = new Set(rows.map(r => r.ort).filter(Boolean)).size.toLocaleString("de-DE");
   const c = {}; for (const r of rows) c[r.kategorie] = (c[r.kategorie] || 0) + 1;
   const top = Object.entries(c).sort((a, b) => b[1] - a[1])[0];
   $("#kTopCat").textContent = top ? top[0] : "–";
@@ -416,11 +410,10 @@ function renderSocial() {
   const rows = state.social.filter(s => s.veroeffentlicht >= from && s.veroeffentlicht <= to && state.pps.has(s.pp))
     .sort((a, b) => (b.erstellt || "").localeCompare(a.erstellt || ""));
   $("#tbodySoc").replaceChildren(...rows.slice(0, 300).map(s => {
-    const [sym] = SEV[s.schweregrad] || SEV[1];
     return el("tr", {},
       el("td", {class: "nowrap", text: new Date(s.erstellt).toLocaleString("de-DE", {dateStyle: "short", timeStyle: "short"})}),
       el("td", {text: "@" + s.account}),
-      el("td", {}, el("span", {class: "sev sev-" + s.schweregrad}, el("span", {"aria-hidden": "true", text: sym}), el("span", {text: s.kategorie}))),
+      el("td", {}, el("span", {class: "delikt", text: s.kategorie})),
       el("td", {}, el("div", {class: "text", text: s.text})),
       el("td", {}, el("a", {href: s.url, target: "_blank", rel: "noopener", text: "Post ↗"})));
   }));
@@ -442,7 +435,7 @@ function exportRows() {
   return state.filtered.map(r => ({
     "Veröffentlicht": fmtDate(r.veroeffentlicht), "Tatdatum": fmtDate(r.tatdatum), "Uhrzeit": r.uhrzeit || "",
     "Präsidium": r.pp, "Ort": r.ort || "", "Abschnitt": r.abschnitt || "", "Nr.": r.nr || "",
-    "Kategorie (abgeleitet)": r.kategorie, "Schweregrad (abgeleitet)": SEV[r.schweregrad][1],
+    "Delikt (abgeleitet)": r.kategorie,
     "Titel": r.titel, "Text": r.text, "Quelle": r.url, "PM-ID": r.pm_id, "Meldungs-ID": r.id,
   }));
 }
@@ -450,7 +443,7 @@ const fname = (ext) => `polizeimeldungen_${state.from || "alle"}_${state.to || "
 $("#btnXlsx").addEventListener("click", () => {
   if (!window.XLSX) { alert("Excel-Bibliothek nicht geladen – bitte CSV-Export nutzen."); return; }
   const ws = XLSX.utils.json_to_sheet(exportRows());
-  ws["!cols"] = [10, 10, 7, 20, 18, 22, 6, 18, 10, 50, 80, 50, 8, 12].map(w => ({wch: w}));
+  ws["!cols"] = [10, 10, 7, 20, 18, 22, 6, 22, 50, 80, 50, 8, 12].map(w => ({wch: w}));
   const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, "Meldungen");
   XLSX.writeFile(wb, fname("xlsx"));
 });
@@ -475,7 +468,6 @@ const unpress = () => quickBtns.forEach(x => x.setAttribute("aria-pressed", "fal
 $("#dFrom").addEventListener("change", e => { state.from = e.target.value; unpress(); update(); });
 $("#dTo").addEventListener("change", e => { state.to = e.target.value; unpress(); update(); });
 $("#fCat").addEventListener("change", e => { state.cat = e.target.value; update(); });
-$("#fSev").addEventListener("change", e => { state.sev = e.target.value; update(); });
 let tmr; const debounce = (fn) => { clearTimeout(tmr); tmr = setTimeout(fn, 200); };
 $("#fOrt").addEventListener("input", e => debounce(() => { state.ort = e.target.value.trim(); update(); }));
 $("#fQ").addEventListener("input", e => debounce(() => { state.q = e.target.value.trim(); update(); }));

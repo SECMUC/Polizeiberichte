@@ -155,7 +155,7 @@ def main(argv=None):
             store.upsert("pressemitteilungen", pm)
             store.delete_where("meldungen", lambda r, i=pm_id: r["pm_id"] == i)
             for m in meldungen:
-                m["kategorie"], m["schweregrad"] = categorize(m["titel"], m["text"])
+                m["kategorie"] = categorize(m["titel"], m["text"])
                 m["erfasst"] = pm["erstmals_erfasst"]
                 store.upsert("meldungen", m)
             store.queue.pop(pm_id, None)
@@ -181,7 +181,7 @@ def main(argv=None):
                     for p in posts:
                         p["pp"] = pp
                         p["veroeffentlicht"] = (p.get("erstellt") or "")[:10]
-                        p["kategorie"], p["schweregrad"] = categorize("", p["text"])
+                        p["kategorie"] = categorize("", p["text"])
                         p["erfasst"] = now_iso()
                         if store.upsert("social", p):
                             stats["social_neu"] += 1
