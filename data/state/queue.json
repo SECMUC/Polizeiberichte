@@ -4,7 +4,7 @@
   "quellen": [
    "telegram"
   ],
-  "versuche": 4,
+  "versuche": 5,
   "veroeffentlicht_ts": "2025-05-27T13:15:46+00:00",
   "letzter_fehler": "HTTP 404 (nicht vorhanden)"
  },
@@ -13,7 +13,7 @@
   "quellen": [
    "telegram"
   ],
-  "versuche": 4,
+  "versuche": 5,
   "veroeffentlicht_ts": "2025-06-16T10:00:46+00:00",
   "letzter_fehler": "HTTP 404 (nicht vorhanden)"
  },
@@ -22,7 +22,7 @@
   "quellen": [
    "telegram"
   ],
-  "versuche": 4,
+  "versuche": 5,
   "veroeffentlicht_ts": "2025-06-27T09:45:46+00:00",
   "letzter_fehler": "HTTP 404 (nicht vorhanden)"
  },
@@ -31,7 +31,7 @@
   "quellen": [
    "telegram"
   ],
-  "versuche": 4,
+  "versuche": 5,
   "veroeffentlicht_ts": "2025-10-08T11:15:46+00:00",
   "letzter_fehler": "HTTP 404 (nicht vorhanden)"
  },
@@ -40,7 +40,7 @@
   "quellen": [
    "telegram"
   ],
-  "versuche": 4,
+  "versuche": 5,
   "veroeffentlicht_ts": "2026-02-05T15:15:46+00:00",
   "letzter_fehler": "HTTP 404 (nicht vorhanden)"
  }
