@@ -1,13 +1,13 @@
-══ Polizei-Collector · 2026-10-19T20:41:55+00:00 · Budget 25 min ══
+══ Polizei-Collector · 2026-10-20T10:23:06+00:00 · Budget 25 min ══
 
 [1] Neue Pressemitteilungen entdecken
-  ✓ uebersicht: {'eintraege_gesamt': 208, 'relevant': 51, 'neu': 4}
-  ✓ archiv:MUC: {'treffer': 7, 'neu': 0, 'ab': '2026-10-12'}
-  ✓ archiv:OBN: {'treffer': 6, 'neu': 0, 'ab': '2026-10-12'}
-  ✓ archiv:OBS: {'treffer': 6, 'neu': 0, 'ab': '2026-10-12'}
-  ✓ archiv:SWN: {'treffer': 7, 'neu': 0, 'ab': '2026-10-12'}
+  ✓ uebersicht: {'eintraege_gesamt': 206, 'relevant': 51, 'neu': 2}
+  ✓ archiv:MUC: {'treffer': 6, 'neu': 0, 'ab': '2026-10-13'}
+  ✓ archiv:OBN: {'treffer': 6, 'neu': 0, 'ab': '2026-10-13'}
+  ✓ archiv:OBS: {'treffer': 6, 'neu': 0, 'ab': '2026-10-13'}
+  ✓ archiv:SWN: {'treffer': 6, 'neu': 0, 'ab': '2026-10-13'}
   ✓ telegram:PressePolizeiMuenchen: {'links': 59, 'neu': 0}
 
-[2] Abruf: 4 Dokumente (Warteschlange 9, Nachprüfung 0)
+[2] Abruf: 9 Dokumente (Warteschlange 7, Nachprüfung 7)
 
-══ Fertig: {'neu_pm': 4, 'neu_meldungen': 12, 'aktualisiert_pm': 0, 'abgerufen': 4, 'social_neu': 0} · Warteschlange 5 · 0 Fehler ══
+══ Fertig: {'neu_pm': 2, 'neu_meldungen': 2, 'aktualisiert_pm': 0, 'abgerufen': 9, 'social_neu': 0} · Warteschlange 5 · 0 Fehler ══

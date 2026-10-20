@@ -1,5 +1,43 @@
 [
  {
+  "id": "110184",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/110184/index.html",
+  "pp": "PP Oberbayern Nord",
+  "pp_name": "Polizeipräsidium Oberbayern Nord",
+  "veroeffentlicht": "2026-10-20",
+  "titel": "Exhibitionist an einem Feldweg in Puchheim aufgetreten",
+  "text": "PUCHHEIM, LANDKREIS FÜRSTENFELDBUCK. Am vergangenen Mittwochnachmittag (14.10.2026) onanierte ein bislang unbekannter Mann an einem Feldweg am Oberen Laurenzerweg vor den Augen einer 42-jährigen Frau. Als das Opfer den Mann zur Rede stellen wollte, flüchtete dieser.\nDer Tatverdächtige kann wie folgt beschrieben werden:\nMännlich, ca. 20 Jahre alt, 180 cm groß, schwarze lockige Haare, dunkler Oberlippen-Flaumbart, südländisches Erscheinungsbild. Er trug eine schwarze Hose, ein schwarzes T-Shirt mit heller mittiger Aufschrift auf der Vorderseite seines Kleidungsstücks und eine große silberne Gliederhalskette.\nSachdienliche Hinweise, die zur Identifizierung oder dem Aufenthalt des Tatverdächtigen beitragen können, werden von der Kriminalpolizei Fürstenfeldbruck unter der Telefonnummer 08141-612-0 entgegengenommen.",
+  "sha256": "65e3f000d1e53f5802a9cbcfcd198cb396c1949565d9caf971877c2c8f037e58",
+  "anzahl_meldungen": 1,
+  "quellen": [
+   "archiv",
+   "uebersicht"
+  ],
+  "zeitstempel_quelle": "2026-10-20T09:18:00+00:00",
+  "erstmals_erfasst": "2026-10-20T10:23:15+00:00",
+  "zuletzt_geprueft": "2026-10-20T10:23:15+00:00",
+  "revision": 0
+ },
+ {
+  "id": "110172",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/110172/index.html",
+  "pp": "PP Oberbayern Nord",
+  "pp_name": "Polizeipräsidium Oberbayern Nord",
+  "veroeffentlicht": "2026-10-20",
+  "titel": "Zeugenaufruf zu Einbruch in Kirchseeon",
+  "text": "KIRCHSEEON, OT. EGLHARTING, LKR. EBERSBERG, 20.10.2026_Im Zeitraum von Samstag (17.10.2026) bis Montag (19.10.2026) ereignete sich im Kirchseeoner Ortsteil Eglharting ein Einbruch in ein Werkstattgebäude. Die Kriminalpolizei Erding hat die Ermittlungen übernommen und bittet um Zeugenhinweise.\nZwischen Samstagabend, 19.00 Uhr und Montagmorgen, 05.20 Uhr drangen bislang unbekannte Täter durch brachiale Gewalt an der Pfortentür in das Gebäude am Westring ein.\nIn der Folge wurden Büroräume und die Kantine durchsucht.\nZum Entwendungsschaden ist aktuell noch nichts bekannt.\nDie Kriminalpolizei Erding bittet Zeugen, die im Tatzeitraum verdächtige Wahrnehmungen gemacht haben, sich unter der Telefonnummer 08122/9680 zu melden.",
+  "sha256": "b30b0d74caab61a7f3d82da5f30c4d9fcb0328b40bb310ffb2e8382b728c51a7",
+  "anzahl_meldungen": 1,
+  "quellen": [
+   "archiv",
+   "uebersicht"
+  ],
+  "zeitstempel_quelle": "2026-10-20T07:38:00+00:00",
+  "erstmals_erfasst": "2026-10-20T10:23:16+00:00",
+  "zuletzt_geprueft": "2026-10-20T10:23:16+00:00",
+  "revision": 0
+ },
+ {
   "id": "110137",
   "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/110137/index.html",
   "pp": "PP Schwaben Nord",
@@ -15,7 +53,7 @@
   ],
   "zeitstempel_quelle": "2026-10-19T13:46:00+00:00",
   "erstmals_erfasst": "2026-10-19T20:42:04+00:00",
-  "zuletzt_geprueft": "2026-10-19T20:42:04+00:00",
+  "zuletzt_geprueft": "2026-10-20T10:23:17+00:00",
   "revision": 0
  },
  {
@@ -34,7 +72,7 @@
   ],
   "zeitstempel_quelle": "2026-10-19T12:09:00+00:00",
   "erstmals_erfasst": "2026-10-19T20:42:05+00:00",
-  "zuletzt_geprueft": "2026-10-19T20:42:05+00:00",
+  "zuletzt_geprueft": "2026-10-20T10:23:18+00:00",
   "revision": 0
  },
  {
@@ -53,7 +91,7 @@
   ],
   "zeitstempel_quelle": "2026-10-19T11:30:00+00:00",
   "erstmals_erfasst": "2026-10-19T20:42:06+00:00",
-  "zuletzt_geprueft": "2026-10-19T20:42:06+00:00",
+  "zuletzt_geprueft": "2026-10-20T10:23:19+00:00",
   "revision": 0
  },
  {
@@ -72,7 +110,7 @@
   ],
   "zeitstempel_quelle": "2026-10-19T10:25:00+00:00",
   "erstmals_erfasst": "2026-10-19T11:11:39+00:00",
-  "zuletzt_geprueft": "2026-10-19T11:11:39+00:00",
+  "zuletzt_geprueft": "2026-10-20T10:23:20+00:00",
   "revision": 0
  },
  {
@@ -91,7 +129,7 @@
   ],
   "zeitstempel_quelle": "2026-10-19T09:57:00+00:00",
   "erstmals_erfasst": "2026-10-19T11:11:40+00:00",
-  "zuletzt_geprueft": "2026-10-19T11:11:40+00:00",
+  "zuletzt_geprueft": "2026-10-20T10:23:21+00:00",
   "revision": 0
  },
  {
@@ -111,7 +149,7 @@
   ],
   "zeitstempel_quelle": "2026-10-19T09:41:00+00:00",
   "erstmals_erfasst": "2026-10-19T20:42:07+00:00",
-  "zuletzt_geprueft": "2026-10-19T20:42:07+00:00",
+  "zuletzt_geprueft": "2026-10-20T10:23:22+00:00",
   "revision": 0
  },
  {
@@ -131,7 +169,7 @@
   ],
   "zeitstempel_quelle": "2026-10-18T09:39:00+00:00",
   "erstmals_erfasst": "2026-10-18T18:16:03+00:00",
-  "zuletzt_geprueft": "2026-10-19T11:11:41+00:00",
+  "zuletzt_geprueft": "2026-10-20T10:23:23+00:00",
   "revision": 0
  },
  {
