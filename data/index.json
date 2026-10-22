@@ -1,6 +1,6 @@
 {
  "schema": 2,
- "aktualisiert": "2026-10-21T19:33:23+00:00",
+ "aktualisiert": "2026-10-22T10:35:50+00:00",
  "zeitraum": {
   "von": "2025-01-01",
   "bis": "2026-10-21"
@@ -42,10 +42,10 @@
    "pressemitteilungen": 79,
    "social": 0,
    "pp": {
-    "PP Oberbayern Süd": 23,
-    "PP München": 135,
+    "PP Schwaben Nord": 107,
     "PP Oberbayern Nord": 21,
-    "PP Schwaben Nord": 107
+    "PP München": 135,
+    "PP Oberbayern Süd": 23
    }
   },
   {
@@ -344,40 +344,40 @@
   }
  ],
  "letzter_lauf": {
-  "zeit": "2026-10-21T19:33:23+00:00",
-  "dauer_sek": 12,
+  "zeit": "2026-10-22T10:35:50+00:00",
+  "dauer_sek": 20,
   "modus": "täglich",
   "budget_erreicht": false,
   "quellen": {
    "uebersicht": {
     "ok": true,
-    "eintraege_gesamt": 224,
-    "relevant": 57,
-    "neu": 4
+    "eintraege_gesamt": 217,
+    "relevant": 52,
+    "neu": 0
    },
    "archiv:MUC": {
     "ok": true,
-    "treffer": 8,
+    "treffer": 7,
     "neu": 0,
-    "ab": "2026-10-14"
+    "ab": "2026-10-15"
    },
    "archiv:OBN": {
     "ok": true,
-    "treffer": 8,
+    "treffer": 7,
     "neu": 0,
-    "ab": "2026-10-14"
+    "ab": "2026-10-15"
    },
    "archiv:OBS": {
     "ok": true,
     "treffer": 8,
     "neu": 0,
-    "ab": "2026-10-14"
+    "ab": "2026-10-15"
    },
    "archiv:SWN": {
     "ok": true,
-    "treffer": 6,
+    "treffer": 5,
     "neu": 0,
-    "ab": "2026-10-14"
+    "ab": "2026-10-15"
    },
    "telegram:PressePolizeiMuenchen": {
     "ok": true,
@@ -390,12 +390,12 @@
    }
   },
   "statistik": {
-   "neu_pm": 4,
-   "neu_meldungen": 15,
+   "neu_pm": 0,
+   "neu_meldungen": 0,
    "aktualisiert_pm": 0,
-   "abgerufen": 4,
+   "abgerufen": 12,
    "social_neu": 0,
-   "http_anfragen": 12,
+   "http_anfragen": 20,
    "http_fehler": 0,
    "fehlerarten": {}
   },
