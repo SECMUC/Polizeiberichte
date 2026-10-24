@@ -1,5 +1,43 @@
 [
  {
+  "id": "110397",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/110397/index.html",
+  "pp": "PP Oberbayern Süd",
+  "pp_name": "Polizeipräsidium Oberbayern Süd",
+  "veroeffentlicht": "2026-10-24",
+  "titel": "Brand Kehlsteinhaus - Einladung zur Pressekonferenz",
+  "text": "BERCHTESGADEN, LKR. BERCHTESGADENER LAND. Am späten Freitagabend, 23. Oktober 2026, brach im Kehlsteinhaus, einem historischen Gebäude auf rund 1.800 Metern Höhe, ein Feuer aus. Das Gebäude brannte fast vollständig nieder. Die Löscharbeiten dauern an.\nDie Kriminalpolizei Traunstein führt unter der Sachleitung der Staatsanwaltschaft Traustein die Ermittlungen wegen des Verdachts eines Brandstiftungsdelikts. Diesbezüglich wurde am gestrigen Abend ein Tatverdächtiger festgenommen.\nEinzelheiten zum Einsatz vor Ort, den umfangreichen Löschmaßnahmen und den Ermittlungen der Polizei sowie der Staatsanwaltschaft stellen Ihnen:\nder Bayerische Innenminister Joachim Herrmann\nsowie Vertreter des Landratsamtes, der Feuerwehr, sowie Staatsanwaltschaft und Polizei\nim Rahmen einer Pressekonferenz am\nSamstag, 24. Oktober 2026, um 14.00 Uhr,\nim AlpenCongress (Kongresshaus)\nin der Maximilianstraße 9 in 83471 Berchtesgaden\nvor.\nMedienvertreter sind herzlich eingeladen.",
+  "sha256": "411681456eb536d70df2025529346456f094d36b83f999bb0555a7a6a7c362f5",
+  "anzahl_meldungen": 1,
+  "quellen": [
+   "archiv",
+   "uebersicht"
+  ],
+  "zeitstempel_quelle": "2026-10-24T08:46:00+00:00",
+  "erstmals_erfasst": "2026-10-24T09:45:47+00:00",
+  "zuletzt_geprueft": "2026-10-24T09:45:47+00:00",
+  "revision": 0
+ },
+ {
+  "id": "110389",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/110389/index.html",
+  "pp": "PP Oberbayern Süd",
+  "pp_name": "Polizeipräsidium Oberbayern Süd",
+  "veroeffentlicht": "2026-10-24",
+  "titel": "Großbrand am Kehlsteinhaus in Berchtesgaden",
+  "text": "BERCHTESGADEN, OT. OBERSALZBERG, LKR. BERCHTESGADENER LAND. Am Freitagabend, den 23. Oktober 2026, geriet das Kehlsteinhaus in Vollbrand. Verletzt wurde durch den Brand nach derzeitigem Stand niemand. Eine verdächtige Person wurde vorläufig festgenommen. Die Kriminalpolizei Traunstein hat die Ermittlungen zur Brandursache übernommen. Die Löscharbeiten dauern weiter an.\nAm Freitagabend, den 23. Oktober 2026, gegen 21.15 Uhr, erging ein Brandalarm des Kehlsteinhauses am Obersalzberg in Berchtesgaden an die Integrierte Leitstelle Traunstein.\nDie umgehend alarmierten Feuerwehren konnten auf Anfahrt bereits deutlich sichtbare Flammen im Kehlsteinhaus wahrnehmen – vor Ort wurde der Vollbrand des Gebäudes feststellt.\nDie Anfahrt zum Kehlsteinhaus mit den Löschzügen gestaltete sich aufgrund der örtlichen Gegebenheiten schwierig. Das nähere Umfeld des Kehlsteinhauses sowie das Gebäude selbst kann nur mir schwerer Atemschutzausstattung betreten werden. Die aufwändigen Löscharbeiten der Feuerwehr dauern weiter an. Bislang konnten keine Personen im Kehlsteinhaus festgestellt werden – durch den Brand wurde zum derzeitigen Zeitpunkt niemand verletzt.\nDie ersten Maßnahmen vor Ort erfolgten durch die örtlich zuständige Polizeiinspektion Berchtesgaden. Noch am späten Abend hat die Kriminalpolizei Traunstein die Ermittlungen zur Brandursache, unter Sachleitung der Staatsanwaltschaft Traunstein, übernommen.\nKurz nach Brandausbruch geriet eine verdächtige Person in den Fokus der Ermittler. Diese wurde vorläufig festgenommen. Ob die Peron in Zusammenhang mit dem Brand steht, ist derzeit Gegenstand der kriminalpolizeilichen Untersuchungen.\nDie Ermittlungen dauern weiter an.\nAktuell befinden sich ca. 200 Rettungs- und Einsatzkräfte von Feuerwehren aus 6 Gemeinden, Kreisbrandinspektion, BRK, Bergwacht sowie Polizei im Einsatz.",
+  "sha256": "c47179ef7db4c4c569cdaae4d9f05a9c6b088a45df9c79a755e7102393058d0e",
+  "anzahl_meldungen": 1,
+  "quellen": [
+   "archiv",
+   "uebersicht"
+  ],
+  "zeitstempel_quelle": "2026-10-24T00:49:00+00:00",
+  "erstmals_erfasst": "2026-10-24T09:45:48+00:00",
+  "zuletzt_geprueft": "2026-10-24T09:45:48+00:00",
+  "revision": 0
+ },
+ {
   "id": "110376",
   "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/110376/index.html",
   "pp": "PP Oberbayern Nord",
@@ -15,7 +53,7 @@
   ],
   "zeitstempel_quelle": "2026-10-23T11:50:00+00:00",
   "erstmals_erfasst": "2026-10-23T19:31:36+00:00",
-  "zuletzt_geprueft": "2026-10-23T19:31:36+00:00",
+  "zuletzt_geprueft": "2026-10-24T09:45:49+00:00",
   "revision": 0
  },
  {
@@ -34,7 +72,7 @@
   ],
   "zeitstempel_quelle": "2026-10-23T11:38:00+00:00",
   "erstmals_erfasst": "2026-10-23T19:31:37+00:00",
-  "zuletzt_geprueft": "2026-10-23T19:31:37+00:00",
+  "zuletzt_geprueft": "2026-10-24T09:45:50+00:00",
   "revision": 0
  },
  {
@@ -53,7 +91,7 @@
   ],
   "zeitstempel_quelle": "2026-10-23T10:21:00+00:00",
   "erstmals_erfasst": "2026-10-23T10:28:10+00:00",
-  "zuletzt_geprueft": "2026-10-23T10:28:10+00:00",
+  "zuletzt_geprueft": "2026-10-24T09:45:51+00:00",
   "revision": 0
  },
  {
@@ -73,7 +111,7 @@
   ],
   "zeitstempel_quelle": "2026-10-23T10:06:00+00:00",
   "erstmals_erfasst": "2026-10-23T19:31:38+00:00",
-  "zuletzt_geprueft": "2026-10-23T19:31:38+00:00",
+  "zuletzt_geprueft": "2026-10-24T09:45:52+00:00",
   "revision": 0
  },
  {
@@ -92,7 +130,7 @@
   ],
   "zeitstempel_quelle": "2026-10-23T09:54:00+00:00",
   "erstmals_erfasst": "2026-10-23T10:28:11+00:00",
-  "zuletzt_geprueft": "2026-10-23T10:28:11+00:00",
+  "zuletzt_geprueft": "2026-10-24T09:45:53+00:00",
   "revision": 0
  },
  {
@@ -111,7 +149,7 @@
   ],
   "zeitstempel_quelle": "2026-10-23T06:46:00+00:00",
   "erstmals_erfasst": "2026-10-23T10:28:12+00:00",
-  "zuletzt_geprueft": "2026-10-23T10:28:12+00:00",
+  "zuletzt_geprueft": "2026-10-24T09:45:54+00:00",
   "revision": 0
  },
  {
@@ -130,7 +168,7 @@
   ],
   "zeitstempel_quelle": "2026-10-23T06:08:00+00:00",
   "erstmals_erfasst": "2026-10-23T10:28:13+00:00",
-  "zuletzt_geprueft": "2026-10-23T10:28:13+00:00",
+  "zuletzt_geprueft": "2026-10-24T09:45:55+00:00",
   "revision": 0
  },
  {
@@ -149,7 +187,7 @@
   ],
   "zeitstempel_quelle": "2026-10-22T13:30:00+00:00",
   "erstmals_erfasst": "2026-10-22T19:26:23+00:00",
-  "zuletzt_geprueft": "2026-10-23T10:28:14+00:00",
+  "zuletzt_geprueft": "2026-10-24T09:45:56+00:00",
   "revision": 0
  },
  {
@@ -168,7 +206,7 @@
   ],
   "zeitstempel_quelle": "2026-10-22T13:03:00+00:00",
   "erstmals_erfasst": "2026-10-22T19:26:24+00:00",
-  "zuletzt_geprueft": "2026-10-23T10:28:15+00:00",
+  "zuletzt_geprueft": "2026-10-24T09:45:57+00:00",
   "revision": 0
  },
  {
@@ -187,7 +225,7 @@
   ],
   "zeitstempel_quelle": "2026-10-22T11:35:00+00:00",
   "erstmals_erfasst": "2026-10-22T19:26:25+00:00",
-  "zuletzt_geprueft": "2026-10-23T10:28:16+00:00",
+  "zuletzt_geprueft": "2026-10-24T09:45:58+00:00",
   "revision": 0
  },
  {
@@ -207,7 +245,7 @@
   ],
   "zeitstempel_quelle": "2026-10-22T09:48:00+00:00",
   "erstmals_erfasst": "2026-10-22T19:26:26+00:00",
-  "zuletzt_geprueft": "2026-10-23T10:28:17+00:00",
+  "zuletzt_geprueft": "2026-10-24T09:45:59+00:00",
   "revision": 0
  },
  {
