@@ -1,5 +1,24 @@
 [
  {
+  "id": "110419",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/110419/index.html",
+  "pp": "PP Oberbayern Nord",
+  "pp_name": "Polizeipräsidium Oberbayern Nord",
+  "veroeffentlicht": "2026-10-25",
+  "titel": "Großbrand auf landwirtschaftlichem Anwesen verursacht Millionenschaden",
+  "text": "LANDKREIS PFAFFENHOFEN AN DER ILM. Aus bislang ungeklärter Ursache geriet in den heutigen frühen Morgenstunden die Hopfenhalle eines landwirtschaftlichen Betriebs in Niederlauterbach in Vollbrand. Ein Großaufgebot an Feuerwehrkräften rückte aus, um den Brand zu löschen. Verletzt wurde niemand. Der Sachschaden beträgt nach einer ersten Einschätzung rund eine Million Euro. Die Kriminalpolizei Ingolstadt hat die Ermittlungen zur Klärung der Brandursache übernommen.\nEin benachbarter Anwohner entdeckte gegen 2 Uhr morgens (Sommerzeit) den Brand auf dem landwirtschaftlichen Anwesen und alarmierte über Notruf die Integrierte Leitstelle. Über 200 Einsatzkräfte der Feuerwehren, des Rettungsdienstes, des Technischen Hilfswerks, des Kriseninterventionsteams sowie des Katastrophenschutzes und der Polizei rückten zur Lagebewältigung aus. Die umgehend eingeleiteten Löschmaßnahmen konnten ein Ausbreiten der Flammen auf andere Gebäude verhindern. Der Vollbrand zerstörte die gesamte Hopfenhalle samt der darin gelagerten Jahresernte, der Hopfenernteanlage sowie die in der Halle abgestellten Fahrzeuge.",
+  "sha256": "e046ae064a4ac99a83907e041c6dbf5d263cfe99125efff1d8e26e6508cf855c",
+  "anzahl_meldungen": 1,
+  "quellen": [
+   "archiv",
+   "uebersicht"
+  ],
+  "zeitstempel_quelle": "2026-10-25T07:25:00+00:00",
+  "erstmals_erfasst": "2026-10-25T10:05:32+00:00",
+  "zuletzt_geprueft": "2026-10-25T10:05:32+00:00",
+  "revision": 0
+ },
+ {
   "id": "110406",
   "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/110406/index.html",
   "pp": "PP Oberbayern Süd",
@@ -15,7 +34,7 @@
   ],
   "zeitstempel_quelle": "2026-10-24T13:28:00+00:00",
   "erstmals_erfasst": "2026-10-24T18:20:37+00:00",
-  "zuletzt_geprueft": "2026-10-24T18:20:37+00:00",
+  "zuletzt_geprueft": "2026-10-25T10:05:34+00:00",
   "revision": 0
  },
  {
@@ -35,7 +54,7 @@
   ],
   "zeitstempel_quelle": "2026-10-24T12:06:00+00:00",
   "erstmals_erfasst": "2026-10-24T18:20:38+00:00",
-  "zuletzt_geprueft": "2026-10-24T18:20:38+00:00",
+  "zuletzt_geprueft": "2026-10-25T10:05:34+00:00",
   "revision": 0
  },
  {
@@ -54,7 +73,7 @@
   ],
   "zeitstempel_quelle": "2026-10-24T08:46:00+00:00",
   "erstmals_erfasst": "2026-10-24T09:45:47+00:00",
-  "zuletzt_geprueft": "2026-10-24T09:45:47+00:00",
+  "zuletzt_geprueft": "2026-10-25T10:05:35+00:00",
   "revision": 0
  },
  {
@@ -73,7 +92,7 @@
   ],
   "zeitstempel_quelle": "2026-10-24T00:49:00+00:00",
   "erstmals_erfasst": "2026-10-24T09:45:48+00:00",
-  "zuletzt_geprueft": "2026-10-24T09:45:48+00:00",
+  "zuletzt_geprueft": "2026-10-25T10:05:36+00:00",
   "revision": 0
  },
  {
@@ -92,7 +111,7 @@
   ],
   "zeitstempel_quelle": "2026-10-23T11:50:00+00:00",
   "erstmals_erfasst": "2026-10-23T19:31:36+00:00",
-  "zuletzt_geprueft": "2026-10-24T09:45:49+00:00",
+  "zuletzt_geprueft": "2026-10-25T10:05:38+00:00",
   "revision": 0
  },
  {
@@ -111,7 +130,7 @@
   ],
   "zeitstempel_quelle": "2026-10-23T11:38:00+00:00",
   "erstmals_erfasst": "2026-10-23T19:31:37+00:00",
-  "zuletzt_geprueft": "2026-10-24T09:45:50+00:00",
+  "zuletzt_geprueft": "2026-10-25T10:05:38+00:00",
   "revision": 0
  },
  {
@@ -130,7 +149,7 @@
   ],
   "zeitstempel_quelle": "2026-10-23T10:21:00+00:00",
   "erstmals_erfasst": "2026-10-23T10:28:10+00:00",
-  "zuletzt_geprueft": "2026-10-24T09:45:51+00:00",
+  "zuletzt_geprueft": "2026-10-25T10:05:39+00:00",
   "revision": 0
  },
  {
@@ -150,7 +169,7 @@
   ],
   "zeitstempel_quelle": "2026-10-23T10:06:00+00:00",
   "erstmals_erfasst": "2026-10-23T19:31:38+00:00",
-  "zuletzt_geprueft": "2026-10-24T09:45:52+00:00",
+  "zuletzt_geprueft": "2026-10-25T10:05:40+00:00",
   "revision": 0
  },
  {
@@ -169,7 +188,7 @@
   ],
   "zeitstempel_quelle": "2026-10-23T09:54:00+00:00",
   "erstmals_erfasst": "2026-10-23T10:28:11+00:00",
-  "zuletzt_geprueft": "2026-10-24T09:45:53+00:00",
+  "zuletzt_geprueft": "2026-10-25T10:05:41+00:00",
   "revision": 0
  },
  {
@@ -188,7 +207,7 @@
   ],
   "zeitstempel_quelle": "2026-10-23T06:46:00+00:00",
   "erstmals_erfasst": "2026-10-23T10:28:12+00:00",
-  "zuletzt_geprueft": "2026-10-24T09:45:54+00:00",
+  "zuletzt_geprueft": "2026-10-25T10:05:42+00:00",
   "revision": 0
  },
  {
@@ -207,7 +226,7 @@
   ],
   "zeitstempel_quelle": "2026-10-23T06:08:00+00:00",
   "erstmals_erfasst": "2026-10-23T10:28:13+00:00",
-  "zuletzt_geprueft": "2026-10-24T09:45:55+00:00",
+  "zuletzt_geprueft": "2026-10-25T10:05:43+00:00",
   "revision": 0
  },
  {
