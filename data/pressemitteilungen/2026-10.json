@@ -1,5 +1,24 @@
 [
  {
+  "id": "110470",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/110470/index.html",
+  "pp": "PP München",
+  "pp_name": "Polizeipräsidium München",
+  "veroeffentlicht": "2026-10-26",
+  "titel": "Medieninformation der Polizei München vom 26.10.2026",
+  "text": "1680. Verkehrsunfall zwischen Pkw und Fußgänger; eine Person verletzt – Messestadt\n1681. Wohnungsbrand; eine Person verletzt – Bogenhausen\n1682. Einbruch in eine Gaststätte – Milbertshofen-Am Hart\n1680. Verkehrsunfall zwischen Pkw und Fußgänger; eine Person verletzt – Messestadt\nAm Sonntag, 25.10.2026, gegen 17:50 Uhr, befuhr ein über 80-jähriger Deutscher mit Wohnsitz in München mit einem Dacia Pkw die Joseph-Wild-Straße in Richtung des Messesees. An der Kreuzung zur Olof-Palme-Straße bog er nach links in diese ab.\nZeitgleich überquerte eine 63-jährige Deutsche mit Wohnsitz in München zu Fuß die Olof-Palme-Straße in selbe Richtung.\nIm Kreuzungsbereich kam es zum Zusammenstoß zwischen dem Pkw und der 63-Jährigen. Durch die Kollision wurde sie schwer verletzt und musste vom Rettungsdienst in ein Krankenhaus gebracht werden.\nWährend der Unfallaufnahme kam es zu mäßigen Verkehrsbeeinträchtigungen.\nDie Münchner Verkehrspolizei hat die weiteren Ermittlungen übernommen.\n1681. Wohnungsbrand; eine Person verletzt – Bogenhausen\nAm Sonntag, 25.10.2026, gegen 21:45 Uhr, bemerkten mehrere Bewohner eines Mehrfamilienhauses den Alarm eines Rauchmelders aus einer Wohnung.\nDa der 55-jährige Bewohner weder auf Klingeln noch auf Klopfen reagierte, öffneten Nachbarn die Wohnungstür gewaltsam. Aufgrund einer starken Rauchentwicklung in der Wohnung konnten sie diese nicht betreten und verständigten die Feuerwehr.\nDie eingesetzten Feuerwehrkräfte fanden den 55-jährigen deutschen Bewohner bewusstlos in der Wohnung und brachten ihn ins Freie. Er wurde schwer verletzt und musste vom Rettungsdienst zur weiteren Behandlung in ein Krankenhaus gebracht werden.\nDie Wohnung wurde durch den Brand erheblich beschädigt und ist derzeit nicht mehr bewohnbar. Der entstandene Sachschaden wird auf etwa 200.000 Euro geschätzt.\nNoch am Abend wurden die Ermittlungen zur Brandursache durch das zuständige Kommissariat 13 übernommen.\n1682. Einbruch in eine Gaststätte – Milbertshofen-Am Hart\nAm Sonntag, 25.10.2026, zwischen 09:30 Uhr und 17:00 Uhr, drang ein bislang unbekannter Täter gewaltsam in eine Gaststätte ein.\nIm Inneren brach der Täter einen Geldspielautomaten auf und entwendete daraus Bargeld in bislang unbekannter Höhe. Anschließend entfernte er sich mit der Tatbeute in unbekannte Richtung.\nGegen 17:00 Uhr bemerkte der Betreiber den Einbruch und verständigte die Polizeinotruf 110. Vor Ort wurden umfangreiche Spurensicherungsmaßnahmen durchgeführt.\nDas Kommissariat 52 hat die weiteren Ermittlungen übernommen.\nZeugenaufruf:\nWer hat im angegebenen Zeitraum im Bereich der Hanselmannstraße, Kantstraße und Schleißheimer Straße (Milbertshofen-Am Hart) Wahrnehmungen gemacht, die im Zusammenhang mit diesem Vorfall stehen könnten?\nPersonen, die sachdienliche Hinweise geben können, werden gebeten, sich mit dem Polizeipräsidium München, Kommissariat 52, Tel. 089 2910-0, oder jeder anderen Polizeidienststelle in Verbindung zu setzen.",
+  "sha256": "31ccb16b9a5d15bc7b7dc482ba807aace1c73690769bf5c67ee6980e739aeec6",
+  "anzahl_meldungen": 3,
+  "quellen": [
+   "archiv",
+   "uebersicht"
+  ],
+  "zeitstempel_quelle": "2026-10-26T10:53:00+00:00",
+  "erstmals_erfasst": "2026-10-26T11:30:01+00:00",
+  "zuletzt_geprueft": "2026-10-26T11:30:01+00:00",
+  "revision": 0
+ },
+ {
   "id": "110432",
   "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/110432/index.html",
   "pp": "PP Oberbayern Süd",
@@ -15,7 +34,7 @@
   ],
   "zeitstempel_quelle": "2026-10-25T15:38:00+00:00",
   "erstmals_erfasst": "2026-10-25T18:32:34+00:00",
-  "zuletzt_geprueft": "2026-10-25T18:32:34+00:00",
+  "zuletzt_geprueft": "2026-10-26T11:30:02+00:00",
   "revision": 0
  },
  {
@@ -35,7 +54,7 @@
   ],
   "zeitstempel_quelle": "2026-10-25T11:09:00+00:00",
   "erstmals_erfasst": "2026-10-25T18:32:35+00:00",
-  "zuletzt_geprueft": "2026-10-25T18:32:35+00:00",
+  "zuletzt_geprueft": "2026-10-26T11:30:03+00:00",
   "revision": 0
  },
  {
@@ -54,7 +73,7 @@
   ],
   "zeitstempel_quelle": "2026-10-25T07:25:00+00:00",
   "erstmals_erfasst": "2026-10-25T10:05:32+00:00",
-  "zuletzt_geprueft": "2026-10-25T10:05:32+00:00",
+  "zuletzt_geprueft": "2026-10-26T11:30:04+00:00",
   "revision": 0
  },
  {
@@ -73,7 +92,7 @@
   ],
   "zeitstempel_quelle": "2026-10-24T13:28:00+00:00",
   "erstmals_erfasst": "2026-10-24T18:20:37+00:00",
-  "zuletzt_geprueft": "2026-10-25T10:05:34+00:00",
+  "zuletzt_geprueft": "2026-10-26T11:30:05+00:00",
   "revision": 0
  },
  {
@@ -93,7 +112,7 @@
   ],
   "zeitstempel_quelle": "2026-10-24T12:06:00+00:00",
   "erstmals_erfasst": "2026-10-24T18:20:38+00:00",
-  "zuletzt_geprueft": "2026-10-25T10:05:34+00:00",
+  "zuletzt_geprueft": "2026-10-26T11:30:06+00:00",
   "revision": 0
  },
  {
@@ -112,7 +131,7 @@
   ],
   "zeitstempel_quelle": "2026-10-24T08:46:00+00:00",
   "erstmals_erfasst": "2026-10-24T09:45:47+00:00",
-  "zuletzt_geprueft": "2026-10-25T10:05:35+00:00",
+  "zuletzt_geprueft": "2026-10-26T11:30:07+00:00",
   "revision": 0
  },
  {
@@ -131,7 +150,7 @@
   ],
   "zeitstempel_quelle": "2026-10-24T00:49:00+00:00",
   "erstmals_erfasst": "2026-10-24T09:45:48+00:00",
-  "zuletzt_geprueft": "2026-10-25T10:05:36+00:00",
+  "zuletzt_geprueft": "2026-10-26T11:30:08+00:00",
   "revision": 0
  },
  {
