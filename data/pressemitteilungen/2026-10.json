@@ -1,5 +1,43 @@
 [
  {
+  "id": "110587",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/110587/index.html",
+  "pp": "PP Oberbayern Süd",
+  "pp_name": "Polizeipräsidium Oberbayern Süd",
+  "veroeffentlicht": "2026-10-28",
+  "titel": "Vermisstenfall in Gmund am Tegernsee – Kriminalpolizei ermittelt und bittet um Hinweise",
+  "text": "GMUND AM TEGERNSEE, LKR. MIESBACH. Seit dem 15. September 2026 wird die 60-jährige Regina Beilhack aus Gmund am Tegernsee vermisst. Die Kriminalpolizeistation Miesbach hat die Ermittlungen übernommen und bittet die Bevölkerung um Hinweise.\nSeit dem Nachmittag des 15. September 2026 wird Regina Beilhack vermisst. Sie konnte seitdem weder gesehen noch telefonisch erreicht werden. Nach derzeitigen Erkenntnissen kann nicht ausgeschlossen werden, dass sich die Vermisste in einer psychischen Ausnahmesituation befinden könnte.\nDer Vermisstenfall wurde zunächst von der örtlich zuständigen Polizeiinspektion Bad Wiessee aufgenommen. Die weiteren Ermittlungen führt nun die Kriminalpolizeistation Miesbach.\nZur Aufklärung des Vermisstenfalls bitten die Ermittler auch um Hinweise aus der Bevölkerung :\nBeschreibung der Vermissten : 168 cm groß, blonde schulterlange Haare, sehr schlank (deutlich schlanker als auf dem Lichtbild), möglicherweise unterwegs mit einem schwarzen Damenrad der Marke Cube;\nWer hat die Vermisste seit dem 15. September 2026 gesehen bzw. Kontakt mit ihr gehabt\nWer kann Angaben zum aktuellen Aufenthaltsort der Vermissten machen?\nWer kann sonstige Hinweise geben, die zur Aufklärung dieses Vermisstenfalls führen könnten.\nHinweise nimmt die Kriminalpolizeistation Miesbach unter der Telefonnummer 08025/2990 oder jede andere Polizeidienststelle entgegen.",
+  "sha256": "cf2fa8b5d9cfdd11c1928c6ad9aec9bb150515c40e57ae5bcca791892e946ecd",
+  "anzahl_meldungen": 1,
+  "quellen": [
+   "archiv",
+   "uebersicht"
+  ],
+  "zeitstempel_quelle": "2026-10-28T10:25:00+00:00",
+  "erstmals_erfasst": "2026-10-28T11:35:14+00:00",
+  "zuletzt_geprueft": "2026-10-28T11:35:14+00:00",
+  "revision": 0
+ },
+ {
+  "id": "110581",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/110581/index.html",
+  "pp": "PP Oberbayern Süd",
+  "pp_name": "Polizeipräsidium Oberbayern Süd",
+  "veroeffentlicht": "2026-10-28",
+  "titel": "Eine leicht verletzte Person und Sachschaden nach einem Wohnungsbrand in Grassau",
+  "text": "GRASSAU, LKR. TRAUNSTEIN. Am Dienstagvormittag, den 27. Oktober 2026, brach in einer Wohnung eines Mehrfamilienhauses in Grassau ein Feuer aus. Nach aktuellem Ermittlungsstand wurde dabei eine Person leicht verletzt. Der entstandene Sachschaden wird auf einen mittleren fünfstelligen Eurobetrag geschätzt. Die Kriminalpolizeiinspektion Traunstein hat die Ermittlungen übernommen.\nAm Dienstag (27. Oktober 2026), gegen 8.55 Uhr, ging bei dem Notruf des Polizeipräsidiums Oberbayern Süd eine Mitteilung über einen Brand in einer Wohnung in der Bahnhofstraße in Grassau ein. Die sofort alarmierten regionalen Feuerwehren stellten bei Eintreffen den Brand in einer Wohnung des 1. Obergeschosses eines Mehrfamilienhauses fest. Durch das schnelle und professionelle Eingreifen der Einsatzkräfte konnte ein Übergreifen der Flammen auf benachbarte Wohneinheiten verhindert und der Brand gelöscht werden.\nNach derzeitigem Kenntnisstand wurde die Bewohnerin der betroffenen Wohneinheit leicht verletzt. Der entstandene Sachschaden wird auf einen mittleren fünfstelligen Eurobetrag geschätzt.\nDie ersten Maßnahmen vor Ort erfolgten durch die örtlich zuständige Polizeiinspektion Traunstein. Unter Sachleitung der Staatsanwaltschaft Traunstein werden die Ermittlungen zur Brandursache durch Beamte der Kriminalpolizeiinspektion Traunstein fortgeführt.\nDie Ermittlungen dauern an.",
+  "sha256": "c22faf4e292f866e0714eecec8ddcca8052d6f872e0d135d7765d2053a26a84e",
+  "anzahl_meldungen": 1,
+  "quellen": [
+   "archiv",
+   "uebersicht"
+  ],
+  "zeitstempel_quelle": "2026-10-28T09:00:00+00:00",
+  "erstmals_erfasst": "2026-10-28T11:35:15+00:00",
+  "zuletzt_geprueft": "2026-10-28T11:35:15+00:00",
+  "revision": 0
+ },
+ {
   "id": "110534",
   "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/110534/index.html",
   "pp": "PP Schwaben Nord",
@@ -15,7 +53,7 @@
   ],
   "zeitstempel_quelle": "2026-10-27T14:40:00+00:00",
   "erstmals_erfasst": "2026-10-27T20:13:36+00:00",
-  "zuletzt_geprueft": "2026-10-27T20:13:36+00:00",
+  "zuletzt_geprueft": "2026-10-28T11:35:16+00:00",
   "revision": 0
  },
  {
@@ -35,7 +73,7 @@
   ],
   "zeitstempel_quelle": "2026-10-27T10:51:00+00:00",
   "erstmals_erfasst": "2026-10-27T20:13:38+00:00",
-  "zuletzt_geprueft": "2026-10-27T20:13:38+00:00",
+  "zuletzt_geprueft": "2026-10-28T11:35:17+00:00",
   "revision": 0
  },
  {
@@ -54,7 +92,7 @@
   ],
   "zeitstempel_quelle": "2026-10-27T10:48:00+00:00",
   "erstmals_erfasst": "2026-10-27T10:54:27+00:00",
-  "zuletzt_geprueft": "2026-10-27T10:54:27+00:00",
+  "zuletzt_geprueft": "2026-10-28T11:35:18+00:00",
   "revision": 0
  },
  {
@@ -73,7 +111,7 @@
   ],
   "zeitstempel_quelle": "2026-10-26T15:37:00+00:00",
   "erstmals_erfasst": "2026-10-26T20:43:31+00:00",
-  "zuletzt_geprueft": "2026-10-27T10:54:28+00:00",
+  "zuletzt_geprueft": "2026-10-28T11:35:19+00:00",
   "revision": 0
  },
  {
@@ -93,7 +131,7 @@
   ],
   "zeitstempel_quelle": "2026-10-26T10:53:00+00:00",
   "erstmals_erfasst": "2026-10-26T11:30:01+00:00",
-  "zuletzt_geprueft": "2026-10-27T10:54:29+00:00",
+  "zuletzt_geprueft": "2026-10-28T11:35:20+00:00",
   "revision": 0
  },
  {
