@@ -1,13 +1,13 @@
 {
  "schema": 2,
- "aktualisiert": "2026-10-31T19:30:47+00:00",
+ "aktualisiert": "2026-11-01T12:00:32+00:00",
  "zeitraum": {
   "von": "2025-01-01",
-  "bis": "2026-10-31"
+  "bis": "2026-11-01"
  },
  "summen": {
-  "pressemitteilungen": 2618,
-  "meldungen": 9105,
+  "pressemitteilungen": 2621,
+  "meldungen": 9108,
   "social": 0,
   "warteschlange": 5
  },
@@ -35,16 +35,28 @@
  },
  "monate": [
   {
+   "monat": "2026-11",
+   "datei_meldungen": "meldungen/2026-11.json",
+   "datei_social": null,
+   "meldungen": 2,
+   "pressemitteilungen": 2,
+   "social": 0,
+   "pp": {
+    "PP Oberbayern Nord": 1,
+    "PP Oberbayern Süd": 1
+   }
+  },
+  {
    "monat": "2026-10",
    "datei_meldungen": "meldungen/2026-10.json",
    "datei_social": null,
-   "meldungen": 409,
-   "pressemitteilungen": 112,
+   "meldungen": 410,
+   "pressemitteilungen": 113,
    "social": 0,
    "pp": {
-    "PP Schwaben Nord": 160,
-    "PP München": 188,
     "PP Oberbayern Süd": 37,
+    "PP Schwaben Nord": 160,
+    "PP München": 189,
     "PP Oberbayern Nord": 24
    }
   },
@@ -344,44 +356,44 @@
   }
  ],
  "letzter_lauf": {
-  "zeit": "2026-10-31T19:30:47+00:00",
-  "dauer_sek": 9,
+  "zeit": "2026-11-01T12:00:32+00:00",
+  "dauer_sek": 19,
   "modus": "täglich",
   "budget_erreicht": false,
   "quellen": {
    "uebersicht": {
     "ok": true,
-    "eintraege_gesamt": 228,
-    "relevant": 54,
-    "neu": 1
+    "eintraege_gesamt": 237,
+    "relevant": 55,
+    "neu": 3
    },
    "archiv:MUC": {
     "ok": true,
     "treffer": 7,
     "neu": 0,
-    "ab": "2026-10-24"
+    "ab": "2026-10-25"
    },
    "archiv:OBN": {
     "ok": true,
-    "treffer": 2,
+    "treffer": 3,
     "neu": 0,
-    "ab": "2026-10-24"
+    "ab": "2026-10-25"
    },
    "archiv:OBS": {
     "ok": true,
-    "treffer": 8,
+    "treffer": 6,
     "neu": 0,
-    "ab": "2026-10-24"
+    "ab": "2026-10-25"
    },
    "archiv:SWN": {
     "ok": true,
     "treffer": 5,
     "neu": 0,
-    "ab": "2026-10-24"
+    "ab": "2026-10-25"
    },
    "telegram:PressePolizeiMuenchen": {
     "ok": true,
-    "links": 58,
+    "links": 57,
     "neu": 0
    },
    "x": {
@@ -390,12 +402,12 @@
    }
   },
   "statistik": {
-   "neu_pm": 1,
-   "neu_meldungen": 1,
+   "neu_pm": 3,
+   "neu_meldungen": 3,
    "aktualisiert_pm": 0,
-   "abgerufen": 1,
+   "abgerufen": 7,
    "social_neu": 0,
-   "http_anfragen": 9,
+   "http_anfragen": 19,
    "http_fehler": 0,
    "fehlerarten": {}
   },
