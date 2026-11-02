@@ -1,13 +1,13 @@
 {
  "schema": 2,
- "aktualisiert": "2026-11-02T13:48:34+00:00",
+ "aktualisiert": "2026-11-02T23:12:23+00:00",
  "zeitraum": {
   "von": "2025-01-01",
   "bis": "2026-11-02"
  },
  "summen": {
-  "pressemitteilungen": 2627,
-  "meldungen": 9123,
+  "pressemitteilungen": 2628,
+  "meldungen": 9130,
   "social": 0,
   "warteschlange": 5
  },
@@ -38,13 +38,14 @@
    "monat": "2026-11",
    "datei_meldungen": "meldungen/2026-11.json",
    "datei_social": null,
-   "meldungen": 17,
-   "pressemitteilungen": 8,
+   "meldungen": 24,
+   "pressemitteilungen": 9,
    "social": 0,
    "pp": {
     "PP Oberbayern Nord": 3,
+    "PP Oberbayern Süd": 3,
     "PP München": 11,
-    "PP Oberbayern Süd": 3
+    "PP Schwaben Nord": 7
    }
   },
   {
@@ -357,16 +358,16 @@
   }
  ],
  "letzter_lauf": {
-  "zeit": "2026-11-02T13:48:34+00:00",
-  "dauer_sek": 22,
+  "zeit": "2026-11-02T23:12:23+00:00",
+  "dauer_sek": 13,
   "modus": "täglich",
   "budget_erreicht": false,
   "quellen": {
    "uebersicht": {
     "ok": true,
-    "eintraege_gesamt": 242,
-    "relevant": 60,
-    "neu": 5
+    "eintraege_gesamt": 249,
+    "relevant": 61,
+    "neu": 1
    },
    "archiv:MUC": {
     "ok": true,
@@ -388,7 +389,7 @@
    },
    "archiv:SWN": {
     "ok": true,
-    "treffer": 5,
+    "treffer": 6,
     "neu": 0,
     "ab": "2026-10-26"
    },
@@ -403,12 +404,12 @@
    }
   },
   "statistik": {
-   "neu_pm": 5,
-   "neu_meldungen": 10,
+   "neu_pm": 1,
+   "neu_meldungen": 7,
    "aktualisiert_pm": 0,
-   "abgerufen": 10,
+   "abgerufen": 1,
    "social_neu": 0,
-   "http_anfragen": 22,
+   "http_anfragen": 13,
    "http_fehler": 0,
    "fehlerarten": {}
   },
