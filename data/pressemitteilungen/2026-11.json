@@ -1,5 +1,24 @@
 [
  {
+  "id": "110840",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/110840/index.html",
+  "pp": "PP Oberbayern Süd",
+  "pp_name": "Polizeipräsidium Oberbayern Süd",
+  "veroeffentlicht": "2026-11-03",
+  "titel": "Nach Ermittlungen von Staatsanwaltschaft und Kripo Traunstein: 100 Gramm Kokain sichergestellt – 2 Tatverdächtige in Untersuchungshaft",
+  "text": "SIEGSDORF, LKR. TRAUNSTEIN. Die Staatsanwaltschaft Traunstein und das Fachkommissariat 4 der Kripo Traunstein ermittelten seit Dezember 2025 gegen mehrere Personen wegen des Verdachts auf Handel mit Betäubungsmitteln in nicht geringer Menge. Nach umfangreichen Ermittlungen wurden die beiden Hauptverdächtigen am Donnerstag, den 29. Oktober 2026, einer Kontrolle unterzogen. Hierbei wurden 100 Gramm Kokain und ein Einhandmesser sichergestellt. Die beiden Männer sitzen nun in Untersuchungshaft.\nSeit Dezember 2025 ermittelte das für Rauchgiftkriminalität zuständige Fachkommissariat 4 der Kriminalpolizei Traunstein, unter Sachleitung der Staatsanwaltschaft Traunstein, gegen mehrere Personen aus dem Landkreis Berchtesgadener Land. Sie standen im Verdacht, Handel mit Betäubungsmitteln in nicht geringer Menge zu treiben.\nIm Rahmen der umfangreichen Ermittlungen gerieten zwei Männer im Alter von 34 und 38 Jahren, welche verdächtig sind, im Zusammenhang mit dem Betäubungsmittelhandel zu stehen, in den Fokus der Beamten. Beide Männer sind vielfach vorbestraft. Der 38-Jährige war erst Mitte September 2026 nach vollständiger Verbüßung einer mehrjährigen Freiheitsstrafe aus der Strafhaft entlassen worden.\nDas K4 der Kripo Traunstein führte daher am Donnerstag, den 29. Oktober 2026, zum geeigneten Zeitpunkt an der Anschlussstelle Siegsdorf West an der A8 eine Kontrolle der beiden verdächtigen Männer durch. Sie befanden sich gemeinsam mit einem 24-Jährigen in einem Pkw und fuhren auf der A8 Richtung Salzburg.\nBei der Durchsuchung des Pkw konnten 100g Kokain und ein griffbereites Einhandmesser aufgefunden und sichergestellt werden. Alle drei Männer wurden zunächst vorläufig festgenommen.\nDie sachleitende Staatsanwaltschaft Traunstein stellte Haftanträge gegen die zwei Hauptbeschuldigten, die 34- und 38-jährigen Deutschen aus dem Landkreis Berchtesgadener Land.\nDie zuständige Ermittlungsrichterin erließ nach der Vorführung am nächsten Tag (Freitag, den 30. Oktober 2026) Untersuchungshaftbefehle gegen die beiden Männer. Sie wurden anschließend in Justizvollzugsanstalten überstellt.",
+  "sha256": "3a22359894598778f496e2b2fcca8f39e43318577134f72266fd31f76b37113e",
+  "anzahl_meldungen": 1,
+  "quellen": [
+   "archiv",
+   "uebersicht"
+  ],
+  "zeitstempel_quelle": "2026-11-03T06:26:00+00:00",
+  "erstmals_erfasst": "2026-11-03T12:58:32+00:00",
+  "zuletzt_geprueft": "2026-11-03T12:58:32+00:00",
+  "revision": 0
+ },
+ {
   "id": "110814",
   "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/110814/index.html",
   "pp": "PP Schwaben Nord",
@@ -15,7 +34,7 @@
   ],
   "zeitstempel_quelle": "2026-11-02T14:06:00+00:00",
   "erstmals_erfasst": "2026-11-02T23:12:23+00:00",
-  "zuletzt_geprueft": "2026-11-02T23:12:23+00:00",
+  "zuletzt_geprueft": "2026-11-03T12:58:33+00:00",
   "revision": 0
  },
  {
@@ -34,7 +53,7 @@
   ],
   "zeitstempel_quelle": "2026-11-02T13:10:00+00:00",
   "erstmals_erfasst": "2026-11-02T13:48:25+00:00",
-  "zuletzt_geprueft": "2026-11-02T13:48:25+00:00",
+  "zuletzt_geprueft": "2026-11-03T12:58:34+00:00",
   "revision": 0
  },
  {
@@ -53,7 +72,7 @@
   ],
   "zeitstempel_quelle": "2026-11-02T12:13:00+00:00",
   "erstmals_erfasst": "2026-11-02T13:48:27+00:00",
-  "zuletzt_geprueft": "2026-11-02T13:48:27+00:00",
+  "zuletzt_geprueft": "2026-11-03T12:58:35+00:00",
   "revision": 0
  },
  {
@@ -73,7 +92,7 @@
   ],
   "zeitstempel_quelle": "2026-11-02T11:05:00+00:00",
   "erstmals_erfasst": "2026-11-02T13:48:28+00:00",
-  "zuletzt_geprueft": "2026-11-02T13:48:28+00:00",
+  "zuletzt_geprueft": "2026-11-03T12:58:36+00:00",
   "revision": 0
  },
  {
@@ -92,7 +111,7 @@
   ],
   "zeitstempel_quelle": "2026-11-02T09:52:00+00:00",
   "erstmals_erfasst": "2026-11-02T13:48:28+00:00",
-  "zuletzt_geprueft": "2026-11-02T13:48:28+00:00",
+  "zuletzt_geprueft": "2026-11-03T12:58:37+00:00",
   "revision": 0
  },
  {
@@ -111,7 +130,7 @@
   ],
   "zeitstempel_quelle": "2026-11-02T08:52:00+00:00",
   "erstmals_erfasst": "2026-11-02T13:48:30+00:00",
-  "zuletzt_geprueft": "2026-11-02T13:48:30+00:00",
+  "zuletzt_geprueft": "2026-11-03T12:58:38+00:00",
   "revision": 0
  },
  {
@@ -130,7 +149,7 @@
   ],
   "zeitstempel_quelle": "2026-11-01T10:46:00+00:00",
   "erstmals_erfasst": "2026-11-01T12:00:26+00:00",
-  "zuletzt_geprueft": "2026-11-02T13:48:31+00:00",
+  "zuletzt_geprueft": "2026-11-03T12:58:39+00:00",
   "revision": 0
  },
  {
@@ -150,7 +169,7 @@
   ],
   "zeitstempel_quelle": "2026-11-01T10:02:00+00:00",
   "erstmals_erfasst": "2026-11-01T19:53:12+00:00",
-  "zuletzt_geprueft": "2026-11-02T13:48:31+00:00",
+  "zuletzt_geprueft": "2026-11-03T12:58:40+00:00",
   "revision": 0
  },
  {
@@ -169,7 +188,7 @@
   ],
   "zeitstempel_quelle": "2026-11-01T07:47:00+00:00",
   "erstmals_erfasst": "2026-11-01T12:00:27+00:00",
-  "zuletzt_geprueft": "2026-11-02T13:48:32+00:00",
+  "zuletzt_geprueft": "2026-11-03T12:58:41+00:00",
   "revision": 0
  }
 ]

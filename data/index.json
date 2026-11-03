@@ -1,13 +1,13 @@
 {
  "schema": 2,
- "aktualisiert": "2026-11-02T23:12:23+00:00",
+ "aktualisiert": "2026-11-03T12:58:41+00:00",
  "zeitraum": {
   "von": "2025-01-01",
-  "bis": "2026-11-02"
+  "bis": "2026-11-03"
  },
  "summen": {
-  "pressemitteilungen": 2628,
-  "meldungen": 9130,
+  "pressemitteilungen": 2629,
+  "meldungen": 9131,
   "social": 0,
   "warteschlange": 5
  },
@@ -38,14 +38,14 @@
    "monat": "2026-11",
    "datei_meldungen": "meldungen/2026-11.json",
    "datei_social": null,
-   "meldungen": 24,
-   "pressemitteilungen": 9,
+   "meldungen": 25,
+   "pressemitteilungen": 10,
    "social": 0,
    "pp": {
+    "PP Schwaben Nord": 7,
     "PP Oberbayern Nord": 3,
-    "PP Oberbayern Süd": 3,
-    "PP München": 11,
-    "PP Schwaben Nord": 7
+    "PP Oberbayern Süd": 4,
+    "PP München": 11
    }
   },
   {
@@ -358,40 +358,40 @@
   }
  ],
  "letzter_lauf": {
-  "zeit": "2026-11-02T23:12:23+00:00",
-  "dauer_sek": 13,
+  "zeit": "2026-11-03T12:58:41+00:00",
+  "dauer_sek": 22,
   "modus": "täglich",
   "budget_erreicht": false,
   "quellen": {
    "uebersicht": {
     "ok": true,
-    "eintraege_gesamt": 249,
-    "relevant": 61,
+    "eintraege_gesamt": 241,
+    "relevant": 56,
     "neu": 1
    },
    "archiv:MUC": {
     "ok": true,
-    "treffer": 8,
+    "treffer": 7,
     "neu": 0,
-    "ab": "2026-10-26"
+    "ab": "2026-10-27"
    },
    "archiv:OBN": {
     "ok": true,
     "treffer": 4,
     "neu": 0,
-    "ab": "2026-10-26"
+    "ab": "2026-10-27"
    },
    "archiv:OBS": {
     "ok": true,
-    "treffer": 7,
+    "treffer": 8,
     "neu": 0,
-    "ab": "2026-10-26"
+    "ab": "2026-10-27"
    },
    "archiv:SWN": {
     "ok": true,
-    "treffer": 6,
+    "treffer": 5,
     "neu": 0,
-    "ab": "2026-10-26"
+    "ab": "2026-10-27"
    },
    "telegram:PressePolizeiMuenchen": {
     "ok": true,
@@ -405,11 +405,11 @@
   },
   "statistik": {
    "neu_pm": 1,
-   "neu_meldungen": 7,
+   "neu_meldungen": 1,
    "aktualisiert_pm": 0,
-   "abgerufen": 1,
+   "abgerufen": 10,
    "social_neu": 0,
-   "http_anfragen": 13,
+   "http_anfragen": 22,
    "http_fehler": 0,
    "fehlerarten": {}
   },
