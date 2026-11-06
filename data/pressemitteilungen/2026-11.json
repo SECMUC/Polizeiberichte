@@ -30,7 +30,8 @@
   "anzahl_meldungen": 8,
   "quellen": [
    "archiv",
-   "uebersicht"
+   "uebersicht",
+   "telegram"
   ],
   "zeitstempel_quelle": "2026-11-06T10:56:00+00:00",
   "erstmals_erfasst": "2026-11-06T13:11:40+00:00",
