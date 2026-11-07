@@ -1,6 +1,6 @@
 {
  "schema": 2,
- "aktualisiert": "2026-11-07T11:54:25+00:00",
+ "aktualisiert": "2026-11-07T19:35:45+00:00",
  "zeitraum": {
   "von": "2025-01-01",
   "bis": "2026-11-07"
@@ -42,10 +42,10 @@
    "pressemitteilungen": 29,
    "social": 0,
    "pp": {
+    "PP Oberbayern Süd": 8,
     "PP Schwaben Nord": 39,
     "PP München": 38,
-    "PP Oberbayern Nord": 7,
-    "PP Oberbayern Süd": 8
+    "PP Oberbayern Nord": 7
    }
   },
   {
@@ -358,8 +358,8 @@
   }
  ],
  "letzter_lauf": {
-  "zeit": "2026-11-07T11:54:25+00:00",
-  "dauer_sek": 22,
+  "zeit": "2026-11-07T19:35:45+00:00",
+  "dauer_sek": 12,
   "modus": "täglich",
   "budget_erreicht": false,
   "quellen": {
@@ -367,7 +367,7 @@
     "ok": true,
     "eintraege_gesamt": 235,
     "relevant": 52,
-    "neu": 1
+    "neu": 0
    },
    "archiv:MUC": {
     "ok": true,
@@ -404,12 +404,12 @@
    }
   },
   "statistik": {
-   "neu_pm": 1,
-   "neu_meldungen": 1,
+   "neu_pm": 0,
+   "neu_meldungen": 0,
    "aktualisiert_pm": 0,
-   "abgerufen": 10,
+   "abgerufen": 0,
    "social_neu": 0,
-   "http_anfragen": 22,
+   "http_anfragen": 12,
    "http_fehler": 0,
    "fehlerarten": {}
   },
