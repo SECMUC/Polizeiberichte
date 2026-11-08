@@ -1,5 +1,24 @@
 [
  {
+  "id": "111152",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/111152/index.html",
+  "pp": "PP Oberbayern Süd",
+  "pp_name": "Polizeipräsidium Oberbayern Süd",
+  "veroeffentlicht": "2026-11-08",
+  "titel": "Garagenbrand hat hohen Sachschaden zur Folge",
+  "text": "WALDKRAIBURG, LKR. MÜHLDORF AM INN. Am frühen Sonntagmorgen, 8. November 2026, geriet in Waldkraiburg aus bislang unbekannter Ursache eine Garage in Brand. Das Feuer zerstörte neben der Garage auch zwei darin abgestellte Pkw, einen Anbau und führte zu weiteren Sachschäden. Verletzt wurde niemand, es entstand aber hoher Sachschaden. Die Kriminalpolizei übernimmt die Ermittlungen zur Brandursache.\nUm kurz nach 04.00 Uhr morgens wurde die Polizei am Sonntag (08.11.2026) von der Integrierten Leitstelle Traunstein wegen eines Brandes im Sonnenblumenweg in Waldkraiburg mitalarmiert. Bei Eintreffen der Freiwilligen Feuerwehr und der Polizei wurde festgestellt, dass die Garage eines Einfamilienhauses in Brand stand und die Flammen bereits auf einen Anbau übergegriffen hatten. Nur durch den Einsatz zahlreicher Helfer der Freiwilligen Feuerwehren aus Waldkraiburg, St. Erasmus und Kraiburg am Inn konnte ein Übergreifen des Feuers auf die angrenzenden Wohnhäuser verhindert und der Brand schließlich unter Kontrolle gebracht werden.\nDie Garage und ein Anbau wurden zerstört, zwei in der Garage eingestellte Autos brannten völlig aus. Ebenso wurden Sachwerte auf dem Nachbargrundstück und möglicherweise das Einfamilienhaus selbst beschädigt. Verletzt wurde zum Glück niemand.\nErsten Schätzungen zufolge dürfte der entstandene Sachschaden im sechsstelligen Bereich liegen.\nDie ersten polizeilichen Maßnahmen und Ermittlungen am Brandort übernahmen Beamte der örtlich zuständigen Polizeiinspektion Waldkraiburg. Die weiteren Untersuchungen führen dann die Brandfahnder der Kriminalpolizei Mühldorf am Inn. Aussagen zur Brandursache können zum jetzigen Zeitpunkt noch keine gemacht werden, die Ermittlungen hierzu dauern an.",
+  "sha256": "c1ae3640d4e8dfad77b12dd7bf99a21d4763f3ffb9fe4d25ce2692609adeb012",
+  "anzahl_meldungen": 1,
+  "quellen": [
+   "archiv",
+   "uebersicht"
+  ],
+  "zeitstempel_quelle": "2026-11-08T10:35:00+00:00",
+  "erstmals_erfasst": "2026-11-08T12:09:22+00:00",
+  "zuletzt_geprueft": "2026-11-08T12:09:22+00:00",
+  "revision": 0
+ },
+ {
   "id": "111129",
   "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/111129/index.html",
   "pp": "PP Oberbayern Süd",
@@ -15,7 +34,7 @@
   ],
   "zeitstempel_quelle": "2026-11-07T11:05:00+00:00",
   "erstmals_erfasst": "2026-11-07T11:54:16+00:00",
-  "zuletzt_geprueft": "2026-11-07T11:54:16+00:00",
+  "zuletzt_geprueft": "2026-11-08T12:09:23+00:00",
   "revision": 0
  },
  {
@@ -34,7 +53,7 @@
   ],
   "zeitstempel_quelle": "2026-11-06T13:00:00+00:00",
   "erstmals_erfasst": "2026-11-06T13:11:39+00:00",
-  "zuletzt_geprueft": "2026-11-07T11:54:17+00:00",
+  "zuletzt_geprueft": "2026-11-08T12:09:24+00:00",
   "revision": 0
  },
  {
@@ -54,7 +73,7 @@
   ],
   "zeitstempel_quelle": "2026-11-06T10:56:00+00:00",
   "erstmals_erfasst": "2026-11-06T13:11:40+00:00",
-  "zuletzt_geprueft": "2026-11-07T11:54:18+00:00",
+  "zuletzt_geprueft": "2026-11-08T12:09:25+00:00",
   "revision": 0
  },
  {
@@ -73,7 +92,7 @@
   ],
   "zeitstempel_quelle": "2026-11-06T10:54:00+00:00",
   "erstmals_erfasst": "2026-11-06T13:11:40+00:00",
-  "zuletzt_geprueft": "2026-11-07T11:54:19+00:00",
+  "zuletzt_geprueft": "2026-11-08T12:09:26+00:00",
   "revision": 0
  },
  {
@@ -92,7 +111,7 @@
   ],
   "zeitstempel_quelle": "2026-11-06T10:41:00+00:00",
   "erstmals_erfasst": "2026-11-06T13:11:41+00:00",
-  "zuletzt_geprueft": "2026-11-07T11:54:20+00:00",
+  "zuletzt_geprueft": "2026-11-08T12:09:27+00:00",
   "revision": 0
  },
  {

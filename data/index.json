@@ -1,13 +1,13 @@
 {
  "schema": 2,
- "aktualisiert": "2026-11-07T19:35:45+00:00",
+ "aktualisiert": "2026-11-08T12:09:27+00:00",
  "zeitraum": {
   "von": "2025-01-01",
-  "bis": "2026-11-07"
+  "bis": "2026-11-08"
  },
  "summen": {
-  "pressemitteilungen": 2648,
-  "meldungen": 9198,
+  "pressemitteilungen": 2649,
+  "meldungen": 9199,
   "social": 0,
   "warteschlange": 5
  },
@@ -38,11 +38,11 @@
    "monat": "2026-11",
    "datei_meldungen": "meldungen/2026-11.json",
    "datei_social": null,
-   "meldungen": 92,
-   "pressemitteilungen": 29,
+   "meldungen": 93,
+   "pressemitteilungen": 30,
    "social": 0,
    "pp": {
-    "PP Oberbayern Süd": 8,
+    "PP Oberbayern Süd": 9,
     "PP Schwaben Nord": 39,
     "PP München": 38,
     "PP Oberbayern Nord": 7
@@ -358,40 +358,40 @@
   }
  ],
  "letzter_lauf": {
-  "zeit": "2026-11-07T19:35:45+00:00",
-  "dauer_sek": 12,
+  "zeit": "2026-11-08T12:09:27+00:00",
+  "dauer_sek": 14,
   "modus": "täglich",
   "budget_erreicht": false,
   "quellen": {
    "uebersicht": {
     "ok": true,
-    "eintraege_gesamt": 235,
-    "relevant": 52,
-    "neu": 0
+    "eintraege_gesamt": 240,
+    "relevant": 49,
+    "neu": 1
    },
    "archiv:MUC": {
     "ok": true,
-    "treffer": 8,
+    "treffer": 7,
     "neu": 0,
-    "ab": "2026-10-31"
+    "ab": "2026-11-01"
    },
    "archiv:OBN": {
     "ok": true,
     "treffer": 7,
     "neu": 0,
-    "ab": "2026-10-31"
+    "ab": "2026-11-01"
    },
    "archiv:OBS": {
     "ok": true,
     "treffer": 9,
     "neu": 0,
-    "ab": "2026-10-31"
+    "ab": "2026-11-01"
    },
    "archiv:SWN": {
     "ok": true,
     "treffer": 7,
     "neu": 0,
-    "ab": "2026-10-31"
+    "ab": "2026-11-01"
    },
    "telegram:PressePolizeiMuenchen": {
     "ok": true,
@@ -404,12 +404,12 @@
    }
   },
   "statistik": {
-   "neu_pm": 0,
-   "neu_meldungen": 0,
+   "neu_pm": 1,
+   "neu_meldungen": 1,
    "aktualisiert_pm": 0,
-   "abgerufen": 0,
+   "abgerufen": 6,
    "social_neu": 0,
-   "http_anfragen": 12,
+   "http_anfragen": 14,
    "http_fehler": 0,
    "fehlerarten": {}
   },
