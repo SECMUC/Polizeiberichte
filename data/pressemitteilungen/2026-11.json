@@ -1,5 +1,43 @@
 [
  {
+  "id": "111445",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/111445/index.html",
+  "pp": "PP Oberbayern Nord",
+  "pp_name": "Polizeipräsidium Oberbayern Nord",
+  "veroeffentlicht": "2026-11-13",
+  "titel": "Folgemeldung zu Brand in Einkaufszentrum",
+  "text": "DACHAU, 13.11.2026_Wie bereits berichtet, entstand heute Mittag in einem Restaurant innerhalb eines Einkaufszentrums in Dachau ein Brand.\nDurch den Lüftungsschacht konnte sich das Feuer bis in den Dachstuhl ausbreiten. Die Entstehung eines Schwelbrandes und mehrerer Glutnester erschweren aktuell die immer noch andauernden Löscharbeiten der Feuerwehr. Um den Brand im Inneren zu löschen, soll das Dach geöffnet werden.\nAufgrund der starken Rauchentwicklung wurde eine Warnmeldung herausgegeben, in der die umliegende Nachbarschaft gebeten wird, in den Häusern zu bleiben und Türen und Fenster geschlossen zu halten.\nEs sind momentan keine weiteren Verletzten bekannt.\nEs befindet sich derzeit ein Großaufgebot der Feuerwehr, der Rettungsdienst, Beamte der Polizei Dachau, sowie das Technische Hilfswerk.\nEin Ende der Löscharbeiten ist noch nicht abzusehen. Die Feuerwehr wird zudem eine Brandwache über Nacht am Gebäude abstellen.\nZum Schaden können noch keine Angaben gemacht werden. Nach derzeitigem Stand ist davon auszugehen, dass das Einkaufszentrum vorerst geschlossen bleibt.\nNach Abschluss der für Montag vorgesehenen Brandortbegehung durch die Kriminalpolizei Fürstenfeldbruck wird nachberichtet.",
+  "sha256": "85a9f18840db5cd4fea187cd0e8a41bba72f3a03dd1e381779709fbf6a6d7845",
+  "anzahl_meldungen": 1,
+  "quellen": [
+   "archiv",
+   "uebersicht"
+  ],
+  "zeitstempel_quelle": "2026-11-13T16:30:00+00:00",
+  "erstmals_erfasst": "2026-11-13T21:35:02+00:00",
+  "zuletzt_geprueft": "2026-11-13T21:35:02+00:00",
+  "revision": 0
+ },
+ {
+  "id": "111444",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/111444/index.html",
+  "pp": "PP Oberbayern Süd",
+  "pp_name": "Polizeipräsidium Oberbayern Süd",
+  "veroeffentlicht": "2026-11-13",
+  "titel": "Fahnder stellen bei Kontrolle auf der Autobahn 100 Vapes mit mutmaßlich synthetischen Cannabinoiden sicher – Kroate (36) vorläufig festgenommen",
+  "text": "BAD FEILNBACH, OT. DETTENDORF, LKR. ROSENHEIM. Fahnder der Grenzpolizei Raubling haben am Donnerstagabend, 12. November 2026, auf der A8 einen Pkw kontrolliert. Dabei entdeckten sie 100 Vapes mit mutmaßlich synthetischen Cannabinoiden, deren möglicher THC-Gehalt den erlaubten Wert erheblich überstieg. Der 36-jährige kroatische Fahrer wurde vorläufig festgenommen. Die Staatsanwaltschaft stellte zunächst Haftantrag, der am Freitag jedoch wieder zurückgenommen wurde, da zunächst das Ergebnis eines in Auftrag gegebenen Wirkstoffgutachtens abzuwarten ist.\nDen richtigen Riecher bewiesen Fahnder der Grenzpolizeiinspektion Raubling am späten Donnerstagabend (12. November 2026) gegen 20.30 Uhr auf der Bundesautobahn A 8 in Fahrtrichtung Salzburg, als sie auf Höhe von Dettendorf, im Gemeindebereich von Bad Feilnbach, ein Fahrzeug mit kroatischer Zulassung kontrollierten.\nBei der Anhaltung des Pkw konnten im Fahrzeug 100 Vapes mit mutmaßlich synthetischen Cannabinoiden aufgefunden werden. Da der mögliche THC-Gehalt der E-Zigaretten dabei um ein Vielfaches über dem erlaubten Wert lag, wurde der allein im Fahrzeug befindliche 36-jährige Fahrer mit kroatischer Staatsangehörigkeit wegen des Verdachts eines Vergehens nach dem Betäubungsmittelgesetz oder nach dem Konsumcannabisgesetz noch vor Ort vorläufig festgenommen. Ein von ihm mitgeführtes Tierabwehrspray wurde außerdem gefahrenabwehrend einbehalten.\nIm Anschluss an die Erstmaßnahmen durch die Grenzpoliinspektion Raubling wurden die weiteren Ermittlungen durch das Fachkommissariat 4 der Kriminalpolizeiinspektion Rosenheim übernommen.\nAufgrund der zunächst bekannten Informationen stellte die sachleitende Staatsanwaltschaft Traunstein Haftantrag gegen den 36-jährigen Tatverdächtigen. Dieser wurde jedoch im Laufe des 13. November 2026 seitens der Staatsanwaltschaft zurückgenommen, da durch ein bereits in Auftrag gegebenes Wirkstoffgutachten zu klären ist, ob es sich bei dem Inhalt der Vapes tatsächlich um synthetische Cannabinoide handelt und ob ein Straftatbestand nach dem Betäubungsmittelgesetz oder dem Konsumcannabisgesetz verwirklicht wurde.",
+  "sha256": "3d8c0879ad933a21f8b43d0ba09114dcb37a210b043aa1b3f97f42b8f2188a1a",
+  "anzahl_meldungen": 1,
+  "quellen": [
+   "archiv",
+   "uebersicht"
+  ],
+  "zeitstempel_quelle": "2026-11-13T15:37:00+00:00",
+  "erstmals_erfasst": "2026-11-13T21:35:03+00:00",
+  "zuletzt_geprueft": "2026-11-13T21:35:03+00:00",
+  "revision": 0
+ },
+ {
   "id": "111435",
   "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/111435/index.html",
   "pp": "PP Oberbayern Nord",
@@ -30,7 +68,8 @@
   "anzahl_meldungen": 4,
   "quellen": [
    "archiv",
-   "uebersicht"
+   "uebersicht",
+   "telegram"
   ],
   "zeitstempel_quelle": "2026-11-13T11:02:00+00:00",
   "erstmals_erfasst": "2026-11-13T13:23:51+00:00",
