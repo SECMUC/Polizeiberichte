@@ -1,6 +1,6 @@
 {
  "schema": 2,
- "aktualisiert": "2026-11-14T12:27:55+00:00",
+ "aktualisiert": "2026-11-14T20:03:44+00:00",
  "zeitraum": {
   "von": "2025-01-01",
   "bis": "2026-11-13"
@@ -358,14 +358,14 @@
   }
  ],
  "letzter_lauf": {
-  "zeit": "2026-11-14T12:27:55+00:00",
-  "dauer_sek": 19,
+  "zeit": "2026-11-14T20:03:44+00:00",
+  "dauer_sek": 7,
   "modus": "täglich",
   "budget_erreicht": false,
   "quellen": {
    "uebersicht": {
     "ok": true,
-    "eintraege_gesamt": 236,
+    "eintraege_gesamt": 237,
     "relevant": 62,
     "neu": 0
    },
@@ -407,9 +407,9 @@
    "neu_pm": 0,
    "neu_meldungen": 0,
    "aktualisiert_pm": 0,
-   "abgerufen": 11,
+   "abgerufen": 0,
    "social_neu": 0,
-   "http_anfragen": 19,
+   "http_anfragen": 8,
    "http_fehler": 0,
    "fehlerarten": {}
   },
