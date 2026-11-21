@@ -1,5 +1,24 @@
 [
  {
+  "id": "111849",
+  "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/111849/index.html",
+  "pp": "PP Oberbayern Süd",
+  "pp_name": "Polizeipräsidium Oberbayern Süd",
+  "veroeffentlicht": "2026-11-21",
+  "titel": "Polizei setzt starkes Zeichen gegen Drogen im Straßenverkehr im südlichen Oberbayern",
+  "text": "GARMISCH-PARTENKIRCHEN / PENZBERG / SCHONGAU, LKR. GARMISCH-PARTENKIRCHEN / WEILHEIM-SCHONGAU. Am Abend des 20. November 2026 fand unter Leitung des Polizeipräsidiums Oberbayern Süd erneut eine größere Kontrollaktion zur Aufdeckung von Drogen im Straßenverkehr statt. „Aufgrund der Legalisierung von Cannabis befürchten wir, dass immer mehr Verkehrsteilnehmer unter Drogeneinfluss unterwegs sind“, erklärte Polizeivizepräsident Michael Siefener.\nIm Jahr 2025 wurden im Zuständigkeitsbereich des Polizeipräsidiums Oberbayern Süd insgesamt 943 Fahrzeugführer unter dem Einfluss von Drogen oder anderen berauschenden Mitteln festgestellt. Dies entspricht einem Anstieg um 50 Fälle gegenüber dem Vorjahr. Von den festgestellten Fahrzeugführern standen 560 unter dem Einfluss von Cannabis. Für Siefener sind das keine Kavaliersdelikte: „Unter Drogeneinfluss am Steuer gefährdet man sich und andere. Daher verstärken wir gezielt die Kontrollen für mehr Verkehrssicherheit.“\nAn der konzertierten Aktion zur Steigerung der Verkehrssicherheit in den Landkreisen Weilheim-Schongau und Garmisch-Partenkirchen beteiligten sich knapp 70 Beamtinnen und Beamte verschiedener Dienststellen des Polizeipräsidiums Oberbayern Süd, des Polizeipräsidiums München und des Polizeipräsidiums Schwaben Süd/West.\nNach einem vorgeschalteten Fortbildungsanteil kontrollierten die Einsatzkräfte an mehreren Kontrollstellen insgesamt 321 Fahrzeuge. Bei acht Fahrzeugführern stellten die Beamten drogentypische Auffälligkeiten fest. In allen Fällen verliefen die durchgeführten Drogenvortests positiv auf THC. Daraufhin wurde bei den Betroffenen eine Blutentnahme angeordnet und durchgeführt.\nDie Verantwortlichen erwartet nun jeweils ein Ordnungswidrigkeitenverfahren. Bei einem erstmaligen Verstoß drohen ein Bußgeld von 500 Euro, ein Monat Fahrverbot sowie zwei Punkte in Flensburg. Zudem wird die zuständige Fahrerlaubnisbehörde informiert. „Bei Verdacht auf Fahruntüchtigkeit wird sogar ein Strafverfahren eingeleitet und der dauerhafte Entzug der Fahrerlaubnis geprüft“, ergänzte Siefener.\nIm Rahmen der Kontrollen stellten die Einsatzkräfte zahlreiche weitere, hochwertige Verstöße fest. Bei einer Person ergab ein freiwillig durchgeführter Atemalkoholtest einen Wert von 2,6 Promille – er muss sich nun wegen Trunkenheit im Verkehr strafrechtlich verantworten. Ein weiterer Verkehrsteilnehmer war ebenfalls alkoholisiert am Steuer. Ihn erwartet eine Ordnungswidrigkeitenanzeige wegen Verstoßes gegen die 0,5-Promille-Grenze. Gleich zwei Fahrzeugführer waren ohne die erforderliche Fahrerlaubnis unterwegs und sehen einem Strafverfahren entgegen. Eine weitere Person führte verbotswidrig eine sogenannte „Anscheinswaffe“ und wurde entsprechend angezeigt. Schließlich war bei insgesamt drei Fahrzeugen aufgrund technischer Veränderungen die Betriebserlaubnis erloschen, weshalb eine Weiterfahrt unterbunden werden musste.",
+  "sha256": "ee44012285738eecd9b5f1a391fd6e21e6ff50d04daa87dfc3b47cec835d2083",
+  "anzahl_meldungen": 1,
+  "quellen": [
+   "archiv",
+   "uebersicht"
+  ],
+  "zeitstempel_quelle": "2026-11-21T06:40:00+00:00",
+  "erstmals_erfasst": "2026-11-21T13:41:06+00:00",
+  "zuletzt_geprueft": "2026-11-21T13:41:06+00:00",
+  "revision": 0
+ },
+ {
   "id": "111840",
   "url": "https://www.polizei.bayern.de/aktuelles/pressemitteilungen/111840/index.html",
   "pp": "PP München",
@@ -16,7 +35,7 @@
   ],
   "zeitstempel_quelle": "2026-11-20T20:00:00+00:00",
   "erstmals_erfasst": "2026-11-20T22:20:16+00:00",
-  "zuletzt_geprueft": "2026-11-20T22:20:16+00:00",
+  "zuletzt_geprueft": "2026-11-21T13:41:07+00:00",
   "revision": 0
  },
  {
@@ -35,7 +54,7 @@
   ],
   "zeitstempel_quelle": "2026-11-20T12:37:00+00:00",
   "erstmals_erfasst": "2026-11-20T14:19:28+00:00",
-  "zuletzt_geprueft": "2026-11-20T14:19:28+00:00",
+  "zuletzt_geprueft": "2026-11-21T13:41:08+00:00",
   "revision": 0
  },
  {
@@ -54,7 +73,7 @@
   ],
   "zeitstempel_quelle": "2026-11-20T13:00:00+00:00",
   "erstmals_erfasst": "2026-11-20T14:19:29+00:00",
-  "zuletzt_geprueft": "2026-11-20T14:19:29+00:00",
+  "zuletzt_geprueft": "2026-11-21T13:41:10+00:00",
   "revision": 0
  },
  {
@@ -73,7 +92,7 @@
   ],
   "zeitstempel_quelle": "2026-11-20T12:37:00+00:00",
   "erstmals_erfasst": "2026-11-20T14:19:30+00:00",
-  "zuletzt_geprueft": "2026-11-20T14:19:30+00:00",
+  "zuletzt_geprueft": "2026-11-21T13:41:10+00:00",
   "revision": 0
  },
  {
@@ -93,7 +112,7 @@
   ],
   "zeitstempel_quelle": "2026-11-20T12:19:00+00:00",
   "erstmals_erfasst": "2026-11-20T14:19:31+00:00",
-  "zuletzt_geprueft": "2026-11-20T14:19:31+00:00",
+  "zuletzt_geprueft": "2026-11-21T13:41:11+00:00",
   "revision": 0
  },
  {
@@ -112,7 +131,7 @@
   ],
   "zeitstempel_quelle": "2026-11-20T11:38:00+00:00",
   "erstmals_erfasst": "2026-11-20T14:19:32+00:00",
-  "zuletzt_geprueft": "2026-11-20T14:19:32+00:00",
+  "zuletzt_geprueft": "2026-11-21T13:41:12+00:00",
   "revision": 0
  },
  {
@@ -131,7 +150,7 @@
   ],
   "zeitstempel_quelle": "2026-11-20T09:39:00+00:00",
   "erstmals_erfasst": "2026-11-20T14:19:33+00:00",
-  "zuletzt_geprueft": "2026-11-20T14:19:33+00:00",
+  "zuletzt_geprueft": "2026-11-21T13:41:13+00:00",
   "revision": 0
  },
  {
@@ -150,7 +169,7 @@
   ],
   "zeitstempel_quelle": "2026-11-20T06:42:00+00:00",
   "erstmals_erfasst": "2026-11-20T14:19:34+00:00",
-  "zuletzt_geprueft": "2026-11-20T14:19:34+00:00",
+  "zuletzt_geprueft": "2026-11-21T13:41:15+00:00",
   "revision": 0
  },
  {
@@ -169,7 +188,7 @@
   ],
   "zeitstempel_quelle": "2026-11-20T06:27:00+00:00",
   "erstmals_erfasst": "2026-11-20T14:19:35+00:00",
-  "zuletzt_geprueft": "2026-11-20T14:19:35+00:00",
+  "zuletzt_geprueft": "2026-11-21T13:41:16+00:00",
   "revision": 0
  },
  {
@@ -188,7 +207,7 @@
   ],
   "zeitstempel_quelle": "2026-11-19T13:28:00+00:00",
   "erstmals_erfasst": "2026-11-19T14:39:39+00:00",
-  "zuletzt_geprueft": "2026-11-20T14:19:36+00:00",
+  "zuletzt_geprueft": "2026-11-21T13:41:17+00:00",
   "revision": 0
  },
  {
@@ -207,7 +226,7 @@
   ],
   "zeitstempel_quelle": "2026-11-19T12:49:00+00:00",
   "erstmals_erfasst": "2026-11-19T14:39:40+00:00",
-  "zuletzt_geprueft": "2026-11-20T14:19:37+00:00",
+  "zuletzt_geprueft": "2026-11-21T13:41:18+00:00",
   "revision": 0
  },
  {
@@ -227,7 +246,7 @@
   ],
   "zeitstempel_quelle": "2026-11-19T12:06:00+00:00",
   "erstmals_erfasst": "2026-11-19T14:39:41+00:00",
-  "zuletzt_geprueft": "2026-11-20T14:19:38+00:00",
+  "zuletzt_geprueft": "2026-11-21T13:41:19+00:00",
   "revision": 0
  },
  {
