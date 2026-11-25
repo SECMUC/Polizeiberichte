@@ -1,13 +1,13 @@
 {
  "schema": 2,
- "aktualisiert": "2026-11-24T16:19:23+00:00",
+ "aktualisiert": "2026-11-25T15:59:45+00:00",
  "zeitraum": {
   "von": "2025-01-01",
-  "bis": "2026-11-24"
+  "bis": "2026-11-25"
  },
  "summen": {
-  "pressemitteilungen": 2715,
-  "meldungen": 9396,
+  "pressemitteilungen": 2720,
+  "meldungen": 9408,
   "social": 0,
   "warteschlange": 5
  },
@@ -38,14 +38,14 @@
    "monat": "2026-11",
    "datei_meldungen": "meldungen/2026-11.json",
    "datei_social": null,
-   "meldungen": 290,
-   "pressemitteilungen": 96,
+   "meldungen": 302,
+   "pressemitteilungen": 101,
    "social": 0,
    "pp": {
     "PP Oberbayern Nord": 27,
-    "PP München": 122,
-    "PP Oberbayern Süd": 27,
-    "PP Schwaben Nord": 114
+    "PP München": 128,
+    "PP Schwaben Nord": 118,
+    "PP Oberbayern Süd": 29
    }
   },
   {
@@ -358,40 +358,40 @@
   }
  ],
  "letzter_lauf": {
-  "zeit": "2026-11-24T16:19:22+00:00",
-  "dauer_sek": 15,
+  "zeit": "2026-11-25T15:59:45+00:00",
+  "dauer_sek": 19,
   "modus": "täglich",
   "budget_erreicht": false,
   "quellen": {
    "uebersicht": {
     "ok": true,
-    "eintraege_gesamt": 221,
-    "relevant": 53,
-    "neu": 3
+    "eintraege_gesamt": 224,
+    "relevant": 54,
+    "neu": 5
    },
    "archiv:MUC": {
     "ok": true,
-    "treffer": 8,
+    "treffer": 9,
     "neu": 0,
-    "ab": "2026-11-17"
+    "ab": "2026-11-18"
    },
    "archiv:OBN": {
     "ok": true,
     "treffer": 4,
     "neu": 0,
-    "ab": "2026-11-17"
+    "ab": "2026-11-18"
    },
    "archiv:OBS": {
     "ok": true,
     "treffer": 10,
     "neu": 0,
-    "ab": "2026-11-17"
+    "ab": "2026-11-18"
    },
    "archiv:SWN": {
     "ok": true,
     "treffer": 6,
     "neu": 0,
-    "ab": "2026-11-17"
+    "ab": "2026-11-18"
    },
    "telegram:PressePolizeiMuenchen": {
     "ok": true,
@@ -404,12 +404,12 @@
    }
   },
   "statistik": {
-   "neu_pm": 3,
-   "neu_meldungen": 7,
-   "aktualisiert_pm": 1,
-   "abgerufen": 7,
+   "neu_pm": 5,
+   "neu_meldungen": 12,
+   "aktualisiert_pm": 0,
+   "abgerufen": 11,
    "social_neu": 0,
-   "http_anfragen": 15,
+   "http_anfragen": 19,
    "http_fehler": 0,
    "fehlerarten": {}
   },
