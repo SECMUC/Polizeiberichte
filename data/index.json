@@ -1,6 +1,6 @@
 {
  "schema": 2,
- "aktualisiert": "2026-11-27T15:31:53+00:00",
+ "aktualisiert": "2026-11-27T23:41:37+00:00",
  "zeitraum": {
   "von": "2025-01-01",
   "bis": "2026-11-27"
@@ -358,16 +358,16 @@
   }
  ],
  "letzter_lauf": {
-  "zeit": "2026-11-27T15:31:53+00:00",
-  "dauer_sek": 22,
+  "zeit": "2026-11-27T23:41:37+00:00",
+  "dauer_sek": 8,
   "modus": "täglich",
   "budget_erreicht": false,
   "quellen": {
    "uebersicht": {
     "ok": true,
-    "eintraege_gesamt": 231,
+    "eintraege_gesamt": 232,
     "relevant": 56,
-    "neu": 5
+    "neu": 0
    },
    "archiv:MUC": {
     "ok": true,
@@ -404,12 +404,12 @@
    }
   },
   "statistik": {
-   "neu_pm": 5,
-   "neu_meldungen": 14,
+   "neu_pm": 0,
+   "neu_meldungen": 0,
    "aktualisiert_pm": 0,
-   "abgerufen": 15,
+   "abgerufen": 0,
    "social_neu": 0,
-   "http_anfragen": 23,
+   "http_anfragen": 8,
    "http_fehler": 0,
    "fehlerarten": {}
   },
